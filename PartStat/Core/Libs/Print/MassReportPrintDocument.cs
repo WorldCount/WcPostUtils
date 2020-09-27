@@ -6,7 +6,7 @@ using System.Drawing.Text;
 using System.Linq;
 using System.Windows.Forms;
 using NLog;
-using PartStat.Core.Models.Reports;
+using PartStat.Core.Models.DataReports;
 using WcApi.Print.Base;
 
 namespace PartStat.Core.Libs.Print

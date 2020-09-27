@@ -6,8 +6,8 @@ using System.Windows.Forms;
 using PartStat.Core.Libs.Print;
 using PartStat.Core.Libs.Stats;
 using PartStat.Core.Libs.TarifManager;
+using PartStat.Core.Models.DataReports;
 using PartStat.Core.Models.PostTypes;
-using PartStat.Core.Models.Reports;
 using PartStat.Core.Models.Tarifs;
 
 namespace PartStat.Forms

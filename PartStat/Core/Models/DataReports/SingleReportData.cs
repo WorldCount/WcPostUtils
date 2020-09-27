@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using PartStat.Core.Libs.Stats;
 using PartStat.Core.Models.DB;
 
-namespace PartStat.Core.Models.Reports
+namespace PartStat.Core.Models.DataReports
 {
     public class SingleReportData
     {

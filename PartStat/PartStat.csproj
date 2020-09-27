@@ -113,8 +113,8 @@
     <Compile Include="Core\Models\InterType.cs" />
     <Compile Include="Core\Models\PostTypes\ErrorType.cs" />
     <Compile Include="Core\Models\PostTypes\CreateListType.cs" />
-    <Compile Include="Core\Models\Reports\DateList.cs" />
-    <Compile Include="Core\Models\Reports\SingleReportData.cs" />
+    <Compile Include="Core\Models\DataReports\DateList.cs" />
+    <Compile Include="Core\Models\DataReports\SingleReportData.cs" />
     <Compile Include="Core\Models\Tarifs\Base\ICustomTarif.cs" />
     <Compile Include="Core\Models\Tarifs\Base\IFirstClassTarif.cs" />
     <Compile Include="Core\Models\Tarifs\Base\IInterTarif.cs" />
