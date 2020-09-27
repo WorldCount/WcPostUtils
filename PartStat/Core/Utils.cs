@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using WcApi.Net;
 
 namespace PartStat.Core
@@ -23,6 +19,26 @@ namespace PartStat.Core
             }
 
             return ints;
+        }
+
+        public static string GetPayName(int payType, int subPayType)
+        {
+            if (payType == 16)
+            {
+                if (subPayType == 1)
+                    return "Марки";
+                if (subPayType == 2)
+                    return "Франк";
+                return $"{payType}-{subPayType}";
+            }
+
+            if (payType == 2)
+            {
+                if (subPayType == 1)
+                    return "Безнал";
+                return $"{payType}-{subPayType}";
+            }
+            return $"{payType}-{subPayType}";
         }
     }
 }

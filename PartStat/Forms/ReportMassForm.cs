@@ -26,7 +26,7 @@ namespace PartStat.Forms
         private NoticeTarif _electronicNoticeTarif;
         private NoticeTarif _interNoticeTarif;
 
-        private Config _defaultPrinterConfig;
+        private readonly Config _defaultPrinterConfig;
 
         public int NumList { get; private set; }
 

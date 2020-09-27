@@ -23,6 +23,7 @@ using PartStat.Core.Models.DataReports;
 using PartStat.Core.Models.DB;
 using PartStat.Core.Models.PostTypes;
 using PartStat.Core.Models.Tarifs;
+using PartStat.Forms.ReportForms;
 using PartStat.Forms.TarifForms;
 using WcApi.Print;
 using WcApi.Win32.Forms;
@@ -1499,5 +1500,11 @@ namespace PartStat.Forms
         }
 
         #endregion
+
+        private void handReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            HandReportForm handReportForm = new HandReportForm(_connect);
+            handReportForm.ShowDialog(this);
+        }
     }
 }

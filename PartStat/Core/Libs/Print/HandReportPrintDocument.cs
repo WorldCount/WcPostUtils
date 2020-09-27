@@ -3,22 +3,18 @@ using System.Collections;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Drawing.Text;
-using System.Linq;
 using System.Windows.Forms;
 using NLog;
-using PartStat.Core.Models.DataReports;
 using WcApi.Print.Base;
 
 namespace PartStat.Core.Libs.Print
 {
-    public class MassReportPrintDocument : TablePrintDocument
+    public class HandReportPrintDocument : TablePrintDocument
     {
         private readonly DataGridView _dataGridView;
         private readonly int[] _columnWidths;
 
         private readonly bool _clear;
-
-        private readonly SingleReportData _singleReport;
 
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
 
@@ -37,26 +33,20 @@ namespace PartStat.Core.Libs.Print
         private bool _newPage;
         private int _headerHeight = 40;
         private int _currentPageCount = 1;
-        private bool _printCityStat;
-        private bool _lastPage;
-        private int _lastCount;
-
 
         // Отображать номера страниц
         public bool PrintNumPageInfo { get; set; }
         public int PagesCount { get; set; } = 0;
 
-        public MassReportPrintDocument(DataGridView dataGridView, SingleReportData singleReport, int[] columnWidths, bool clear = false)
+        public HandReportPrintDocument(DataGridView dataGridView, int[] columnWidths, bool clear = false)
         {
             _dataGridView = dataGridView;
-            _singleReport = singleReport;
             _columnWidths = columnWidths;
             _clear = clear;
 
-            DefaultPageSettings.Margins = new Margins(10, 10, 40, 40);
+            DefaultPageSettings.Margins = new Margins(30, 30, 40, 40);
         }
 
-        // ReSharper disable once UnusedMember.Global
         public void SetMargin(Margins margins)
         {
             DefaultPageSettings.Margins = margins;
@@ -73,8 +63,6 @@ namespace PartStat.Core.Libs.Print
                 _firstPage = true;
                 _newPage = true;
                 _currentPageCount = 1;
-                _printCityStat = false;
-                _lastCount = 0;
             }
             catch (Exception exception)
             {
@@ -86,7 +74,7 @@ namespace PartStat.Core.Libs.Print
         protected override void OnPrintPage(PrintPageEventArgs e)
         {
             base.OnPrintPage(e);
-            
+
             try
             {
                 e.Graphics.TextRenderingHint = TextRenderingHint.ClearTypeGridFit;
@@ -108,13 +96,13 @@ namespace PartStat.Core.Libs.Print
                 if (_firstPage)
                 {
                     int countWidth = 0;
-                    while(countWidth < _columnWidths.Length)
+                    while (countWidth < _columnWidths.Length)
                     {
                         _columnLefts.Add(leftMargin);
                         leftMargin += _columnWidths[countWidth];
                         countWidth++;
                     }
-                    
+
                     topMargin = PrintReportInfo(e, topMargin, pageWidth);
                     PrintDate(e);
                 }
@@ -163,51 +151,6 @@ namespace PartStat.Core.Libs.Print
 
                     _rowCount++;
                     topMargin += _cellHeight;
-                    _lastPage = _rowCount == _dataGridView.Rows.Count;
-                }
-
-                // Проверка, позволяет ли текущая страница напечатать эту строку
-                if (_lastPage)
-                {
-                    if (topMargin + _cellHeight >= e.MarginBounds.Height + e.MarginBounds.Top)
-                    {
-                        _newPage = true;
-                        _firstPage = false;
-                        _currentPageCount += 1;
-                        morePagesToPrint = true;
-                    }
-                    else
-                    {
-                        if (PrintNumPageInfo)
-                        {
-                            PrintNumsPages(e, pageWidth);
-                        }
-
-                        if (!_printCityStat)
-                        {
-                            topMargin = PrintCityStat(e, topMargin);
-                            _printCityStat = true;
-                        }
-
-                        for(int i = _lastCount; i < _singleReport.NumsList.Count; i++)
-                        {
-                            _lastCount = i;
-
-                            int newTopMargin = CalculateListInfo(e, _singleReport.NumsList[i]);
-
-                            if (topMargin + newTopMargin >= e.MarginBounds.Height + e.MarginBounds.Top)
-                            {
-                                _newPage = true;
-                                _firstPage = false;
-                                _currentPageCount += 1;
-                                morePagesToPrint = true;
-                                break;
-                            }
-
-                            topMargin = PrintListInfo(e, topMargin, newTopMargin, _singleReport.NumsList[i]);
-                        }
-                        
-                    }
                 }
 
                 e.HasMorePages = morePagesToPrint;
@@ -219,9 +162,26 @@ namespace PartStat.Core.Libs.Print
             }
         }
 
+        private void PrintTableHeader(PrintPageEventArgs e, int topMargin)
+        {
+            int colCount = 0;
+            while (colCount < _dataGridView.Columns.Count)
+            {
+                DataGridViewColumn gridCol = _dataGridView.Columns[colCount];
+
+                int colLeft = (int)_columnLefts[colCount];
+                int colWidth = _columnWidths[colCount];
+
+                e.Graphics.DrawRectangle(Pens.Black, new Rectangle(colLeft, topMargin, colWidth, _headerHeight));
+                e.Graphics.DrawString(gridCol.HeaderText, PrintPens.BoldFont, PrintPens.ForeBrush, new Rectangle(colLeft, topMargin, colWidth, _headerHeight), _stringFormat);
+
+                colCount++;
+            }
+        }
+
         private void PrintRow(PrintPageEventArgs e, DataGridViewRow gridRow, int topMargin)
         {
-            bool clear = (string) gridRow.Cells[0].Value == "Clear";
+            bool clear = (string)gridRow.Cells[0].Value == "Clear";
             bool clearRow = _clear && clear;
 
             int cellCount = 0;
@@ -229,7 +189,7 @@ namespace PartStat.Core.Libs.Print
             {
                 DataGridViewCell cell = gridRow.Cells[cellCount];
 
-                int colLeft = (int) _columnLefts[cellCount];
+                int colLeft = (int)_columnLefts[cellCount];
                 int colWidth = _columnWidths[cellCount];
 
                 // Значение
@@ -241,28 +201,11 @@ namespace PartStat.Core.Libs.Print
                     }
                 }
 
-                if(!clearRow)
+                if (!clearRow)
                     // Границы
                     e.Graphics.DrawRectangle(PrintPens.BorderBrush, new Rectangle(colLeft, topMargin, colWidth, _cellHeight));
 
                 cellCount++;
-            }
-        }
-
-        private void PrintTableHeader(PrintPageEventArgs e, int topMargin)
-        {
-            int colCount = 0;
-            while (colCount < _dataGridView.Columns.Count)
-            {
-                DataGridViewColumn gridCol = _dataGridView.Columns[colCount];
-
-                int colLeft = (int) _columnLefts[colCount];
-                int colWidth = _columnWidths[colCount];
-
-                e.Graphics.DrawRectangle(Pens.Black, new Rectangle(colLeft, topMargin, colWidth, _headerHeight));
-                e.Graphics.DrawString(gridCol.HeaderText, PrintPens.BoldFont, PrintPens.ForeBrush, new Rectangle(colLeft, topMargin, colWidth, _headerHeight), _stringFormat);
-
-                colCount++;
             }
         }
 
@@ -295,97 +238,10 @@ namespace PartStat.Core.Libs.Print
 
             Rectangle rect = new Rectangle(e.MarginBounds.Left, marginTop, pageWidth, offset);
 
-            e.Graphics.DrawString(_singleReport.Name, PrintPens.HeaderBoldFont, PrintPens.ForeBrush, rect, stringFormat);
-            //e.Graphics.DrawRectangle(Pens.Black, rect);
-            marginTop += offset;
-
-            string info = $"ИНН: {_singleReport.Inn}";
-
-            rect.Y += offset;
-
-
-            if (!string.IsNullOrEmpty(_singleReport.NumDog) && _singleReport.NumDog != "1")
-                info += $", Договор: {_singleReport.NumDog.ToUpper()}";
-
-            e.Graphics.DrawString(info, PrintPens.HeaderFont, PrintPens.ForeBrush, rect, stringFormat);
+            e.Graphics.DrawString("Отчет по ручным спискам", PrintPens.HeaderBoldFont, PrintPens.ForeBrush, rect, stringFormat);
             marginTop += offset;
 
             return marginTop + 10;
-        }
-
-        private int PrintCityStat(PrintPageEventArgs e, int margin)
-        {
-            int topMargin = 10 + margin;
-
-            string[] data = new[]
-            {
-                $"Всего отправлений: {_singleReport.CityCollector.SumCount}",
-                $"Город: {_singleReport.CityCollector.CityCount}",
-                $"Москва: {_singleReport.CityCollector.MoscowCount}",
-                $"МЖД: {_singleReport.CityCollector.InterCount}",
-                $"Неизвестно: {_singleReport.CityCollector.UnkownCount}"
-            };
-
-            int cellCount = 0;
-            while (cellCount < data.Length)
-            {
-                int colLeft = (int)_columnLefts[cellCount];
-                int colWidth = _columnWidths[cellCount];
-
-                e.Graphics.DrawString(data[cellCount], PrintPens.CellFont, PrintPens.ForeBrush, new Rectangle(colLeft, topMargin, colWidth, _cellHeight), _stringFormat);
-                cellCount++;
-            }
-
-            topMargin += 40;
-
-            return topMargin;
-        }
-
-        private int CalculateListInfo(PrintPageEventArgs e, DateList dateList)
-        {
-            int size = 0;
-            int colWidth = _columnWidths.Sum();
-
-            StringFormat stringFormat = new StringFormat
-            {
-                Alignment = StringAlignment.Near,
-                LineAlignment = StringAlignment.Near,
-                Trimming = StringTrimming.None
-            };
-
-            int rowHeight = _cellHeight + 20;
-
-            SizeF area = new SizeF(colWidth, _cellHeight);
-            size += (int) e.Graphics.MeasureString(dateList.Date.ToShortDateString(), PrintPens.BoldFont, area, stringFormat).Height;
-            size += 20;
-
-            area = new SizeF(colWidth, rowHeight);
-            size += (int)e.Graphics.MeasureString(dateList.NumsToString(), PrintPens.BoldFont, area, stringFormat).Height;
-
-            return size;
-        }
-
-        private int PrintListInfo(PrintPageEventArgs e, int margin, int newTopMargin, DateList dateList)
-        {
-            int topMargin = margin;
-            int colLeft = (int)_columnLefts[0];
-            int colWidth = _columnWidths.Sum();
-
-            StringFormat stringFormat = new StringFormat
-            {
-                Alignment = StringAlignment.Near,
-                LineAlignment = StringAlignment.Near,
-                Trimming = StringTrimming.None
-            };
-
-            string info = dateList.NumsToString();
-            int rowHeight = _cellHeight + 20;
-            e.Graphics.DrawString(dateList.Date.ToShortDateString(), PrintPens.BoldFont, PrintPens.ForeBrush, new Rectangle(colLeft, topMargin, colWidth, _cellHeight), stringFormat);
-            topMargin += 20;
-
-            e.Graphics.DrawString(info, PrintPens.CellFont, PrintPens.ForeBrush, new Rectangle(colLeft, topMargin, colWidth, rowHeight), stringFormat);
-
-            return topMargin + newTopMargin - 20;
         }
 
         private void PrintDate(PrintPageEventArgs e)

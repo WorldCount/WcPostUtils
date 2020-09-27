@@ -41,11 +41,6 @@ namespace PartStat.Core.Libs.Print
         private int _headerHeight = 40;
         private int _currentPageCount;
 
-        // Кисти
-        private SolidBrush BackBrush { get; set; } = new SolidBrush(Color.White);
-        private SolidBrush ForeBrush { get; set; } = new SolidBrush(Color.Black);
-        private Pen BorderBrush { get; set; } = Pens.Black;
-
         // Шрифты
         private Font BoldFont { get; set; } = new Font("Segoe Ui", 10, FontStyle.Bold);
         private Font DateFont { get; set; } = new Font("Segoe Ui", 9, FontStyle.Regular);
@@ -213,7 +208,7 @@ namespace PartStat.Core.Libs.Print
 
             int height = (int) CheckHeight(e, BoldFont, pageNumString);
             Rectangle rect = new Rectangle(e.MarginBounds.Left, e.MarginBounds.Height + e.MarginBounds.Top - 10, pageWidth, height);
-            e.Graphics.DrawString(pageNumString, BoldFont, ForeBrush, rect, stringFormat);
+            e.Graphics.DrawString(pageNumString, BoldFont, PrintPens.ForeBrush, rect, stringFormat);
         }
 
         private void PrintRow(PrintPageEventArgs e, int rowCount, int topMargin)
@@ -242,9 +237,9 @@ namespace PartStat.Core.Libs.Print
                 int colWidth = _columnWidths[cellCount];
 
                 // Значение
-                e.Graphics.DrawString(data[cellCount], CellFont, ForeBrush, new Rectangle(colLeft, topMargin, colWidth, _cellHeight), _stringFormat);
+                e.Graphics.DrawString(data[cellCount], CellFont, PrintPens.ForeBrush, new Rectangle(colLeft, topMargin, colWidth, _cellHeight), _stringFormat);
                 // Границы
-                e.Graphics.DrawRectangle(BorderBrush, new Rectangle(colLeft, topMargin, colWidth, _cellHeight));
+                e.Graphics.DrawRectangle(PrintPens.BorderBrush, new Rectangle(colLeft, topMargin, colWidth, _cellHeight));
 
                 cellCount++;
             }
@@ -263,7 +258,7 @@ namespace PartStat.Core.Libs.Print
 
             Rectangle rect = new Rectangle(e.MarginBounds.Left, marginTop, pageWidth, offset);
 
-            e.Graphics.DrawString(DocumentName, HeaderBoldFont, ForeBrush, rect, stringFormat);
+            e.Graphics.DrawString(DocumentName, HeaderBoldFont, PrintPens.ForeBrush, rect, stringFormat);
 
             return marginTop + offset + 10;
         }
@@ -272,7 +267,7 @@ namespace PartStat.Core.Libs.Print
         {
             string date = $"Сформировано: {DateTime.Now.ToLongDateString()} {DateTime.Now.ToShortTimeString()}";
             // Печать Даты
-            e.Graphics.DrawString(date, DateFont, ForeBrush, e.MarginBounds.Left, e.MarginBounds.Height + e.MarginBounds.Top - 10);
+            e.Graphics.DrawString(date, DateFont, PrintPens.ForeBrush, e.MarginBounds.Left, e.MarginBounds.Height + e.MarginBounds.Top - 10);
         }
 
         private void PrintTableHeader(PrintPageEventArgs e, int topMargin)
@@ -291,8 +286,8 @@ namespace PartStat.Core.Libs.Print
                 int colLeft = (int)_columnLefts[colCount];
                 int colWidth = _columnWidths[colCount];
 
-                e.Graphics.DrawRectangle(BorderBrush, new Rectangle(colLeft, topMargin, colWidth, _headerHeight));
-                e.Graphics.DrawString(gridCol.HeaderText, BoldFont, ForeBrush, new Rectangle(colLeft, topMargin, colWidth, _headerHeight), _stringFormat);
+                e.Graphics.DrawRectangle(PrintPens.BorderBrush, new Rectangle(colLeft, topMargin, colWidth, _headerHeight));
+                e.Graphics.DrawString(gridCol.HeaderText, BoldFont, PrintPens.ForeBrush, new Rectangle(colLeft, topMargin, colWidth, _headerHeight), _stringFormat);
                 colCount++;
             }
         }
@@ -338,8 +333,8 @@ namespace PartStat.Core.Libs.Print
                     int colLeft = columnLefts[colCount];
                     int colWidth = columnWidths[colCount];
 
-                    e.Graphics.DrawRectangle(BorderBrush, new Rectangle(colLeft, topMargin, colWidth, _headerHeight));
-                    e.Graphics.DrawString(gridCol.HeaderText, BoldFont, ForeBrush, new Rectangle(colLeft, topMargin, colWidth, _headerHeight), _stringFormat);
+                    e.Graphics.DrawRectangle(PrintPens.BorderBrush, new Rectangle(colLeft, topMargin, colWidth, _headerHeight));
+                    e.Graphics.DrawString(gridCol.HeaderText, BoldFont, PrintPens.ForeBrush, new Rectangle(colLeft, topMargin, colWidth, _headerHeight), _stringFormat);
 
                     colCount++;
                 }
@@ -370,9 +365,9 @@ namespace PartStat.Core.Libs.Print
                         int colWidth = columnWidths[cellCount];
 
                         // Значение
-                        e.Graphics.DrawString(data[cellCount], CellFont, ForeBrush, new Rectangle(colLeft, topMargin, colWidth, cellHeight), _stringFormat);
+                        e.Graphics.DrawString(data[cellCount], CellFont, PrintPens.ForeBrush, new Rectangle(colLeft, topMargin, colWidth, cellHeight), _stringFormat);
                         // Границы
-                        e.Graphics.DrawRectangle(BorderBrush, new Rectangle(colLeft, topMargin, colWidth, cellHeight));
+                        e.Graphics.DrawRectangle(PrintPens.BorderBrush, new Rectangle(colLeft, topMargin, colWidth, cellHeight));
                         cellCount++;
                     }
 

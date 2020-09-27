@@ -393,6 +393,16 @@ namespace PartStat.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Tic_Tac_Toe {
+            get {
+                object obj = ResourceManager.GetObject("Tic-Tac-Toe", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap unchecked_32 {
             get {
                 object obj = ResourceManager.GetObject("unchecked_32", resourceCulture);

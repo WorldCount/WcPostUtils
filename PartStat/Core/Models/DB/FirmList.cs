@@ -4,6 +4,7 @@ using PartStat.Core.Libs.DataBase;
 using PartStat.Core.Libs.DataBase.Queries;
 using PartStat.Core.Libs.DataManagers;
 using PartStat.Core.Models.PostTypes;
+using PartStat.Core;
 
 namespace PartStat.Core.Models.DB
 {
@@ -118,28 +119,7 @@ namespace PartStat.Core.Models.DB
             }
         }
 
-        public string PayName
-        {
-            get
-            {
-                if (PayType == 16)
-                {
-                    if (SubPayType == 1)
-                        return "Марки";
-                    if (SubPayType == 2)
-                        return "Франк";
-                    return $"{PayType}-{SubPayType}";
-                }
-
-                if (PayType == 2)
-                {
-                    if (SubPayType == 1)
-                        return "Безнал";
-                    return $"{PayType}-{SubPayType}";
-                }
-                return $"{PayType}-{SubPayType}";
-            }
-        }
+        public string PayName => Utils.GetPayName(PayType, SubPayType);
 
         public string ManualName
         {

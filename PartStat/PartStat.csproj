@@ -65,14 +65,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\Libs\DataBase\Queries\HandReportQuery.cs" />
+    <Compile Include="Core\Libs\DataBase\Queries\RequestObject\HandReportRequest.cs" />
     <Compile Include="Core\Libs\DataManagers\ConfigManager.cs" />
     <Compile Include="Core\Libs\DataManagers\CreateListManager.cs" />
     <Compile Include="Core\Libs\DataManagers\DataColorManager.cs" />
     <Compile Include="Core\Libs\DataManagers\ErrorListManager.cs" />
     <Compile Include="Core\Libs\DataManagers\InterTypeManager.cs" />
+    <Compile Include="Core\Libs\Print\HandReportPrintDocument.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Core\Libs\Print\MassReportPrintDocument.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Core\Libs\Print\PrintPens.cs" />
     <Compile Include="Core\Libs\ReportQueue.cs" />
     <Compile Include="Core\Libs\ServerTarif\Object\TarifObject.cs" />
     <Compile Include="Core\Libs\ServerTarif\Object\NoticeObject.cs" />
@@ -107,6 +113,7 @@
     <Compile Include="Core\Libs\DataBase\Queries\RequestObject\BarcodeRequest.cs" />
     <Compile Include="Core\Libs\DataBase\Queries\RequestObject\RpoRequest.cs" />
     <Compile Include="Core\Libs\DataBase\Queries\UpdateFirmListManualQuery.cs" />
+    <Compile Include="Core\Models\DataReports\HandReportList.cs" />
     <Compile Include="Core\Models\DB\Rpo.cs" />
     <Compile Include="Core\Libs\DataBase\Queries\RpoFirmsQuery.cs" />
     <Compile Include="Core\Models\ErrorList.cs" />
@@ -115,6 +122,7 @@
     <Compile Include="Core\Models\PostTypes\CreateListType.cs" />
     <Compile Include="Core\Models\DataReports\DateList.cs" />
     <Compile Include="Core\Models\DataReports\SingleReportData.cs" />
+    <Compile Include="Core\Models\DataReports\HandReport.cs" />
     <Compile Include="Core\Models\Tarifs\Base\ICustomTarif.cs" />
     <Compile Include="Core\Models\Tarifs\Base\IFirstClassTarif.cs" />
     <Compile Include="Core\Models\Tarifs\Base\IInterTarif.cs" />
@@ -195,6 +203,12 @@
     <Compile Include="Forms\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ReportForms\HandReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ReportForms\HandReportForm.Designer.cs">
+      <DependentUpon>HandReportForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ReportMassForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -266,6 +280,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="Resources\Tic-Tac-Toe.png" />
     <None Include="Resources\Locked.png" />
     <None Include="Resources\Portable-Printer.png" />
     <None Include="Resources\Invoice.png" />
@@ -320,6 +335,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ReportForms\HandReportForm.resx">
+      <DependentUpon>HandReportForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ReportMassForm.resx">
       <DependentUpon>ReportMassForm.cs</DependentUpon>
@@ -448,7 +466,7 @@
     <None Include="Resources\Font-Color.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Forms\ReportForms\" />
+    <Folder Include="Core\Models\Reports\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
