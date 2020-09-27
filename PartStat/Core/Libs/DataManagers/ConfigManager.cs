@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing.Printing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -30,14 +31,15 @@ namespace PartStat.Core.Libs.DataManagers
 
         public static void CreateDefault()
         {
-            Config configNds = new Config(ConfigName.Nds, "20");
-            Config configValue = new Config(ConfigName.Value, "3");
-            Config configStep = new Config(ConfigName.Step, "20");
-            Config configMailStartWeight = new Config(ConfigName.MailStartWeight, "20");
-            Config configMailEndWeight = new Config(ConfigName.MailEndWeight, "100");
-            Config configParcelStartWeight = new Config(ConfigName.ParcelStartWeight, "100");
-            Config configParcelEndWeight = new Config(ConfigName.ParcelEndWeight, "5000");
-            Config configLastLoadReportDate = new Config(ConfigName.LastLoadReportDate, DateTime.Today.ToString(CultureInfo.InvariantCulture));
+            Config configNds = CreateDefaultNds();
+            Config configValue = CreateDefaultValue();
+            Config configStep = CreateDefaultStep();
+            Config configMailStartWeight = CreateDefaultMailStartWeight();
+            Config configMailEndWeight = CreateDefaulMailEndWeight();
+            Config configParcelStartWeight = CreateDefaultParcelStartWeight();
+            Config configParcelEndWeight = CreateDefaultParcelEndWeight();
+            Config configLastLoadReportDate = CreateDefaultLastLoadReportDate();
+            Config configDefaultPrinterName = CreateDefaultPrinterName();
 
             List<Config> configs = new List<Config>
             {
@@ -48,7 +50,8 @@ namespace PartStat.Core.Libs.DataManagers
                 configMailEndWeight,
                 configParcelStartWeight,
                 configParcelEndWeight,
-                configLastLoadReportDate
+                configLastLoadReportDate,
+                configDefaultPrinterName
             };
 
             Save(configs);
@@ -64,5 +67,56 @@ namespace PartStat.Core.Libs.DataManagers
                 configs.Add(config);
             Save(configs);
         }
+
+        #region Default Config
+
+        public static Config CreateDefaultNds()
+        {
+            return new Config(ConfigName.Nds, "20");
+        }
+
+        public static Config CreateDefaultValue()
+        {
+            return new Config(ConfigName.Value, "3");
+        }
+
+
+        public static Config CreateDefaultStep()
+        {
+            return new Config(ConfigName.Step, "20");
+        }
+
+        public static Config CreateDefaultMailStartWeight()
+        {
+            return new Config(ConfigName.MailStartWeight, "20");
+        }
+
+        public static Config CreateDefaulMailEndWeight()
+        {
+            return new Config(ConfigName.MailEndWeight, "100");
+        }
+
+
+        public static Config CreateDefaultParcelStartWeight()
+        {
+            return new Config(ConfigName.ParcelStartWeight, "100");
+        }
+
+        public static Config CreateDefaultParcelEndWeight()
+        {
+            return new Config(ConfigName.ParcelEndWeight, "5000");
+        }
+        public static Config CreateDefaultLastLoadReportDate()
+        {
+            return new Config(ConfigName.LastLoadReportDate, DateTime.Today.ToString(CultureInfo.InvariantCulture));
+        }
+
+        public static Config CreateDefaultPrinterName()
+        {
+            PrinterSettings settings = new PrinterSettings();
+            return new Config(ConfigName.DefaultPrinterName, settings.PrinterName);
+        }
+
+        #endregion
     }
 }

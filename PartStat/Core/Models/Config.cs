@@ -12,7 +12,8 @@ namespace PartStat.Core.Models
         MailEndWeight,
         ParcelStartWeight,
         ParcelEndWeight,
-        LastLoadReportDate
+        LastLoadReportDate,
+        DefaultPrinterName
     }
 
     public class Config

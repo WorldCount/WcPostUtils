@@ -9,6 +9,7 @@ namespace WcApi.Print
     public partial class GridPrintPreviewDialog : Form
     {
         private TablePrintDocument _document;
+        private string _printerName;
 
         public GridPrintPreviewDialog() : this(null)
         {
@@ -19,6 +20,12 @@ namespace WcApi.Print
             InitializeComponent();
             if (parentForm != null)
                 Size = parentForm.Size;
+        }
+
+        public string PrinterName
+        {
+            get => _printerName;
+            set => _printerName = value;
         }
 
         public TablePrintDocument Document
@@ -63,31 +70,13 @@ namespace WcApi.Print
         private void _document_EndPrint(object sender, PrintEventArgs e)
         {
             btnCancel.Text = "Закрыть";
-            btnPrint.Enabled = btnPageSetup.Enabled = true;
+            btnPrint.Enabled = btnPrintPreview.Enabled = btnPageSetup.Enabled = true;
         }
 
         private void _document_BeginPrint(object sender, PrintEventArgs e)
         {
             btnCancel.Text = "Отмена";
-            btnPrint.Enabled = btnPageSetup.Enabled = false;
-        }
-
-        private void btnPrint_Click(object sender, EventArgs e)
-        {
-            using (PrintDialog printDialog = new PrintDialog())
-            {
-                printDialog.AllowSomePages = true;
-                printDialog.AllowSelection = true;
-                printDialog.UseEXDialog = true;
-                printDialog.Document = Document;
-
-                PrinterSettings ps = printDialog.PrinterSettings;
-                ps.MinimumPage = ps.FromPage = 1;
-                ps.MaximumPage = ps.ToPage = preview.PageCount;
-
-                if(printDialog.ShowDialog(this) == DialogResult.OK)
-                    preview.Print();
-            }
+            btnPrint.Enabled = btnPrintPreview.Enabled = btnPageSetup.Enabled = false;
         }
 
         private void btnPageSetup_Click(object sender, EventArgs e)
@@ -228,6 +217,53 @@ namespace WcApi.Print
             if(preview.IsRendering)
                 preview.Cancel();
             else
+                Close();
+        }
+
+        private void Print(bool printPreview = false)
+        {
+            using (PrintDialog printDialog = new PrintDialog())
+            {
+                printDialog.AllowSomePages = true;
+                printDialog.AllowSelection = true;
+                printDialog.UseEXDialog = false;
+                printDialog.Document = Document;
+
+                PrinterSettings ps = printDialog.PrinterSettings;
+                ps.MinimumPage = ps.FromPage = 1;
+                ps.MaximumPage = ps.ToPage = preview.PageCount;
+                ps.Copies = (short)toolStripNumericCopy.Value;
+
+                if (!string.IsNullOrEmpty(_printerName))
+                    ps.PrinterName = _printerName;
+
+
+                if (printPreview)
+                {
+                    if (printDialog.ShowDialog(this) == DialogResult.OK)
+                        preview.Print();
+                }
+                else
+                {
+                    preview.Print();
+                }
+            }
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            Print();
+        }
+
+        private void btnPrintPreview_Click(object sender, EventArgs e)
+        {
+            Print(true);
+        }
+
+        private void GridPrintPreviewDialog_KeyDown(object sender, KeyEventArgs e)
+        {
+            // Esc
+            if (e.KeyCode == Keys.Escape)
                 Close();
         }
     }

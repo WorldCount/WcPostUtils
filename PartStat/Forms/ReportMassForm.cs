@@ -3,9 +3,11 @@ using System.Drawing;
 using System.Drawing.Printing;
 using System.Linq;
 using System.Windows.Forms;
+using PartStat.Core.Libs.DataManagers;
 using PartStat.Core.Libs.Print;
 using PartStat.Core.Libs.Stats;
 using PartStat.Core.Libs.TarifManager;
+using PartStat.Core.Models;
 using PartStat.Core.Models.DataReports;
 using PartStat.Core.Models.PostTypes;
 using PartStat.Core.Models.Tarifs;
@@ -24,6 +26,8 @@ namespace PartStat.Forms
         private NoticeTarif _electronicNoticeTarif;
         private NoticeTarif _interNoticeTarif;
 
+        private Config _defaultPrinterConfig;
+
         public int NumList { get; private set; }
 
         public ReportMassForm(SingleReportData singleReport)
@@ -41,6 +45,8 @@ namespace PartStat.Forms
 
             // ReSharper disable once VirtualMemberCallInConstructor
             Text = title;
+
+            _defaultPrinterConfig = ConfigManager.GetConfigByName(ConfigName.DefaultPrinterName);
 
             // Загрузка тарифов на уведомления
             LoadTarif();
@@ -334,6 +340,7 @@ namespace PartStat.Forms
         {
 
             MassReportPrintDocument document = GetPrintDocument();
+            document.PrinterSettings.PrinterName = _defaultPrinterConfig.Value;
             document.Print();
 
             DialogResult = DialogResult.OK;

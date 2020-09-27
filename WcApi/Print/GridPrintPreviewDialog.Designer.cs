@@ -31,10 +31,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GridPrintPreviewDialog));
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnPrint = new System.Windows.Forms.ToolStripButton();
+            this.btnPrint = new System.Windows.Forms.ToolStripSplitButton();
+            this.btnPrintPreview = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnPageSetup = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripNumericCopy = new WcApi.Print.ToolStripNumericUpDown();
+            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.btnZoom = new System.Windows.Forms.ToolStripSplitButton();
             this.itemActualSize = new System.Windows.Forms.ToolStripMenuItem();
             this.itemFullPage = new System.Windows.Forms.ToolStripMenuItem();
@@ -73,6 +76,8 @@
             this.toolStripSeparator2,
             this.btnPageSetup,
             this.toolStripSeparator3,
+            this.toolStripNumericCopy,
+            this.toolStripSeparator8,
             this.btnZoom,
             this.toolStripSeparator4,
             this.btnFirst,
@@ -86,7 +91,7 @@
             this.toolStripSeparator6});
             this.toolStrip.Location = new System.Drawing.Point(0, 0);
             this.toolStrip.Name = "toolStrip";
-            this.toolStrip.Size = new System.Drawing.Size(634, 31);
+            this.toolStrip.Size = new System.Drawing.Size(685, 31);
             this.toolStrip.TabIndex = 0;
             this.toolStrip.Text = "toolStrip1";
             // 
@@ -98,12 +103,22 @@
             // btnPrint
             // 
             this.btnPrint.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnPrint.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnPrintPreview});
             this.btnPrint.Image = ((System.Drawing.Image)(resources.GetObject("btnPrint.Image")));
             this.btnPrint.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(28, 28);
-            this.btnPrint.Text = "Печать";
-            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            this.btnPrint.Size = new System.Drawing.Size(40, 28);
+            this.btnPrint.Text = "toolStripSplitButton1";
+            this.btnPrint.ButtonClick += new System.EventHandler(this.btnPrint_Click);
+            // 
+            // btnPrintPreview
+            // 
+            this.btnPrintPreview.Image = global::WcApi.Properties.Resources.Portable_Printer;
+            this.btnPrintPreview.Name = "btnPrintPreview";
+            this.btnPrintPreview.Size = new System.Drawing.Size(187, 30);
+            this.btnPrintPreview.Text = "Печать с диалогом";
+            this.btnPrintPreview.Click += new System.EventHandler(this.btnPrintPreview_Click);
             // 
             // toolStripSeparator2
             // 
@@ -125,6 +140,30 @@
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(6, 31);
             // 
+            // toolStripNumericCopy
+            // 
+            this.toolStripNumericCopy.BackColor = System.Drawing.Color.Transparent;
+            this.toolStripNumericCopy.DecimalPlaces = 0;
+            this.toolStripNumericCopy.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.toolStripNumericCopy.Name = "toolStripNumericCopy";
+            this.toolStripNumericCopy.NumBackColor = System.Drawing.SystemColors.Window;
+            this.toolStripNumericCopy.Size = new System.Drawing.Size(101, 28);
+            this.toolStripNumericCopy.Text = "Копии";
+            this.toolStripNumericCopy.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // toolStripSeparator8
+            // 
+            this.toolStripSeparator8.Name = "toolStripSeparator8";
+            this.toolStripSeparator8.Size = new System.Drawing.Size(6, 31);
+            // 
             // btnZoom
             // 
             this.btnZoom.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -144,7 +183,7 @@
             this.btnZoom.Image = ((System.Drawing.Image)(resources.GetObject("btnZoom.Image")));
             this.btnZoom.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnZoom.Name = "btnZoom";
-            this.btnZoom.Size = new System.Drawing.Size(96, 28);
+            this.btnZoom.Size = new System.Drawing.Size(87, 28);
             this.btnZoom.Text = "Размер";
             this.btnZoom.ButtonClick += new System.EventHandler(this.btnZoom_ButtonClick);
             this.btnZoom.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.btnZoom_DropDownItemClicked);
@@ -153,81 +192,81 @@
             // 
             this.itemActualSize.Image = ((System.Drawing.Image)(resources.GetObject("itemActualSize.Image")));
             this.itemActualSize.Name = "itemActualSize";
-            this.itemActualSize.Size = new System.Drawing.Size(175, 30);
+            this.itemActualSize.Size = new System.Drawing.Size(159, 30);
             this.itemActualSize.Text = "Фактический";
             // 
             // itemFullPage
             // 
             this.itemFullPage.Image = ((System.Drawing.Image)(resources.GetObject("itemFullPage.Image")));
             this.itemFullPage.Name = "itemFullPage";
-            this.itemFullPage.Size = new System.Drawing.Size(175, 30);
+            this.itemFullPage.Size = new System.Drawing.Size(159, 30);
             this.itemFullPage.Text = "Полный";
             // 
             // itemPageWidth
             // 
             this.itemPageWidth.Image = ((System.Drawing.Image)(resources.GetObject("itemPageWidth.Image")));
             this.itemPageWidth.Name = "itemPageWidth";
-            this.itemPageWidth.Size = new System.Drawing.Size(175, 30);
+            this.itemPageWidth.Size = new System.Drawing.Size(159, 30);
             this.itemPageWidth.Text = "По ширине";
             // 
             // itemTwoPages
             // 
             this.itemTwoPages.Image = ((System.Drawing.Image)(resources.GetObject("itemTwoPages.Image")));
             this.itemTwoPages.Name = "itemTwoPages";
-            this.itemTwoPages.Size = new System.Drawing.Size(175, 30);
+            this.itemTwoPages.Size = new System.Drawing.Size(159, 30);
             this.itemTwoPages.Text = "Две страницы";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(172, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(156, 6);
             // 
             // item500
             // 
             this.item500.Name = "item500";
-            this.item500.Size = new System.Drawing.Size(175, 30);
+            this.item500.Size = new System.Drawing.Size(159, 30);
             this.item500.Text = "500%";
             // 
             // item200
             // 
             this.item200.Name = "item200";
-            this.item200.Size = new System.Drawing.Size(175, 30);
+            this.item200.Size = new System.Drawing.Size(159, 30);
             this.item200.Text = "200%";
             // 
             // item150
             // 
             this.item150.Name = "item150";
-            this.item150.Size = new System.Drawing.Size(175, 30);
+            this.item150.Size = new System.Drawing.Size(159, 30);
             this.item150.Text = "150%";
             // 
             // item100
             // 
             this.item100.Name = "item100";
-            this.item100.Size = new System.Drawing.Size(175, 30);
+            this.item100.Size = new System.Drawing.Size(159, 30);
             this.item100.Text = "100%";
             // 
             // item75
             // 
             this.item75.Name = "item75";
-            this.item75.Size = new System.Drawing.Size(175, 30);
+            this.item75.Size = new System.Drawing.Size(159, 30);
             this.item75.Text = "75%";
             // 
             // item50
             // 
             this.item50.Name = "item50";
-            this.item50.Size = new System.Drawing.Size(175, 30);
+            this.item50.Size = new System.Drawing.Size(159, 30);
             this.item50.Text = "50%";
             // 
             // item25
             // 
             this.item25.Name = "item25";
-            this.item25.Size = new System.Drawing.Size(175, 30);
+            this.item25.Size = new System.Drawing.Size(159, 30);
             this.item25.Text = "25%";
             // 
             // item10
             // 
             this.item10.Name = "item10";
-            this.item10.Size = new System.Drawing.Size(175, 30);
+            this.item10.Size = new System.Drawing.Size(159, 30);
             this.item10.Text = "10%";
             // 
             // toolStripSeparator4
@@ -259,7 +298,7 @@
             // 
             this.txtStartPage.AutoSize = false;
             this.txtStartPage.Name = "txtStartPage";
-            this.txtStartPage.Size = new System.Drawing.Size(35, 26);
+            this.txtStartPage.Size = new System.Drawing.Size(32, 23);
             this.txtStartPage.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtStartPage.Enter += new System.EventHandler(this.txtStartPage_Enter);
             this.txtStartPage.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtStartPage_KeyPress);
@@ -300,7 +339,7 @@
             this.btnCancel.Image = ((System.Drawing.Image)(resources.GetObject("btnCancel.Image")));
             this.btnCancel.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(86, 28);
+            this.btnCancel.Size = new System.Drawing.Size(77, 28);
             this.btnCancel.Text = "Отмена";
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
@@ -316,24 +355,26 @@
             this.preview.Document = null;
             this.preview.Location = new System.Drawing.Point(0, 31);
             this.preview.Name = "preview";
-            this.preview.Size = new System.Drawing.Size(634, 301);
+            this.preview.Size = new System.Drawing.Size(685, 270);
             this.preview.TabIndex = 1;
             this.preview.StartPageChanged += new System.EventHandler(this.preview_StartPageChanged);
             this.preview.PageCountChanged += new System.EventHandler(this.preview_PageCountChanged);
             // 
             // GridPrintPreviewDialog
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(106F, 106F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(634, 332);
+            this.ClientSize = new System.Drawing.Size(685, 301);
             this.Controls.Add(this.preview);
             this.Controls.Add(this.toolStrip);
             this.Font = new System.Drawing.Font("Segoe UI", 10.18868F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.KeyPreview = true;
             this.Name = "GridPrintPreviewDialog";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Печать";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GridPrintPreviewDialog_KeyDown);
             this.toolStrip.ResumeLayout(false);
             this.toolStrip.PerformLayout();
             this.ResumeLayout(false);
@@ -343,7 +384,6 @@
 
         #endregion
         private System.Windows.Forms.ToolStrip toolStrip;
-        private System.Windows.Forms.ToolStripButton btnPrint;
         private System.Windows.Forms.ToolStripButton btnPageSetup;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
@@ -373,5 +413,9 @@
         private GridPrintPreviewControl preview;
         private System.Windows.Forms.ToolStripLabel lblPageCount;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
+        private ToolStripNumericUpDown toolStripNumericCopy;
+        private System.Windows.Forms.ToolStripSplitButton btnPrint;
+        private System.Windows.Forms.ToolStripMenuItem btnPrintPreview;
     }
 }

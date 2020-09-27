@@ -44,6 +44,7 @@ namespace PartStat.Forms
         private Config _ndsConfig;
         private Config _valueConfig;
         private Config _lastLoadConfig;
+        private Config _defaultPrinterConfig;
 
         private Connect _connect;
 
@@ -454,6 +455,8 @@ namespace PartStat.Forms
             _valueConfig = ConfigManager.GetConfigByName(ConfigName.Value);
             _lastLoadConfig = ConfigManager.GetConfigByName(ConfigName.LastLoadReportDate);
 
+            _defaultPrinterConfig = ConfigManager.GetConfigByName(ConfigName.DefaultPrinterName) ?? ConfigManager.CreateDefaultPrinterName();
+
             if (_lastLoadConfig == null)
             {
                 _lastLoadConfig = new Config(ConfigName.LastLoadReportDate, DateTime.Today.ToString(CultureInfo.InvariantCulture));
@@ -705,6 +708,7 @@ namespace PartStat.Forms
                 PrintController printController = new StandardPrintController();
 
                 MassReportPrintDocument document = reportMassForm.GetPrintDocument();
+                document.PrinterSettings.PrinterName = _defaultPrinterConfig.Value;
                 document.PrintController = printController;
                 document.Print();
             });
@@ -743,6 +747,8 @@ namespace PartStat.Forms
                 PrintController printController = new StandardPrintController();
 
                 MassReportPrintDocument document = reportMassForm.GetPrintDocument();
+                document.PrinterSettings.PrinterName = _defaultPrinterConfig.Value;
+
                 document.PrintController = printController;
                 document.Print();
             }
@@ -915,6 +921,16 @@ namespace PartStat.Forms
             interParcelTarifForm.ShowDialog(this);
         }
 
+        private void printerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SelectPrinterForm selectPrinterForm = new SelectPrinterForm();
+            if (selectPrinterForm.ShowDialog(this) == DialogResult.OK)
+            {
+                _defaultPrinterConfig = ConfigManager.GetConfigByName(ConfigName.DefaultPrinterName);
+                SuccessMessage("Принтер изменен!");
+            }
+        }
+
         #endregion
 
         #region Контекстное меню
@@ -1022,13 +1038,7 @@ namespace PartStat.Forms
                 return;
 
             SingleReportData singleReport = GetRpoByFirm(checkedFirmLists, firm);
-
-            //await Task.Run(() =>
-            //{
-            //    ShowReportMass(singleReport, true);
-            //});
             _reportsQueue.Enqueue(singleReport);
-            //comboBoxOrgs.Focus();
         }
 
         private void btnLock_Click(object sender, EventArgs e)
@@ -1202,6 +1212,7 @@ namespace PartStat.Forms
                     using (GridPrintPreviewDialog printPreviewDialog = new GridPrintPreviewDialog())
                     {
                         printPreviewDialog.Text = reportName;
+                        printPreviewDialog.PrinterName = _defaultPrinterConfig.Value;
                         printPreviewDialog.Document = document;
                         printPreviewDialog.ShowDialog(this);
                     }
@@ -1488,19 +1499,5 @@ namespace PartStat.Forms
         }
 
         #endregion
-
-        private void comboBoxOrgs_DropDown(object sender, EventArgs e)
-        {
-        }
-
-        private void comboBoxOrgs_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
-        {
-            
-        }
-
-        private void btnRevise_Click(object sender, EventArgs e)
-        {
-            
-        }
     }
 }
