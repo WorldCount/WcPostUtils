@@ -1,0 +1,443 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4AB16781-1625-4EC6-A9C6-292CDF7FE8F0}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>PartStat</RootNamespace>
+    <AssemblyName>PartStat</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icon_128.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FirebirdSql.Data.FirebirdClient, Version=7.5.0.0, Culture=neutral, PublicKeyToken=3750abcc3150b00c, processorArchitecture=MSIL">
+      <HintPath>..\packages\FirebirdSql.Data.FirebirdClient.7.5.0\lib\net452\FirebirdSql.Data.FirebirdClient.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.7.2\lib\net45\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Core\Libs\DataManagers\ConfigManager.cs" />
+    <Compile Include="Core\Libs\DataManagers\CreateListManager.cs" />
+    <Compile Include="Core\Libs\DataManagers\DataColorManager.cs" />
+    <Compile Include="Core\Libs\DataManagers\ErrorListManager.cs" />
+    <Compile Include="Core\Libs\DataManagers\InterTypeManager.cs" />
+    <Compile Include="Core\Libs\Print\MassReportPrintDocument.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Core\Libs\ReportQueue.cs" />
+    <Compile Include="Core\Libs\ServerTarif\Object\TarifObject.cs" />
+    <Compile Include="Core\Libs\ServerTarif\Object\NoticeObject.cs" />
+    <Compile Include="Core\Libs\Stats\CityStatCollector.cs" />
+    <Compile Include="Core\Libs\Stats\RpoStatCollector.cs" />
+    <Compile Include="Core\Libs\Stats\RpoStatData.cs" />
+    <Compile Include="Core\Libs\Stats\StatData.cs" />
+    <Compile Include="Core\Libs\TarifManager\FirstMailTarifManager.cs" />
+    <Compile Include="Core\Libs\TarifManager\FirstParcelTarifManager.cs" />
+    <Compile Include="Core\Libs\TarifManager\InterMailTarifManager.cs" />
+    <Compile Include="Core\Libs\TarifManager\InterParcelTarifManager.cs" />
+    <Compile Include="Core\Libs\TarifManager\ParcelTarifManager.cs" />
+    <Compile Include="Core\Libs\TarifManager\MailTarifManager.cs" />
+    <Compile Include="Core\Libs\TarifManager\NoticeTarifManager.cs" />
+    <Compile Include="Core\Libs\ServerTarif\ServerTarificator.cs" />
+    <Compile Include="Core\Libs\TarifManager\Tarificator.cs" />
+    <Compile Include="Core\Libs\Widget\BorderedTextBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Core\Libs\Widget\BorderedTextBox.Designer.cs">
+      <DependentUpon>BorderedTextBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Core\Libs\Widget\CheckDataGridColumnHeaderCell.cs" />
+    <Compile Include="Core\Libs\Widget\ScrollBarDataGridView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Core\License\AuthKey.cs" />
+    <Compile Include="Core\License\LicenseKey.cs" />
+    <Compile Include="Core\Models\CreateList.cs" />
+    <Compile Include="Core\Models\DB\Queries\BarcodeQuery.cs" />
+    <Compile Include="Core\Models\DB\Queries\Base\Request.cs" />
+    <Compile Include="Core\Models\DB\Queries\RequestObject\BarcodeRequest.cs" />
+    <Compile Include="Core\Models\DB\Queries\RequestObject\RpoRequest.cs" />
+    <Compile Include="Core\Models\DB\Queries\UpdateFirmListManualQuery.cs" />
+    <Compile Include="Core\Models\DB\Rpo.cs" />
+    <Compile Include="Core\Models\DB\Queries\RpoFirmsQuery.cs" />
+    <Compile Include="Core\Models\ErrorList.cs" />
+    <Compile Include="Core\Models\InterType.cs" />
+    <Compile Include="Core\Models\PostTypes\ErrorType.cs" />
+    <Compile Include="Core\Models\PostTypes\CreateListType.cs" />
+    <Compile Include="Core\Models\Reports\DateList.cs" />
+    <Compile Include="Core\Models\Reports\SingleReportData.cs" />
+    <Compile Include="Core\Models\Tarifs\Base\ICustomTarif.cs" />
+    <Compile Include="Core\Models\Tarifs\Base\IFirstClassTarif.cs" />
+    <Compile Include="Core\Models\Tarifs\Base\IInterTarif.cs" />
+    <Compile Include="Core\Models\Tarifs\Base\INoticeTarif.cs" />
+    <Compile Include="Core\Models\Tarifs\FirstMailTarif.cs" />
+    <Compile Include="Core\Models\Tarifs\FirstParcelTarif.cs" />
+    <Compile Include="Core\Models\Tarifs\InterMailTarif.cs" />
+    <Compile Include="Core\Models\Tarifs\InterParcelTarif.cs" />
+    <Compile Include="Core\Models\Tarifs\MailTarif.cs" />
+    <Compile Include="Core\Models\Tarifs\NoticeTarif.cs" />
+    <Compile Include="Core\Models\Tarifs\ParcelTarif.cs" />
+    <Compile Include="Core\Models\PostTypes\TransType.cs" />
+    <Compile Include="Core\Models\PostTypes\MailClass.cs" />
+    <Compile Include="Core\Models\PostTypes\NoticeType.cs" />
+    <Compile Include="Core\Libs\Stats\FirmListStatCollector.cs" />
+    <Compile Include="Core\Libs\DataManagers\MailCategoryManager.cs" />
+    <Compile Include="Core\Libs\DataManagers\MailTypeManager.cs" />
+    <Compile Include="Core\Models\Config.cs" />
+    <Compile Include="Core\Models\DataColor.cs" />
+    <Compile Include="Core\Models\DB\Connect.cs" />
+    <Compile Include="Core\Models\DB\DataBase.cs" />
+    <Compile Include="Core\Models\DB\ListStatus.cs" />
+    <Compile Include="Core\Models\DB\MailCategory.cs" />
+    <Compile Include="Core\Models\DB\MailType.cs" />
+    <Compile Include="Core\Models\DB\FirmList.cs" />
+    <Compile Include="Core\Models\DB\Queries\FirmListQuery.cs" />
+    <Compile Include="Core\Models\DB\Queries\FirmQuery.cs" />
+    <Compile Include="Core\Models\DB\Queries\Base\IQueryable.cs" />
+    <Compile Include="Core\Models\DB\Queries\ListStatusQuery.cs" />
+    <Compile Include="Core\Models\DB\Queries\MailCategoryQuery.cs" />
+    <Compile Include="Core\Models\DB\Queries\MailTypeQuery.cs" />
+    <Compile Include="Core\Models\DB\Queries\Base\Query.cs" />
+    <Compile Include="Core\Models\DB\Firm.cs" />
+    <Compile Include="Core\Libs\DataManagers\ListStatusManager.cs" />
+    <Compile Include="Core\Models\DB\Queries\RequestObject\FirmRequest.cs" />
+    <Compile Include="Core\Libs\DataManagers\PathManager.cs" />
+    <Compile Include="Core\Models\PostTypes\PostMark.cs" />
+    <Compile Include="Core\Utils.cs" />
+    <Compile Include="Forms\ColorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ColorForm.Designer.cs">
+      <DependentUpon>ColorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ConfigForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ConfigForm.Designer.cs">
+      <DependentUpon>ConfigForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ConnectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ConnectForm.Designer.cs">
+      <DependentUpon>ConnectForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\GeneralForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\GeneralForm.Designer.cs">
+      <DependentUpon>GeneralForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MailCategoryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MailCategoryForm.Designer.cs">
+      <DependentUpon>MailCategoryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MailTypeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MailTypeForm.Designer.cs">
+      <DependentUpon>MailTypeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ReportMassForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ReportMassForm.Designer.cs">
+      <DependentUpon>ReportMassForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\StatusForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\StatusForm.Designer.cs">
+      <DependentUpon>StatusForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Core\Libs\Print\ListFirmPrintDocument.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms\Tarifs\InterParcelTarifForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Tarifs\InterParcelTarifForm.Designer.cs">
+      <DependentUpon>InterParcelTarifForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Tarifs\InterMailTarifForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Tarifs\InterMailTarifForm.Designer.cs">
+      <DependentUpon>InterMailTarifForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Tarifs\FirstParcelTarifForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Tarifs\FirstParcelTarifForm.Designer.cs">
+      <DependentUpon>FirstParcelTarifForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Tarifs\FirstMailTarifForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Tarifs\FirstMailTarifForm.Designer.cs">
+      <DependentUpon>FirstMailTarifForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Tarifs\NoticeTarifForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Tarifs\NoticeTarifForm.Designer.cs">
+      <DependentUpon>NoticeTarifForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Tarifs\ParcelTarifForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Tarifs\ParcelTarifForm.Designer.cs">
+      <DependentUpon>ParcelTarifForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Tarifs\MailTarifForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Tarifs\MailTarifForm.Designer.cs">
+      <DependentUpon>MailTarifForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Tarifs\TarificatorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Tarifs\TarificatorForm.Designer.cs">
+      <DependentUpon>TarificatorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="Resources\Locked.png" />
+    <None Include="Resources\Portable-Printer.png" />
+    <None Include="Resources\Invoice.png" />
+    <None Include="Resources\Box-2.png" />
+    <None Include="Resources\Calculator.png" />
+    <None Include="Resources\Books-2.png" />
+    <None Include="Resources\splash600x400.png" />
+    <None Include="Resources\white-delete-30.png" />
+    <None Include="Resources\PartStatSplash.png" />
+    <None Include="Resources\white-folder-24.png" />
+    <None Include="Resources\white-ok-24.png" />
+    <None Include="Resources\white-cancel-24.png" />
+    <None Include="Resources\gray-trash-24.png" />
+    <None Include="Resources\white-restart-24.png" />
+    <None Include="Resources\white-synchronize-24.png" />
+    <None Include="Resources\white-synchronize-32.png" />
+    <None Include="Resources\white-restart-32.png" />
+    <None Include="Resources\gray_checked-32.png" />
+    <None Include="Resources\gray-unchecked-32.png" />
+    <None Include="Resources\white-unchecked-32.png" />
+    <None Include="Resources\white_checked-32.png" />
+    <None Include="Resources\synchronize-26.png" />
+    <None Include="Resources\unchecked-32.png" />
+    <None Include="Resources\checked-32.png" />
+    <None Include="Properties\DataSources\PartStat.Core.Models.Tarifs.FirstMailTarif.datasource" />
+    <None Include="Properties\DataSources\PartStat.Core.Models.Tarifs.FirstParcelTarif.datasource" />
+    <None Include="Properties\DataSources\PartStat.Core.Models.Tarifs.InterMailTarif.datasource" />
+    <None Include="Properties\DataSources\PartStat.Core.Models.Tarifs.InterParcelTarif.datasource" />
+    <None Include="Properties\DataSources\PartStat.Core.Models.Tarifs.ParcelTarif.datasource" />
+    <None Include="Resources\cat_license.png" />
+    <None Include="Resources\Coin-Dollar.png" />
+    <None Include="Resources\View.png" />
+    <None Include="Resources\Printer.png" />
+    <None Include="Resources\Delete.png" />
+    <EmbeddedResource Include="Forms\ColorForm.resx">
+      <DependentUpon>ColorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ConfigForm.resx">
+      <DependentUpon>ConfigForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ConnectForm.resx">
+      <DependentUpon>ConnectForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\GeneralForm.resx">
+      <DependentUpon>GeneralForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MailCategoryForm.resx">
+      <DependentUpon>MailCategoryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MailTypeForm.resx">
+      <DependentUpon>MailTypeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ReportMassForm.resx">
+      <DependentUpon>ReportMassForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\StatusForm.resx">
+      <DependentUpon>StatusForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Tarifs\InterParcelTarifForm.resx">
+      <DependentUpon>InterParcelTarifForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Tarifs\InterMailTarifForm.resx">
+      <DependentUpon>InterMailTarifForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Tarifs\FirstParcelTarifForm.resx">
+      <DependentUpon>FirstParcelTarifForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Tarifs\FirstMailTarifForm.resx">
+      <DependentUpon>FirstMailTarifForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Tarifs\NoticeTarifForm.resx">
+      <DependentUpon>NoticeTarifForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Tarifs\ParcelTarifForm.resx">
+      <DependentUpon>ParcelTarifForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Tarifs\MailTarifForm.resx">
+      <DependentUpon>MailTarifForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Tarifs\TarificatorForm.resx">
+      <DependentUpon>TarificatorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Content Include="NLog.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="NLog.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\PartStat.Core.Libs.Stats.StatData.datasource" />
+    <None Include="Properties\DataSources\PartStat.Core.Models.CreateList.datasource" />
+    <None Include="Properties\DataSources\PartStat.Core.Models.DB.Connect.datasource" />
+    <None Include="Properties\DataSources\PartStat.Core.Models.DB.FirmList.datasource" />
+    <None Include="Properties\DataSources\PartStat.Core.Models.DB.ListStatus.datasource" />
+    <None Include="Properties\DataSources\PartStat.Core.Models.DB.MailCategory.datasource" />
+    <None Include="Properties\DataSources\PartStat.Core.Models.DB.MailType.datasource" />
+    <None Include="Properties\DataSources\PartStat.Core.Models.ErrorList.datasource" />
+    <None Include="Properties\DataSources\PartStat.Core.Models.Firm.datasource" />
+    <None Include="Properties\DataSources\PartStat.Core.Models.InterType.datasource" />
+    <None Include="Properties\DataSources\PartStat.Core.Models.Tarifs.MailTarif.datasource" />
+    <None Include="Properties\DataSources\PartStat.Core.Models.Tarifs.NoticeTarif.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WcApi\WcApi.csproj">
+      <Project>{3a0d99ef-a649-494e-95a6-2cd403a6db0a}</Project>
+      <Name>WcApi</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\circle-check-3x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\circle-x-3x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\loop-circular-4x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Button-Close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Text.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Button-Settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Repeat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Envelope.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Notebook.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Notebook-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Envelope-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cloud-download-2x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Menu-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="icon_128.ico" />
+    <None Include="Resources\Refresh.png" />
+    <None Include="Resources\Settings.png" />
+    <None Include="Resources\Font-Color.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

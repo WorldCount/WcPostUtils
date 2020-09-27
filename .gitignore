@@ -3,3 +3,31 @@
 ################################################################################
 
 /AOP/bin/AOP_TEST/DATA/data.db
+/AOP/bin
+/AOP/DATA/C5 — копия (2).docx
+/AOP/DATA/C5 — копия.docx
+/AOP/obj
+/Barcodes/bin
+/Barcodes/obj
+/FrankList/bin
+/FrankList/obj
+/Installer/bin
+/Installer/obj
+/ListEditor/bin
+/ListEditor/obj
+/Mail/bin
+/Mail/obj
+/OpenCloseDU/bin
+/OpenCloseDU/obj
+/OrgList/bin
+/OrgList/obj
+/PartStat/bin
+/PartStat/obj
+/TelegramBot/bin/Debug
+/TelegramBot/obj
+/Tracking/bin
+/Tracking/obj
+/WcApi/bin
+/WcApi/obj
+/WinMaterial/bin/Debug
+/WinMaterial/obj/Debug

@@ -1,0 +1,99 @@
+﻿using System;
+
+namespace WcApi.Cryptography
+{
+    public static class License
+    {
+
+        /// <summary>
+        /// Возвращает дату действия лицензии строкой
+        /// </summary>
+        /// <param name="licenseKey">Ключ лицензии</param>
+        /// <param name="key">Ключ шифрования для лицензии</param>
+        /// <returns>Строка с датой лицензии</returns>
+        public static string GetLicenseExpiresString(string licenseKey, string key)
+        {
+            string licenseText;
+
+            try
+            {
+                licenseText = CryptText.DecryptText(licenseKey, key);
+            }
+            catch
+            {
+                return null;
+            }
+
+            return licenseText;
+        }
+
+        /// <summary>
+        /// Возвращает дату действия лицензии
+        /// </summary>
+        /// <param name="licenseKey">Ключ лицензии</param>
+        /// <param name="key">Ключ шифрования для лицензии</param>
+        /// <returns>Дата действия лицензии</returns>
+        public static DateTime GetLicenseExpires(string licenseKey, string key)
+        {
+            DateTime exp = new DateTime();
+
+            try
+            {
+                string licenseText = GetLicenseExpiresString(licenseKey, key);
+                exp = DateTime.Parse(licenseText);
+                return exp;
+            }
+            catch
+            {
+                return exp;
+            }
+        }
+
+        /// <summary>
+        /// Проверяет лицензию на валидность
+        /// </summary>
+        /// <param name="licenseKey">Ключ лицензии</param>
+        /// <param name="key">Ключ шифрования лицензии</param>
+        /// <returns>Валидность</returns>
+        public static bool CheckLicense(string licenseKey, string key)
+        {
+            try
+            {
+                DateTime licenseDate = GetLicenseExpires(licenseKey, key);
+
+                if (licenseDate < DateTime.Today)
+                    throw new Exception();
+            }
+            catch
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// Возвращает ключ лицензии
+        /// </summary>
+        /// <param name="license">Дата лицензии строкой</param>
+        /// <param name="key">Ключ шифрования для лицензии</param>
+        /// <returns>Ключ лицензии</returns>
+        public static string GetLicenseKey(string license, string key)
+        {
+            return CryptText.EncryptText(license, key);
+        }
+
+        /// <summary>
+        /// Возвращает ключ лицензии
+        /// </summary>
+        /// <param name="licenseDate">Дата лицензии</param>
+        /// <param name="key">Ключ шифрования для лицензии</param>
+        /// <returns>Ключ лицензии</returns>
+        public static string GetLicenseKey(DateTime licenseDate, string key)
+        {
+            string license = licenseDate.ToString("dd.MM.yyyy");
+            return GetLicenseKey(license, key);
+        }
+
+    }
+}

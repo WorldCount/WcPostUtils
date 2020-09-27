@@ -1,0 +1,78 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="PartStat.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="AppName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">PartStat</Value>
+    </Setting>
+    <Setting Name="Data" Type="System.String" Scope="User">
+      <Value Profile="(Default)">DATA</Value>
+    </Setting>
+    <Setting Name="NeedUpgrade" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="GeneralFormState" Type="System.Windows.Forms.FormWindowState" Scope="User">
+      <Value Profile="(Default)">Normal</Value>
+    </Setting>
+    <Setting Name="GeneralFormLocation" Type="System.Drawing.Point" Scope="User">
+      <Value Profile="(Default)">0, 0</Value>
+    </Setting>
+    <Setting Name="GeneralFormSize" Type="System.Drawing.Size" Scope="User">
+      <Value Profile="(Default)">0, 0</Value>
+    </Setting>
+    <Setting Name="ConnectFile" Type="System.String" Scope="User">
+      <Value Profile="(Default)">connect.xml</Value>
+    </Setting>
+    <Setting Name="MailCategoryFile" Type="System.String" Scope="User">
+      <Value Profile="(Default)">category.xml</Value>
+    </Setting>
+    <Setting Name="MailTypeFile" Type="System.String" Scope="User">
+      <Value Profile="(Default)">type.xml</Value>
+    </Setting>
+    <Setting Name="ListStatusFile" Type="System.String" Scope="User">
+      <Value Profile="(Default)">status.xml</Value>
+    </Setting>
+    <Setting Name="DataColorFile" Type="System.String" Scope="User">
+      <Value Profile="(Default)">color.xml</Value>
+    </Setting>
+    <Setting Name="ConfigFile" Type="System.String" Scope="User">
+      <Value Profile="(Default)">config.xml</Value>
+    </Setting>
+    <Setting Name="TarifsData" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Tarifs</Value>
+    </Setting>
+    <Setting Name="NoticeTarifFile" Type="System.String" Scope="User">
+      <Value Profile="(Default)">notice.xml</Value>
+    </Setting>
+    <Setting Name="FirstMailTarifFile" Type="System.String" Scope="User">
+      <Value Profile="(Default)">first_mail.xml</Value>
+    </Setting>
+    <Setting Name="MailTarifFile" Type="System.String" Scope="User">
+      <Value Profile="(Default)">mail.xml</Value>
+    </Setting>
+    <Setting Name="ParcelTarifFile" Type="System.String" Scope="User">
+      <Value Profile="(Default)">parcel.xml</Value>
+    </Setting>
+    <Setting Name="FirstParcelTarifFile" Type="System.String" Scope="User">
+      <Value Profile="(Default)">first_parcel.xml</Value>
+    </Setting>
+    <Setting Name="InterMailTarifFile" Type="System.String" Scope="User">
+      <Value Profile="(Default)">inter_mail.xml</Value>
+    </Setting>
+    <Setting Name="InterParcelTarifFile" Type="System.String" Scope="User">
+      <Value Profile="(Default)">inter_parcel.xml</Value>
+    </Setting>
+    <Setting Name="PrintPreviewFlag" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="License" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="FirstRun" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="MailLicense" Type="System.String" Scope="User">
+      <Value Profile="(Default)">world.count@yandex.ru</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

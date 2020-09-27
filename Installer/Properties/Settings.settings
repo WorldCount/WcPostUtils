@@ -1,0 +1,33 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Installer.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="AppName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Установщик ПО</Value>
+    </Setting>
+    <Setting Name="DataDir" Type="System.String" Scope="User">
+      <Value Profile="(Default)">DATA</Value>
+    </Setting>
+    <Setting Name="NeedUpgrade" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="AppRepoUrl" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://worldcount.ru/Apps/AppPackage.xml</Value>
+    </Setting>
+    <Setting Name="LastSaveDir" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="RepoDir" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Apps</Value>
+    </Setting>
+    <Setting Name="TempDir" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Temp</Value>
+    </Setting>
+    <Setting Name="Password" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ops125993</Value>
+    </Setting>
+    <Setting Name="Token" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ZiPdPqEoFHEAAAAAAAAByx73NF51wst-bLEaUOlD9axO7zxE3i_8oa1yGm4fIBaN</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
