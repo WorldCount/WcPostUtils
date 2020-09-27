@@ -5,7 +5,7 @@ namespace PartStat.Core.Libs
 {
     public class ReportQueue<T>
     {
-        private readonly Queue<T> queue = new Queue<T>();
+        private readonly Queue<T> _queue = new Queue<T>();
 
         public event EventHandler Changed;
         public event EventHandler AddedObject;
@@ -26,18 +26,18 @@ namespace PartStat.Core.Libs
             if(RemoveObject != null) RemoveObject(this, EventArgs.Empty);
         }
 
-        public int Count => queue.Count;
+        public int Count => _queue.Count;
 
         public virtual void Enqueue(T item)
         {
-            queue.Enqueue(item);
+            _queue.Enqueue(item);
             OnChanged();
             OnAdded();
         }
 
         public virtual T Dequeue()
         {
-            T item = queue.Dequeue();
+            T item = _queue.Dequeue();
             OnChanged();
             OnRemoved();
             return item;

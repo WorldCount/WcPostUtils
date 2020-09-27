@@ -2,25 +2,26 @@
 using System.Collections.Generic;
 using System.Data;
 using FirebirdSql.Data.FirebirdClient;
-using PartStat.Core.Models.DB.Queries.Base;
+using PartStat.Core.Libs.DataBase.Queries.Base;
+using PartStat.Core.Models.DB;
 
-namespace PartStat.Core.Models.DB.Queries
+namespace PartStat.Core.Libs.DataBase.Queries
 {
-    public class MailTypeQuery : Query
+    public class ListStatusQuery : Query
     {
-        public MailTypeQuery(Connect connect) : base(connect) { }
+        public ListStatusQuery(Connect connect) : base(connect) { }
 
         public new string GetQuery()
         {
-            return "select arttypeid, arttypename from arttype where arttypeid > 0 order by arttypeid";
+            return "select statusspiid, statusspiname from statusspiska order by statusspiid";
         }
 
-        public List<MailType> Run()
+        public List<ListStatus> Run()
         {
             string query = GetQuery();
             Logger.Debug($"Запрос в БД: {query}");
 
-            List<MailType> mailTypes = new List<MailType>();
+            List<ListStatus> listStatuses = new List<ListStatus>();
             FbConnection fbConnection = null;
             FbDataReader reader = null;
             FbTransaction fbTransaction = null;
@@ -38,21 +39,20 @@ namespace PartStat.Core.Models.DB.Queries
 
                 while (reader.Read())
                 {
-                    MailType mailType = new MailType
+                    ListStatus listStatus = new ListStatus
                     {
-                        Id = reader.GetInt32(0),
+                        Id = reader.GetChar(0),
                         Name = reader.GetString(1),
-                        ShortName = reader.GetString(1)
                     };
-                    mailTypes.Add(mailType);
+                    listStatuses.Add(listStatus);
                 }
 
                 reader.Close();
                 selectCommand.Dispose();
                 fbTransaction.Commit();
 
-                Logger.Debug($"Запрос вернул записей: {mailTypes.Count}");
-                return mailTypes;
+                Logger.Debug($"Запрос вернул записей: {listStatuses.Count}");
+                return listStatuses;
             }
             catch (Exception e)
             {

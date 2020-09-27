@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Data;
 using System.Text;
 using FirebirdSql.Data.FirebirdClient;
-using PartStat.Core.Models.DB.Queries.Base;
-using PartStat.Core.Models.DB.Queries.RequestObject;
+using PartStat.Core.Libs.DataBase.Queries.Base;
+using PartStat.Core.Libs.DataBase.Queries.RequestObject;
+using PartStat.Core.Models.DB;
 using PartStat.Core.Models.PostTypes;
 
-namespace PartStat.Core.Models.DB.Queries
+namespace PartStat.Core.Libs.DataBase.Queries
 {
     public class RpoFirmsQuery : Query
     {

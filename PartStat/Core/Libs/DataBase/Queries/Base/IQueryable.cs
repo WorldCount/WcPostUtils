@@ -1,5 +1,5 @@
 ﻿
-namespace PartStat.Core.Models.DB.Queries.Base
+namespace PartStat.Core.Libs.DataBase.Queries.Base
 {
     public interface IQueryable
     {

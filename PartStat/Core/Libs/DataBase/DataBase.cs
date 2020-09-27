@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using WcApi.Xml;
 
-namespace PartStat.Core.Models.DB
+namespace PartStat.Core.Libs.DataBase
 {
     public static class DataBase
     {

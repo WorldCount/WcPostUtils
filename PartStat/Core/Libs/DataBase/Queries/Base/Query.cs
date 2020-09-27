@@ -1,7 +1,7 @@
 ﻿using System;
 using NLog;
 
-namespace PartStat.Core.Models.DB.Queries.Base
+namespace PartStat.Core.Libs.DataBase.Queries.Base
 {
     public abstract class Query : IQueryable, IDisposable
     {

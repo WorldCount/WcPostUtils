@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using FirebirdSql.Data.FirebirdClient;
 
-namespace PartStat.Core.Models.DB
+namespace PartStat.Core.Libs.DataBase
 {
     public class Connect
     {

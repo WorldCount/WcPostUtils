@@ -1,5 +1,5 @@
 ﻿
-namespace PartStat.Core.PostTypes
+namespace PartStat.Core.Models.PostTypes
 {
     public enum MailClass
     {

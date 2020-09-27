@@ -2,9 +2,10 @@
 using System.Data;
 using System.Text;
 using FirebirdSql.Data.FirebirdClient;
-using PartStat.Core.Models.DB.Queries.Base;
+using PartStat.Core.Libs.DataBase.Queries.Base;
+using PartStat.Core.Models.DB;
 
-namespace PartStat.Core.Models.DB.Queries
+namespace PartStat.Core.Libs.DataBase.Queries
 {
     public class UpdateFirmListManualQuery : Query
     {

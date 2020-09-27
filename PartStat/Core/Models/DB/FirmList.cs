@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using PartStat.Core.Libs.DataBase;
+using PartStat.Core.Libs.DataBase.Queries;
 using PartStat.Core.Libs.DataManagers;
-using PartStat.Core.Models.DB.Queries;
 using PartStat.Core.Models.PostTypes;
 
 namespace PartStat.Core.Models.DB

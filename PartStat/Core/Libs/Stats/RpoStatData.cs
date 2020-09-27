@@ -1,6 +1,4 @@
-﻿
-
-using PartStat.Core.Models.PostTypes;
+﻿using PartStat.Core.Models.PostTypes;
 
 namespace PartStat.Core.Libs.Stats
 {

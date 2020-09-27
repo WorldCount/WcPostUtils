@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using PartStat.Core.Libs.DataBase;
+using PartStat.Core.Libs.DataBase.Queries;
 using PartStat.Core.Libs.DataManagers;
 using PartStat.Core.Models.DB;
-using PartStat.Core.Models.DB.Queries;
 
 namespace PartStat.Forms
 {

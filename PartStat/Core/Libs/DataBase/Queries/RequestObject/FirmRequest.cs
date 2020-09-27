@@ -1,8 +1,8 @@
 ﻿using System;
-using PartStat.Core.Models.DB.Queries.Base;
+using PartStat.Core.Libs.DataBase.Queries.Base;
 using PartStat.Core.Models.PostTypes;
 
-namespace PartStat.Core.Models.DB.Queries.RequestObject
+namespace PartStat.Core.Libs.DataBase.Queries.RequestObject
 {
     public class FirmRequest : Request
     {

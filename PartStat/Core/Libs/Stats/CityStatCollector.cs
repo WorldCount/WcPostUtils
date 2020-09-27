@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using PartStat.Core.Models.DB;
-using PartStat.Core.Models.DB.Queries;
 
 namespace PartStat.Core.Libs.Stats
 {

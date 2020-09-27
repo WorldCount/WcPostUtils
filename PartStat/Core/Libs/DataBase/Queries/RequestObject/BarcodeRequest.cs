@@ -1,7 +1,7 @@
 ﻿using System;
-using PartStat.Core.Models.DB.Queries.Base;
+using PartStat.Core.Libs.DataBase.Queries.Base;
 
-namespace PartStat.Core.Models.DB.Queries.RequestObject
+namespace PartStat.Core.Libs.DataBase.Queries.RequestObject
 {
     public class BarcodeRequest : Request
     {

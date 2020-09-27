@@ -31,3 +31,5 @@
 /WcApi/obj
 /WinMaterial/bin/Debug
 /WinMaterial/obj/Debug
+/.vs
+/WinMaterial/obj/Release
