@@ -1,6 +1,6 @@
-﻿namespace PartStat.Forms.Tarifs
+﻿namespace PartStat.Forms.TarifForms
 {
-    partial class FirstParcelTarifForm
+    partial class MailTarifForm
     {
         /// <summary>
         /// Required designer variable.
@@ -33,33 +33,29 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FirstParcelTarifForm));
-            this.labelInfo = new System.Windows.Forms.Label();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MailTarifForm));
             this.dataGridViewList = new System.Windows.Forms.DataGridView();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.massDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.firstParcelTarifBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tarificateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.updateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.loadServerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mailTarifBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.labelInfo = new System.Windows.Forms.Label();
             this.labelMessage = new System.Windows.Forms.Label();
+            this.timerMessage = new System.Windows.Forms.Timer(this.components);
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnLoad = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.timerMessage = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewList)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.firstParcelTarifBindingSource)).BeginInit();
+            this.contextMenuStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.mailTarifBindingSource)).BeginInit();
             this.SuspendLayout();
-            // 
-            // labelInfo
-            // 
-            this.labelInfo.AutoSize = true;
-            this.labelInfo.Font = new System.Drawing.Font("Segoe UI", 14.26415F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
-            this.labelInfo.Location = new System.Drawing.Point(12, 9);
-            this.labelInfo.Name = "labelInfo";
-            this.labelInfo.Size = new System.Drawing.Size(365, 30);
-            this.labelInfo.TabIndex = 0;
-            this.labelInfo.Text = "Тарифы на заказные бандероли 1 кл";
             // 
             // dataGridViewList
             // 
@@ -87,7 +83,8 @@
             this.nameDataGridViewTextBoxColumn,
             this.massDataGridViewTextBoxColumn,
             this.rateDataGridViewTextBoxColumn});
-            this.dataGridViewList.DataSource = this.firstParcelTarifBindingSource;
+            this.dataGridViewList.ContextMenuStrip = this.contextMenuStrip;
+            this.dataGridViewList.DataSource = this.mailTarifBindingSource;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.86792F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -114,7 +111,7 @@
             this.dataGridViewList.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dataGridViewList.RowTemplate.Height = 40;
             this.dataGridViewList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dataGridViewList.Size = new System.Drawing.Size(804, 259);
+            this.dataGridViewList.Size = new System.Drawing.Size(804, 265);
             this.dataGridViewList.TabIndex = 0;
             this.dataGridViewList.TabStop = false;
             // 
@@ -129,7 +126,7 @@
             // massDataGridViewTextBoxColumn
             // 
             this.massDataGridViewTextBoxColumn.DataPropertyName = "Mass";
-            this.massDataGridViewTextBoxColumn.HeaderText = "Вес, грамм";
+            this.massDataGridViewTextBoxColumn.HeaderText = "Вес";
             this.massDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.massDataGridViewTextBoxColumn.Name = "massDataGridViewTextBoxColumn";
             this.massDataGridViewTextBoxColumn.ReadOnly = true;
@@ -144,9 +141,68 @@
             this.rateDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.rateDataGridViewTextBoxColumn.Name = "rateDataGridViewTextBoxColumn";
             // 
-            // firstParcelTarifBindingSource
+            // contextMenuStrip
             // 
-            this.firstParcelTarifBindingSource.DataSource = typeof(PartStat.Core.Models.Tarifs.FirstParcelTarif);
+            this.contextMenuStrip.Font = new System.Drawing.Font("Segoe UI", 10.86792F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.contextMenuStrip.ImageScalingSize = new System.Drawing.Size(18, 18);
+            this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tarificateToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.updateToolStripMenuItem,
+            this.toolStripSeparator2,
+            this.loadServerToolStripMenuItem});
+            this.contextMenuStrip.Name = "contextMenuStrip";
+            this.contextMenuStrip.Size = new System.Drawing.Size(234, 94);
+            // 
+            // tarificateToolStripMenuItem
+            // 
+            this.tarificateToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
+            this.tarificateToolStripMenuItem.Name = "tarificateToolStripMenuItem";
+            this.tarificateToolStripMenuItem.Size = new System.Drawing.Size(233, 26);
+            this.tarificateToolStripMenuItem.Text = "Ручная тарификация";
+            this.tarificateToolStripMenuItem.Click += new System.EventHandler(this.tarificateToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(230, 6);
+            // 
+            // updateToolStripMenuItem
+            // 
+            this.updateToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
+            this.updateToolStripMenuItem.Image = global::PartStat.Properties.Resources.Refresh;
+            this.updateToolStripMenuItem.Name = "updateToolStripMenuItem";
+            this.updateToolStripMenuItem.Size = new System.Drawing.Size(233, 26);
+            this.updateToolStripMenuItem.Text = "Обновить";
+            this.updateToolStripMenuItem.Click += new System.EventHandler(this.updateToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(230, 6);
+            // 
+            // loadServerToolStripMenuItem
+            // 
+            this.loadServerToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
+            this.loadServerToolStripMenuItem.Name = "loadServerToolStripMenuItem";
+            this.loadServerToolStripMenuItem.Size = new System.Drawing.Size(233, 26);
+            this.loadServerToolStripMenuItem.Text = "Загрузить с сервера";
+            this.loadServerToolStripMenuItem.Click += new System.EventHandler(this.loadServerToolStripMenuItem_Click);
+            // 
+            // mailTarifBindingSource
+            // 
+            this.mailTarifBindingSource.DataSource = typeof(PartStat.Core.Models.Tarifs.MailTarif);
+            // 
+            // labelInfo
+            // 
+            this.labelInfo.AutoSize = true;
+            this.labelInfo.Font = new System.Drawing.Font("Segoe UI", 14.26415F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
+            this.labelInfo.Location = new System.Drawing.Point(7, 9);
+            this.labelInfo.Name = "labelInfo";
+            this.labelInfo.Size = new System.Drawing.Size(288, 30);
+            this.labelInfo.TabIndex = 0;
+            this.labelInfo.Text = "Тарифы на заказные письма";
             // 
             // labelMessage
             // 
@@ -160,6 +216,11 @@
             this.labelMessage.TabIndex = 0;
             this.labelMessage.Text = "Сообщение";
             this.labelMessage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // timerMessage
+            // 
+            this.timerMessage.Interval = 3000;
+            this.timerMessage.Tick += new System.EventHandler(this.timerMessage_Tick);
             // 
             // btnUpdate
             // 
@@ -246,12 +307,7 @@
             this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // timerMessage
-            // 
-            this.timerMessage.Interval = 3000;
-            this.timerMessage.Tick += new System.EventHandler(this.timerMessage_Tick);
-            // 
-            // FirstParcelTarifForm
+            // MailTarifForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -261,36 +317,42 @@
             this.Controls.Add(this.btnLoad);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.dataGridViewList);
             this.Controls.Add(this.labelInfo);
+            this.Controls.Add(this.dataGridViewList);
             this.Font = new System.Drawing.Font("Segoe UI", 10.86792F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MinimumSize = new System.Drawing.Size(820, 420);
-            this.Name = "FirstParcelTarifForm";
+            this.Name = "MailTarifForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "FirstParcelTarifForm";
-            this.Load += new System.EventHandler(this.NoticeForm_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.NoticeForm_KeyDown);
+            this.Text = "MailTarifForm";
+            this.Load += new System.EventHandler(this.MailTarifForm_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MailTarifForm_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewList)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.firstParcelTarifBindingSource)).EndInit();
+            this.contextMenuStrip.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.mailTarifBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label labelInfo;
         private System.Windows.Forms.DataGridView dataGridViewList;
-        private System.Windows.Forms.BindingSource firstParcelTarifBindingSource;
-        private System.Windows.Forms.Label labelMessage;
+        private System.Windows.Forms.Label labelInfo;
+        private System.Windows.Forms.BindingSource mailTarifBindingSource;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnLoad;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Label labelMessage;
         private System.Windows.Forms.Timer timerMessage;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem tarificateToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem updateToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem loadServerToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn massDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn rateDataGridViewTextBoxColumn;

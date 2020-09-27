@@ -1,4 +1,4 @@
-﻿namespace PartStat.Forms.Tarifs
+﻿namespace PartStat.Forms.TarifForms
 {
     partial class TarificatorForm
     {

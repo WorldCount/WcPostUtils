@@ -4,33 +4,33 @@ using System.Windows.Forms;
 using PartStat.Core.Libs.TarifManager;
 using PartStat.Core.Models.Tarifs;
 
-namespace PartStat.Forms.Tarifs
+namespace PartStat.Forms.TarifForms
 {
-    public partial class FirstMailTarifForm : Form
+    public partial class NoticeTarifForm : Form
     {
-        private List<FirstMailTarif> _firstMailTarifs;
+        private List<NoticeTarif> _noticeTarifs;
 
-        public FirstMailTarifForm()
+        public NoticeTarifForm()
         {
             InitializeComponent();
 
             // ReSharper disable once VirtualMemberCallInConstructor
-            Text = $"{Properties.Settings.Default.AppName}: Тарифы на заказные письма 1 кл";
+            Text = $"{Properties.Settings.Default.AppName}: Тарифы на уведомления";
 
             labelMessage.Text = "";
         }
 
         private void UpdateData()
         {
-            firstMailTarifBindingSource.DataSource = null;
-            firstMailTarifBindingSource.DataSource = _firstMailTarifs;
+            noticeTarifBindingSource.DataSource = null;
+            noticeTarifBindingSource.DataSource = _noticeTarifs;
         }
 
         private async void LoadData()
         {
-            _firstMailTarifs = await FirstMailTarifManager.LoadAsync();
-            firstMailTarifBindingSource.DataSource = null;
-            firstMailTarifBindingSource.DataSource = _firstMailTarifs;
+            _noticeTarifs = await NoticeTarifManager.LoadAsync();
+            noticeTarifBindingSource.DataSource = null;
+            noticeTarifBindingSource.DataSource = _noticeTarifs;
         }
 
         private void SendMessage(string msg)
@@ -47,7 +47,7 @@ namespace PartStat.Forms.Tarifs
 
         private async void btnLoad_Click(object sender, EventArgs e)
         {
-            _firstMailTarifs = await FirstMailTarifManager.GetFromServer();
+            _noticeTarifs = await NoticeTarifManager.GetFromServer();
             UpdateData();
             SendMessage("Данные загружены с сервера!");
         }
@@ -60,7 +60,7 @@ namespace PartStat.Forms.Tarifs
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            FirstMailTarifManager.Save(_firstMailTarifs);
+            NoticeTarifManager.Save(_noticeTarifs);
             DialogResult = DialogResult.OK;
             Close();
         }

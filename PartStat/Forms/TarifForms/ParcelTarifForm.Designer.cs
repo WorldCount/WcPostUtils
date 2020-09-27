@@ -1,6 +1,6 @@
-﻿namespace PartStat.Forms.Tarifs
+﻿namespace PartStat.Forms.TarifForms
 {
-    partial class MailTarifForm
+    partial class ParcelTarifForm
     {
         /// <summary>
         /// Required designer variable.
@@ -33,7 +33,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MailTarifForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ParcelTarifForm));
             this.dataGridViewList = new System.Windows.Forms.DataGridView();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.massDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,7 +44,7 @@
             this.updateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.loadServerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mailTarifBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.parcelTarifBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.labelInfo = new System.Windows.Forms.Label();
             this.labelMessage = new System.Windows.Forms.Label();
             this.timerMessage = new System.Windows.Forms.Timer(this.components);
@@ -54,7 +54,7 @@
             this.btnCancel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewList)).BeginInit();
             this.contextMenuStrip.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.mailTarifBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.parcelTarifBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridViewList
@@ -84,7 +84,7 @@
             this.massDataGridViewTextBoxColumn,
             this.rateDataGridViewTextBoxColumn});
             this.dataGridViewList.ContextMenuStrip = this.contextMenuStrip;
-            this.dataGridViewList.DataSource = this.mailTarifBindingSource;
+            this.dataGridViewList.DataSource = this.parcelTarifBindingSource;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.86792F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -189,9 +189,9 @@
             this.loadServerToolStripMenuItem.Text = "Загрузить с сервера";
             this.loadServerToolStripMenuItem.Click += new System.EventHandler(this.loadServerToolStripMenuItem_Click);
             // 
-            // mailTarifBindingSource
+            // parcelTarifBindingSource
             // 
-            this.mailTarifBindingSource.DataSource = typeof(PartStat.Core.Models.Tarifs.MailTarif);
+            this.parcelTarifBindingSource.DataSource = typeof(PartStat.Core.Models.Tarifs.ParcelTarif);
             // 
             // labelInfo
             // 
@@ -200,9 +200,9 @@
             this.labelInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
             this.labelInfo.Location = new System.Drawing.Point(7, 9);
             this.labelInfo.Name = "labelInfo";
-            this.labelInfo.Size = new System.Drawing.Size(288, 30);
+            this.labelInfo.Size = new System.Drawing.Size(321, 30);
             this.labelInfo.TabIndex = 0;
-            this.labelInfo.Text = "Тарифы на заказные письма";
+            this.labelInfo.Text = "Тарифы на заказные бандероли";
             // 
             // labelMessage
             // 
@@ -307,7 +307,7 @@
             this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // MailTarifForm
+            // ParcelTarifForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -324,14 +324,14 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MinimumSize = new System.Drawing.Size(820, 420);
-            this.Name = "MailTarifForm";
+            this.Name = "ParcelTarifForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "MailTarifForm";
+            this.Text = "ParcelTarifForm";
             this.Load += new System.EventHandler(this.MailTarifForm_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MailTarifForm_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewList)).EndInit();
             this.contextMenuStrip.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.mailTarifBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.parcelTarifBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -340,7 +340,7 @@
         #endregion
         private System.Windows.Forms.DataGridView dataGridViewList;
         private System.Windows.Forms.Label labelInfo;
-        private System.Windows.Forms.BindingSource mailTarifBindingSource;
+        private System.Windows.Forms.BindingSource parcelTarifBindingSource;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnLoad;
         private System.Windows.Forms.Button btnSave;

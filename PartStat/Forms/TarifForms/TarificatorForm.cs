@@ -1,19 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using PartStat.Core.Libs.DataManagers;
 using PartStat.Core.Libs.TarifManager;
 using PartStat.Core.Models;
 using PartStat.Core.Models.Tarifs;
-using PartStat.Core.Models.Tarifs.Base;
 
-namespace PartStat.Forms.Tarifs
+namespace PartStat.Forms.TarifForms
 {
     public enum TarifType
     {

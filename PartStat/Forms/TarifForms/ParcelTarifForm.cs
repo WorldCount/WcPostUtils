@@ -4,7 +4,7 @@ using System.Windows.Forms;
 using PartStat.Core.Libs.TarifManager;
 using PartStat.Core.Models.Tarifs;
 
-namespace PartStat.Forms.Tarifs
+namespace PartStat.Forms.TarifForms
 {
     public partial class ParcelTarifForm : Form
     {

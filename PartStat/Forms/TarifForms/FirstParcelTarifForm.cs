@@ -4,33 +4,33 @@ using System.Windows.Forms;
 using PartStat.Core.Libs.TarifManager;
 using PartStat.Core.Models.Tarifs;
 
-namespace PartStat.Forms.Tarifs
+namespace PartStat.Forms.TarifForms
 {
-    public partial class NoticeTarifForm : Form
+    public partial class FirstParcelTarifForm : Form
     {
-        private List<NoticeTarif> _noticeTarifs;
+        private List<FirstParcelTarif> _firstMailTarifs;
 
-        public NoticeTarifForm()
+        public FirstParcelTarifForm()
         {
             InitializeComponent();
 
             // ReSharper disable once VirtualMemberCallInConstructor
-            Text = $"{Properties.Settings.Default.AppName}: Тарифы на уведомления";
+            Text = $"{Properties.Settings.Default.AppName}: Тарифы на заказные бандероли 1 кл";
 
             labelMessage.Text = "";
         }
 
         private void UpdateData()
         {
-            noticeTarifBindingSource.DataSource = null;
-            noticeTarifBindingSource.DataSource = _noticeTarifs;
+            firstParcelTarifBindingSource.DataSource = null;
+            firstParcelTarifBindingSource.DataSource = _firstMailTarifs;
         }
 
         private async void LoadData()
         {
-            _noticeTarifs = await NoticeTarifManager.LoadAsync();
-            noticeTarifBindingSource.DataSource = null;
-            noticeTarifBindingSource.DataSource = _noticeTarifs;
+            _firstMailTarifs = await FirstParcelTarifManager.LoadAsync();
+            firstParcelTarifBindingSource.DataSource = null;
+            firstParcelTarifBindingSource.DataSource = _firstMailTarifs;
         }
 
         private void SendMessage(string msg)
@@ -47,7 +47,7 @@ namespace PartStat.Forms.Tarifs
 
         private async void btnLoad_Click(object sender, EventArgs e)
         {
-            _noticeTarifs = await NoticeTarifManager.GetFromServer();
+            _firstMailTarifs = await FirstParcelTarifManager.GetFromServer();
             UpdateData();
             SendMessage("Данные загружены с сервера!");
         }
@@ -60,7 +60,7 @@ namespace PartStat.Forms.Tarifs
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            NoticeTarifManager.Save(_noticeTarifs);
+            FirstParcelTarifManager.Save(_firstMailTarifs);
             DialogResult = DialogResult.OK;
             Close();
         }

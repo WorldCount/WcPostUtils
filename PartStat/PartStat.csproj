@@ -210,52 +210,52 @@
     <Compile Include="Core\Libs\Print\ListFirmPrintDocument.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Forms\Tarifs\InterParcelTarifForm.cs">
+    <Compile Include="Forms\TarifForms\InterParcelTarifForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Tarifs\InterParcelTarifForm.Designer.cs">
+    <Compile Include="Forms\TarifForms\InterParcelTarifForm.Designer.cs">
       <DependentUpon>InterParcelTarifForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Tarifs\InterMailTarifForm.cs">
+    <Compile Include="Forms\TarifForms\InterMailTarifForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Tarifs\InterMailTarifForm.Designer.cs">
+    <Compile Include="Forms\TarifForms\InterMailTarifForm.Designer.cs">
       <DependentUpon>InterMailTarifForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Tarifs\FirstParcelTarifForm.cs">
+    <Compile Include="Forms\TarifForms\FirstParcelTarifForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Tarifs\FirstParcelTarifForm.Designer.cs">
+    <Compile Include="Forms\TarifForms\FirstParcelTarifForm.Designer.cs">
       <DependentUpon>FirstParcelTarifForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Tarifs\FirstMailTarifForm.cs">
+    <Compile Include="Forms\TarifForms\FirstMailTarifForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Tarifs\FirstMailTarifForm.Designer.cs">
+    <Compile Include="Forms\TarifForms\FirstMailTarifForm.Designer.cs">
       <DependentUpon>FirstMailTarifForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Tarifs\NoticeTarifForm.cs">
+    <Compile Include="Forms\TarifForms\NoticeTarifForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Tarifs\NoticeTarifForm.Designer.cs">
+    <Compile Include="Forms\TarifForms\NoticeTarifForm.Designer.cs">
       <DependentUpon>NoticeTarifForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Tarifs\ParcelTarifForm.cs">
+    <Compile Include="Forms\TarifForms\ParcelTarifForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Tarifs\ParcelTarifForm.Designer.cs">
+    <Compile Include="Forms\TarifForms\ParcelTarifForm.Designer.cs">
       <DependentUpon>ParcelTarifForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Tarifs\MailTarifForm.cs">
+    <Compile Include="Forms\TarifForms\MailTarifForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Tarifs\MailTarifForm.Designer.cs">
+    <Compile Include="Forms\TarifForms\MailTarifForm.Designer.cs">
       <DependentUpon>MailTarifForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Tarifs\TarificatorForm.cs">
+    <Compile Include="Forms\TarifForms\TarificatorForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Tarifs\TarificatorForm.Designer.cs">
+    <Compile Include="Forms\TarifForms\TarificatorForm.Designer.cs">
       <DependentUpon>TarificatorForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -321,28 +321,28 @@
     <EmbeddedResource Include="Forms\StatusForm.resx">
       <DependentUpon>StatusForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Tarifs\InterParcelTarifForm.resx">
+    <EmbeddedResource Include="Forms\TarifForms\InterParcelTarifForm.resx">
       <DependentUpon>InterParcelTarifForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Tarifs\InterMailTarifForm.resx">
+    <EmbeddedResource Include="Forms\TarifForms\InterMailTarifForm.resx">
       <DependentUpon>InterMailTarifForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Tarifs\FirstParcelTarifForm.resx">
+    <EmbeddedResource Include="Forms\TarifForms\FirstParcelTarifForm.resx">
       <DependentUpon>FirstParcelTarifForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Tarifs\FirstMailTarifForm.resx">
+    <EmbeddedResource Include="Forms\TarifForms\FirstMailTarifForm.resx">
       <DependentUpon>FirstMailTarifForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Tarifs\NoticeTarifForm.resx">
+    <EmbeddedResource Include="Forms\TarifForms\NoticeTarifForm.resx">
       <DependentUpon>NoticeTarifForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Tarifs\ParcelTarifForm.resx">
+    <EmbeddedResource Include="Forms\TarifForms\ParcelTarifForm.resx">
       <DependentUpon>ParcelTarifForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Tarifs\MailTarifForm.resx">
+    <EmbeddedResource Include="Forms\TarifForms\MailTarifForm.resx">
       <DependentUpon>MailTarifForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Tarifs\TarificatorForm.resx">
+    <EmbeddedResource Include="Forms\TarifForms\TarificatorForm.resx">
       <DependentUpon>TarificatorForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -438,6 +438,8 @@
     <None Include="Resources\Settings.png" />
     <None Include="Resources\Font-Color.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Forms\ReportForms\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,6 +1,6 @@
-﻿namespace PartStat.Forms.Tarifs
+﻿namespace PartStat.Forms.TarifForms
 {
-    partial class InterMailTarifForm
+    partial class NoticeTarifForm
     {
         /// <summary>
         /// Required designer variable.
@@ -33,22 +33,20 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InterMailTarifForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NoticeTarifForm));
             this.labelInfo = new System.Windows.Forms.Label();
             this.dataGridViewList = new System.Windows.Forms.DataGridView();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.transTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.massDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.interMailTarifBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.noticeTarifBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.labelMessage = new System.Windows.Forms.Label();
+            this.timerMessage = new System.Windows.Forms.Timer(this.components);
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnLoad = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.timerMessage = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewList)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.interMailTarifBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.noticeTarifBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // labelInfo
@@ -58,9 +56,9 @@
             this.labelInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
             this.labelInfo.Location = new System.Drawing.Point(12, 9);
             this.labelInfo.Name = "labelInfo";
-            this.labelInfo.Size = new System.Drawing.Size(346, 30);
+            this.labelInfo.Size = new System.Drawing.Size(250, 30);
             this.labelInfo.TabIndex = 0;
-            this.labelInfo.Text = "Тарифы на заказные МЖД письма";
+            this.labelInfo.Text = "Тарифы на уведомления";
             // 
             // dataGridViewList
             // 
@@ -86,10 +84,8 @@
             this.dataGridViewList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridViewList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.nameDataGridViewTextBoxColumn,
-            this.transTypeDataGridViewTextBoxColumn,
-            this.massDataGridViewTextBoxColumn,
             this.rateDataGridViewTextBoxColumn});
-            this.dataGridViewList.DataSource = this.interMailTarifBindingSource;
+            this.dataGridViewList.DataSource = this.noticeTarifBindingSource;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.86792F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -128,22 +124,6 @@
             this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
             this.nameDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // transTypeDataGridViewTextBoxColumn
-            // 
-            this.transTypeDataGridViewTextBoxColumn.DataPropertyName = "TransType";
-            this.transTypeDataGridViewTextBoxColumn.HeaderText = "Пересылка";
-            this.transTypeDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.transTypeDataGridViewTextBoxColumn.Name = "transTypeDataGridViewTextBoxColumn";
-            this.transTypeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // massDataGridViewTextBoxColumn
-            // 
-            this.massDataGridViewTextBoxColumn.DataPropertyName = "Mass";
-            this.massDataGridViewTextBoxColumn.HeaderText = "Вес, грамм";
-            this.massDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.massDataGridViewTextBoxColumn.Name = "massDataGridViewTextBoxColumn";
-            this.massDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
             // rateDataGridViewTextBoxColumn
             // 
             this.rateDataGridViewTextBoxColumn.DataPropertyName = "Rate";
@@ -154,9 +134,9 @@
             this.rateDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.rateDataGridViewTextBoxColumn.Name = "rateDataGridViewTextBoxColumn";
             // 
-            // interMailTarifBindingSource
+            // noticeTarifBindingSource
             // 
-            this.interMailTarifBindingSource.DataSource = typeof(PartStat.Core.Models.Tarifs.InterMailTarif);
+            this.noticeTarifBindingSource.DataSource = typeof(PartStat.Core.Models.Tarifs.NoticeTarif);
             // 
             // labelMessage
             // 
@@ -170,6 +150,11 @@
             this.labelMessage.TabIndex = 0;
             this.labelMessage.Text = "Сообщение";
             this.labelMessage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // timerMessage
+            // 
+            this.timerMessage.Interval = 3000;
+            this.timerMessage.Tick += new System.EventHandler(this.timerMessage_Tick);
             // 
             // btnUpdate
             // 
@@ -256,12 +241,7 @@
             this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // timerMessage
-            // 
-            this.timerMessage.Interval = 3000;
-            this.timerMessage.Tick += new System.EventHandler(this.timerMessage_Tick);
-            // 
-            // InterMailTarifForm
+            // NoticeTarifForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -278,13 +258,13 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MinimumSize = new System.Drawing.Size(820, 420);
-            this.Name = "InterMailTarifForm";
+            this.Name = "NoticeTarifForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "InterMailTarifForm";
+            this.Text = "NoticeForm";
             this.Load += new System.EventHandler(this.NoticeForm_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.NoticeForm_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewList)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.interMailTarifBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.noticeTarifBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -294,7 +274,7 @@
 
         private System.Windows.Forms.Label labelInfo;
         private System.Windows.Forms.DataGridView dataGridViewList;
-        private System.Windows.Forms.BindingSource interMailTarifBindingSource;
+        private System.Windows.Forms.BindingSource noticeTarifBindingSource;
         private System.Windows.Forms.Label labelMessage;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnLoad;
@@ -302,8 +282,6 @@
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Timer timerMessage;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn transTypeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn massDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn rateDataGridViewTextBoxColumn;
     }
 }

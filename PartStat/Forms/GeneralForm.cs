@@ -23,7 +23,7 @@ using PartStat.Core.Models.DataReports;
 using PartStat.Core.Models.DB;
 using PartStat.Core.Models.PostTypes;
 using PartStat.Core.Models.Tarifs;
-using PartStat.Forms.Tarifs;
+using PartStat.Forms.TarifForms;
 using WcApi.Print;
 using WcApi.Win32.Forms;
 
