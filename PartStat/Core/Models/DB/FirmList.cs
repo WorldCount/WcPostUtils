@@ -4,7 +4,6 @@ using PartStat.Core.Libs.DataBase;
 using PartStat.Core.Libs.DataBase.Queries;
 using PartStat.Core.Libs.DataManagers;
 using PartStat.Core.Models.PostTypes;
-using PartStat.Core;
 
 namespace PartStat.Core.Models.DB
 {

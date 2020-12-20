@@ -73,7 +73,7 @@
             this.groupBoxPay.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
             this.groupBoxPay.Location = new System.Drawing.Point(6, 6);
             this.groupBoxPay.Name = "groupBoxPay";
-            this.groupBoxPay.Size = new System.Drawing.Size(400, 235);
+            this.groupBoxPay.Size = new System.Drawing.Size(400, 239);
             this.groupBoxPay.TabIndex = 0;
             this.groupBoxPay.TabStop = false;
             this.groupBoxPay.Text = "Плата";
@@ -86,7 +86,7 @@
             this.tbValue.Location = new System.Drawing.Point(10, 131);
             this.tbValue.MaxLength = 5;
             this.tbValue.Name = "tbValue";
-            this.tbValue.Size = new System.Drawing.Size(76, 29);
+            this.tbValue.Size = new System.Drawing.Size(76, 27);
             this.tbValue.TabIndex = 0;
             this.tbValue.TabStop = false;
             this.tbValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_KeyPress);
@@ -98,7 +98,7 @@
             this.labelValue.ForeColor = System.Drawing.Color.DimGray;
             this.labelValue.Location = new System.Drawing.Point(6, 107);
             this.labelValue.Name = "labelValue";
-            this.labelValue.Size = new System.Drawing.Size(270, 21);
+            this.labelValue.Size = new System.Drawing.Size(261, 20);
             this.labelValue.TabIndex = 0;
             this.labelValue.Text = "Сбор с ОЦ за 1 руб в коп. (без НДС):";
             // 
@@ -110,7 +110,7 @@
             this.tbNds.Location = new System.Drawing.Point(10, 62);
             this.tbNds.MaxLength = 5;
             this.tbNds.Name = "tbNds";
-            this.tbNds.Size = new System.Drawing.Size(76, 29);
+            this.tbNds.Size = new System.Drawing.Size(76, 27);
             this.tbNds.TabIndex = 0;
             this.tbNds.TabStop = false;
             this.tbNds.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_KeyPress);
@@ -122,7 +122,7 @@
             this.lblNds.ForeColor = System.Drawing.Color.DimGray;
             this.lblNds.Location = new System.Drawing.Point(6, 38);
             this.lblNds.Name = "lblNds";
-            this.lblNds.Size = new System.Drawing.Size(45, 21);
+            this.lblNds.Size = new System.Drawing.Size(42, 20);
             this.lblNds.TabIndex = 0;
             this.lblNds.Text = "НДС:";
             // 
@@ -132,10 +132,10 @@
             this.tbStep.BackColor = System.Drawing.Color.White;
             this.tbStep.Font = new System.Drawing.Font("Consolas", 12.22642F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbStep.ForeColor = System.Drawing.Color.DimGray;
-            this.tbStep.Location = new System.Drawing.Point(16, 303);
+            this.tbStep.Location = new System.Drawing.Point(16, 307);
             this.tbStep.MaxLength = 5;
             this.tbStep.Name = "tbStep";
-            this.tbStep.Size = new System.Drawing.Size(76, 29);
+            this.tbStep.Size = new System.Drawing.Size(76, 27);
             this.tbStep.TabIndex = 0;
             this.tbStep.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_KeyPress);
             // 
@@ -145,9 +145,9 @@
             this.labelStep.AutoSize = true;
             this.labelStep.Font = new System.Drawing.Font("Segoe UI", 10.86792F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelStep.ForeColor = System.Drawing.Color.DimGray;
-            this.labelStep.Location = new System.Drawing.Point(12, 274);
+            this.labelStep.Location = new System.Drawing.Point(12, 278);
             this.labelStep.Name = "labelStep";
-            this.labelStep.Size = new System.Drawing.Size(267, 21);
+            this.labelStep.Size = new System.Drawing.Size(263, 20);
             this.labelStep.TabIndex = 0;
             this.labelStep.Text = "Шаг заказных отправлений (грамм):";
             // 
@@ -171,10 +171,10 @@
             this.tabPage1.Controls.Add(this.tbStep);
             this.tabPage1.Controls.Add(this.groupBoxPay);
             this.tabPage1.Controls.Add(this.labelStep);
-            this.tabPage1.Location = new System.Drawing.Point(4, 34);
+            this.tabPage1.Location = new System.Drawing.Point(4, 30);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(413, 368);
+            this.tabPage1.Size = new System.Drawing.Size(413, 372);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Плата";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -182,10 +182,10 @@
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.groupBoxMail);
-            this.tabPage2.Location = new System.Drawing.Point(4, 34);
+            this.tabPage2.Location = new System.Drawing.Point(4, 30);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(413, 368);
+            this.tabPage2.Size = new System.Drawing.Size(413, 372);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Письма";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -202,7 +202,7 @@
             this.groupBoxMail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
             this.groupBoxMail.Location = new System.Drawing.Point(6, 6);
             this.groupBoxMail.Name = "groupBoxMail";
-            this.groupBoxMail.Size = new System.Drawing.Size(400, 235);
+            this.groupBoxMail.Size = new System.Drawing.Size(400, 239);
             this.groupBoxMail.TabIndex = 0;
             this.groupBoxMail.TabStop = false;
             this.groupBoxMail.Text = "Письма";
@@ -215,7 +215,7 @@
             this.tbMailEndWeight.Location = new System.Drawing.Point(10, 131);
             this.tbMailEndWeight.MaxLength = 5;
             this.tbMailEndWeight.Name = "tbMailEndWeight";
-            this.tbMailEndWeight.Size = new System.Drawing.Size(76, 29);
+            this.tbMailEndWeight.Size = new System.Drawing.Size(76, 27);
             this.tbMailEndWeight.TabIndex = 0;
             this.tbMailEndWeight.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_KeyPress);
             // 
@@ -226,7 +226,7 @@
             this.labelMailEndWeight.ForeColor = System.Drawing.Color.DimGray;
             this.labelMailEndWeight.Location = new System.Drawing.Point(6, 107);
             this.labelMailEndWeight.Name = "labelMailEndWeight";
-            this.labelMailEndWeight.Size = new System.Drawing.Size(209, 21);
+            this.labelMailEndWeight.Size = new System.Drawing.Size(206, 20);
             this.labelMailEndWeight.TabIndex = 0;
             this.labelMailEndWeight.Text = "Максимальный вес (грамм):";
             // 
@@ -238,7 +238,7 @@
             this.tbMailStartWeight.Location = new System.Drawing.Point(10, 62);
             this.tbMailStartWeight.MaxLength = 5;
             this.tbMailStartWeight.Name = "tbMailStartWeight";
-            this.tbMailStartWeight.Size = new System.Drawing.Size(76, 29);
+            this.tbMailStartWeight.Size = new System.Drawing.Size(76, 27);
             this.tbMailStartWeight.TabIndex = 0;
             this.tbMailStartWeight.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_KeyPress);
             // 
@@ -249,16 +249,16 @@
             this.labelMailStartWeight.ForeColor = System.Drawing.Color.DimGray;
             this.labelMailStartWeight.Location = new System.Drawing.Point(6, 38);
             this.labelMailStartWeight.Name = "labelMailStartWeight";
-            this.labelMailStartWeight.Size = new System.Drawing.Size(204, 21);
+            this.labelMailStartWeight.Size = new System.Drawing.Size(202, 20);
             this.labelMailStartWeight.TabIndex = 0;
             this.labelMailStartWeight.Text = "Минимальный вес (грамм):";
             // 
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.groupBoxParcel);
-            this.tabPage3.Location = new System.Drawing.Point(4, 34);
+            this.tabPage3.Location = new System.Drawing.Point(4, 30);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(413, 368);
+            this.tabPage3.Size = new System.Drawing.Size(413, 372);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Бандероли";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -275,7 +275,7 @@
             this.groupBoxParcel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
             this.groupBoxParcel.Location = new System.Drawing.Point(6, 6);
             this.groupBoxParcel.Name = "groupBoxParcel";
-            this.groupBoxParcel.Size = new System.Drawing.Size(400, 235);
+            this.groupBoxParcel.Size = new System.Drawing.Size(400, 239);
             this.groupBoxParcel.TabIndex = 0;
             this.groupBoxParcel.TabStop = false;
             this.groupBoxParcel.Text = "Бандероли";
@@ -288,7 +288,7 @@
             this.tbParcelEndWeight.Location = new System.Drawing.Point(10, 131);
             this.tbParcelEndWeight.MaxLength = 5;
             this.tbParcelEndWeight.Name = "tbParcelEndWeight";
-            this.tbParcelEndWeight.Size = new System.Drawing.Size(76, 29);
+            this.tbParcelEndWeight.Size = new System.Drawing.Size(76, 27);
             this.tbParcelEndWeight.TabIndex = 0;
             this.tbParcelEndWeight.TabStop = false;
             // 
@@ -299,7 +299,7 @@
             this.labelParcelEndWeight.ForeColor = System.Drawing.Color.DimGray;
             this.labelParcelEndWeight.Location = new System.Drawing.Point(6, 107);
             this.labelParcelEndWeight.Name = "labelParcelEndWeight";
-            this.labelParcelEndWeight.Size = new System.Drawing.Size(209, 21);
+            this.labelParcelEndWeight.Size = new System.Drawing.Size(206, 20);
             this.labelParcelEndWeight.TabIndex = 0;
             this.labelParcelEndWeight.Text = "Максимальный вес (грамм):";
             // 
@@ -311,7 +311,7 @@
             this.tbParcelStartWeight.Location = new System.Drawing.Point(10, 62);
             this.tbParcelStartWeight.MaxLength = 5;
             this.tbParcelStartWeight.Name = "tbParcelStartWeight";
-            this.tbParcelStartWeight.Size = new System.Drawing.Size(76, 29);
+            this.tbParcelStartWeight.Size = new System.Drawing.Size(76, 27);
             this.tbParcelStartWeight.TabIndex = 0;
             this.tbParcelStartWeight.TabStop = false;
             // 
@@ -322,7 +322,7 @@
             this.labelParcelStartWeight.ForeColor = System.Drawing.Color.DimGray;
             this.labelParcelStartWeight.Location = new System.Drawing.Point(6, 38);
             this.labelParcelStartWeight.Name = "labelParcelStartWeight";
-            this.labelParcelStartWeight.Size = new System.Drawing.Size(204, 21);
+            this.labelParcelStartWeight.Size = new System.Drawing.Size(202, 20);
             this.labelParcelStartWeight.TabIndex = 0;
             this.labelParcelStartWeight.Text = "Минимальный вес (грамм):";
             // 
@@ -374,7 +374,7 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(424, 479);
+            this.ClientSize = new System.Drawing.Size(424, 481);
             this.Controls.Add(this.tabControlConfig);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);

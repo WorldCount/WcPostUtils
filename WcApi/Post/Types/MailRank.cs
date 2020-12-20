@@ -4,6 +4,21 @@ using System.Linq;
 
 namespace WcApi.Post.Types
 {
+
+    public enum MailRankFlag : long
+    {
+        Безразряда = 0,
+        Правительственное = 1,
+        Воинское = 2,
+        Служебное = 3,
+        Судебное = 4,
+        Президентское = 5,
+        Кредитное = 6,
+        Межоператорское = 7,
+        Административное = 8,
+        Выборное = 9
+    }
+
     /// <summary>
     /// Разряд отправления
     /// </summary>
@@ -41,7 +56,9 @@ namespace WcApi.Post.Types
                 new MailRank(4, "Судебное"),
                 new MailRank(5, "Президентское"),
                 new MailRank(6, "Кредитное"),
-                new MailRank(7, "Межоператорское")
+                new MailRank(7, "Межоператорское"),
+                new MailRank(8, "Административное"),
+                new MailRank(9, "Выборное")
             };
         }
 

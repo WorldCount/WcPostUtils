@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Telegram.Bot;
 using Telegram.Bot.Types;
@@ -17,7 +12,6 @@ namespace TelegramBot
     public partial class GeneralForm : Form
     {
         private BackgroundWorker _bw;
-        private Queue<int> queue = new Queue<int>();
 
         public GeneralForm()
         {

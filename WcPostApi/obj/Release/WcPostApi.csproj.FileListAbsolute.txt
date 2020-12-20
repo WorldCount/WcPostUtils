@@ -1,0 +1,9 @@
+D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\WcPostApi\bin\Release\WcPostApi.dll
+D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\WcPostApi\bin\Release\WcPostApi.pdb
+D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\WcPostApi\obj\Release\WcPostApi.csprojAssemblyReference.cache
+D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\WcPostApi\obj\Release\WcPostApi.Forms.MailForms.WcMailTypeForm.resources
+D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\WcPostApi\obj\Release\WcPostApi.Properties.Resources.resources
+D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\WcPostApi\obj\Release\WcPostApi.csproj.GenerateResource.cache
+D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\WcPostApi\obj\Release\WcPostApi.csproj.CoreCompileInputs.cache
+D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\WcPostApi\obj\Release\WcPostApi.dll
+D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\WcPostApi\obj\Release\WcPostApi.pdb

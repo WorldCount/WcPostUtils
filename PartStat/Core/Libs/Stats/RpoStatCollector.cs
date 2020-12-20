@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using PartStat.Core.Libs.DataManagers;
+using PartStat.Core.Libs.Stats.StatObject;
 using PartStat.Core.Libs.TarifManager;
 using PartStat.Core.Models.DB;
 using PartStat.Core.Models.PostTypes;

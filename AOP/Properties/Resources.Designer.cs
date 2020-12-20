@@ -19,7 +19,7 @@ namespace AOP.Properties {
     // с помощью такого средства, как ResGen или Visual Studio.
     // Чтобы добавить или удалить член, измените файл .ResX и снова запустите ResGen
     // с параметром /str или перестройте свой проект VS.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -63,9 +63,9 @@ namespace AOP.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Button_Close {
+        internal static System.Drawing.Bitmap checked_32 {
             get {
-                object obj = ResourceManager.GetObject("Button_Close", resourceCulture);
+                object obj = ResourceManager.GetObject("checked_32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace AOP.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap File {
+        internal static System.Drawing.Bitmap gray_checked_32 {
             get {
-                object obj = ResourceManager.GetObject("File", resourceCulture);
+                object obj = ResourceManager.GetObject("gray_checked_32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace AOP.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap File_Excel {
+        internal static System.Drawing.Bitmap gray_unchecked_32 {
             get {
-                object obj = ResourceManager.GetObject("File_Excel", resourceCulture);
+                object obj = ResourceManager.GetObject("gray_unchecked_32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,29 +93,9 @@ namespace AOP.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap File_Word {
+        internal static System.Drawing.Bitmap unchecked_32 {
             get {
-                object obj = ResourceManager.GetObject("File_Word", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap OK {
-            get {
-                object obj = ResourceManager.GetObject("OK", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Remove {
-            get {
-                object obj = ResourceManager.GetObject("Remove", resourceCulture);
+                object obj = ResourceManager.GetObject("unchecked_32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

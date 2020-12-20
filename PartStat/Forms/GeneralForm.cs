@@ -17,14 +17,15 @@ using PartStat.Core.Libs.DataManagers;
 using PartStat.Core.Libs.Print;
 using PartStat.Core.Libs.Stats;
 using PartStat.Core.Libs.TarifManager;
-using PartStat.Core.License;
 using PartStat.Core.Models;
 using PartStat.Core.Models.DataReports;
 using PartStat.Core.Models.DB;
 using PartStat.Core.Models.PostTypes;
+using PartStat.Core.Models.Report;
 using PartStat.Core.Models.Tarifs;
 using PartStat.Forms.ReportForms;
 using PartStat.Forms.TarifForms;
+using WcApi.Cryptography;
 using WcApi.Print;
 using WcApi.Win32.Forms;
 
@@ -60,7 +61,7 @@ namespace PartStat.Forms
 
         private bool _checkAllFlag = true;
 
-        private readonly string _key = LicenseKey.Key;
+        private readonly string _key;
 
         private readonly int[] _ignoreCols = { 0, 10 };
         private readonly int[] _columnWidth = { 0, 70, 60, 150, 50, 50, 90, 80, 60, 60, 0, 40, 60 };
@@ -81,6 +82,8 @@ namespace PartStat.Forms
             // ReSharper disable once VirtualMemberCallInConstructor
             Text = $"{Properties.Settings.Default.AppName} {Application.ProductVersion}";
 
+            _key = LicenseKey.GetKey(WcApi.Net.Host.GetIp(), AuthKey.Key, Application.ProductName);
+
             // Пробная лицензия на 30 дней
             GetTrialLicense();
 
@@ -99,6 +102,9 @@ namespace PartStat.Forms
 
             // Подсказки
             InitTooltips();
+
+            // Загрузка меню с отчетами
+            LoadReportMenu();
 
             _reportsQueue.AddedObject += _reportsQueue_AddedObject;
 
@@ -128,12 +134,12 @@ namespace PartStat.Forms
         private async void CheckLicense()
         {
             string license = Properties.Settings.Default.License;
-            labelLicense.Text = WcApi.Cryptography.License.GetLicenseExpiresString(license, _key);
+            labelLicense.Text = License.GetLicenseExpiresString(license, _key);
 
             if (_isAdmin)
                 return;
 
-            if (!WcApi.Cryptography.License.CheckLicense(license, _key))
+            if (!License.CheckLicense(license, _key))
             {
                 await Utils.Telegram.SendMessage("Лицензия истекла.");
                 
@@ -141,6 +147,7 @@ namespace PartStat.Forms
                 if (licenseForm.ShowDialog(this) == DialogResult.OK)
                 {
                     Properties.Settings.Default.License = licenseForm.LicenseKey;
+                    labelLicense.Text = License.GetLicenseExpiresString(licenseForm.LicenseKey, _key);
                     Properties.Settings.Default.Save();
                 }
                 else
@@ -153,7 +160,7 @@ namespace PartStat.Forms
             if (Properties.Settings.Default.FirstRun)
             {
                 DateTime licenseExp = DateTime.Today.AddDays(30);
-                string licenseKey = WcApi.Cryptography.License.GetLicenseKey(licenseExp, _key);
+                string licenseKey = License.GetLicenseKey(licenseExp, _key);
                 Properties.Settings.Default.License = licenseKey;
                 Properties.Settings.Default.FirstRun = false;
                 Properties.Settings.Default.Save();
@@ -394,7 +401,6 @@ namespace PartStat.Forms
 
         private void LoadFirmList()
         {
-            Firm firm =  (Firm) comboBoxOrgs.SelectedItem;
             MailType mailType = (MailType) comboBoxMailType.SelectedItem;
             MailCategory mailCategory = (MailCategory) comboBoxMailCategory.SelectedItem;
             ListStatus listStatus = (ListStatus) comboBoxListStatus.SelectedItem;
@@ -403,8 +409,7 @@ namespace PartStat.Forms
             CreateList createList = (CreateList) comboBoxCreateList.SelectedItem;
             NoticeTarif interNoticeTarif = NoticeTarifManager.GetNoticeTarifByType(NoticeType.Международное);
 
-            if(firm == null)
-                firm = new Firm { Inn = "", Name = "ВСЕ" };
+            Firm firm = (Firm)comboBoxOrgs.SelectedItem ?? new Firm { Inn = "", Name = "ВСЕ" };
 
             FirmRequest queryObject = new FirmRequest
             {
@@ -893,7 +898,9 @@ namespace PartStat.Forms
 
             if (licenseForm.ShowDialog(this) == DialogResult.OK)
             {
+
                 Properties.Settings.Default.License = licenseForm.LicenseKey;
+                labelLicense.Text = License.GetLicenseExpiresString(licenseForm.LicenseKey, _key);
                 Properties.Settings.Default.Save();
             }
         }
@@ -930,6 +937,36 @@ namespace PartStat.Forms
                 _defaultPrinterConfig = ConfigManager.GetConfigByName(ConfigName.DefaultPrinterName);
                 SuccessMessage("Принтер изменен!");
             }
+        }
+
+        private void runCustomReportMenuItem_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem item = (ToolStripMenuItem)sender;
+            int reportId = (int)item.Tag;
+
+            NoticeTarif interNoticeTarif = NoticeTarifManager.GetNoticeTarifByType(NoticeType.Международное);
+
+            CustomReportForm customReportForm = new CustomReportForm(_connect, reportId, _ndsConfig.GetIntValue(), _valueConfig.GetIntValue(), interNoticeTarif.Rate);
+            customReportForm.ShowDialog(this);
+        }
+
+        private void massReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MassReportForm massReportForm = new MassReportForm(_connect);
+            massReportForm.ShowDialog(this);
+        }
+
+        private void orgReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            NoticeTarif interNoticeTarif = NoticeTarifManager.GetNoticeTarifByType(NoticeType.Международное);
+            OrgReportForm orgReportForm = new OrgReportForm(_connect, _ndsConfig.GetIntValue(), _valueConfig.GetIntValue(), interNoticeTarif.Rate);
+            orgReportForm.ShowDialog(this);
+        }
+
+        private void valueReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ValueReportForm valueReportForm = new ValueReportForm(_connect);
+            valueReportForm.ShowDialog(this);
         }
 
         #endregion
@@ -1505,6 +1542,48 @@ namespace PartStat.Forms
         {
             HandReportForm handReportForm = new HandReportForm(_connect);
             handReportForm.ShowDialog(this);
+        }
+
+        private void reportManagementToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EditReportForm editReportForm = new EditReportForm(_connect);
+            editReportForm.ShowDialog(this);
+            LoadReportMenu();
+        }
+
+        private void LoadReportMenu()
+        {
+            List<Report> reports = ReportManager.GetEnabled();
+            reportsAllToolStripMenuItem.DropDownItems.Clear();
+
+            foreach (Report report in reports)
+            {
+                ToolStripMenuItem item = new ToolStripMenuItem(report.Name, Properties.Resources.Notebook_2, runCustomReportMenuItem_Click)
+                {
+                    Tag = report.Id, 
+                    ForeColor = Color.FromArgb(255, 53, 58, 66)
+                };
+
+                reportsAllToolStripMenuItem.DropDownItems.Add(item);
+            }
+        }
+
+        private void panelType_Paint(object sender, PaintEventArgs e)
+        {
+            Color borderColor = Color.FromArgb(255, 68, 188, 122);
+            ButtonBorderStyle border = ButtonBorderStyle.Dashed;
+
+            base.OnPaint(e);
+            ControlPaint.DrawBorder(e.Graphics, panelType.ClientRectangle,
+                borderColor, 1, border,
+                borderColor, 1, border,
+                borderColor, 1, border,
+                borderColor, 1, border);
+        }
+
+        private void GeneralForm_SizeChanged(object sender, EventArgs e)
+        {
+            panelType.Refresh();
         }
     }
 }

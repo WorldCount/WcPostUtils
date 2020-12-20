@@ -4,6 +4,18 @@ using System.Linq;
 
 namespace WcApi.Post.Types
 {
+
+    public enum SenderCategoryFlag : long
+    {
+        Население = 1,
+        БюджетнаяОрганизация = 2,
+        ХозрасчетнаяОрганизация = 3,
+        МеждународныйОператор = 4,
+        КорпоративныйКлиент = 5,
+        ПочтовыйОператор = 6,
+    }
+
+
     /// <summary>
     /// Категория отправителя
     /// </summary>

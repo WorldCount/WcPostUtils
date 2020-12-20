@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfFirstParcelTarif xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <FirstParcelTarif>
+    <Name>Бандероль 1 кл.</Name>
+    <TransType>До2000Км</TransType>
+    <Rate>155</Rate>
+    <RateNds>186</RateNds>
+    <StartMass>0</StartMass>
+    <EndMass>100</EndMass>
+    <Type>16</Type>
+    <Category>1</Category>
+  </FirstParcelTarif>
+  <FirstParcelTarif>
+    <Name>Бандероль 1 кл.</Name>
+    <TransType>До2000Км</TransType>
+    <Rate>180</Rate>
+    <RateNds>216</RateNds>
+    <StartMass>101</StartMass>
+    <EndMass>200</EndMass>
+    <Type>16</Type>
+    <Category>1</Category>
+  </FirstParcelTarif>
+  <FirstParcelTarif>
+    <Name>Бандероль 1 кл.</Name>
+    <TransType>До2000Км</TransType>
+    <Rate>235</Rate>
+    <RateNds>282</RateNds>
+    <StartMass>201</StartMass>
+    <EndMass>500</EndMass>
+    <Type>16</Type>
+    <Category>1</Category>
+  </FirstParcelTarif>
+  <FirstParcelTarif>
+    <Name>Бандероль 1 кл.</Name>
+    <TransType>До2000Км</TransType>
+    <Rate>320</Rate>
+    <RateNds>384</RateNds>
+    <StartMass>501</StartMass>
+    <EndMass>1000</EndMass>
+    <Type>16</Type>
+    <Category>1</Category>
+  </FirstParcelTarif>
+  <FirstParcelTarif>
+    <Name>Бандероль 1 кл.</Name>
+    <TransType>До2000Км</TransType>
+    <Rate>480</Rate>
+    <RateNds>576</RateNds>
+    <StartMass>1001</StartMass>
+    <EndMass>1500</EndMass>
+    <Type>16</Type>
+    <Category>1</Category>
+  </FirstParcelTarif>
+  <FirstParcelTarif>
+    <Name>Бандероль 1 кл.</Name>
+    <TransType>До2000Км</TransType>
+    <Rate>650</Rate>
+    <RateNds>780</RateNds>
+    <StartMass>1501</StartMass>
+    <EndMass>2000</EndMass>
+    <Type>16</Type>
+    <Category>1</Category>
+  </FirstParcelTarif>
+  <FirstParcelTarif>
+    <Name>Бандероль 1 кл.</Name>
+    <TransType>До2000Км</TransType>
+    <Rate>790</Rate>
+    <RateNds>948</RateNds>
+    <StartMass>2001</StartMass>
+    <EndMass>2500</EndMass>
+    <Type>16</Type>
+    <Category>1</Category>
+  </FirstParcelTarif>
+  <FirstParcelTarif>
+    <Name>Бандероль 1 кл.</Name>
+    <TransType>Свыше2000Км</TransType>
+    <Rate>360</Rate>
+    <RateNds>432</RateNds>
+    <StartMass>501</StartMass>
+    <EndMass>1000</EndMass>
+    <Type>16</Type>
+    <Category>1</Category>
+  </FirstParcelTarif>
+  <FirstParcelTarif>
+    <Name>Бандероль 1 кл.</Name>
+    <TransType>Свыше2000Км</TransType>
+    <Rate>530</Rate>
+    <RateNds>636</RateNds>
+    <StartMass>1001</StartMass>
+    <EndMass>1500</EndMass>
+    <Type>16</Type>
+    <Category>1</Category>
+  </FirstParcelTarif>
+  <FirstParcelTarif>
+    <Name>Бандероль 1 кл.</Name>
+    <TransType>Свыше2000Км</TransType>
+    <Rate>710</Rate>
+    <RateNds>852</RateNds>
+    <StartMass>1501</StartMass>
+    <EndMass>2000</EndMass>
+    <Type>16</Type>
+    <Category>1</Category>
+  </FirstParcelTarif>
+  <FirstParcelTarif>
+    <Name>Бандероль 1 кл.</Name>
+    <TransType>Свыше2000Км</TransType>
+    <Rate>850</Rate>
+    <RateNds>1020</RateNds>
+    <StartMass>2001</StartMass>
+    <EndMass>2500</EndMass>
+    <Type>16</Type>
+    <Category>1</Category>
+  </FirstParcelTarif>
+</ArrayOfFirstParcelTarif>

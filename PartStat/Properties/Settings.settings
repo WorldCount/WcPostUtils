@@ -74,5 +74,8 @@
     <Setting Name="MailLicense" Type="System.String" Scope="User">
       <Value Profile="(Default)">world.count@yandex.ru</Value>
     </Setting>
+    <Setting Name="ReportFile" Type="System.String" Scope="User">
+      <Value Profile="(Default)">reports.xml</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

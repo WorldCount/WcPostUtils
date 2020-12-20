@@ -109,14 +109,14 @@
             this.btnPrint.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(40, 28);
-            this.btnPrint.Text = "toolStripSplitButton1";
+            this.btnPrint.Text = "Печать";
             this.btnPrint.ButtonClick += new System.EventHandler(this.btnPrint_Click);
             // 
             // btnPrintPreview
             // 
             this.btnPrintPreview.Image = global::WcApi.Properties.Resources.Portable_Printer;
             this.btnPrintPreview.Name = "btnPrintPreview";
-            this.btnPrintPreview.Size = new System.Drawing.Size(187, 30);
+            this.btnPrintPreview.Size = new System.Drawing.Size(188, 30);
             this.btnPrintPreview.Text = "Печать с диалогом";
             this.btnPrintPreview.Click += new System.EventHandler(this.btnPrintPreview_Click);
             // 

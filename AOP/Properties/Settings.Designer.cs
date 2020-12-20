@@ -12,7 +12,7 @@ namespace AOP.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "14.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.7.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -25,19 +25,127 @@ namespace AOP.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("DATA")]
-        public string DataDir {
+        [global::System.Configuration.DefaultSettingValueAttribute("AOP")]
+        public string AppName {
             get {
-                return ((string)(this["DataDir"]));
+                return ((string)(this["AppName"]));
             }
             set {
-                this["DataDir"] = value;
+                this["AppName"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("data.db")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data")]
+        public string Data {
+            get {
+                return ((string)(this["Data"]));
+            }
+            set {
+                this["Data"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool NeedUpgrade {
+            get {
+                return ((bool)(this["NeedUpgrade"]));
+            }
+            set {
+                this["NeedUpgrade"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Normal")]
+        public global::System.Windows.Forms.FormWindowState GeneralFormState {
+            get {
+                return ((global::System.Windows.Forms.FormWindowState)(this["GeneralFormState"]));
+            }
+            set {
+                this["GeneralFormState"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0, 0")]
+        public global::System.Drawing.Point GeneralFormLocation {
+            get {
+                return ((global::System.Drawing.Point)(this["GeneralFormLocation"]));
+            }
+            set {
+                this["GeneralFormLocation"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0, 0")]
+        public global::System.Drawing.Size GeneralFormSize {
+            get {
+                return ((global::System.Drawing.Size)(this["GeneralFormSize"]));
+            }
+            set {
+                this["GeneralFormSize"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string License {
+            get {
+                return ((string)(this["License"]));
+            }
+            set {
+                this["License"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool FirstRun {
+            get {
+                return ((bool)(this["FirstRun"]));
+            }
+            set {
+                this["FirstRun"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("world.count@yandex.ru")]
+        public string MailLicense {
+            get {
+                return ((string)(this["MailLicense"]));
+            }
+            set {
+                this["MailLicense"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Template")]
+        public string Template {
+            get {
+                return ((string)(this["Template"]));
+            }
+            set {
+                this["Template"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("database.db")]
         public string Database {
             get {
                 return ((string)(this["Database"]));
@@ -56,6 +164,42 @@ namespace AOP.Properties {
             }
             set {
                 this["LastOpenDir"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("mail_types.xml")]
+        public string MailTypeFile {
+            get {
+                return ((string)(this["MailTypeFile"]));
+            }
+            set {
+                this["MailTypeFile"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("mail_categories.xml")]
+        public string MailCategoryFile {
+            get {
+                return ((string)(this["MailCategoryFile"]));
+            }
+            set {
+                this["MailCategoryFile"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string LastSaveDir {
+            get {
+                return ((string)(this["LastSaveDir"]));
+            }
+            set {
+                this["LastSaveDir"] = value;
             }
         }
     }

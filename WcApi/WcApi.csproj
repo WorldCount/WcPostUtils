@@ -53,6 +53,7 @@
     <Compile Include="Database\DBF.cs" />
     <Compile Include="Ext\ListExt.cs" />
     <Compile Include="Ext\TextExt.cs" />
+    <Compile Include="Finance\Nds.cs" />
     <Compile Include="Ini\IniParser.cs" />
     <Compile Include="Keyboard\Keyboard.cs" />
     <Compile Include="Net\Host.cs" />
@@ -68,9 +69,11 @@
     <Compile Include="Post\Types\MailCategory.cs" />
     <Compile Include="Post\Types\MailRank.cs" />
     <Compile Include="Post\Types\MailType.cs" />
+    <Compile Include="Post\Types\NoticeType.cs" />
     <Compile Include="Post\Types\PayType.cs" />
     <Compile Include="Post\Types\PostMark.cs" />
     <Compile Include="Post\Types\SenderCategory.cs" />
+    <Compile Include="Post\Types\TransType.cs" />
     <Compile Include="Print\Base\TablePrintDocument.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -205,6 +208,7 @@
   <ItemGroup>
     <None Include="Resources\Portable-Printer.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

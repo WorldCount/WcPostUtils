@@ -1,0 +1,17 @@
+D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\TestUpdater\bin\Release\data.xml
+D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\TestUpdater\bin\Release\TestUpdater.exe.config
+D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\TestUpdater\bin\Release\TestUpdater.exe
+D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\TestUpdater\bin\Release\TestUpdater.pdb
+D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\TestUpdater\bin\Release\AutoUpdater.NET.dll
+D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\TestUpdater\bin\Release\Newtonsoft.Json.dll
+D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\TestUpdater\bin\Release\AutoUpdater.NET.pdb
+D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\TestUpdater\bin\Release\AutoUpdater.NET.xml
+D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\TestUpdater\bin\Release\Newtonsoft.Json.xml
+D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\TestUpdater\obj\Release\TestUpdater.csprojAssemblyReference.cache
+D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\TestUpdater\obj\Release\TestUpdater.GeneralForm.resources
+D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\TestUpdater\obj\Release\TestUpdater.Properties.Resources.resources
+D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\TestUpdater\obj\Release\TestUpdater.csproj.GenerateResource.cache
+D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\TestUpdater\obj\Release\TestUpdater.csproj.CoreCompileInputs.cache
+D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\TestUpdater\obj\Release\TestUpdater.csproj.CopyComplete
+D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\TestUpdater\obj\Release\TestUpdater.exe
+D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\TestUpdater\obj\Release\TestUpdater.pdb

@@ -1,0 +1,13 @@
+D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\LicenseGenerator\bin\Release\LicenseGenerator.exe.config
+D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\LicenseGenerator\bin\Release\LicenseGenerator.exe
+D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\LicenseGenerator\bin\Release\LicenseGenerator.pdb
+D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\LicenseGenerator\bin\Release\WcApi.dll
+D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\LicenseGenerator\bin\Release\WcApi.dll.config
+D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\LicenseGenerator\obj\Release\LicenseGenerator.csprojAssemblyReference.cache
+D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\LicenseGenerator\obj\Release\LicenseGenerator.Forms.GeneralForm.resources
+D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\LicenseGenerator\obj\Release\LicenseGenerator.Properties.Resources.resources
+D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\LicenseGenerator\obj\Release\LicenseGenerator.csproj.GenerateResource.cache
+D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\LicenseGenerator\obj\Release\LicenseGenerator.csproj.CoreCompileInputs.cache
+D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\LicenseGenerator\obj\Release\LicenseGenerator.csproj.CopyComplete
+D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\LicenseGenerator\obj\Release\LicenseGenerator.exe
+D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\LicenseGenerator\obj\Release\LicenseGenerator.pdb

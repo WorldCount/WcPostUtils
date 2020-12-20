@@ -40,8 +40,8 @@
       <HintPath>..\packages\FirebirdSql.Data.FirebirdClient.7.5.0\lib\net452\FirebirdSql.Data.FirebirdClient.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
-    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
       <HintPath>..\packages\NLog.4.7.2\lib\net45\NLog.dll</HintPath>
@@ -65,27 +65,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Core\Libs\DataBase\Queries\HandReportQuery.cs" />
-    <Compile Include="Core\Libs\DataBase\Queries\RequestObject\HandReportRequest.cs" />
+    <Compile Include="Core\Libs\DataBase\Queries\Report\CustomReportQuery.cs" />
+    <Compile Include="Core\Libs\DataBase\Queries\Report\ValueReportQuery.cs" />
+    <Compile Include="Core\Libs\DataBase\Queries\Report\HandReportQuery.cs" />
+    <Compile Include="Core\Libs\DataBase\Queries\Report\MassReportQuery.cs" />
+    <Compile Include="Core\Libs\DataBase\Queries\RequestObject\CustomReportRequest.cs" />
+    <Compile Include="Core\Libs\DataBase\Queries\RequestObject\ReportRequest.cs" />
+    <Compile Include="Core\Libs\DataBase\Queries\RequestObject\MassReportRequest.cs" />
     <Compile Include="Core\Libs\DataManagers\ConfigManager.cs" />
     <Compile Include="Core\Libs\DataManagers\CreateListManager.cs" />
     <Compile Include="Core\Libs\DataManagers\DataColorManager.cs" />
     <Compile Include="Core\Libs\DataManagers\ErrorListManager.cs" />
     <Compile Include="Core\Libs\DataManagers\InterTypeManager.cs" />
-    <Compile Include="Core\Libs\Print\HandReportPrintDocument.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="Core\Libs\DataManagers\ReportManager.cs" />
     <Compile Include="Core\Libs\Print\MassReportPrintDocument.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Core\Libs\Print\PrintPens.cs" />
+    <Compile Include="Core\Libs\Print\ReportPrintDocument.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Core\Libs\ReportQueue.cs" />
     <Compile Include="Core\Libs\ServerTarif\Object\TarifObject.cs" />
     <Compile Include="Core\Libs\ServerTarif\Object\NoticeObject.cs" />
     <Compile Include="Core\Libs\Stats\CityStatCollector.cs" />
+    <Compile Include="Core\Libs\Stats\CustomReportStatCollector.cs" />
+    <Compile Include="Core\Libs\Stats\CustomReportStatData.cs" />
     <Compile Include="Core\Libs\Stats\RpoStatCollector.cs" />
-    <Compile Include="Core\Libs\Stats\RpoStatData.cs" />
-    <Compile Include="Core\Libs\Stats\StatData.cs" />
+    <Compile Include="Core\Libs\Stats\StatObject\RpoStatData.cs" />
+    <Compile Include="Core\Libs\Stats\StatObject\ServiceData.cs" />
+    <Compile Include="Core\Libs\Stats\StatObject\StatData.cs" />
     <Compile Include="Core\Libs\TarifManager\FirstMailTarifManager.cs" />
     <Compile Include="Core\Libs\TarifManager\FirstParcelTarifManager.cs" />
     <Compile Include="Core\Libs\TarifManager\InterMailTarifManager.cs" />
@@ -105,8 +114,6 @@
     <Compile Include="Core\Libs\Widget\ScrollBarDataGridView.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Core\License\AuthKey.cs" />
-    <Compile Include="Core\License\LicenseKey.cs" />
     <Compile Include="Core\Models\CreateList.cs" />
     <Compile Include="Core\Libs\DataBase\Queries\BarcodeQuery.cs" />
     <Compile Include="Core\Libs\DataBase\Queries\Base\Request.cs" />
@@ -114,6 +121,8 @@
     <Compile Include="Core\Libs\DataBase\Queries\RequestObject\RpoRequest.cs" />
     <Compile Include="Core\Libs\DataBase\Queries\UpdateFirmListManualQuery.cs" />
     <Compile Include="Core\Models\DataReports\HandReportList.cs" />
+    <Compile Include="Core\Models\DataReports\MassReport.cs" />
+    <Compile Include="Core\Models\DataReports\ValueReport.cs" />
     <Compile Include="Core\Models\DB\Rpo.cs" />
     <Compile Include="Core\Libs\DataBase\Queries\RpoFirmsQuery.cs" />
     <Compile Include="Core\Models\ErrorList.cs" />
@@ -123,6 +132,7 @@
     <Compile Include="Core\Models\DataReports\DateList.cs" />
     <Compile Include="Core\Models\DataReports\SingleReportData.cs" />
     <Compile Include="Core\Models\DataReports\HandReport.cs" />
+    <Compile Include="Core\Models\Report\Report.cs" />
     <Compile Include="Core\Models\Tarifs\Base\ICustomTarif.cs" />
     <Compile Include="Core\Models\Tarifs\Base\IFirstClassTarif.cs" />
     <Compile Include="Core\Models\Tarifs\Base\IInterTarif.cs" />
@@ -185,6 +195,12 @@
     <Compile Include="Forms\GeneralForm.Designer.cs">
       <DependentUpon>GeneralForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\MailCategoryForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -197,11 +213,41 @@
     <Compile Include="Forms\MailTypeForm.Designer.cs">
       <DependentUpon>MailTypeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\LoginForm.cs">
+    <Compile Include="Forms\ReportForms\CreateReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\LoginForm.Designer.cs">
-      <DependentUpon>LoginForm.cs</DependentUpon>
+    <Compile Include="Forms\ReportForms\CreateReportForm.Designer.cs">
+      <DependentUpon>CreateReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ReportForms\ValueReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ReportForms\ValueReportForm.Designer.cs">
+      <DependentUpon>ValueReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ReportForms\OrgReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ReportForms\OrgReportForm.Designer.cs">
+      <DependentUpon>OrgReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ReportForms\CustomReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ReportForms\CustomReportForm.Designer.cs">
+      <DependentUpon>CustomReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ReportForms\EditReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ReportForms\EditReportForm.Designer.cs">
+      <DependentUpon>EditReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ReportForms\MassReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ReportForms\MassReportForm.Designer.cs">
+      <DependentUpon>MassReportForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\ReportForms\HandReportForm.cs">
       <SubType>Form</SubType>
@@ -280,6 +326,20 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="Resources\Bank.png" />
+    <None Include="Resources\Coin-1.png" />
+    <None Include="Resources\Pen.png" />
+    <None Include="Resources\Crane.png" />
+    <None Include="Resources\Cleanning-Glove.png" />
+    <None Include="Resources\Scale.png" />
+    <None Include="Properties\DataSources\PartStat.Core.Models.Report.Report.datasource" />
+    <None Include="Resources\delete-16.png" />
+    <None Include="Resources\edit-2-16.png" />
+    <None Include="Resources\plus-16.png" />
+    <None Include="Resources\Agenda.png" />
+    <None Include="Resources\Pencil.png" />
+    <None Include="Resources\Notebook-Plus.png" />
+    <None Include="Properties\DataSources\PartStat.Core.Models.DB.Firm.datasource" />
     <None Include="Resources\Tic-Tac-Toe.png" />
     <None Include="Resources\Locked.png" />
     <None Include="Resources\Portable-Printer.png" />
@@ -333,8 +393,23 @@
     <EmbeddedResource Include="Forms\MailTypeForm.resx">
       <DependentUpon>MailTypeForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\LoginForm.resx">
-      <DependentUpon>LoginForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\ReportForms\CreateReportForm.resx">
+      <DependentUpon>CreateReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ReportForms\ValueReportForm.resx">
+      <DependentUpon>ValueReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ReportForms\OrgReportForm.resx">
+      <DependentUpon>OrgReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ReportForms\CustomReportForm.resx">
+      <DependentUpon>CustomReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ReportForms\EditReportForm.resx">
+      <DependentUpon>EditReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ReportForms\MassReportForm.resx">
+      <DependentUpon>MassReportForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ReportForms\HandReportForm.resx">
       <DependentUpon>HandReportForm.cs</DependentUpon>
@@ -465,8 +540,6 @@
     <None Include="Resources\Settings.png" />
     <None Include="Resources\Font-Color.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Core\Models\Reports\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

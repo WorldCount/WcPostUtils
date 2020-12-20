@@ -16,6 +16,9 @@ namespace PartStat.Core.Libs.DataManagers
         public static readonly string DataColorPath = Path.Combine(Data, Properties.Settings.Default.DataColorFile);
         public static readonly string ConfigPath = Path.Combine(Data, Properties.Settings.Default.ConfigFile);
 
+        // Отчеты
+        public static readonly string ReportPath = Path.Combine(Data, Properties.Settings.Default.ReportFile);
+
         // Тарифы
         public static readonly string NoticeTarifPath = Path.Combine(Tarif, Properties.Settings.Default.NoticeTarifFile);
         public static readonly string MailTarifPath = Path.Combine(Tarif, Properties.Settings.Default.MailTarifFile);

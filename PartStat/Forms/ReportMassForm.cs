@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using PartStat.Core.Libs.DataManagers;
 using PartStat.Core.Libs.Print;
 using PartStat.Core.Libs.Stats;
+using PartStat.Core.Libs.Stats.StatObject;
 using PartStat.Core.Libs.TarifManager;
 using PartStat.Core.Models;
 using PartStat.Core.Models.DataReports;
@@ -37,6 +38,7 @@ namespace PartStat.Forms
             _singleReport = singleReport;
 
             string title = $"{Properties.Settings.Default.AppName}: Отчет по {_singleReport.Name}";
+
             if (_singleReport.NumsList.Count == 1)
             {
                 NumList = _singleReport.NumsList[0].NumsList[0];

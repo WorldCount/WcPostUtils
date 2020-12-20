@@ -28,11 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HandReportForm));
             this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.DateTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DayDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AllCountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NormalCountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HandCountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnPrint = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
@@ -42,15 +48,15 @@
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DateTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AllCountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NormalCountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HandCountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.numericUpDownCopy = new System.Windows.Forms.NumericUpDown();
             this.labelCopy = new System.Windows.Forms.Label();
+            this.labelOrg = new System.Windows.Forms.Label();
+            this.comboBoxOrgs = new System.Windows.Forms.ComboBox();
+            this.firmBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCopy)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.firmBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView
@@ -76,6 +82,7 @@
             this.dataGridView.ColumnHeadersHeight = 40;
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.DateTypeDataGridViewTextBoxColumn,
+            this.DayDataGridViewTextBoxColumn,
             this.AllCountDataGridViewTextBoxColumn,
             this.NormalCountDataGridViewTextBoxColumn,
             this.HandCountDataGridViewTextBoxColumn});
@@ -110,6 +117,44 @@
             this.dataGridView.Size = new System.Drawing.Size(799, 269);
             this.dataGridView.TabIndex = 0;
             this.dataGridView.TabStop = false;
+            // 
+            // DateTypeDataGridViewTextBoxColumn
+            // 
+            this.DateTypeDataGridViewTextBoxColumn.HeaderText = "Дата";
+            this.DateTypeDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.DateTypeDataGridViewTextBoxColumn.Name = "DateTypeDataGridViewTextBoxColumn";
+            this.DateTypeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.DateTypeDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // DayDataGridViewTextBoxColumn
+            // 
+            this.DayDataGridViewTextBoxColumn.HeaderText = "День";
+            this.DayDataGridViewTextBoxColumn.Name = "DayDataGridViewTextBoxColumn";
+            this.DayDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // AllCountDataGridViewTextBoxColumn
+            // 
+            this.AllCountDataGridViewTextBoxColumn.HeaderText = "Всего";
+            this.AllCountDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.AllCountDataGridViewTextBoxColumn.Name = "AllCountDataGridViewTextBoxColumn";
+            this.AllCountDataGridViewTextBoxColumn.ReadOnly = true;
+            this.AllCountDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // NormalCountDataGridViewTextBoxColumn
+            // 
+            this.NormalCountDataGridViewTextBoxColumn.HeaderText = "Списками";
+            this.NormalCountDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.NormalCountDataGridViewTextBoxColumn.Name = "NormalCountDataGridViewTextBoxColumn";
+            this.NormalCountDataGridViewTextBoxColumn.ReadOnly = true;
+            this.NormalCountDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // HandCountDataGridViewTextBoxColumn
+            // 
+            this.HandCountDataGridViewTextBoxColumn.HeaderText = "В ручку";
+            this.HandCountDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.HandCountDataGridViewTextBoxColumn.Name = "HandCountDataGridViewTextBoxColumn";
+            this.HandCountDataGridViewTextBoxColumn.ReadOnly = true;
+            this.HandCountDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // btnPrint
             // 
@@ -159,18 +204,18 @@
             this.dateTimePicker.CustomFormat = "MMMM yyyy";
             this.dateTimePicker.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.dateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker.Location = new System.Drawing.Point(12, 33);
+            this.dateTimePicker.Location = new System.Drawing.Point(322, 33);
             this.dateTimePicker.Name = "dateTimePicker";
             this.dateTimePicker.ShowUpDown = true;
             this.dateTimePicker.Size = new System.Drawing.Size(200, 29);
-            this.dateTimePicker.TabIndex = 1;
+            this.dateTimePicker.TabIndex = 2;
             // 
             // lblInfo
             // 
             this.lblInfo.AutoSize = true;
             this.lblInfo.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblInfo.ForeColor = System.Drawing.Color.Firebrick;
-            this.lblInfo.Location = new System.Drawing.Point(12, 9);
+            this.lblInfo.ForeColor = System.Drawing.Color.DimGray;
+            this.lblInfo.Location = new System.Drawing.Point(318, 9);
             this.lblInfo.Name = "lblInfo";
             this.lblInfo.Size = new System.Drawing.Size(129, 21);
             this.lblInfo.TabIndex = 0;
@@ -185,10 +230,10 @@
             this.btnLoad.ForeColor = System.Drawing.Color.White;
             this.btnLoad.Image = global::PartStat.Properties.Resources.white_synchronize_24;
             this.btnLoad.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLoad.Location = new System.Drawing.Point(218, 26);
+            this.btnLoad.Location = new System.Drawing.Point(528, 27);
             this.btnLoad.Name = "btnLoad";
             this.btnLoad.Size = new System.Drawing.Size(127, 40);
-            this.btnLoad.TabIndex = 2;
+            this.btnLoad.TabIndex = 3;
             this.btnLoad.Text = "Загрузить";
             this.btnLoad.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnLoad.UseVisualStyleBackColor = false;
@@ -230,38 +275,6 @@
             this.dataGridViewTextBoxColumn4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.dataGridViewTextBoxColumn4.Width = 159;
             // 
-            // DateTypeDataGridViewTextBoxColumn
-            // 
-            this.DateTypeDataGridViewTextBoxColumn.HeaderText = "Дата";
-            this.DateTypeDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.DateTypeDataGridViewTextBoxColumn.Name = "DateTypeDataGridViewTextBoxColumn";
-            this.DateTypeDataGridViewTextBoxColumn.ReadOnly = true;
-            this.DateTypeDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // AllCountDataGridViewTextBoxColumn
-            // 
-            this.AllCountDataGridViewTextBoxColumn.HeaderText = "Всего";
-            this.AllCountDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.AllCountDataGridViewTextBoxColumn.Name = "AllCountDataGridViewTextBoxColumn";
-            this.AllCountDataGridViewTextBoxColumn.ReadOnly = true;
-            this.AllCountDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // NormalCountDataGridViewTextBoxColumn
-            // 
-            this.NormalCountDataGridViewTextBoxColumn.HeaderText = "Списками";
-            this.NormalCountDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.NormalCountDataGridViewTextBoxColumn.Name = "NormalCountDataGridViewTextBoxColumn";
-            this.NormalCountDataGridViewTextBoxColumn.ReadOnly = true;
-            this.NormalCountDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // HandCountDataGridViewTextBoxColumn
-            // 
-            this.HandCountDataGridViewTextBoxColumn.HeaderText = "В ручку";
-            this.HandCountDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.HandCountDataGridViewTextBoxColumn.Name = "HandCountDataGridViewTextBoxColumn";
-            this.HandCountDataGridViewTextBoxColumn.ReadOnly = true;
-            this.HandCountDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
             // dataGridViewTextBoxColumn5
             // 
             this.dataGridViewTextBoxColumn5.HeaderText = "Плата";
@@ -301,13 +314,49 @@
             this.labelCopy.Location = new System.Drawing.Point(12, 370);
             this.labelCopy.Name = "labelCopy";
             this.labelCopy.Size = new System.Drawing.Size(54, 20);
-            this.labelCopy.TabIndex = 3;
+            this.labelCopy.TabIndex = 0;
             this.labelCopy.Text = "Копии";
+            // 
+            // labelOrg
+            // 
+            this.labelOrg.AutoSize = true;
+            this.labelOrg.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelOrg.ForeColor = System.Drawing.Color.DimGray;
+            this.labelOrg.Location = new System.Drawing.Point(12, 9);
+            this.labelOrg.Name = "labelOrg";
+            this.labelOrg.Size = new System.Drawing.Size(138, 21);
+            this.labelOrg.TabIndex = 0;
+            this.labelOrg.Text = "По организации:";
+            // 
+            // comboBoxOrgs
+            // 
+            this.comboBoxOrgs.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboBoxOrgs.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboBoxOrgs.BackColor = System.Drawing.Color.White;
+            this.comboBoxOrgs.DataSource = this.firmBindingSource;
+            this.comboBoxOrgs.DisplayMember = "Name";
+            this.comboBoxOrgs.DropDownHeight = 200;
+            this.comboBoxOrgs.DropDownWidth = 300;
+            this.comboBoxOrgs.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.comboBoxOrgs.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
+            this.comboBoxOrgs.FormattingEnabled = true;
+            this.comboBoxOrgs.IntegralHeight = false;
+            this.comboBoxOrgs.Location = new System.Drawing.Point(16, 33);
+            this.comboBoxOrgs.Name = "comboBoxOrgs";
+            this.comboBoxOrgs.Size = new System.Drawing.Size(300, 29);
+            this.comboBoxOrgs.TabIndex = 1;
+            this.comboBoxOrgs.ValueMember = "Inn";
+            // 
+            // firmBindingSource
+            // 
+            this.firmBindingSource.DataSource = typeof(PartStat.Core.Models.DB.Firm);
             // 
             // HandReportForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(800, 411);
+            this.Controls.Add(this.labelOrg);
+            this.Controls.Add(this.comboBoxOrgs);
             this.Controls.Add(this.labelCopy);
             this.Controls.Add(this.numericUpDownCopy);
             this.Controls.Add(this.btnLoad);
@@ -322,9 +371,11 @@
             this.Name = "HandReportForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "HandReportForm";
+            this.Load += new System.EventHandler(this.HandReportForm_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.HandReportForm_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCopy)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.firmBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -338,10 +389,6 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker;
         private System.Windows.Forms.Label lblInfo;
         private System.Windows.Forms.Button btnLoad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DateTypeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn AllCountDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NormalCountDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn HandCountDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
@@ -349,5 +396,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.NumericUpDown numericUpDownCopy;
         private System.Windows.Forms.Label labelCopy;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DateTypeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DayDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AllCountDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NormalCountDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HandCountDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Label labelOrg;
+        private System.Windows.Forms.ComboBox comboBoxOrgs;
+        private System.Windows.Forms.BindingSource firmBindingSource;
     }
 }

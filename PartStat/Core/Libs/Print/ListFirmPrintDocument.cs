@@ -8,6 +8,7 @@ using System.Linq;
 using System.Windows.Forms;
 using NLog;
 using PartStat.Core.Libs.Stats;
+using PartStat.Core.Libs.Stats.StatObject;
 using PartStat.Core.Models.DB;
 using WcApi.Print.Base;
 

@@ -1,14 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Printing;
+using System.Globalization;
 using System.Windows.Forms;
 using PartStat.Core.Libs.DataBase;
 using PartStat.Core.Libs.DataBase.Queries;
+using PartStat.Core.Libs.DataBase.Queries.Report;
 using PartStat.Core.Libs.DataBase.Queries.RequestObject;
 using PartStat.Core.Libs.DataManagers;
 using PartStat.Core.Libs.Print;
 using PartStat.Core.Models;
 using PartStat.Core.Models.DataReports;
+using PartStat.Core.Models.DB;
 
 namespace PartStat.Forms.ReportForms
 {
@@ -16,7 +20,8 @@ namespace PartStat.Forms.ReportForms
     {
         private readonly Config _defaultPrinterConfig;
         private readonly Connect _connect;
-        private HandReportList _handReportList;
+        private HandReportList _handReports;
+        private List<Firm> _firms;
 
 
         public HandReportForm(Connect connect)
@@ -32,15 +37,24 @@ namespace PartStat.Forms.ReportForms
             _defaultPrinterConfig = ConfigManager.GetConfigByName(ConfigName.DefaultPrinterName);
         }
 
-        public HandReportPrintDocument GetPrintDocument()
+        public ReportPrintDocument GetPrintDocument()
         {
-            int[] columnWidth = new[] { 200, 160, 160, 160 };
+            int[] columnWidth = new[] { 200, 60, 160, 160, 160 };
             PrintController printController = new StandardPrintController();
-            HandReportPrintDocument document = new HandReportPrintDocument(dataGridView, columnWidth, true)
+            ReportPrintDocument document = new ReportPrintDocument(dataGridView, columnWidth, true)
             {
                 PrintController = printController,
-                PrintNumPageInfo = true
+                PrintNumPageInfo = true,
+                Title = "Отчет по ручным спискам",
+                CellHeight = 40
             };
+
+            Firm firm = (Firm)comboBoxOrgs.SelectedItem;
+            if (firm != null)
+                document.Title += $": {firm.Name}";
+
+            DateTime date = dateTimePicker.Value;
+            document.Title += $" ({CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(date.Month)} {date.Year})".ToUpper();
 
             return document;
         }
@@ -67,9 +81,9 @@ namespace PartStat.Forms.ReportForms
         private void btnPrint_Click(object sender, EventArgs e)
         {
             
-            if (_handReportList.Count > 0)
+            if (_handReports != null && _handReports.Count > 0)
             {
-                HandReportPrintDocument document = GetPrintDocument();
+                ReportPrintDocument document = GetPrintDocument();
                 document.PrinterSettings.PrinterName = _defaultPrinterConfig.Value;
                 document.PrinterSettings.Copies = (short) numericUpDownCopy.Value;
                 document.Print();
@@ -97,27 +111,29 @@ namespace PartStat.Forms.ReportForms
             DateTime first = new DateTime(date.Year, date.Month, 1);
             DateTime last = new DateTime(date.Year, date.Month, days);
 
-            HandReportRequest request = new HandReportRequest { InDate = first, OutDate = last};
+            Firm firm = (Firm)comboBoxOrgs.SelectedItem ?? new Firm { Inn = "", Name = "ВСЕ" };
+
+            ReportRequest request = new ReportRequest { InDate = first, OutDate = last, Firm = firm};
             HandReportQuery query = new HandReportQuery(_connect, request);
-            _handReportList = query.Run();
+            _handReports = query.Run();
 
             int allCount = 0;
             int handCount = 0;
             int normalCount = 0;
 
-            foreach (HandReport handReport in _handReportList)
+            foreach (HandReport handReport in _handReports)
             {
-                dataGridView.Rows.Add(handReport.Date.ToShortDateString(), handReport.AllCount, handReport.NormalCount, handReport.HandCount);
+                dataGridView.Rows.Add(handReport.Date.ToShortDateString(), $"{handReport.Date:ddd}", handReport.AllCount, handReport.NormalCount, handReport.HandCount);
 
                 allCount += handReport.AllCount;
                 handCount += handReport.HandCount;
                 normalCount += handReport.NormalCount;
             }
 
-            if (_handReportList.Count > 0)
+            if (_handReports != null && _handReports.Count > 0)
             {
                 AddClearRow(true);
-                dataGridView.Rows.Add("Всего", allCount, normalCount, handCount);
+                dataGridView.Rows.Add("Всего", "", allCount, normalCount, handCount);
             }
         }
 
@@ -125,14 +141,44 @@ namespace PartStat.Forms.ReportForms
         {
             if (clear)
             {
-                int index = dataGridView.Rows.Add("Clear", "", "", "");
+                int index = dataGridView.Rows.Add("Clear", "", "", "", "");
                 dataGridView.Rows[index].DefaultCellStyle.ForeColor = Color.WhiteSmoke;
                 dataGridView.Rows[index].DefaultCellStyle.SelectionForeColor = Color.WhiteSmoke;
             }
             else
             {
-                dataGridView.Rows.Add("", "", "", "");
+                dataGridView.Rows.Add("", "", "", "", "");
             }
+        }
+
+        private void LoadFirms()
+        {
+            Firm firm = new Firm { Inn = "", Name = "ВСЕ" };
+
+            FirmQuery firmQuery = new FirmQuery(_connect);
+            _firms = firmQuery.Run();
+            firmQuery.Dispose();
+
+            if (_firms != null)
+                _firms.Insert(0, firm);
+            else
+            {
+                _firms = new List<Firm>();
+                _firms.Insert(0, firm);
+            }
+
+            UpdateFirms();
+        }
+
+        private void UpdateFirms()
+        {
+            firmBindingSource.DataSource = null;
+            firmBindingSource.DataSource = _firms;
+        }
+
+        private void HandReportForm_Load(object sender, EventArgs e)
+        {
+            LoadFirms();
         }
     }
 }

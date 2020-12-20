@@ -1,0 +1,98 @@
+2020-12-13 19:50:56.3871 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-13 19:50:56.7580 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-13 19:51:26.0701 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-13 19:52:19.7166 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-13 19:52:20.3434 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-13 19:56:42.0846 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-13 19:56:42.6204 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-13 20:00:24.3861 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-13 20:00:24.6630 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-13 20:01:53.8534 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-13 20:06:05.8915 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-13 20:06:06.5460 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-13 20:09:02.8669 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-13 20:09:03.4687 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-13 20:14:28.2041 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-13 20:16:41.7446 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-13 20:16:42.0328 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-13 20:17:23.1452 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-13 20:17:31.9597 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-13 20:17:32.3995 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-13 20:19:21.8441 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-13 20:19:22.8878 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-13 20:21:51.7120 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-13 20:21:52.0629 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-13 20:26:36.8688 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-13 20:26:37.1687 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-13 20:55:05.5058 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-13 20:55:06.7474 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-13 20:55:32.6239 [LK.Forms.SyncForm.Work] ERROR System.NotSupportedException: Cannot update List`1: it has no PK
+   в SQLite.SQLiteConnection.Update(Object obj, Type objType) в /Users/vagrant/git/src/SQLite.cs:строка 1474
+   в SQLiteNetExtensions.Extensions.WriteOperations.UpdateWithChildren(SQLiteConnection conn, Object element) в C:\projects\sqlite-net-extensions\SQLiteNetExtensions\Extensions\WriteOperations.cs:строка 40
+   в LK.Core.Store.Database.UpdateFirmLists(List`1 firmLists) в D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\LK\Core\Store\Database.cs:строка 599
+   в LK.Core.Store.Manager.FirmListManager.Recount(List`1 ids) в D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\LK\Core\Store\Manager\FirmListManager.cs:строка 64
+   в LK.Forms.SyncForm.ParseRpo(String link, Boolean xlsx) в D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\LK\Forms\SyncForm.cs:строка 325
+   в LK.Forms.SyncForm.<Work>d__29.MoveNext() в D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\LK\Forms\SyncForm.cs:строка 196
+2020-12-13 20:56:53.0317 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-13 20:57:05.4481 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-13 20:57:05.8580 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-13 20:57:29.7322 [LK.Forms.SyncForm.Work] ERROR System.NotSupportedException: Cannot update List`1: it has no PK
+   в SQLite.SQLiteConnection.Update(Object obj, Type objType) в /Users/vagrant/git/src/SQLite.cs:строка 1474
+   в SQLiteNetExtensions.Extensions.WriteOperations.UpdateWithChildren(SQLiteConnection conn, Object element) в C:\projects\sqlite-net-extensions\SQLiteNetExtensions\Extensions\WriteOperations.cs:строка 40
+   в LK.Core.Store.Database.UpdateFirmLists(List`1 firmLists) в D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\LK\Core\Store\Database.cs:строка 599
+   в LK.Core.Store.Manager.FirmListManager.Recount(List`1 ids) в D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\LK\Core\Store\Manager\FirmListManager.cs:строка 64
+   в LK.Forms.SyncForm.ParseRpo(String link, Boolean xlsx) в D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\LK\Forms\SyncForm.cs:строка 325
+   в LK.Forms.SyncForm.<Work>d__29.MoveNext() в D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\LK\Forms\SyncForm.cs:строка 196
+2020-12-13 20:58:33.0105 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-13 20:59:08.8268 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-13 20:59:09.3616 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-13 20:59:31.1874 [LK.Forms.SyncForm.Work] ERROR System.NotSupportedException: Cannot update List`1: it has no PK
+   в SQLite.SQLiteConnection.Update(Object obj, Type objType) в /Users/vagrant/git/src/SQLite.cs:строка 1474
+   в SQLiteNetExtensions.Extensions.WriteOperations.UpdateWithChildren(SQLiteConnection conn, Object element) в C:\projects\sqlite-net-extensions\SQLiteNetExtensions\Extensions\WriteOperations.cs:строка 40
+   в LK.Core.Store.Database.UpdateFirmLists(List`1 firmLists) в D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\LK\Core\Store\Database.cs:строка 601
+   в LK.Core.Store.Manager.FirmListManager.Recount(List`1 ids) в D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\LK\Core\Store\Manager\FirmListManager.cs:строка 64
+   в LK.Forms.SyncForm.ParseRpo(String link, Boolean xlsx) в D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\LK\Forms\SyncForm.cs:строка 325
+   в LK.Forms.SyncForm.<Work>d__29.MoveNext() в D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\LK\Forms\SyncForm.cs:строка 196
+2020-12-13 20:59:59.1283 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-13 21:03:04.2932 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-13 21:03:04.6541 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-13 21:04:34.1829 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-13 21:05:38.8267 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-13 21:05:39.5225 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-13 21:07:41.1547 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-13 21:09:09.2273 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-13 21:09:09.6972 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-13 21:10:09.9364 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-13 21:11:26.5625 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-13 21:11:26.9524 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-13 21:14:25.7358 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-13 21:18:28.4137 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-13 21:18:29.3274 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-13 21:20:57.4792 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-13 21:25:57.5069 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-13 21:25:57.9497 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-13 21:28:51.5070 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-13 21:30:55.6602 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-13 21:30:56.1241 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-13 21:34:08.3309 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-13 21:50:21.4188 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-13 21:50:21.8177 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-13 21:53:27.8851 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-13 21:53:28.3839 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-13 21:54:24.5008 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-13 21:54:24.7857 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-13 21:54:47.3308 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-13 21:54:47.6497 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-13 21:59:11.3907 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-13 22:01:28.6971 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-13 22:01:28.9721 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-13 22:03:01.5092 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-13 22:18:09.2488 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-13 22:18:09.5597 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-13 22:19:01.6614 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-13 22:46:41.1005 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-13 22:46:41.4864 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-13 22:47:04.5654 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-13 22:49:22.1960 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-13 22:49:22.5019 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-13 22:49:43.4216 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.

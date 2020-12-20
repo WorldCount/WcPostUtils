@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfInterMailTarif xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <InterMailTarif>
+    <Name>Письмо Мжд</Name>
+    <TransType>Назем</TransType>
+    <Rate>220</Rate>
+    <RateNds>264</RateNds>
+    <StartMass>0</StartMass>
+    <EndMass>20</EndMass>
+    <Type>2</Type>
+    <Category>1</Category>
+    <CodeCountry>0</CodeCountry>
+  </InterMailTarif>
+  <InterMailTarif>
+    <Name>Письмо Мжд</Name>
+    <TransType>Назем</TransType>
+    <Rate>265</Rate>
+    <RateNds>318</RateNds>
+    <StartMass>21</StartMass>
+    <EndMass>100</EndMass>
+    <Type>2</Type>
+    <Category>1</Category>
+    <CodeCountry>0</CodeCountry>
+  </InterMailTarif>
+  <InterMailTarif>
+    <Name>Письмо Мжд</Name>
+    <TransType>Назем</TransType>
+    <Rate>380</Rate>
+    <RateNds>456</RateNds>
+    <StartMass>101</StartMass>
+    <EndMass>250</EndMass>
+    <Type>2</Type>
+    <Category>1</Category>
+    <CodeCountry>0</CodeCountry>
+  </InterMailTarif>
+  <InterMailTarif>
+    <Name>Письмо Мжд</Name>
+    <TransType>Назем</TransType>
+    <Rate>570</Rate>
+    <RateNds>684</RateNds>
+    <StartMass>251</StartMass>
+    <EndMass>500</EndMass>
+    <Type>2</Type>
+    <Category>1</Category>
+    <CodeCountry>0</CodeCountry>
+  </InterMailTarif>
+  <InterMailTarif>
+    <Name>Письмо Мжд</Name>
+    <TransType>Назем</TransType>
+    <Rate>915</Rate>
+    <RateNds>1098</RateNds>
+    <StartMass>501</StartMass>
+    <EndMass>1000</EndMass>
+    <Type>2</Type>
+    <Category>1</Category>
+    <CodeCountry>0</CodeCountry>
+  </InterMailTarif>
+  <InterMailTarif>
+    <Name>Письмо Мжд</Name>
+    <TransType>Назем</TransType>
+    <Rate>1375</Rate>
+    <RateNds>1650</RateNds>
+    <StartMass>1001</StartMass>
+    <EndMass>2000</EndMass>
+    <Type>2</Type>
+    <Category>1</Category>
+    <CodeCountry>0</CodeCountry>
+  </InterMailTarif>
+  <InterMailTarif>
+    <Name>Письмо Мжд</Name>
+    <TransType>Авиа</TransType>
+    <Rate>225</Rate>
+    <RateNds>270</RateNds>
+    <StartMass>0</StartMass>
+    <EndMass>20</EndMass>
+    <Type>2</Type>
+    <Category>1</Category>
+    <CodeCountry>0</CodeCountry>
+  </InterMailTarif>
+  <InterMailTarif>
+    <Name>Письмо Мжд</Name>
+    <TransType>Авиа</TransType>
+    <Rate>290</Rate>
+    <RateNds>348</RateNds>
+    <StartMass>21</StartMass>
+    <EndMass>100</EndMass>
+    <Type>2</Type>
+    <Category>1</Category>
+    <CodeCountry>0</CodeCountry>
+  </InterMailTarif>
+  <InterMailTarif>
+    <Name>Письмо Мжд</Name>
+    <TransType>Авиа</TransType>
+    <Rate>420</Rate>
+    <RateNds>504</RateNds>
+    <StartMass>101</StartMass>
+    <EndMass>250</EndMass>
+    <Type>2</Type>
+    <Category>1</Category>
+    <CodeCountry>0</CodeCountry>
+  </InterMailTarif>
+  <InterMailTarif>
+    <Name>Письмо Мжд</Name>
+    <TransType>Авиа</TransType>
+    <Rate>630</Rate>
+    <RateNds>756</RateNds>
+    <StartMass>251</StartMass>
+    <EndMass>500</EndMass>
+    <Type>2</Type>
+    <Category>1</Category>
+    <CodeCountry>0</CodeCountry>
+  </InterMailTarif>
+  <InterMailTarif>
+    <Name>Письмо Мжд</Name>
+    <TransType>Авиа</TransType>
+    <Rate>1085</Rate>
+    <RateNds>1302</RateNds>
+    <StartMass>501</StartMass>
+    <EndMass>1000</EndMass>
+    <Type>2</Type>
+    <Category>1</Category>
+    <CodeCountry>0</CodeCountry>
+  </InterMailTarif>
+  <InterMailTarif>
+    <Name>Письмо Мжд</Name>
+    <TransType>Авиа</TransType>
+    <Rate>1715</Rate>
+    <RateNds>2058</RateNds>
+    <StartMass>1001</StartMass>
+    <EndMass>2000</EndMass>
+    <Type>2</Type>
+    <Category>1</Category>
+    <CodeCountry>0</CodeCountry>
+  </InterMailTarif>
+</ArrayOfInterMailTarif>

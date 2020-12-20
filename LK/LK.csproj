@@ -1,0 +1,506 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{58DF2814-F4ED-4DDA-B01D-A198FC4DAA3E}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>LK</RootNamespace>
+    <AssemblyName>LK</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>none</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>LK.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoUpdater.NET, Version=1.6.4.0, Culture=neutral, PublicKeyToken=501435c91b35f4bc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autoupdater.NET.Official.1.6.4\lib\net45\AutoUpdater.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.6.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
+      <HintPath>..\packages\Portable.BouncyCastle.1.8.6\lib\net40\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=1.2.0.246, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpZipLib.1.2.0\lib\net45\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.7.5\lib\net45\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI, Version=2.5.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.5.1\lib\net45\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OOXML, Version=2.5.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.5.1\lib\net45\NPOI.OOXML.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXml4Net, Version=2.5.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.5.1\lib\net45\NPOI.OpenXml4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXmlFormats, Version=2.5.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.5.1\lib\net45\NPOI.OpenXmlFormats.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLite-net, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\sqlite-net-pcl.1.4.118\lib\netstandard1.1\SQLite-net.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLiteNetExtensions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SQLiteNetExtensions.2.1.0\lib\netstandard1.1\SQLiteNetExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCLRaw.batteries_green, Version=1.0.0.0, Culture=neutral, PublicKeyToken=a84b7dcfb1391f7f, processorArchitecture=MSIL">
+      <HintPath>..\packages\SQLitePCLRaw.bundle_green.1.1.5\lib\net45\SQLitePCLRaw.batteries_green.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCLRaw.batteries_v2, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8226ea5df37bcae9, processorArchitecture=MSIL">
+      <HintPath>..\packages\SQLitePCLRaw.bundle_green.1.1.5\lib\net45\SQLitePCLRaw.batteries_v2.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCLRaw.core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=1488e028ca7ab535, processorArchitecture=MSIL">
+      <HintPath>..\packages\SQLitePCLRaw.core.1.1.5\lib\net45\SQLitePCLRaw.core.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCLRaw.provider.e_sqlite3, Version=1.0.0.0, Culture=neutral, PublicKeyToken=9c301db686d0bd12, processorArchitecture=MSIL">
+      <HintPath>..\packages\SQLitePCLRaw.provider.e_sqlite3.net45.1.1.5\lib\net45\SQLitePCLRaw.provider.e_sqlite3.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.3\lib\netstandard2.0\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Core\Libs\DataReports\ValueReport.cs" />
+    <Compile Include="Core\Libs\PrintDocuments\MassReportPrintDocument.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Core\Libs\PrintDocuments\PrintPens.cs" />
+    <Compile Include="Core\Libs\PrintDocuments\ReportPrintDocument.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Core\Libs\PrintDocuments\ReportQueue.cs" />
+    <Compile Include="Core\Libs\Stat\CityStatCollector.cs" />
+    <Compile Include="Core\Libs\Stat\DateList.cs" />
+    <Compile Include="Core\Libs\Stat\FirmListStatCollector.cs" />
+    <Compile Include="Core\Libs\Stat\RpoStatCollector.cs" />
+    <Compile Include="Core\Libs\Stat\RpoStatData.cs" />
+    <Compile Include="Core\Libs\Stat\SingleReportData.cs" />
+    <Compile Include="Core\Libs\Stat\StatData.cs" />
+    <Compile Include="Core\Libs\Widget\BorderTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Core\Libs\Widget\SortableBindingList.cs" />
+    <Compile Include="Core\Models\Filters\FirmListFilter.cs" />
+    <Compile Include="Core\Models\Raw\RawListData.cs" />
+    <Compile Include="Core\Models\Raw\RawRpoData.cs" />
+    <Compile Include="Core\Models\Reports\ReportData.cs" />
+    <Compile Include="Core\Models\Types\ErrorType.cs" />
+    <Compile Include="Core\Models\Types\MailClass.cs" />
+    <Compile Include="Core\Store\Connect\DatabaseDataLocked.cs" />
+    <Compile Include="Core\Store\Connect\DatabaseLocked.cs" />
+    <Compile Include="Core\Store\Database.cs" />
+    <Compile Include="Core\Store\DatabaseAsync.cs" />
+    <Compile Include="Core\Store\DatabaseData.cs" />
+    <Compile Include="Core\Libs\Auth\LkAuth.cs" />
+    <Compile Include="Core\Libs\DataManagers\Models\Config.cs" />
+    <Compile Include="Core\Libs\DataManagers\ConfigManager.cs" />
+    <Compile Include="Core\Libs\DataManagers\DataColorManager.cs" />
+    <Compile Include="Core\Libs\DataManagers\Models\DataColor.cs" />
+    <Compile Include="Core\Libs\Parse\ParseData.cs" />
+    <Compile Include="Core\Libs\Parse\XmlParser.cs" />
+    <Compile Include="Core\Libs\TarifManager\FirstMailTarifManager.cs" />
+    <Compile Include="Core\Libs\TarifManager\FirstParcelTarifManager.cs" />
+    <Compile Include="Core\Libs\TarifManager\InterMailTarifManager.cs" />
+    <Compile Include="Core\Libs\TarifManager\InterParcelTarifManager.cs" />
+    <Compile Include="Core\Libs\TarifManager\MailTarifManager.cs" />
+    <Compile Include="Core\Libs\TarifManager\NoticeTarifManager.cs" />
+    <Compile Include="Core\Libs\TarifManager\ParcelTarifManager.cs" />
+    <Compile Include="Core\Libs\TarifManager\PostTypes\NoticeType.cs" />
+    <Compile Include="Core\Libs\TarifManager\PostTypes\PostMark.cs" />
+    <Compile Include="Core\Libs\TarifManager\PostTypes\TransType.cs" />
+    <Compile Include="Core\Libs\TarifManager\ServerTarif\Object\NoticeObject.cs" />
+    <Compile Include="Core\Libs\TarifManager\ServerTarif\Object\TarifObject.cs" />
+    <Compile Include="Core\Libs\TarifManager\ServerTarif\ServerTarificator.cs" />
+    <Compile Include="Core\Libs\TarifManager\Tarificator.cs" />
+    <Compile Include="Core\Libs\TarifManager\Tarif\Base\ICustomTarif.cs" />
+    <Compile Include="Core\Libs\TarifManager\Tarif\Base\IFirstClassTarif.cs" />
+    <Compile Include="Core\Libs\TarifManager\Tarif\Base\IInterTarif.cs" />
+    <Compile Include="Core\Libs\TarifManager\Tarif\FirstMailTarif.cs" />
+    <Compile Include="Core\Libs\TarifManager\Tarif\FirstParcelTarif.cs" />
+    <Compile Include="Core\Libs\TarifManager\Tarif\InterMailTarif.cs" />
+    <Compile Include="Core\Libs\TarifManager\Tarif\InterParcelTarif.cs" />
+    <Compile Include="Core\Libs\TarifManager\Tarif\MailTarif.cs" />
+    <Compile Include="Core\Libs\TarifManager\Tarif\ParcelTarif.cs" />
+    <Compile Include="Core\Models\DB\Firm.cs" />
+    <Compile Include="Core\Models\DB\FirmList.cs" />
+    <Compile Include="Core\Models\DB\Operator.cs" />
+    <Compile Include="Core\Models\DB\Rpo.cs" />
+    <Compile Include="Core\Models\DB\Status.cs" />
+    <Compile Include="Core\Libs\Widget\ColoredProgressBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Core\Models\DB\Types\MailCategory.cs" />
+    <Compile Include="Core\Models\DB\Types\MailType.cs" />
+    <Compile Include="Core\Models\DB\Types\Notice.cs" />
+    <Compile Include="Core\Libs\TarifManager\Tarif\Base\INoticeTarif.cs" />
+    <Compile Include="Core\Libs\TarifManager\Tarif\NoticeTarif.cs" />
+    <Compile Include="Core\PathManager.cs" />
+    <Compile Include="Core\Store\Manager\FirmListManager.cs" />
+    <Compile Include="Core\Store\Manager\FirmManager.cs" />
+    <Compile Include="Core\Store\Manager\MailCategoryManager.cs" />
+    <Compile Include="Core\Store\Manager\MailTypeManager.cs" />
+    <Compile Include="Core\Store\Manager\OperatorManager.cs" />
+    <Compile Include="Core\Store\Manager\RpoManager.cs" />
+    <Compile Include="Core\Store\Manager\StatusManager.cs" />
+    <Compile Include="Core\Utils.cs" />
+    <Compile Include="Forms\ConfigForms\AuthForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ConfigForms\AuthForm.Designer.cs">
+      <DependentUpon>AuthForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ConfigForms\PrinterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ConfigForms\PrinterForm.Designer.cs">
+      <DependentUpon>PrinterForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ConfigForms\SettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ConfigForms\SettingsForm.Designer.cs">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CreateDbForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CreateDbForm.Designer.cs">
+      <DependentUpon>CreateDbForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DataForms\FirmsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DataForms\FirmsForm.Designer.cs">
+      <DependentUpon>FirmsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DataForms\OperatorsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DataForms\OperatorsForm.Designer.cs">
+      <DependentUpon>OperatorsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\OrgMassReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\OrgMassReportForm.Designer.cs">
+      <DependentUpon>OrgMassReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ReportForms\ValueReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ReportForms\ValueReportForm.Designer.cs">
+      <DependentUpon>ValueReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SyncForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SyncForm.Designer.cs">
+      <DependentUpon>SyncForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\GeneralForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\GeneralForm.Designer.cs">
+      <DependentUpon>GeneralForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Core\Libs\Auth\Model\PostOffice.cs" />
+    <Compile Include="Core\Libs\Auth\Model\Token.cs" />
+    <Compile Include="Core\Libs\Auth\Model\UserProfile.cs" />
+    <Compile Include="Forms\TarifForms\InterParcelTarifForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TarifForms\InterParcelTarifForm.Designer.cs">
+      <DependentUpon>InterParcelTarifForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\TarifForms\InterMailTarifForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TarifForms\InterMailTarifForm.Designer.cs">
+      <DependentUpon>InterMailTarifForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\TarifForms\FirstParcelTarifForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TarifForms\FirstParcelTarifForm.Designer.cs">
+      <DependentUpon>FirstParcelTarifForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\TarifForms\FirstMailTarifForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TarifForms\FirstMailTarifForm.Designer.cs">
+      <DependentUpon>FirstMailTarifForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\TarifForms\MailTarifForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TarifForms\MailTarifForm.Designer.cs">
+      <DependentUpon>MailTarifForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\TarifForms\NoticeTarifForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TarifForms\NoticeTarifForm.Designer.cs">
+      <DependentUpon>NoticeTarifForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\TarifForms\ParcelTarifForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TarifForms\ParcelTarifForm.Designer.cs">
+      <DependentUpon>ParcelTarifForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\TarifForms\TarificatorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TarifForms\TarificatorForm.Designer.cs">
+      <DependentUpon>TarificatorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\TypeForms\MailCategoryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TypeForms\MailCategoryForm.Designer.cs">
+      <DependentUpon>MailCategoryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\TypeForms\MailTypeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TypeForms\MailTypeForm.Designer.cs">
+      <DependentUpon>MailTypeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="Resources\Button-Dashboard.png" />
+    <None Include="Resources\Invoice.png" />
+    <None Include="Resources\white-delete-30.png" />
+    <None Include="Properties\DataSources\LK.Core.Libs.TarifManager.Tarif.FirstMailTarif.datasource" />
+    <None Include="Properties\DataSources\LK.Core.Libs.TarifManager.Tarif.FirstParcelTarif.datasource" />
+    <None Include="Properties\DataSources\LK.Core.Libs.TarifManager.Tarif.InterMailTarif.datasource" />
+    <None Include="Properties\DataSources\LK.Core.Libs.TarifManager.Tarif.InterParcelTarif.datasource" />
+    <None Include="Properties\DataSources\LK.Core.Libs.TarifManager.Tarif.ParcelTarif.datasource" />
+    <None Include="Resources\Repeat.png" />
+    <None Include="Resources\Cloud-Refresh.png" />
+    <None Include="Resources\Refresh.png" />
+    <None Include="Resources\Calculator-2.png" />
+    <None Include="Resources\add-24.png" />
+    <None Include="Properties\DataSources\LK.Core.Libs.TarifManager.Tarif.MailTarif.datasource" />
+    <None Include="Resources\Printer.png" />
+    <None Include="Resources\Question-Mark.png" />
+    <None Include="Properties\DataSources\LK.Core.Libs.Stat.StatData.datasource" />
+    <None Include="Properties\DataSources\LK.Core.Models.DB.Status.datasource" />
+    <None Include="Resources\Coin-Dollar.png" />
+    <None Include="Resources\Portable-Printer.png" />
+    <None Include="Resources\Hue.png" />
+    <None Include="Resources\Settings.png" />
+    <None Include="Resources\Server.png" />
+    <None Include="Resources\Notebook-2.png" />
+    <None Include="Resources\Envelope-2.png" />
+    <None Include="Resources\4-Leaf-Clover.png" />
+    <None Include="Resources\Button-Settings.png" />
+    <None Include="Resources\Box-2.png" />
+    <None Include="Resources\Books-2.png" />
+    <None Include="Resources\Box.png" />
+    <None Include="Resources\Calculator.png" />
+    <None Include="Resources\File.png" />
+    <None Include="Resources\Support.png" />
+    <None Include="Resources\Man-Suit-2.png" />
+    <None Include="Resources\Cabinet.png" />
+    <None Include="Resources\Button-Close.png" />
+    <None Include="Properties\DataSources\LK.Core.Models.DB.Operator.datasource" />
+    <None Include="Resources\trash-2-24.png" />
+    <None Include="Resources\cloud-4-24.png" />
+    <None Include="Resources\white-synchronize-24.png" />
+    <None Include="Resources\white-restart-24.png" />
+    <None Include="Resources\white-ok-24.png" />
+    <None Include="Resources\white-cancel-24.png" />
+    <None Include="Resources\save-24.png" />
+    <None Include="Resources\close-window-24.png" />
+    <None Include="Properties\DataSources\LK.Core.Libs.TarifManager.Tarif.NoticeTarif.datasource" />
+    <None Include="Properties\DataSources\LK.Core.Models.DB.Firm.datasource" />
+    <None Include="Properties\DataSources\LK.Core.Models.DB.FirmList.datasource" />
+    <None Include="Properties\DataSources\LK.Core.Models.DB.Types.MailCategory.datasource" />
+    <None Include="Properties\DataSources\LK.Core.Models.DB.Types.MailType.datasource" />
+    <None Include="Resources\white-unchecked-32.png" />
+    <None Include="Resources\white_checked-32.png" />
+    <None Include="Resources\unchecked-32.png" />
+    <None Include="Resources\gray-trash-24.png" />
+    <None Include="Resources\gray-unchecked-32.png" />
+    <None Include="Resources\gray_checked-32.png" />
+    <None Include="Resources\checked-32.png" />
+    <None Include="Resources\cat_license.png" />
+    <EmbeddedResource Include="Forms\ConfigForms\AuthForm.resx">
+      <DependentUpon>AuthForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ConfigForms\PrinterForm.resx">
+      <DependentUpon>PrinterForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ConfigForms\SettingsForm.resx">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CreateDbForm.resx">
+      <DependentUpon>CreateDbForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DataForms\FirmsForm.resx">
+      <DependentUpon>FirmsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DataForms\OperatorsForm.resx">
+      <DependentUpon>OperatorsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\OrgMassReportForm.resx">
+      <DependentUpon>OrgMassReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ReportForms\ValueReportForm.resx">
+      <DependentUpon>ValueReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SyncForm.resx">
+      <DependentUpon>SyncForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\GeneralForm.resx">
+      <DependentUpon>GeneralForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TarifForms\InterParcelTarifForm.resx">
+      <DependentUpon>InterParcelTarifForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TarifForms\InterMailTarifForm.resx">
+      <DependentUpon>InterMailTarifForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TarifForms\FirstParcelTarifForm.resx">
+      <DependentUpon>FirstParcelTarifForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TarifForms\FirstMailTarifForm.resx">
+      <DependentUpon>FirstMailTarifForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TarifForms\MailTarifForm.resx">
+      <DependentUpon>MailTarifForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TarifForms\NoticeTarifForm.resx">
+      <DependentUpon>NoticeTarifForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TarifForms\ParcelTarifForm.resx">
+      <DependentUpon>ParcelTarifForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TarifForms\TarificatorForm.resx">
+      <DependentUpon>TarificatorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TypeForms\MailCategoryForm.resx">
+      <DependentUpon>MailCategoryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TypeForms\MailTypeForm.resx">
+      <DependentUpon>MailTypeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Content Include="LK.ico" />
+    <Content Include="NLog.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="NLog.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Wc32Api\Wc32Api.csproj">
+      <Project>{f422d6e4-fdd2-4aa8-a1af-23ab9f988067}</Project>
+      <Name>Wc32Api</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WcApi\WcApi.csproj">
+      <Project>{3a0d99ef-a649-494e-95a6-2cd403a6db0a}</Project>
+      <Name>WcApi</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WcPostApi\WcPostApi.csproj">
+      <Project>{daf3c040-f0c1-4654-829b-fdcbfd3d2678}</Project>
+      <Name>WcPostApi</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\SQLitePCLRaw.lib.e_sqlite3.linux.1.1.5\build\net35\SQLitePCLRaw.lib.e_sqlite3.linux.targets" Condition="Exists('..\packages\SQLitePCLRaw.lib.e_sqlite3.linux.1.1.5\build\net35\SQLitePCLRaw.lib.e_sqlite3.linux.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Данный проект ссылается на пакеты NuGet, отсутствующие на этом компьютере. Используйте восстановление пакетов NuGet, чтобы скачать их.  Дополнительную информацию см. по адресу: http://go.microsoft.com/fwlink/?LinkID=322105. Отсутствует следующий файл: {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\SQLitePCLRaw.lib.e_sqlite3.linux.1.1.5\build\net35\SQLitePCLRaw.lib.e_sqlite3.linux.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SQLitePCLRaw.lib.e_sqlite3.linux.1.1.5\build\net35\SQLitePCLRaw.lib.e_sqlite3.linux.targets'))" />
+    <Error Condition="!Exists('..\packages\SQLitePCLRaw.lib.e_sqlite3.osx.1.1.5\build\net35\SQLitePCLRaw.lib.e_sqlite3.osx.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SQLitePCLRaw.lib.e_sqlite3.osx.1.1.5\build\net35\SQLitePCLRaw.lib.e_sqlite3.osx.targets'))" />
+    <Error Condition="!Exists('..\packages\SQLitePCLRaw.lib.e_sqlite3.v110_xp.1.1.5\build\net35\SQLitePCLRaw.lib.e_sqlite3.v110_xp.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SQLitePCLRaw.lib.e_sqlite3.v110_xp.1.1.5\build\net35\SQLitePCLRaw.lib.e_sqlite3.v110_xp.targets'))" />
+  </Target>
+  <Import Project="..\packages\SQLitePCLRaw.lib.e_sqlite3.osx.1.1.5\build\net35\SQLitePCLRaw.lib.e_sqlite3.osx.targets" Condition="Exists('..\packages\SQLitePCLRaw.lib.e_sqlite3.osx.1.1.5\build\net35\SQLitePCLRaw.lib.e_sqlite3.osx.targets')" />
+  <Import Project="..\packages\SQLitePCLRaw.lib.e_sqlite3.v110_xp.1.1.5\build\net35\SQLitePCLRaw.lib.e_sqlite3.v110_xp.targets" Condition="Exists('..\packages\SQLitePCLRaw.lib.e_sqlite3.v110_xp.1.1.5\build\net35\SQLitePCLRaw.lib.e_sqlite3.v110_xp.targets')" />
+</Project>

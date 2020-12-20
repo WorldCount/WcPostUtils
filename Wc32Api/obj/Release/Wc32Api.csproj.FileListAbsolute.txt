@@ -1,0 +1,5 @@
+D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\Wc32Api\bin\Release\Wc32Api.dll
+D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\Wc32Api\bin\Release\Wc32Api.pdb
+D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\Wc32Api\obj\Release\Wc32Api.csproj.CoreCompileInputs.cache
+D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\Wc32Api\obj\Release\Wc32Api.dll
+D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\Wc32Api\obj\Release\Wc32Api.pdb

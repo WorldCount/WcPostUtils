@@ -1,0 +1,354 @@
+2020-12-08 01:03:14.7726 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 01:03:25.8520 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 01:03:29.3264 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 01:04:12.7373 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 01:04:28.1024 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 01:05:04.7907 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 01:05:16.5596 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 01:05:24.7423 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 01:06:00.4387 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 01:06:23.1977 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 01:06:26.5270 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 01:06:35.4527 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 01:06:40.0864 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 01:06:58.5884 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 01:07:16.6856 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 01:07:24.3252 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 01:07:27.5869 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 01:07:33.4442 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 01:09:25.8727 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 01:09:37.8006 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 01:10:02.2021 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 01:10:10.7797 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 01:19:22.0764 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 01:19:39.8801 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 01:20:55.8914 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 01:20:58.6675 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 01:31:28.2385 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 01:31:36.5598 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 01:31:46.7035 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 01:31:51.2977 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 01:32:05.8036 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 01:32:09.4232 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 01:32:19.6126 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 01:34:15.8897 [LK.Forms.SyncForm.Work] ERROR SQLite.SQLiteException: table FirmList has no column named CarryType
+   в SQLite.SQLite3.Prepare2(sqlite3 db, String query) в /Users/vagrant/git/src/SQLite.cs:строка 3546
+   в SQLite.PreparedSqlLiteInsertCommand.Prepare() в /Users/vagrant/git/src/SQLite.cs:строка 2674
+   в SQLite.PreparedSqlLiteInsertCommand.ExecuteNonQuery(Object[] source) в /Users/vagrant/git/src/SQLite.cs:строка 2643
+   в SQLite.SQLiteConnection.Insert(Object obj, String extra, Type objType) в /Users/vagrant/git/src/SQLite.cs:строка 1415
+   в SQLite.SQLiteConnection.<>c__DisplayClass85_0.<InsertAll>b__0() в /Users/vagrant/git/src/SQLite.cs:строка 1188
+   в SQLite.SQLiteConnection.RunInTransaction(Action action) в /Users/vagrant/git/src/SQLite.cs:строка 1167
+   в SQLite.SQLiteConnection.InsertAll(IEnumerable objects, Boolean runInTransaction) в /Users/vagrant/git/src/SQLite.cs:строка 1186
+   в LK.Core.Store.Database.SaveAllFirmList(List`1 firmLists) в D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\LK\Core\Store\Database.cs:строка 433
+   в LK.Forms.SyncForm.ParseList(String link, Boolean xlsx) в D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\LK\Forms\SyncForm.cs:строка 384
+   в LK.Forms.SyncForm.<Work>d__25.MoveNext() в D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\LK\Forms\SyncForm.cs:строка 156
+2020-12-08 01:35:18.6084 [LK.Forms.SyncForm.Work] ERROR SQLite.SQLiteException: table FirmList has no column named CarryType
+   в SQLite.SQLite3.Prepare2(sqlite3 db, String query) в /Users/vagrant/git/src/SQLite.cs:строка 3546
+   в SQLite.PreparedSqlLiteInsertCommand.Prepare() в /Users/vagrant/git/src/SQLite.cs:строка 2674
+   в SQLite.PreparedSqlLiteInsertCommand.ExecuteNonQuery(Object[] source) в /Users/vagrant/git/src/SQLite.cs:строка 2643
+   в SQLite.SQLiteConnection.Insert(Object obj, String extra, Type objType) в /Users/vagrant/git/src/SQLite.cs:строка 1415
+   в SQLite.SQLiteConnection.<>c__DisplayClass85_0.<InsertAll>b__0() в /Users/vagrant/git/src/SQLite.cs:строка 1188
+   в SQLite.SQLiteConnection.RunInTransaction(Action action) в /Users/vagrant/git/src/SQLite.cs:строка 1167
+   в SQLite.SQLiteConnection.InsertAll(IEnumerable objects, Boolean runInTransaction) в /Users/vagrant/git/src/SQLite.cs:строка 1186
+   в LK.Core.Store.Database.SaveAllFirmList(List`1 firmLists) в D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\LK\Core\Store\Database.cs:строка 433
+   в LK.Forms.SyncForm.ParseList(String link, Boolean xlsx) в D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\LK\Forms\SyncForm.cs:строка 384
+   в LK.Forms.SyncForm.<Work>d__25.MoveNext() в D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\LK\Forms\SyncForm.cs:строка 156
+2020-12-08 01:36:51.4902 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 01:40:34.6487 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 13:03:52.9374 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 13:03:56.1387 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 13:11:14.7455 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 13:11:30.2178 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 13:12:28.7399 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 13:12:54.0185 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 13:13:20.7693 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 13:14:36.7136 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 13:17:16.9587 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 13:17:32.1415 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 13:18:45.8417 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 13:19:44.5614 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 13:20:47.0035 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 13:21:25.1219 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 13:22:17.3364 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 13:28:40.0295 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 13:29:09.7531 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 13:35:29.6799 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 13:36:27.0863 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 13:36:44.9803 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 13:39:30.2392 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 13:40:43.0834 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 13:45:09.1992 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 13:45:43.6518 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 13:54:07.1113 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 13:57:14.3248 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 13:58:46.1696 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 13:59:53.4540 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 14:00:40.8416 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 14:04:30.1578 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 14:05:36.4398 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 14:08:36.9691 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 14:10:11.9057 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 14:14:10.8720 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 14:14:16.2961 [LK.Forms.SyncForm.Work] ERROR Ошибка доступа к файлу с отчетом: System.IO.IOException: Процесс не может получить доступ к файлу "D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\LK\bin\Debug\DATA\LoadReport\2020-12-07.xlsx", так как этот файл используется другим процессом.
+   в System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   в System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   в System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share)
+   в LK.Core.Libs.Auth.LkAuth.<ReportResponse>d__8.MoveNext() в D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\LK\Core\Libs\Auth\LkAuth.cs:строка 136
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в LK.Forms.SyncForm.<Work>d__25.MoveNext() в D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\LK\Forms\SyncForm.cs:строка 121
+2020-12-08 14:15:47.1663 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 14:18:12.6080 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 14:20:09.1598 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 14:23:08.1714 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 14:23:17.4574 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 14:25:00.6562 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 14:25:06.8752 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 14:30:26.6799 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 14:31:48.5181 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 14:33:57.9030 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 14:38:24.9588 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 14:40:01.5494 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 14:54:28.4357 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 14:57:11.4444 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 14:59:43.1324 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 15:14:51.3288 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 15:15:19.0163 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 15:15:48.0347 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 15:15:58.7357 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 15:37:10.4196 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 15:37:50.2271 [LK.Forms.SyncForm.Work] ERROR Ошибка доступа к файлу с отчетом: System.IO.IOException: Процесс не может получить доступ к файлу "D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\LK\bin\Debug\DATA\LoadReport\2020-12-07.xlsx", так как этот файл используется другим процессом.
+   в System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   в System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   в System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share)
+   в LK.Core.Libs.Auth.LkAuth.<ReportResponse>d__8.MoveNext() в D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\LK\Core\Libs\Auth\LkAuth.cs:строка 136
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в LK.Forms.SyncForm.<Work>d__30.MoveNext() в D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\LK\Forms\SyncForm.cs:строка 131
+2020-12-08 15:37:55.5129 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 15:40:01.5959 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 15:41:15.6260 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 15:43:03.0945 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 15:43:35.0295 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 15:44:32.7051 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 15:45:28.0776 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 15:47:27.2064 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 15:48:08.5094 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 15:50:38.4971 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 15:50:59.8539 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 15:53:46.0609 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 15:54:05.6617 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 15:55:22.6590 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 15:55:36.7406 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 15:56:00.2954 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 15:56:14.9480 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 15:56:46.0160 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 15:57:20.2125 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 15:58:08.1394 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 15:58:16.2482 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 15:58:29.1839 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 15:58:36.5097 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 15:58:47.3075 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 15:58:55.1485 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 15:59:08.2225 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 15:59:18.9913 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 15:59:28.5560 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 15:59:40.3329 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 15:59:51.4847 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 16:01:07.4238 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 16:12:19.4024 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 16:12:37.3536 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 16:24:18.1417 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 16:29:41.7776 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 16:31:06.6789 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 16:32:54.9193 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 16:33:58.4936 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 16:35:44.2494 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 16:36:25.1585 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 16:37:47.3549 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 16:38:05.1535 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 16:39:57.1057 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 16:43:11.8172 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 16:47:04.8036 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 16:52:05.5761 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 16:56:39.8022 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 16:57:21.4321 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 16:58:50.8758 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 16:59:07.3561 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 17:02:04.5994 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 17:02:17.4127 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 17:02:40.1473 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 17:02:46.8838 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 17:06:45.1411 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 17:07:42.6958 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 17:12:55.7030 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 18:35:20.1427 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 18:36:49.1163 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 18:43:16.1792 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 18:43:44.1707 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 18:44:42.6202 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 18:45:00.8161 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 18:45:40.6177 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 18:45:59.2321 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 18:46:30.9027 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 18:46:38.0758 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 18:46:57.9654 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 18:47:25.1789 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 18:49:55.1651 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 18:50:25.2025 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 18:51:02.5814 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 18:51:16.9228 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 18:53:27.8902 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 18:53:51.9134 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 18:57:22.3529 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 18:58:40.2859 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 18:58:49.5215 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 19:01:52.4404 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 19:05:41.9059 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 19:06:41.3213 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 19:07:07.2962 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 19:07:25.8379 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 19:07:43.3552 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 19:08:05.0728 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 19:15:17.5026 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 19:15:38.3245 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 19:15:51.1671 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 19:16:08.9693 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 19:18:18.5694 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 19:19:26.6563 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 19:21:21.2342 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 19:21:31.5323 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 19:21:43.4345 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 19:21:59.1001 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 19:27:55.1981 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 19:28:10.1762 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 19:29:17.9714 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 19:29:28.4758 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 19:30:16.3674 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 19:32:35.0466 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 19:35:36.6563 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 19:43:14.5362 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 19:43:43.8859 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 19:44:19.8034 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 19:47:34.5739 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 19:50:41.0139 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 19:56:40.8549 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 19:56:55.8101 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 19:58:56.3740 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 19:59:05.3854 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 20:08:18.3305 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 20:13:54.9137 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 20:14:28.1879 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 20:14:35.8552 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 20:14:50.9876 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 20:19:29.4502 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 20:20:47.5071 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 20:21:14.7137 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 20:21:38.7429 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 20:21:40.7358 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 20:21:54.3119 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 20:22:03.4268 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 20:26:49.1003 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 20:27:53.1950 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 20:28:03.4256 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 20:28:54.0305 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 20:30:03.4108 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 20:32:11.3468 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 20:35:08.8938 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 20:36:08.4572 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 20:38:40.3658 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 20:38:55.2309 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 20:39:28.3375 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 20:39:47.8943 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 20:42:35.1863 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 20:42:45.0494 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 20:46:12.5504 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 20:46:25.6741 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 20:47:32.0845 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 20:47:43.9576 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 20:48:24.6048 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 20:48:41.2057 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 20:51:12.7137 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 20:51:25.9415 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 20:54:29.1381 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 20:54:37.7250 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 20:55:31.6980 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 20:55:43.5965 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 20:57:09.9187 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 20:58:37.1916 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 20:58:46.6366 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 20:59:18.5036 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 21:06:14.7425 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 21:06:37.3443 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 21:08:32.8496 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 21:12:33.6720 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 21:13:25.1913 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 21:15:34.8621 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 21:18:13.3314 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 21:22:00.4047 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 21:22:25.2475 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 21:22:38.6197 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 21:22:56.8627 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 21:23:47.0148 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 21:24:10.7469 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 21:27:49.2649 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 21:28:02.8100 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 21:28:42.7404 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 21:28:53.9020 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 21:30:24.4187 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 21:30:31.9408 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 21:30:48.1969 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 21:30:55.4297 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 21:31:52.1031 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 21:32:26.7509 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 21:32:50.7549 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 21:33:20.8922 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 21:34:03.6586 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 21:34:12.7418 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 21:35:34.8106 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 21:35:48.3464 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 21:37:18.0741 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 21:37:25.1646 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 21:37:40.2985 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 21:37:45.7096 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 21:39:54.6593 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 21:40:09.0661 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 21:40:44.7942 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 21:41:04.6451 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 21:44:52.5843 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 21:45:02.5136 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 21:45:14.4650 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 21:45:16.0435 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 21:46:06.7786 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 21:46:21.9967 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 21:50:51.0775 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 21:51:12.9805 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 21:51:36.6665 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 21:52:02.6814 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 21:52:37.5075 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 22:15:01.8986 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 22:15:22.1660 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 22:15:49.6212 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 22:23:15.9361 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 23:10:36.8911 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 23:11:01.2983 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 23:14:25.5779 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 23:16:55.9570 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 23:32:45.4523 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 23:34:37.4652 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 23:47:46.5319 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 23:49:26.3552 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 23:51:28.4054 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 23:51:38.6818 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 23:51:44.3629 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 23:51:48.0189 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 23:51:51.7143 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 23:55:30.8973 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 23:56:08.2290 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 23:56:09.6891 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.
+2020-12-08 23:56:13.2990 [LK.Forms.GeneralForm..ctor] INFO Запуск программы.
+2020-12-08 23:56:28.6602 [LK.Forms.GeneralForm.GeneralForm_FormClosed] INFO Завершение программы.

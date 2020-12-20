@@ -24,17 +24,17 @@ namespace PartStat.Core.Libs.DataBase.Queries
             StringBuilder sb = new StringBuilder();
 
             sb.Append("select f.indexto, f.massrate + f.airrate, f.value_, count(*), s.arttypeid, s.kategid, s.postmark, s.paytypeid, s.paysubtype, s.ncodecountry, s.res from form_103 f");
-            sb.Append(" left join spiski s on s.dapo = f.dapo and s.nspi = f.nspi and s.inn = f.inn");
+            sb.Append(" left join spiski s on s.dapo = f.dapo and s.nspi = f.nspi and s.inn = f.inn and s.depcode = f.depcode and s.kpp = f.kpp");
             sb.Append($" where f.dapo = '{_request.Date.ToShortDateString()}'");
 
             if (!string.IsNullOrEmpty(_request.Inn))
-                sb.Append($" and s.inn = '{_request.Inn}'");
+                sb.Append($" and f.inn = '{_request.Inn}'");
 
             if (!string.IsNullOrEmpty(_request.Kpp))
-                sb.Append($" and s.kpp = '{_request.Kpp}'");
+                sb.Append($" and f.kpp = '{_request.Kpp}'");
 
             if (!string.IsNullOrEmpty(_request.DepCode))
-                sb.Append($" and s.depcode = '{_request.DepCode}'");
+                sb.Append($" and f.depcode = '{_request.DepCode}'");
 
             if (_request.MailType > 0)
                 sb.Append($" and s.arttypeid = {_request.MailType}");

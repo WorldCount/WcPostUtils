@@ -32,20 +32,24 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FirstMailTarifForm));
             this.labelInfo = new System.Windows.Forms.Label();
             this.dataGridViewList = new System.Windows.Forms.DataGridView();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.massDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.firstMailTarifBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.labelMessage = new System.Windows.Forms.Label();
             this.timerMessage = new System.Windows.Forms.Timer(this.components);
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnLoad = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.firstMailTarifBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.massDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.firstMailTarifBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -57,7 +61,7 @@
             this.labelInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
             this.labelInfo.Location = new System.Drawing.Point(12, 9);
             this.labelInfo.Name = "labelInfo";
-            this.labelInfo.Size = new System.Drawing.Size(332, 30);
+            this.labelInfo.Size = new System.Drawing.Size(314, 28);
             this.labelInfo.TabIndex = 0;
             this.labelInfo.Text = "Тарифы на заказные письма 1 кл";
             // 
@@ -117,36 +121,6 @@
             this.dataGridViewList.Size = new System.Drawing.Size(804, 259);
             this.dataGridViewList.TabIndex = 0;
             this.dataGridViewList.TabStop = false;
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Название";
-            this.nameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // massDataGridViewTextBoxColumn
-            // 
-            this.massDataGridViewTextBoxColumn.DataPropertyName = "Mass";
-            this.massDataGridViewTextBoxColumn.HeaderText = "Вес, грамм";
-            this.massDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.massDataGridViewTextBoxColumn.Name = "massDataGridViewTextBoxColumn";
-            this.massDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // rateDataGridViewTextBoxColumn
-            // 
-            this.rateDataGridViewTextBoxColumn.DataPropertyName = "Rate";
-            dataGridViewCellStyle2.Format = "N2";
-            dataGridViewCellStyle2.NullValue = null;
-            this.rateDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
-            this.rateDataGridViewTextBoxColumn.HeaderText = "Плата";
-            this.rateDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.rateDataGridViewTextBoxColumn.Name = "rateDataGridViewTextBoxColumn";
-            // 
-            // firstMailTarifBindingSource
-            // 
-            this.firstMailTarifBindingSource.DataSource = typeof(PartStat.Core.Models.Tarifs.FirstMailTarif);
             // 
             // labelMessage
             // 
@@ -251,11 +225,70 @@
             this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
+            // firstMailTarifBindingSource
+            // 
+            this.firstMailTarifBindingSource.DataSource = typeof(PartStat.Core.Models.Tarifs.FirstMailTarif);
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Name";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Название";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 267;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "Mass";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Вес, грамм";
+            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 267;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "Rate";
+            dataGridViewCellStyle5.Format = "N2";
+            dataGridViewCellStyle5.NullValue = null;
+            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle5;
+            this.dataGridViewTextBoxColumn3.HeaderText = "Плата";
+            this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.Width = 267;
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Название";
+            this.nameDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // massDataGridViewTextBoxColumn
+            // 
+            this.massDataGridViewTextBoxColumn.DataPropertyName = "Mass";
+            this.massDataGridViewTextBoxColumn.HeaderText = "Вес, грамм";
+            this.massDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.massDataGridViewTextBoxColumn.Name = "massDataGridViewTextBoxColumn";
+            this.massDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // rateDataGridViewTextBoxColumn
+            // 
+            this.rateDataGridViewTextBoxColumn.DataPropertyName = "Rate";
+            dataGridViewCellStyle2.Format = "N2";
+            dataGridViewCellStyle2.NullValue = null;
+            this.rateDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            this.rateDataGridViewTextBoxColumn.HeaderText = "Плата";
+            this.rateDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.rateDataGridViewTextBoxColumn.Name = "rateDataGridViewTextBoxColumn";
+            // 
             // FirstMailTarifForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(804, 379);
+            this.ClientSize = new System.Drawing.Size(804, 381);
             this.Controls.Add(this.labelMessage);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnLoad);
@@ -294,5 +327,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn massDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn rateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
     }
 }

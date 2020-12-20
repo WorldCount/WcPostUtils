@@ -4,6 +4,27 @@ using System.Linq;
 
 namespace WcApi.Post.Types
 {
+
+    public enum MailCategoryFlag : long
+    {
+        Простое = 0,
+        Заказное = 1,
+        // ReSharper disable once InconsistentNaming
+        ОЦ = 2,
+        Обыкновенное = 3,
+        // ReSharper disable once InconsistentNaming
+        ОЦиНП = 4,
+        НеОпределена = 5,
+        // ReSharper disable once InconsistentNaming
+        ОЦиОП = 6,
+        СОбязательнымПлатежом = 7,
+        КомбинированноеОбыкновенное = 8,
+        // ReSharper disable once InconsistentNaming
+        КомбинированноеОЦ = 9,
+        // ReSharper disable once InconsistentNaming
+        КомбинированноеОЦиНП = 10
+    }
+
     /// <summary>
     /// Категория отправления
     /// </summary>
@@ -13,6 +34,8 @@ namespace WcApi.Post.Types
         public long Id { get; set; }
         [DisplayName(@"Название")]
         public string Name { get; set; }
+        public string ShortName { get; set; }
+        public bool Enable { get; set; }
 
         public MailCategory() { }
 
@@ -20,6 +43,16 @@ namespace WcApi.Post.Types
         {
             Id = id;
             Name = name;
+            ShortName = name;
+            Enable = true;
+        }
+
+        public MailCategory(long id, string name, string shortName, bool enable = true)
+        {
+            Id = id;
+            Name = name;
+            ShortName = shortName;
+            Enable = enable;
         }
     }
 
@@ -27,7 +60,7 @@ namespace WcApi.Post.Types
     {
         // ReSharper disable once InconsistentNaming
         private static readonly List<MailCategory> _c;
-        public static string[] Standart = {"Простое", "Заказное"};
+        public static string[] Standart = { "Не определено", "Простое", "Заказное", "С ОЦ" };
 
         static MailCategories()
         {
@@ -38,7 +71,7 @@ namespace WcApi.Post.Types
                 new MailCategory(2, "С ОЦ"),
                 new MailCategory(3, "Обыкновенное"),
                 new MailCategory(4, "С ОЦ и НП"),
-                new MailCategory(5, "Не определена")
+                new MailCategory(5, "Не определено")
             };
         }
 

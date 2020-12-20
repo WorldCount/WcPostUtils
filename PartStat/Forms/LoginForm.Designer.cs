@@ -49,7 +49,7 @@
             this.num1.Location = new System.Drawing.Point(135, 211);
             this.num1.MaxLength = 1;
             this.num1.Name = "num1";
-            this.num1.Size = new System.Drawing.Size(76, 102);
+            this.num1.Size = new System.Drawing.Size(76, 93);
             this.num1.TabIndex = 1;
             this.num1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.num1.UseSystemPasswordChar = true;
@@ -67,7 +67,7 @@
             this.num2.Location = new System.Drawing.Point(220, 211);
             this.num2.MaxLength = 1;
             this.num2.Name = "num2";
-            this.num2.Size = new System.Drawing.Size(76, 102);
+            this.num2.Size = new System.Drawing.Size(76, 93);
             this.num2.TabIndex = 2;
             this.num2.TabStop = false;
             this.num2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -86,7 +86,7 @@
             this.num3.Location = new System.Drawing.Point(305, 211);
             this.num3.MaxLength = 1;
             this.num3.Name = "num3";
-            this.num3.Size = new System.Drawing.Size(76, 102);
+            this.num3.Size = new System.Drawing.Size(76, 93);
             this.num3.TabIndex = 3;
             this.num3.TabStop = false;
             this.num3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -105,7 +105,7 @@
             this.num4.Location = new System.Drawing.Point(390, 211);
             this.num4.MaxLength = 1;
             this.num4.Name = "num4";
-            this.num4.Size = new System.Drawing.Size(76, 102);
+            this.num4.Size = new System.Drawing.Size(76, 93);
             this.num4.TabIndex = 4;
             this.num4.TabStop = false;
             this.num4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -120,7 +120,7 @@
             // 
             this.btnClose.BackColor = System.Drawing.Color.Firebrick;
             this.btnClose.FlatAppearance.BorderSize = 0;
-            this.btnClose.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
+            this.btnClose.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.ForeColor = System.Drawing.Color.White;
             this.btnClose.Image = global::PartStat.Properties.Resources.white_delete_30;
@@ -134,7 +134,7 @@
             // 
             // labelInfo
             // 
-            this.labelInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.labelInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
             this.labelInfo.Font = new System.Drawing.Font("Segoe UI", 14.26415F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelInfo.ForeColor = System.Drawing.Color.White;
             this.labelInfo.Location = new System.Drawing.Point(221, 176);
@@ -179,7 +179,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
             this.ClientSize = new System.Drawing.Size(600, 399);
             this.ControlBox = false;
             this.Controls.Add(this.labelError);

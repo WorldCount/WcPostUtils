@@ -1,0 +1,17 @@
+D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\TestUpdater\bin\Debug\data.xml
+D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\TestUpdater\bin\Debug\TestUpdater.exe.config
+D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\TestUpdater\bin\Debug\TestUpdater.exe
+D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\TestUpdater\bin\Debug\TestUpdater.pdb
+D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\TestUpdater\bin\Debug\AutoUpdater.NET.dll
+D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\TestUpdater\bin\Debug\Newtonsoft.Json.dll
+D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\TestUpdater\bin\Debug\AutoUpdater.NET.pdb
+D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\TestUpdater\bin\Debug\AutoUpdater.NET.xml
+D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\TestUpdater\bin\Debug\Newtonsoft.Json.xml
+D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\TestUpdater\obj\Debug\TestUpdater.csprojAssemblyReference.cache
+D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\TestUpdater\obj\Debug\TestUpdater.GeneralForm.resources
+D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\TestUpdater\obj\Debug\TestUpdater.Properties.Resources.resources
+D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\TestUpdater\obj\Debug\TestUpdater.csproj.GenerateResource.cache
+D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\TestUpdater\obj\Debug\TestUpdater.csproj.CoreCompileInputs.cache
+D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\TestUpdater\obj\Debug\TestUpdater.csproj.CopyComplete
+D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\TestUpdater\obj\Debug\TestUpdater.exe
+D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\TestUpdater\obj\Debug\TestUpdater.pdb

@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DAF3C040-F0C1-4654-829B-FDCBFD3D2678}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WcPostApi</RootNamespace>
+    <AssemblyName>WcPostApi</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Barcodes\BarcodeGenerator.cs" />
+    <Compile Include="Ranges\CRC32.cs" />
+    <Compile Include="Forms\MailForms\WcMailTypeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MailForms\WcMailTypeForm.Designer.cs">
+      <DependentUpon>WcMailTypeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ranges\Month.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Ranges\Range.cs" />
+    <Compile Include="Ranges\RangeSerializer.cs" />
+    <Compile Include="Ranges\Segment.cs" />
+    <Compile Include="Ranges\Types.cs" />
+    <Compile Include="Tafirs\Manager\NoticeTarifManager.cs" />
+    <Compile Include="Tafirs\Manager\InterCustomParcelTarifManager.cs" />
+    <Compile Include="Tafirs\Manager\InterCustomMailTarifManager.cs" />
+    <Compile Include="Tafirs\Manager\CustomFirstParcelTarifManager.cs" />
+    <Compile Include="Tafirs\Manager\CustomFirstMailTarifManager.cs" />
+    <Compile Include="Tafirs\Manager\CustomParcelTarifManager.cs" />
+    <Compile Include="Tafirs\Manager\CustomMailTarifManager.cs" />
+    <Compile Include="Tafirs\ServerTarificator.cs" />
+    <Compile Include="Tafirs\TarifObject\Notice.cs" />
+    <Compile Include="Tafirs\TarifObject\Tarif.cs" />
+    <Compile Include="Tafirs\Types\InterCustomMailTarif.cs" />
+    <Compile Include="Tafirs\Tarificator.cs" />
+    <Compile Include="Tafirs\Types\CustomFirstMail.cs" />
+    <Compile Include="Tafirs\Types\CustomFirstParcel.cs" />
+    <Compile Include="Tafirs\Types\CustomMailTarif.cs" />
+    <Compile Include="Tafirs\Types\CustomParcelTarif.cs" />
+    <Compile Include="Tafirs\Types\Interface\ICustom.cs" />
+    <Compile Include="Tafirs\Types\Interface\IFirstClass.cs" />
+    <Compile Include="Tafirs\Types\Interface\IInter.cs" />
+    <Compile Include="Tafirs\Types\InterCustomParcelTarif.cs" />
+    <Compile Include="Tafirs\Types\Interface\INotice.cs" />
+    <Compile Include="Tafirs\Types\NoticeTarif.cs" />
+    <Compile Include="Tafirs\Utils.cs" />
+    <Compile Include="Types\Interface\IPostType.cs" />
+    <Compile Include="Types\MailCategory.cs" />
+    <Compile Include="Types\MailRank.cs" />
+    <Compile Include="Types\MailType.cs" />
+    <Compile Include="Types\Manager\MailCategoryManager.cs" />
+    <Compile Include="Types\Manager\MailTypeManager.cs" />
+    <Compile Include="Serializer.cs" />
+    <Compile Include="Types\NoticeType.cs" />
+    <Compile Include="Types\PayType.cs" />
+    <Compile Include="Types\PostMark.cs" />
+    <Compile Include="Types\SenderCategory.cs" />
+    <Compile Include="Types\TransType.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Forms\TarifForms\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Forms\MailForms\WcMailTypeForm.resx">
+      <DependentUpon>WcMailTypeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\DataSources\WcPostApi.Types.MailType.datasource" />
+    <None Include="Resources\white-cancel-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\white-ok-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\white-restart-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\white-synchronize-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\checked-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\unchecked-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\close-window-24.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

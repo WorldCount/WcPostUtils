@@ -1,7 +1,54 @@
 ﻿using System;
+using System.IO;
+using WcApi.Xml;
 
 namespace WcApi.Cryptography
 {
+
+    public class Auth
+    {
+        public string Login { get; set; }
+        public string Password { get; set; }
+
+        public Auth()
+        {
+        }
+
+        public Auth(string login, string password)
+        {
+            Login = login;
+            Password = password;
+        }
+
+        public void Save(string filePath)
+        {
+            Auth auth = new Auth(Login, CryptText.EncryptText(Password, AuthKey.Key));
+            Serializer.Save(filePath, auth);
+        }
+
+        public static Auth Load(string filePath)
+        {
+            if (!File.Exists(filePath))
+                return new Auth();
+            Auth auth = Serializer.Load<Auth>(filePath);
+            auth.Password = CryptText.DecryptText(auth.Password, AuthKey.Key);
+            return auth;
+        }
+    }
+
+    public static class AuthKey
+    {
+        public static string Key = "WorldCountTheBest";
+    }
+
+    public static class LicenseKey
+    {
+        public static string GetKey(string ip, string authKey, string productName)
+        {
+            return Md5Hash.GetMd5Hash($"{ip}{authKey}{productName}");
+        }
+    }
+
     public static class License
     {
 

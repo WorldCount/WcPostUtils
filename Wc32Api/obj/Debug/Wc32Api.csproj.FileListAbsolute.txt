@@ -1,0 +1,6 @@
+D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\Wc32Api\bin\Debug\Wc32Api.dll
+D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\Wc32Api\bin\Debug\Wc32Api.pdb
+D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\Wc32Api\obj\Debug\Wc32Api.csproj.CoreCompileInputs.cache
+D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\Wc32Api\obj\Debug\Wc32Api.dll
+D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\Wc32Api\obj\Debug\Wc32Api.pdb
+D:\CODE\C#\C# Sourse\WinForms\WcPostUtils\Wc32Api\obj\Debug\Wc32Api.csprojAssemblyReference.cache

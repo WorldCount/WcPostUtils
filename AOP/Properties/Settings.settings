@@ -2,13 +2,49 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="AOP.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="DataDir" Type="System.String" Scope="User">
-      <Value Profile="(Default)">DATA</Value>
+    <Setting Name="AppName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">AOP</Value>
+    </Setting>
+    <Setting Name="Data" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Data</Value>
+    </Setting>
+    <Setting Name="NeedUpgrade" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="GeneralFormState" Type="System.Windows.Forms.FormWindowState" Scope="User">
+      <Value Profile="(Default)">Normal</Value>
+    </Setting>
+    <Setting Name="GeneralFormLocation" Type="System.Drawing.Point" Scope="User">
+      <Value Profile="(Default)">0, 0</Value>
+    </Setting>
+    <Setting Name="GeneralFormSize" Type="System.Drawing.Size" Scope="User">
+      <Value Profile="(Default)">0, 0</Value>
+    </Setting>
+    <Setting Name="License" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="FirstRun" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="MailLicense" Type="System.String" Scope="User">
+      <Value Profile="(Default)">world.count@yandex.ru</Value>
+    </Setting>
+    <Setting Name="Template" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Template</Value>
     </Setting>
     <Setting Name="Database" Type="System.String" Scope="User">
-      <Value Profile="(Default)">data.db</Value>
+      <Value Profile="(Default)">database.db</Value>
     </Setting>
     <Setting Name="LastOpenDir" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="MailTypeFile" Type="System.String" Scope="User">
+      <Value Profile="(Default)">mail_types.xml</Value>
+    </Setting>
+    <Setting Name="MailCategoryFile" Type="System.String" Scope="User">
+      <Value Profile="(Default)">mail_categories.xml</Value>
+    </Setting>
+    <Setting Name="LastSaveDir" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
   </Settings>
