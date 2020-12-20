@@ -2,10 +2,9 @@
 # Данный GITIGNORE-файл был автоматически создан Microsoft(R) Visual Studio.
 ################################################################################
 
-/AOP/bin/AOP_TEST/DATA/data.db
+
 /AOP/bin
-/AOP/DATA/C5 — копия (2).docx
-/AOP/DATA/C5 — копия.docx
+/AOP/DATA
 /AOP/obj
 /Barcodes/bin
 /Barcodes/obj
@@ -23,13 +22,25 @@
 /OrgList/obj
 /PartStat/bin
 /PartStat/obj
-/TelegramBot/bin/Debug
+/TelegramBot/bin
 /TelegramBot/obj
 /Tracking/bin
 /Tracking/obj
 /WcApi/bin
 /WcApi/obj
-/WinMaterial/bin/Debug
-/WinMaterial/obj/Debug
+/Wc32Api/obj
+/Wc32Api/bin
+/WcPostApi/obj
+/WcPostApi/bin
+/WinMaterial/bin
+/WinMaterial/obj
+/LK/obj
+/LK/bin
+/LicenseGenerator/obj
+/LicenseGenerator/bin
+/TestUpdater/obj
+/TestUpdater/bin
+/TestingApp/obj
+TestingApp/bin
 /.vs
 /WinMaterial/obj/Release
