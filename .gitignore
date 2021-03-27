@@ -42,5 +42,7 @@
 /TestUpdater/bin
 /TestingApp/obj
 TestingApp/bin
+/DwUtils/obj
+/DwUtils/bin
 /.vs
 /WinMaterial/obj/Release
