@@ -63,6 +63,16 @@ namespace PartStat.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _4_Leaf_Clover {
+            get {
+                object obj = ResourceManager.GetObject("4-Leaf-Clover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Agenda {
             get {
                 object obj = ResourceManager.GetObject("Agenda", resourceCulture);
@@ -106,6 +116,16 @@ namespace PartStat.Properties {
         internal static System.Drawing.Bitmap Button_Close {
             get {
                 object obj = ResourceManager.GetObject("Button-Close", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Button_Dashboard {
+            get {
+                object obj = ResourceManager.GetObject("Button-Dashboard", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -383,16 +403,6 @@ namespace PartStat.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap PartStatSplash {
-            get {
-                object obj = ResourceManager.GetObject("PartStatSplash", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap Pen {
             get {
                 object obj = ResourceManager.GetObject("Pen", resourceCulture);
@@ -476,16 +486,6 @@ namespace PartStat.Properties {
         internal static System.Drawing.Bitmap Settings {
             get {
                 object obj = ResourceManager.GetObject("Settings", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap splash600x400 {
-            get {
-                object obj = ResourceManager.GetObject("splash600x400", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

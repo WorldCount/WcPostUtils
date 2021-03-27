@@ -28,8 +28,16 @@ namespace LK.Forms
             labelInfo.Text = "";
             coloredProgressBar.Value = 0;
 
-            if(File.Exists(PathManager.DbPath))
-                File.Delete(PathManager.DbPath);
+            try
+            {
+                if (File.Exists(PathManager.DbPath))
+                    File.Delete(PathManager.DbPath);
+            }
+            catch (Exception e)
+            {
+                Logger.Error($"Ошибка при удалении БД: {e.Message}");
+            }
+            
         }
 
         private void SyncForm_Load(object sender, EventArgs e)

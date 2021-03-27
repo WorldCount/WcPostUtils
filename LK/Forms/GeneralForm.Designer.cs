@@ -163,7 +163,6 @@ namespace LK.Forms
             this.allReportMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator16 = new System.Windows.Forms.ToolStripSeparator();
             this.valueReportMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.handReportMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator17 = new System.Windows.Forms.ToolStripSeparator();
             this.massReportMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator18 = new System.Windows.Forms.ToolStripSeparator();
@@ -171,6 +170,9 @@ namespace LK.Forms
             this.dataMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editOrgsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editOperMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator26 = new System.Windows.Forms.ToolStripSeparator();
+            this.parseOrgConfigMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.parseRpoConfigMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.transMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.typeMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.categoryMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -1402,6 +1404,7 @@ namespace LK.Forms
             this.exitMenuItem.Name = "exitMenuItem";
             this.exitMenuItem.Size = new System.Drawing.Size(129, 28);
             this.exitMenuItem.Text = "Выход";
+            this.exitMenuItem.Click += new System.EventHandler(this.exitMenuItem_Click);
             // 
             // reportMenuItem
             // 
@@ -1410,7 +1413,6 @@ namespace LK.Forms
             this.allReportMenuItem,
             this.toolStripSeparator16,
             this.valueReportMenuItem,
-            this.handReportMenuItem,
             this.toolStripSeparator17,
             this.massReportMenuItem,
             this.toolStripSeparator18,
@@ -1423,6 +1425,7 @@ namespace LK.Forms
             // 
             // editReportMenuItem
             // 
+            this.editReportMenuItem.Enabled = false;
             this.editReportMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(58)))), ((int)(((byte)(66)))));
             this.editReportMenuItem.Name = "editReportMenuItem";
             this.editReportMenuItem.Size = new System.Drawing.Size(259, 28);
@@ -1430,6 +1433,7 @@ namespace LK.Forms
             // 
             // allReportMenuItem
             // 
+            this.allReportMenuItem.Enabled = false;
             this.allReportMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(58)))), ((int)(((byte)(66)))));
             this.allReportMenuItem.Name = "allReportMenuItem";
             this.allReportMenuItem.Size = new System.Drawing.Size(259, 28);
@@ -1448,13 +1452,6 @@ namespace LK.Forms
             this.valueReportMenuItem.Text = "Отчет по ценным";
             this.valueReportMenuItem.Click += new System.EventHandler(this.valueReportMenuItem_Click);
             // 
-            // handReportMenuItem
-            // 
-            this.handReportMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(58)))), ((int)(((byte)(66)))));
-            this.handReportMenuItem.Name = "handReportMenuItem";
-            this.handReportMenuItem.Size = new System.Drawing.Size(259, 28);
-            this.handReportMenuItem.Text = "Отчет по ручке";
-            // 
             // toolStripSeparator17
             // 
             this.toolStripSeparator17.Name = "toolStripSeparator17";
@@ -1462,6 +1459,7 @@ namespace LK.Forms
             // 
             // massReportMenuItem
             // 
+            this.massReportMenuItem.Enabled = false;
             this.massReportMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(58)))), ((int)(((byte)(66)))));
             this.massReportMenuItem.Name = "massReportMenuItem";
             this.massReportMenuItem.Size = new System.Drawing.Size(259, 28);
@@ -1474,6 +1472,7 @@ namespace LK.Forms
             // 
             // orgReportMenuItem
             // 
+            this.orgReportMenuItem.Enabled = false;
             this.orgReportMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(58)))), ((int)(((byte)(66)))));
             this.orgReportMenuItem.Name = "orgReportMenuItem";
             this.orgReportMenuItem.Size = new System.Drawing.Size(259, 28);
@@ -1483,7 +1482,10 @@ namespace LK.Forms
             // 
             this.dataMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.editOrgsMenuItem,
-            this.editOperMenuItem});
+            this.editOperMenuItem,
+            this.toolStripSeparator26,
+            this.parseOrgConfigMenuItem,
+            this.parseRpoConfigMenuItem});
             this.dataMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(58)))), ((int)(((byte)(66)))));
             this.dataMenuItem.Image = global::LK.Properties.Resources.Cabinet;
             this.dataMenuItem.Name = "dataMenuItem";
@@ -1495,7 +1497,7 @@ namespace LK.Forms
             this.editOrgsMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(58)))), ((int)(((byte)(66)))));
             this.editOrgsMenuItem.Image = global::LK.Properties.Resources.Man_Suit_2;
             this.editOrgsMenuItem.Name = "editOrgsMenuItem";
-            this.editOrgsMenuItem.Size = new System.Drawing.Size(190, 28);
+            this.editOrgsMenuItem.Size = new System.Drawing.Size(258, 28);
             this.editOrgsMenuItem.Text = "Организации";
             this.editOrgsMenuItem.Click += new System.EventHandler(this.editOrgsMenuItem_Click);
             // 
@@ -1504,9 +1506,30 @@ namespace LK.Forms
             this.editOperMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(58)))), ((int)(((byte)(66)))));
             this.editOperMenuItem.Image = global::LK.Properties.Resources.Support;
             this.editOperMenuItem.Name = "editOperMenuItem";
-            this.editOperMenuItem.Size = new System.Drawing.Size(190, 28);
+            this.editOperMenuItem.Size = new System.Drawing.Size(258, 28);
             this.editOperMenuItem.Text = "Операторы";
             this.editOperMenuItem.Click += new System.EventHandler(this.editOperMenuItem_Click);
+            // 
+            // toolStripSeparator26
+            // 
+            this.toolStripSeparator26.Name = "toolStripSeparator26";
+            this.toolStripSeparator26.Size = new System.Drawing.Size(255, 6);
+            // 
+            // parseOrgConfigMenuItem
+            // 
+            this.parseOrgConfigMenuItem.Image = global::LK.Properties.Resources.File_Excel;
+            this.parseOrgConfigMenuItem.Name = "parseOrgConfigMenuItem";
+            this.parseOrgConfigMenuItem.Size = new System.Drawing.Size(258, 28);
+            this.parseOrgConfigMenuItem.Text = "Парсинг организаций";
+            this.parseOrgConfigMenuItem.Click += new System.EventHandler(this.parseOrgConfigMenuItem_Click);
+            // 
+            // parseRpoConfigMenuItem
+            // 
+            this.parseRpoConfigMenuItem.Enabled = false;
+            this.parseRpoConfigMenuItem.Image = global::LK.Properties.Resources.File_Excel;
+            this.parseRpoConfigMenuItem.Name = "parseRpoConfigMenuItem";
+            this.parseRpoConfigMenuItem.Size = new System.Drawing.Size(258, 28);
+            this.parseRpoConfigMenuItem.Text = "Парсинг РПО";
             // 
             // transMenuItem
             // 
@@ -1905,7 +1928,6 @@ namespace LK.Forms
         private System.Windows.Forms.ToolStripMenuItem allReportMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator16;
         private System.Windows.Forms.ToolStripMenuItem valueReportMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem handReportMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator17;
         private System.Windows.Forms.ToolStripMenuItem massReportMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator18;
@@ -1968,6 +1990,9 @@ namespace LK.Forms
         private System.Windows.Forms.DataGridViewTextBoxColumn receptionDateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn operatorDataGridViewTextBoxColumn;
         private System.Windows.Forms.ToolStripMenuItem updateMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator26;
+        private System.Windows.Forms.ToolStripMenuItem parseOrgConfigMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem parseRpoConfigMenuItem;
     }
 }
 

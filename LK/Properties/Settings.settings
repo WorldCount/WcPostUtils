@@ -71,5 +71,8 @@
     <Setting Name="ReportFile" Type="System.String" Scope="User">
       <Value Profile="(Default)">reports.xml</Value>
     </Setting>
+    <Setting Name="FirmFieldsFile" Type="System.String" Scope="User">
+      <Value Profile="(Default)">firmFields.xml</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

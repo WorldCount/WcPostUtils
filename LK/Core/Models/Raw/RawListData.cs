@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
 using LK.Core.Models.DB;
 using LK.Core.Models.Types;
+using LK.Core.Store.Manager;
+using NLog;
 using NPOI.SS.UserModel;
 
 namespace LK.Core.Models.Raw
@@ -9,7 +12,8 @@ namespace LK.Core.Models.Raw
     public class RawListData : IDisposable
     {
         private IRow _row;
-        public Exception Exception { get; set; }
+        private ConfigFirmFieldManager _cm;
+        public Exception Exception { get; private set; }
 
         #region Public
 
@@ -42,23 +46,26 @@ namespace LK.Core.Models.Raw
 
         #endregion
 
-        public RawListData(IRow row)
+        public RawListData(IRow row, ConfigFirmFieldManager cm)
         {
             _row = row;
+            _cm = cm;
         }
 
         public bool Parse()
         {
+
+            // MessageBox.Show(_cm.FirmName.NumColumn.ToString());
             try
             {
-                Name = _row.GetCell(2, MissingCellPolicy.RETURN_BLANK_AS_NULL).ToString().Trim().ToUpper();
+                Name = _row.GetCell(_cm.FirmName.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).ToString().Trim().ToUpper();
                 TrimName();
 
-                Inn = _row.GetCell(3, MissingCellPolicy.RETURN_BLANK_AS_NULL).ToString().Trim();
-                Kpp = _row.GetCell(4, MissingCellPolicy.RETURN_BLANK_AS_NULL).ToString().Trim();
-                Contract = _row.GetCell(5, MissingCellPolicy.RETURN_BLANK_AS_NULL).ToString().Trim();
-                Date = _row.GetCell(0, MissingCellPolicy.RETURN_BLANK_AS_NULL).DateCellValue;
-                Num = (int) _row.GetCell(1, MissingCellPolicy.RETURN_BLANK_AS_NULL).NumericCellValue;
+                Inn = _row.GetCell(_cm.Inn.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).ToString().Trim();
+                Kpp = _row.GetCell(_cm.Kpp.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).ToString().Trim();
+                Contract = _row.GetCell(_cm.Contract.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).ToString().Trim();
+                Date = _row.GetCell(_cm.ListDate.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).DateCellValue;
+                Num = (int) _row.GetCell(_cm.ListNum.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).NumericCellValue;
             }
             catch (Exception e)
             {
@@ -73,24 +80,24 @@ namespace LK.Core.Models.Raw
         {
             try
             {
-                Type = _row.GetCell(6, MissingCellPolicy.RETURN_BLANK_AS_NULL).ToString().Trim();
-                Category = _row.GetCell(7, MissingCellPolicy.RETURN_BLANK_AS_NULL).ToString().Trim();
+                Type = _row.GetCell(_cm.Type.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).ToString().Trim();
+                Category = _row.GetCell(_cm.Category.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).ToString().Trim();
 
-                AllCount = (int) _row.GetCell(8, MissingCellPolicy.RETURN_BLANK_AS_NULL).NumericCellValue;
-                FactCount = (int) _row.GetCell(9, MissingCellPolicy.RETURN_BLANK_AS_NULL).NumericCellValue;
-                ReturnCount = (int) _row.GetCell(10, MissingCellPolicy.RETURN_BLANK_AS_NULL).NumericCellValue;
-                MissCount = (int) _row.GetCell(11, MissingCellPolicy.RETURN_BLANK_AS_NULL).NumericCellValue;
+                AllCount = (int) _row.GetCell(_cm.AllCount.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).NumericCellValue;
+                FactCount = (int) _row.GetCell(_cm.FactCount.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).NumericCellValue;
+                ReturnCount = (int) _row.GetCell(_cm.ReturnCount.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).NumericCellValue;
+                MissCount = (int) _row.GetCell(_cm.MissCount.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).NumericCellValue;
 
-                MassRate = _row.GetCell(12, MissingCellPolicy.RETURN_BLANK_AS_NULL).NumericCellValue / 100;
-                AviaRate = _row.GetCell(13, MissingCellPolicy.RETURN_BLANK_AS_NULL).NumericCellValue / 100;
-                Value = _row.GetCell(14, MissingCellPolicy.RETURN_BLANK_AS_NULL).NumericCellValue / 100;
-                ValueRate = _row.GetCell(15, MissingCellPolicy.RETURN_BLANK_AS_NULL).NumericCellValue / 100;
+                MassRate = _row.GetCell(_cm.MassRate.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).NumericCellValue / 100;
+                AviaRate = _row.GetCell(_cm.AviaRate.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).NumericCellValue / 100;
+                Value = _row.GetCell(_cm.ValueRate.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).NumericCellValue / 100;
+                ValueRate = _row.GetCell(_cm.ValueRate.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).NumericCellValue / 100;
 
-                ReceptDate = _row.GetCell(16, MissingCellPolicy.RETURN_BLANK_AS_NULL).DateCellValue;
+                ReceptDate = _row.GetCell(_cm.ReceptDate.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).DateCellValue;
 
-                string o = _row.GetCell(17, MissingCellPolicy.RETURN_BLANK_AS_NULL).StringCellValue.Trim();
+                string o = _row.GetCell(_cm.Oper.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).StringCellValue.Trim();
                 Operator = o.Contains("  ") ? Regex.Replace(o, "[ ]+", " ") : o;
-                OpsIndex = _row.GetCell(18, MissingCellPolicy.RETURN_BLANK_AS_NULL).ToString().Trim();
+                OpsIndex = _row.GetCell(_cm.OpsIndex.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).ToString().Trim();
             }
             catch (Exception e)
             {
@@ -166,6 +173,7 @@ namespace LK.Core.Models.Raw
         public void Dispose()
         {
             _row = null;
+            _cm = null;
             Exception = null;
         }
     }

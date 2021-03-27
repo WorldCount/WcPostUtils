@@ -30,7 +30,7 @@ namespace WcApi.Net
 
         }
 
-        public async Task<bool> SendMessage(string msg, ParseMode parseMode = ParseMode.None)
+        public async Task<bool> SendMessageAsync(string msg, ParseMode parseMode = ParseMode.None)
         {
             string req = $"https://api.telegram.org/bot{_token}/sendMessage?chat_id={_chatId}&text={msg}";
 
@@ -41,6 +41,23 @@ namespace WcApi.Net
                 req += "&parse_mode=markdown";
 
             HttpResponseMessage response = await Client.GetAsync(req);
+
+            if (response.IsSuccessStatusCode)
+                return true;
+            return false;
+        }
+
+        public bool SendMessage(string msg, ParseMode parseMode = ParseMode.None)
+        {
+            string req = $"https://api.telegram.org/bot{_token}/sendMessage?chat_id={_chatId}&text={msg}";
+
+            if (parseMode == ParseMode.HTML)
+                req += "&parse_mode=html";
+
+            if (parseMode == ParseMode.Markdown)
+                req += "&parse_mode=markdown";
+
+            HttpResponseMessage response =  Client.GetAsync(req).Result;
 
             if (response.IsSuccessStatusCode)
                 return true;

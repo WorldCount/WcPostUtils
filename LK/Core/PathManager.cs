@@ -17,6 +17,8 @@ namespace LK.Core
         public static readonly string DataColorPath = Path.Combine(DataDir, Properties.Settings.Default.DataColorFile);
         public static readonly string ConfigPath = Path.Combine(DataDir, Properties.Settings.Default.ConfigFile);
 
+        public static readonly string FirmsFieldsPath = Path.Combine(DataDir, Properties.Settings.Default.FirmFieldsFile);
+
 
         // Тарифы
         public static readonly string NoticeTarifPath = Path.Combine(Tarif, Properties.Settings.Default.NoticeTarifFile);

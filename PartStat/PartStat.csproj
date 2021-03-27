@@ -36,6 +36,9 @@
     <ApplicationIcon>icon_128.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoUpdater.NET, Version=1.6.4.0, Culture=neutral, PublicKeyToken=501435c91b35f4bc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autoupdater.NET.Official.1.6.4\lib\net45\AutoUpdater.NET.dll</HintPath>
+    </Reference>
     <Reference Include="FirebirdSql.Data.FirebirdClient, Version=7.5.0.0, Culture=neutral, PublicKeyToken=3750abcc3150b00c, processorArchitecture=MSIL">
       <HintPath>..\packages\FirebirdSql.Data.FirebirdClient.7.5.0\lib\net452\FirebirdSql.Data.FirebirdClient.dll</HintPath>
     </Reference>
@@ -54,6 +57,7 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -86,6 +90,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Core\Libs\ReportQueue.cs" />
+    <Compile Include="Core\Libs\ServerRequest\ServerAuth.cs" />
     <Compile Include="Core\Libs\ServerTarif\Object\TarifObject.cs" />
     <Compile Include="Core\Libs\ServerTarif\Object\NoticeObject.cs" />
     <Compile Include="Core\Libs\Stats\CityStatCollector.cs" />
@@ -326,6 +331,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="Resources\Button-Dashboard.png" />
+    <None Include="Resources\4-Leaf-Clover.png" />
     <None Include="Resources\Bank.png" />
     <None Include="Resources\Coin-1.png" />
     <None Include="Resources\Pen.png" />

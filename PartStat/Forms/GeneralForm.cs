@@ -7,6 +7,8 @@ using System.IO;
 using System.Windows.Forms;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoUpdaterDotNET;
+using Newtonsoft.Json;
 using NLog;
 using PartStat.Core;
 using PartStat.Core.Libs;
@@ -15,6 +17,7 @@ using PartStat.Core.Libs.DataBase.Queries;
 using PartStat.Core.Libs.DataBase.Queries.RequestObject;
 using PartStat.Core.Libs.DataManagers;
 using PartStat.Core.Libs.Print;
+using PartStat.Core.Libs.ServerRequest;
 using PartStat.Core.Libs.Stats;
 using PartStat.Core.Libs.TarifManager;
 using PartStat.Core.Models;
@@ -62,6 +65,7 @@ namespace PartStat.Forms
         private bool _checkAllFlag = true;
 
         private readonly string _key;
+        private ServerAuth _serverAuth;
 
         private readonly int[] _ignoreCols = { 0, 10 };
         private readonly int[] _columnWidth = { 0, 70, 60, 150, 50, 50, 90, 80, 60, 60, 0, 40, 60 };
@@ -92,11 +96,15 @@ namespace PartStat.Forms
             // Хук двойной буфферизации для таблицы
             WcApi.Win32.DrawingControl.SetDoubleBuffered(dataGridViewList);
 
-            // Инициализация начальных данных
-            InitialData();
+            if (_connect != null && _connect.TestConnect())
+            {
+                // Инициализация начальных данных
+                InitialData();
 
-            // Загрузка данных для фильтров
-            LoadAllData();
+                // Загрузка данных для фильтров
+                LoadAllData();
+            }
+            
             // Настройка таблицы
             InitDataGridView();
 
@@ -107,6 +115,9 @@ namespace PartStat.Forms
             LoadReportMenu();
 
             _reportsQueue.AddedObject += _reportsQueue_AddedObject;
+
+            AutoUpdater.Proxy = null;
+            AutoUpdater.ParseUpdateInfoEvent += AutoUpdater_ParseUpdateInfoEvent;
 
             // TODO: Тестовая дата для отладки
             //dateTimePickerIn.Value = new DateTime(2020, 07, 28);
@@ -131,19 +142,28 @@ namespace PartStat.Forms
 
         #region Лицензия
 
-        private async void CheckLicense()
+        private void CheckLicense()
         {
             string license = Properties.Settings.Default.License;
             labelLicense.Text = License.GetLicenseExpiresString(license, _key);
+
+            _serverAuth = ServerManager.GetServerAuth().Result;
+            if (!_serverAuth.Work)
+            {
+                MessageBox.Show(_serverAuth.Message, "Ошибка");
+                Close();
+            }
 
             if (_isAdmin)
                 return;
 
             if (!License.CheckLicense(license, _key))
             {
-                await Utils.Telegram.SendMessage("Лицензия истекла.");
-                
+                Utils.Telegram.SendMessage($"Лицензия истекла. [{_key}]");
+
+
                 LicenseForm licenseForm = new LicenseForm(license, _key, Application.ProductName, Application.ProductVersion, Properties.Settings.Default.MailLicense, Icon);
+
                 if (licenseForm.ShowDialog(this) == DialogResult.OK)
                 {
                     Properties.Settings.Default.License = licenseForm.LicenseKey;
@@ -905,6 +925,13 @@ namespace PartStat.Forms
             }
         }
 
+        private void updateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AutoUpdater.ShowRemindLaterButton = false;
+            AutoUpdater.ReportErrors = true;
+            AutoUpdater.Start("https://worldcount.ru/updates/repo/PartStat/update.json");
+        }
+
         private void firstMailToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FirstMailTarifForm firstMailTarifForm = new FirstMailTarifForm();
@@ -1375,6 +1402,30 @@ namespace PartStat.Forms
         {
             WcApi.Keyboard.Keyboard.SetEnglishLanguage();
         }
+
+        #region Updater
+
+        private void AutoUpdater_ParseUpdateInfoEvent(ParseUpdateInfoEventArgs args)
+        {
+            dynamic json = JsonConvert.DeserializeObject(args.RemoteData);
+            args.UpdateInfo = new UpdateInfoEventArgs
+            {
+                CurrentVersion = json.version,
+                ChangelogURL = json.changelog,
+                DownloadURL = json.url,
+                Mandatory = new Mandatory
+                {
+                    Value = json.mandatory.value
+                },
+                CheckSum = new CheckSum
+                {
+                    Value = json.checksum.value,
+                    HashingAlgorithm = json.checksum.hashingAlgorithm
+                }
+            };
+        }
+
+        #endregion
 
         #endregion
 

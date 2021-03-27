@@ -98,7 +98,7 @@ namespace LK.Core.Libs.Auth
 
         public async Task<Token> GetToken(string code)
         {
-            Uri uriToiken = new Uri("https://priem.pochta.ru/api/auth/token");
+            Uri uriToken = new Uri("https://priem.pochta.ru/api/auth/token");
 
             DateTime currentDateTime = DateTime.Now;
 
@@ -109,7 +109,7 @@ namespace LK.Core.Libs.Auth
                 new KeyValuePair<string, string>("Content-Type", "application/x-www-form-urlencoded"),
             });
 
-            var tokenResponse = await _client.PostAsync(uriToiken, tokenContent);
+            var tokenResponse = await _client.PostAsync(uriToken, tokenContent);
             var tokenString = await tokenResponse.Content.ReadAsStringAsync();
 
             Token token = JsonConvert.DeserializeObject<Token>(tokenString);

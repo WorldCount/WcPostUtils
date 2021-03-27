@@ -160,12 +160,6 @@
   <data name="gray_unchecked_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\gray-unchecked-32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="PartStatSplash" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\PartStatSplash.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="splash600x400" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\splash600x400.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="white-synchronize-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\white-synchronize-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -291,5 +285,11 @@
   </data>
   <data name="Bank" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Bank.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="4-Leaf-Clover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\4-Leaf-Clover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Button-Dashboard" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Button-Dashboard.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

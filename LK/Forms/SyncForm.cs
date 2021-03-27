@@ -19,6 +19,7 @@ using NPOI.HSSF.UserModel;
 using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
 using NLog;
+using NLog.Fluent;
 using WcApi.Cryptography;
 using WcApi.Finance;
 
@@ -52,6 +53,7 @@ namespace LK.Forms
         private readonly MailTypeManager _mailTypeManager = new MailTypeManager();
         private readonly FirmManager _firmManager = new FirmManager();
         private readonly OperatorManager _operatorManager = new OperatorManager();
+        private readonly ConfigFirmFieldManager _configFirmFieldManager;
 
         #endregion
 
@@ -65,6 +67,8 @@ namespace LK.Forms
 
             _reportInDate = inDate;
             _reportOutDate = outDate;
+
+            _configFirmFieldManager = new ConfigFirmFieldManager();
 
             string inD = _reportInDate.ToString("dd.MM.yyyy");
             string outD = _reportOutDate.ToString("dd.MM.yyyy");
@@ -96,6 +100,8 @@ namespace LK.Forms
 
         private void SyncForm_Load(object sender, EventArgs e)
         {
+            _configFirmFieldManager.Load();
+            _configFirmFieldManager.DecrementRowNum();
 
             Work();
         }
@@ -257,6 +263,12 @@ namespace LK.Forms
 
                     Firm firm = _firmManager.GetFirm(raw.Inn, raw.Kpp);
 
+                    if (firm is null)
+                    {
+                        Logger.Error($"Не удалось получить данные по организации: Inn = '{raw.Inn}', Kpp = '{raw.Kpp}'");
+                        continue;
+                    }
+
                     firmListManager.Update(raw.Date);
                     FirmList firmList = firmListManager.GetFirmList(firm.Id, raw.Num);
 
@@ -362,7 +374,7 @@ namespace LK.Forms
 
                 try
                 {
-                    RawListData raw = new RawListData(row);
+                    RawListData raw = new RawListData(row, _configFirmFieldManager);
 
                     if (raw.Parse() == false)
                     {

@@ -14,6 +14,7 @@ using LK.Core;
 using LK.Core.Libs.DataManagers;
 using LK.Core.Libs.DataManagers.Models;
 using LK.Core.Libs.PrintDocuments;
+using LK.Core.Libs.ServerRequest;
 using LK.Core.Libs.Stat;
 using LK.Core.Libs.Widget;
 using LK.Core.Models.DB;
@@ -71,6 +72,7 @@ namespace LK.Forms
         private FirmListStatCollector _collector;
 
         private Auth _auth;
+        private ServerAuth _serverAuth;
 
         #endregion
 
@@ -97,6 +99,7 @@ namespace LK.Forms
                 UpgradeSettings();
 
             // ReSharper disable once VirtualMemberCallInConstructor
+            // ReSharper disable once LocalizableElement
             Text = $"{Properties.Settings.Default.AppName} {Application.ProductVersion}";
 
             // Хук двойной буфферизации для таблицы
@@ -141,6 +144,13 @@ namespace LK.Forms
             string exp = await Task.Run(() => License.GetLicenseExpiresString(license, _key));
 
             labelLicense.Text = string.IsNullOrEmpty(exp) ? "Ошибка" : exp;
+
+            _serverAuth = await ServerManager.GetServerAuth();
+            if (!_serverAuth.Work)
+            {
+                MessageBox.Show(_serverAuth.Message, "Ошибка");
+                Close();
+            }
 
             if (_isAdmin)
                 return;
@@ -379,7 +389,7 @@ namespace LK.Forms
                 return _appVersion != null ? $"<b>{_appText}:</b>  {msg}<pre>Дата: {DateTime.Now} | ПО: {_appVersion} | Хост: {host} | Пользователь: {user} | IP: {ip}</pre>" : $"<b>{_appText}:</b>  {msg}<pre>Дата: {DateTime.Now} | Хост: {host} | Пользователь: {user} | IP: {ip}</pre>";
             });
 
-            await Utils.Telegram.SendMessage(req, ParseMode.HTML);
+            await Utils.Telegram.SendMessageAsync(req, ParseMode.HTML);
         }
 
         private void timerStatus_Tick(object sender, EventArgs e)
@@ -399,7 +409,9 @@ namespace LK.Forms
         {
             comboBoxListClass.DataSource = Enum.GetNames(typeof(MailClass));
             comboBoxErrorList.DataSource = Enum.GetNames(typeof(ErrorType));
+
             _auth = Auth.Load(PathManager.AuthPath);
+            //_serverAuth = await ServerManager.GetServerAuth();
 
             await LoadOperator();
 
@@ -1432,6 +1444,17 @@ namespace LK.Forms
 
             }
 
+        }
+
+        private void exitMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void parseOrgConfigMenuItem_Click(object sender, EventArgs e)
+        {
+            FirmRowForm firmRowForm = new FirmRowForm();
+            firmRowForm.ShowDialog(this);
         }
     }
 }

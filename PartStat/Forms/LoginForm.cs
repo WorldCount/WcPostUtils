@@ -79,7 +79,7 @@ namespace PartStat.Forms
             string user = WindowsIdentity.GetCurrent().Name;
             string ip = Host.GetIp();
             string req = AppVersion != null ? $"<b>{_appText}:</b>  {msg}<pre>Дата: {DateTime.Now} | ПО: {AppVersion} | Хост: {host} | Пользователь: {user} | IP: {ip}</pre>" : $"<b>{_appText}:</b>  {msg}<pre>Дата: {DateTime.Now} | Хост: {host} | Пользователь: {user} | IP: {ip}</pre>";
-            await Utils.Telegram.SendMessage(req, ParseMode.HTML);
+            await Utils.Telegram.SendMessageAsync(req, ParseMode.HTML);
         }
 
         private void CheckArgs()

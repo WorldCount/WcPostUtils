@@ -478,7 +478,7 @@ namespace LK.Core.Libs.TarifManager.ServerTarif
 
         private static async Task<NoticeTarif> GetInterNoticeTarif()
         {
-            string url = $"https://tariff.pochta.ru/tariff/v1/calculate?json&object=2011&from=125993&country=895&weight=20&date=20200531&service=1";
+            string url = $"https://tariff.pochta.ru/tariff/v1/calculate?json&object=2011&from=125993&country=895&weight=20&service=1";
 
             NoticeTarif noticeTarif = await GetNoticeTarifByServiceId(url);
 

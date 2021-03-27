@@ -253,6 +253,16 @@ namespace LK.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap File_Excel {
+            get {
+                object obj = ResourceManager.GetObject("File-Excel", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap gray_checked_32 {
             get {
                 object obj = ResourceManager.GetObject("gray_checked_32", resourceCulture);
