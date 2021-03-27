@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace DwUtils
 {
-    public partial class Form1 : Form
+    public partial class GeneralForm : Form
     {
-        public Form1()
+        public GeneralForm()
         {
             InitializeComponent();
         }
