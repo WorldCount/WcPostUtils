@@ -10,8 +10,7 @@ namespace DwUtils.Core
 
         // Данные
         public static readonly string DbPath = Path.Combine(DataDir, Properties.Settings.Default.Database);
-
-        //public static readonly string AuthPath = Path.Combine(DataDir, Properties.Settings.Default.AuthFile);
+        public static readonly string AuthPath = Path.Combine(DataDir, Properties.Settings.Default.AuthFile);
 
         static PathManager()
         {

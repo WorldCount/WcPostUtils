@@ -32,20 +32,23 @@ namespace DwUtils.Forms
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GeneralForm));
             this.menuBar = new System.Windows.Forms.MenuStrip();
-            this.fileMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exitMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusBar = new System.Windows.Forms.StatusStrip();
+            this.statusText = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusAuthor = new System.Windows.Forms.ToolStripStatusLabel();
             this.panelGeneral = new System.Windows.Forms.Panel();
             this.tabsControl = new System.Windows.Forms.TabControl();
             this.tabReceived = new System.Windows.Forms.TabPage();
-            this.tabOrgsDoc = new System.Windows.Forms.TabPage();
             this.tabReceivedDoc = new System.Windows.Forms.TabPage();
+            this.tabOrgsDoc = new System.Windows.Forms.TabPage();
             this.tabActiveUsers = new System.Windows.Forms.TabPage();
             this.labelLicense = new System.Windows.Forms.Label();
             this.labelInfoLicense = new System.Windows.Forms.Label();
             this.timerStatus = new System.Windows.Forms.Timer(this.components);
-            this.statusText = new System.Windows.Forms.ToolStripStatusLabel();
-            this.statusAuthor = new System.Windows.Forms.ToolStripStatusLabel();
+            this.settingsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.infosMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fileMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.connectsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuBar.SuspendLayout();
             this.statusBar.SuspendLayout();
             this.tabsControl.SuspendLayout();
@@ -59,26 +62,15 @@ namespace DwUtils.Forms
             this.menuBar.GripMargin = new System.Windows.Forms.Padding(0);
             this.menuBar.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileMenuItem});
+            this.fileMenuItem,
+            this.connectsMenuItem,
+            this.settingsMenuItem,
+            this.infosMenuItem});
             this.menuBar.Location = new System.Drawing.Point(0, 0);
             this.menuBar.Name = "menuBar";
             this.menuBar.Padding = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuBar.Size = new System.Drawing.Size(800, 40);
             this.menuBar.TabIndex = 0;
-            // 
-            // fileMenuItem
-            // 
-            this.fileMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.exitMenuItem});
-            this.fileMenuItem.Name = "fileMenuItem";
-            this.fileMenuItem.Size = new System.Drawing.Size(57, 36);
-            this.fileMenuItem.Text = "Файл";
-            // 
-            // exitMenuItem
-            // 
-            this.exitMenuItem.Name = "exitMenuItem";
-            this.exitMenuItem.Size = new System.Drawing.Size(122, 24);
-            this.exitMenuItem.Text = "Выход";
             // 
             // statusBar
             // 
@@ -91,6 +83,20 @@ namespace DwUtils.Forms
             this.statusBar.Size = new System.Drawing.Size(800, 22);
             this.statusBar.TabIndex = 1;
             this.statusBar.Text = "statusStrip1";
+            // 
+            // statusText
+            // 
+            this.statusText.Name = "statusText";
+            this.statusText.Size = new System.Drawing.Size(671, 17);
+            this.statusText.Spring = true;
+            // 
+            // statusAuthor
+            // 
+            this.statusAuthor.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.statusAuthor.ForeColor = System.Drawing.Color.Gray;
+            this.statusAuthor.Name = "statusAuthor";
+            this.statusAuthor.Size = new System.Drawing.Size(114, 17);
+            this.statusAuthor.Text = "WorldCount, 2020 ©";
             // 
             // panelGeneral
             // 
@@ -125,31 +131,31 @@ namespace DwUtils.Forms
             this.tabReceived.TabIndex = 0;
             this.tabReceived.Text = "На вручение";
             // 
+            // tabReceivedDoc
+            // 
+            this.tabReceivedDoc.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tabReceivedDoc.Location = new System.Drawing.Point(4, 29);
+            this.tabReceivedDoc.Name = "tabReceivedDoc";
+            this.tabReceivedDoc.Size = new System.Drawing.Size(792, 311);
+            this.tabReceivedDoc.TabIndex = 2;
+            this.tabReceivedDoc.Text = "Накладные на прибытие";
+            // 
             // tabOrgsDoc
             // 
             this.tabOrgsDoc.BackColor = System.Drawing.Color.WhiteSmoke;
             this.tabOrgsDoc.Location = new System.Drawing.Point(4, 29);
             this.tabOrgsDoc.Name = "tabOrgsDoc";
             this.tabOrgsDoc.Padding = new System.Windows.Forms.Padding(3);
-            this.tabOrgsDoc.Size = new System.Drawing.Size(792, 323);
+            this.tabOrgsDoc.Size = new System.Drawing.Size(792, 311);
             this.tabOrgsDoc.TabIndex = 1;
             this.tabOrgsDoc.Text = "Накладные на организации";
-            // 
-            // tabReceivedDoc
-            // 
-            this.tabReceivedDoc.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.tabReceivedDoc.Location = new System.Drawing.Point(4, 29);
-            this.tabReceivedDoc.Name = "tabReceivedDoc";
-            this.tabReceivedDoc.Size = new System.Drawing.Size(792, 323);
-            this.tabReceivedDoc.TabIndex = 2;
-            this.tabReceivedDoc.Text = "Накладные на прибытие";
             // 
             // tabActiveUsers
             // 
             this.tabActiveUsers.BackColor = System.Drawing.Color.WhiteSmoke;
             this.tabActiveUsers.Location = new System.Drawing.Point(4, 29);
             this.tabActiveUsers.Name = "tabActiveUsers";
-            this.tabActiveUsers.Size = new System.Drawing.Size(792, 323);
+            this.tabActiveUsers.Size = new System.Drawing.Size(792, 311);
             this.tabActiveUsers.TabIndex = 3;
             this.tabActiveUsers.Text = "Подключенные пользователи";
             // 
@@ -180,19 +186,42 @@ namespace DwUtils.Forms
             this.timerStatus.Interval = 3000;
             this.timerStatus.Tick += new System.EventHandler(this.timerStatus_Tick);
             // 
-            // statusText
+            // settingsMenuItem
             // 
-            this.statusText.Name = "statusText";
-            this.statusText.Size = new System.Drawing.Size(671, 17);
-            this.statusText.Spring = true;
+            this.settingsMenuItem.Image = global::DwUtils.Properties.Resources.Button_Settings;
+            this.settingsMenuItem.Name = "settingsMenuItem";
+            this.settingsMenuItem.Size = new System.Drawing.Size(120, 36);
+            this.settingsMenuItem.Text = "Настройки";
             // 
-            // statusAuthor
+            // infosMenuItem
             // 
-            this.statusAuthor.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.statusAuthor.ForeColor = System.Drawing.Color.Gray;
-            this.statusAuthor.Name = "statusAuthor";
-            this.statusAuthor.Size = new System.Drawing.Size(114, 17);
-            this.statusAuthor.Text = "WorldCount, 2020 ©";
+            this.infosMenuItem.Image = global::DwUtils.Properties.Resources._4_Leaf_Clover;
+            this.infosMenuItem.Name = "infosMenuItem";
+            this.infosMenuItem.Size = new System.Drawing.Size(84, 36);
+            this.infosMenuItem.Text = "Инфо";
+            // 
+            // fileMenuItem
+            // 
+            this.fileMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exitMenuItem});
+            this.fileMenuItem.Image = global::DwUtils.Properties.Resources.File;
+            this.fileMenuItem.Name = "fileMenuItem";
+            this.fileMenuItem.Size = new System.Drawing.Size(81, 36);
+            this.fileMenuItem.Text = "Файл";
+            // 
+            // exitMenuItem
+            // 
+            this.exitMenuItem.Image = global::DwUtils.Properties.Resources.Button_Close;
+            this.exitMenuItem.Name = "exitMenuItem";
+            this.exitMenuItem.Size = new System.Drawing.Size(130, 30);
+            this.exitMenuItem.Text = "Выход";
+            // 
+            // connectsMenuItem
+            // 
+            this.connectsMenuItem.Image = global::DwUtils.Properties.Resources.Server;
+            this.connectsMenuItem.Name = "connectsMenuItem";
+            this.connectsMenuItem.Size = new System.Drawing.Size(142, 36);
+            this.connectsMenuItem.Text = "Подключения";
             // 
             // GeneralForm
             // 
@@ -242,6 +271,9 @@ namespace DwUtils.Forms
         private System.Windows.Forms.Timer timerStatus;
         private System.Windows.Forms.ToolStripStatusLabel statusText;
         private System.Windows.Forms.ToolStripStatusLabel statusAuthor;
+        private System.Windows.Forms.ToolStripMenuItem connectsMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem settingsMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem infosMenuItem;
     }
 }
 

@@ -82,6 +82,12 @@
     <Compile Include="Core\Libs\ServerRequest\ServerManager.cs" />
     <Compile Include="Core\PathManager.cs" />
     <Compile Include="Core\Utils.cs" />
+    <Compile Include="Forms\ConfigForms\AuthForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ConfigForms\AuthForm.Designer.cs">
+      <DependentUpon>AuthForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\GeneralForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,7 +102,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="Resources\Button-Settings.png" />
+    <None Include="Resources\4-Leaf-Clover.png" />
+    <None Include="Resources\Server.png" />
+    <None Include="Resources\Button-Close.png" />
+    <None Include="Resources\File.png" />
+    <None Include="Resources\save-24.png" />
+    <None Include="Resources\close-window-24.png" />
     <None Include="Resources\white-delete-30.png" />
+    <EmbeddedResource Include="Forms\ConfigForms\AuthForm.resx">
+      <DependentUpon>AuthForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\GeneralForm.resx">
       <DependentUpon>GeneralForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -136,7 +152,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Core\Models\" />
-    <Folder Include="Forms\ConfigForms\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Wc32Api\Wc32Api.csproj">

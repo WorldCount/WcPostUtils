@@ -157,13 +157,13 @@ namespace DwUtils.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string Параметр {
+        [global::System.Configuration.DefaultSettingValueAttribute("auth.xml")]
+        public string AuthFile {
             get {
-                return ((string)(this["Параметр"]));
+                return ((string)(this["AuthFile"]));
             }
             set {
-                this["Параметр"] = value;
+                this["AuthFile"] = value;
             }
         }
     }

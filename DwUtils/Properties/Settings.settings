@@ -35,8 +35,8 @@
     <Setting Name="MailLicense" Type="System.String" Scope="User">
       <Value Profile="(Default)">world.count@yandex.ru</Value>
     </Setting>
-    <Setting Name="Параметр" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+    <Setting Name="AuthFile" Type="System.String" Scope="User">
+      <Value Profile="(Default)">auth.xml</Value>
     </Setting>
   </Settings>
 </SettingsFile>
