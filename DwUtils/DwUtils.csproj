@@ -136,8 +136,13 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Core\Models\" />
+    <Folder Include="Forms\ConfigForms\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Wc32Api\Wc32Api.csproj">
+      <Project>{f422d6e4-fdd2-4aa8-a1af-23ab9f988067}</Project>
+      <Name>Wc32Api</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WcApi\WcApi.csproj">
       <Project>{3a0d99ef-a649-494e-95a6-2cd403a6db0a}</Project>
       <Name>WcApi</Name>
