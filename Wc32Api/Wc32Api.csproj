@@ -43,13 +43,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Widgets\TextBoxs\BorderTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Win32\DrawingControl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DataTypes\" />
     <Folder Include="Forms\" />
-    <Folder Include="Widgets\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
