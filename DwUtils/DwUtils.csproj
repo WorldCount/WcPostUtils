@@ -102,6 +102,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="Resources\Suit.png" />
+    <None Include="Resources\Lan-Socket.png" />
     <None Include="Resources\Button-Settings.png" />
     <None Include="Resources\4-Leaf-Clover.png" />
     <None Include="Resources\Server.png" />

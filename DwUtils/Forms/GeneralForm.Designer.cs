@@ -32,6 +32,13 @@ namespace DwUtils.Forms
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GeneralForm));
             this.menuBar = new System.Windows.Forms.MenuStrip();
+            this.fileMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.connectsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.authMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.databaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.settingsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.infosMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusBar = new System.Windows.Forms.StatusStrip();
             this.statusText = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusAuthor = new System.Windows.Forms.ToolStripStatusLabel();
@@ -44,11 +51,6 @@ namespace DwUtils.Forms
             this.labelLicense = new System.Windows.Forms.Label();
             this.labelInfoLicense = new System.Windows.Forms.Label();
             this.timerStatus = new System.Windows.Forms.Timer(this.components);
-            this.settingsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.infosMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.fileMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exitMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.connectsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuBar.SuspendLayout();
             this.statusBar.SuspendLayout();
             this.tabsControl.SuspendLayout();
@@ -71,6 +73,61 @@ namespace DwUtils.Forms
             this.menuBar.Padding = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuBar.Size = new System.Drawing.Size(800, 40);
             this.menuBar.TabIndex = 0;
+            // 
+            // fileMenuItem
+            // 
+            this.fileMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exitMenuItem});
+            this.fileMenuItem.Image = global::DwUtils.Properties.Resources.File;
+            this.fileMenuItem.Name = "fileMenuItem";
+            this.fileMenuItem.Size = new System.Drawing.Size(81, 36);
+            this.fileMenuItem.Text = "Файл";
+            // 
+            // exitMenuItem
+            // 
+            this.exitMenuItem.Image = global::DwUtils.Properties.Resources.Button_Close;
+            this.exitMenuItem.Name = "exitMenuItem";
+            this.exitMenuItem.Size = new System.Drawing.Size(130, 30);
+            this.exitMenuItem.Text = "Выход";
+            // 
+            // connectsMenuItem
+            // 
+            this.connectsMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.authMenuItem,
+            this.databaseToolStripMenuItem});
+            this.connectsMenuItem.Image = global::DwUtils.Properties.Resources.Server;
+            this.connectsMenuItem.Name = "connectsMenuItem";
+            this.connectsMenuItem.Size = new System.Drawing.Size(142, 36);
+            this.connectsMenuItem.Text = "Подключения";
+            // 
+            // authMenuItem
+            // 
+            this.authMenuItem.Image = global::DwUtils.Properties.Resources.Suit;
+            this.authMenuItem.Name = "authMenuItem";
+            this.authMenuItem.Size = new System.Drawing.Size(263, 30);
+            this.authMenuItem.Text = "Авторизация на Почта.Ру";
+            this.authMenuItem.Click += new System.EventHandler(this.authMenuItem_Click);
+            // 
+            // databaseToolStripMenuItem
+            // 
+            this.databaseToolStripMenuItem.Image = global::DwUtils.Properties.Resources.Lan_Socket;
+            this.databaseToolStripMenuItem.Name = "databaseToolStripMenuItem";
+            this.databaseToolStripMenuItem.Size = new System.Drawing.Size(263, 30);
+            this.databaseToolStripMenuItem.Text = "Подключение к БД";
+            // 
+            // settingsMenuItem
+            // 
+            this.settingsMenuItem.Image = global::DwUtils.Properties.Resources.Button_Settings;
+            this.settingsMenuItem.Name = "settingsMenuItem";
+            this.settingsMenuItem.Size = new System.Drawing.Size(120, 36);
+            this.settingsMenuItem.Text = "Настройки";
+            // 
+            // infosMenuItem
+            // 
+            this.infosMenuItem.Image = global::DwUtils.Properties.Resources._4_Leaf_Clover;
+            this.infosMenuItem.Name = "infosMenuItem";
+            this.infosMenuItem.Size = new System.Drawing.Size(84, 36);
+            this.infosMenuItem.Text = "Инфо";
             // 
             // statusBar
             // 
@@ -186,43 +243,6 @@ namespace DwUtils.Forms
             this.timerStatus.Interval = 3000;
             this.timerStatus.Tick += new System.EventHandler(this.timerStatus_Tick);
             // 
-            // settingsMenuItem
-            // 
-            this.settingsMenuItem.Image = global::DwUtils.Properties.Resources.Button_Settings;
-            this.settingsMenuItem.Name = "settingsMenuItem";
-            this.settingsMenuItem.Size = new System.Drawing.Size(120, 36);
-            this.settingsMenuItem.Text = "Настройки";
-            // 
-            // infosMenuItem
-            // 
-            this.infosMenuItem.Image = global::DwUtils.Properties.Resources._4_Leaf_Clover;
-            this.infosMenuItem.Name = "infosMenuItem";
-            this.infosMenuItem.Size = new System.Drawing.Size(84, 36);
-            this.infosMenuItem.Text = "Инфо";
-            // 
-            // fileMenuItem
-            // 
-            this.fileMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.exitMenuItem});
-            this.fileMenuItem.Image = global::DwUtils.Properties.Resources.File;
-            this.fileMenuItem.Name = "fileMenuItem";
-            this.fileMenuItem.Size = new System.Drawing.Size(81, 36);
-            this.fileMenuItem.Text = "Файл";
-            // 
-            // exitMenuItem
-            // 
-            this.exitMenuItem.Image = global::DwUtils.Properties.Resources.Button_Close;
-            this.exitMenuItem.Name = "exitMenuItem";
-            this.exitMenuItem.Size = new System.Drawing.Size(130, 30);
-            this.exitMenuItem.Text = "Выход";
-            // 
-            // connectsMenuItem
-            // 
-            this.connectsMenuItem.Image = global::DwUtils.Properties.Resources.Server;
-            this.connectsMenuItem.Name = "connectsMenuItem";
-            this.connectsMenuItem.Size = new System.Drawing.Size(142, 36);
-            this.connectsMenuItem.Text = "Подключения";
-            // 
             // GeneralForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -274,6 +294,8 @@ namespace DwUtils.Forms
         private System.Windows.Forms.ToolStripMenuItem connectsMenuItem;
         private System.Windows.Forms.ToolStripMenuItem settingsMenuItem;
         private System.Windows.Forms.ToolStripMenuItem infosMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem authMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem databaseToolStripMenuItem;
     }
 }
 

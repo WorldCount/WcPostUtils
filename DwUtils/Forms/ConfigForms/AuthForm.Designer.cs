@@ -86,9 +86,9 @@
             this.labelInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
             this.labelInfo.Location = new System.Drawing.Point(12, 9);
             this.labelInfo.Name = "labelInfo";
-            this.labelInfo.Size = new System.Drawing.Size(179, 28);
+            this.labelInfo.Size = new System.Drawing.Size(245, 28);
             this.labelInfo.TabIndex = 0;
-            this.labelInfo.Text = "Авторизация в ЛК";
+            this.labelInfo.Text = "Авторизация на Почта.Ру";
             // 
             // lblLogin
             // 

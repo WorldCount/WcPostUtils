@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DwUtils.Core;
 using DwUtils.Core.Libs.ServerRequest;
+using DwUtils.Forms.ConfigForms;
 using NLog;
 using WcApi.Cryptography;
 using WcApi.Net;
@@ -284,11 +285,13 @@ namespace DwUtils.Forms
 
         #endregion
 
+        #region События
+
         private async void GeneralForm_Load(object sender, EventArgs e)
         {
             await CreateDirs();
 
-            _key = await Task.Run(() => LicenseKey.GetKey(WcApi.Net.Host.GetIp(), AuthKey.Key, Application.ProductName));
+            _key = await Task.Run(() => LicenseKey.GetKey(Host.GetIp(), AuthKey.Key, Application.ProductName));
 
             // Пробная лицензия на 30 дней
             await Task.Run(GetTrialLicense);
@@ -314,6 +317,8 @@ namespace DwUtils.Forms
             SavePos();
         }
 
+        #endregion
+
         #region Методы
 
         private Task CreateDirs()
@@ -326,5 +331,16 @@ namespace DwUtils.Forms
         }
 
         #endregion
+
+        #region События Меню
+
+        private void authMenuItem_Click(object sender, EventArgs e)
+        {
+            AuthForm authForm = new AuthForm();
+            authForm.ShowDialog(this);
+        }
+
+        #endregion
+
     }
 }
