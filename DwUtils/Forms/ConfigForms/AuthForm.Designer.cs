@@ -36,6 +36,7 @@
             this.lblPassword = new System.Windows.Forms.Label();
             this.tbPassword = new Wc32Api.Widgets.TextBoxs.BorderTextBox();
             this.tbLogin = new Wc32Api.Widgets.TextBoxs.BorderTextBox();
+            this.connectWidget = new DwUtils.Core.Libs.Widgets.ConnectWidget();
             this.SuspendLayout();
             // 
             // btnSave
@@ -141,11 +142,31 @@
             this.tbLogin.Size = new System.Drawing.Size(251, 26);
             this.tbLogin.TabIndex = 1;
             // 
+            // connectWidget
+            // 
+            this.connectWidget.BorderColor = System.Drawing.Color.Gray;
+            this.connectWidget.BorderStyle = System.Windows.Forms.ButtonBorderStyle.Dashed;
+            this.connectWidget.BorderWidth = 1;
+            this.connectWidget.ErrorStatusColor = System.Drawing.Color.Firebrick;
+            this.connectWidget.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.connectWidget.Location = new System.Drawing.Point(17, 191);
+            this.connectWidget.Message = "Авторизация на сервере Почта.Ру";
+            this.connectWidget.MessageColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(74)))), ((int)(((byte)(84)))));
+            this.connectWidget.Name = "connectWidget";
+            this.connectWidget.Size = new System.Drawing.Size(436, 40);
+            this.connectWidget.StatusBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(178)))), ((int)(((byte)(189)))));
+            this.connectWidget.StatusBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(112)))), ((int)(((byte)(128)))));
+            this.connectWidget.StatusBorderStyle = System.Windows.Forms.ButtonBorderStyle.Solid;
+            this.connectWidget.StatusBorderWidth = 1;
+            this.connectWidget.SuccessStatusColor = System.Drawing.Color.SeaGreen;
+            this.connectWidget.TabIndex = 5;
+            // 
             // AuthForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(474, 311);
+            this.Controls.Add(this.connectWidget);
             this.Controls.Add(this.tbPassword);
             this.Controls.Add(this.lblPassword);
             this.Controls.Add(this.tbLogin);
@@ -177,5 +198,6 @@
         private System.Windows.Forms.Label lblLogin;
         private Wc32Api.Widgets.TextBoxs.BorderTextBox tbPassword;
         private System.Windows.Forms.Label lblPassword;
+        private Core.Libs.Widgets.ConnectWidget connectWidget;
     }
 }

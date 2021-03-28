@@ -51,9 +51,11 @@ namespace DwUtils.Forms
             this.labelLicense = new System.Windows.Forms.Label();
             this.labelInfoLicense = new System.Windows.Forms.Label();
             this.timerStatus = new System.Windows.Forms.Timer(this.components);
+            this.connectWidget1 = new DwUtils.Core.Libs.Widgets.ConnectWidget();
             this.menuBar.SuspendLayout();
             this.statusBar.SuspendLayout();
             this.tabsControl.SuspendLayout();
+            this.tabReceived.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuBar
@@ -181,6 +183,7 @@ namespace DwUtils.Forms
             // tabReceived
             // 
             this.tabReceived.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tabReceived.Controls.Add(this.connectWidget1);
             this.tabReceived.Location = new System.Drawing.Point(4, 29);
             this.tabReceived.Name = "tabReceived";
             this.tabReceived.Padding = new System.Windows.Forms.Padding(3);
@@ -243,6 +246,26 @@ namespace DwUtils.Forms
             this.timerStatus.Interval = 3000;
             this.timerStatus.Tick += new System.EventHandler(this.timerStatus_Tick);
             // 
+            // connectWidget1
+            // 
+            this.connectWidget1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.connectWidget1.BorderColor = System.Drawing.Color.Gray;
+            this.connectWidget1.BorderStyle = System.Windows.Forms.ButtonBorderStyle.Dashed;
+            this.connectWidget1.BorderWidth = 1;
+            this.connectWidget1.ErrorStatusColor = System.Drawing.Color.Firebrick;
+            this.connectWidget1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.connectWidget1.Location = new System.Drawing.Point(368, 95);
+            this.connectWidget1.Message = "Сообщение";
+            this.connectWidget1.MessageColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(74)))), ((int)(((byte)(84)))));
+            this.connectWidget1.Name = "connectWidget1";
+            this.connectWidget1.Size = new System.Drawing.Size(246, 41);
+            this.connectWidget1.StatusBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(178)))), ((int)(((byte)(189)))));
+            this.connectWidget1.StatusBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(112)))), ((int)(((byte)(128)))));
+            this.connectWidget1.StatusBorderStyle = System.Windows.Forms.ButtonBorderStyle.Solid;
+            this.connectWidget1.StatusBorderWidth = 1;
+            this.connectWidget1.SuccessStatusColor = System.Drawing.Color.SeaGreen;
+            this.connectWidget1.TabIndex = 0;
+            // 
             // GeneralForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -269,6 +292,7 @@ namespace DwUtils.Forms
             this.statusBar.ResumeLayout(false);
             this.statusBar.PerformLayout();
             this.tabsControl.ResumeLayout(false);
+            this.tabReceived.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -296,6 +320,7 @@ namespace DwUtils.Forms
         private System.Windows.Forms.ToolStripMenuItem infosMenuItem;
         private System.Windows.Forms.ToolStripMenuItem authMenuItem;
         private System.Windows.Forms.ToolStripMenuItem databaseToolStripMenuItem;
+        private Core.Libs.Widgets.ConnectWidget connectWidget1;
     }
 }
 

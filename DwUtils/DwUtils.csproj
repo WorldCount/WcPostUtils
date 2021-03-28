@@ -79,7 +79,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Connected Services\PostApi\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Core\Libs\PostApi\PostApiAuth.cs" />
     <Compile Include="Core\Libs\ServerRequest\ServerManager.cs" />
+    <Compile Include="Core\Libs\Widgets\ConnectWidget.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Core\Libs\Widgets\ConnectWidget.Designer.cs">
+      <DependentUpon>ConnectWidget.cs</DependentUpon>
+    </Compile>
     <Compile Include="Core\PathManager.cs" />
     <Compile Include="Core\Utils.cs" />
     <Compile Include="Forms\ConfigForms\AuthForm.cs">
@@ -102,6 +114,55 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="Connected Services\PostApi\DwUtils.PostApi.CustomDutyEvent.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PostApi\DwUtils.PostApi.getCustomDutyEventsForMailResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PostApi\DwUtils.PostApi.getLanguagesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PostApi\DwUtils.PostApi.getOperationHistoryResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PostApi\DwUtils.PostApi.getSmsHistoryResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PostApi\DwUtils.PostApi.LanguageDataLanguage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PostApi\DwUtils.PostApi.OperationHistoryRecord.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PostApi\DwUtils.PostApi.PostalOrderEvent.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PostApi\DwUtils.PostApi.PostalOrderEventsForMailResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PostApi\DwUtils.PostApi.SmsHistoryRecord.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PostApi\OperationHistory12.wsdl" />
+    <None Include="Connected Services\PostApi\rtm34_xsd1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\PostApi\rtm34_xsd2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\PostApi\rtm34_xsd3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\PostApi\rtm34_xsd4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\PostApi\rtm34_xsd5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\PostApi\rtm34_xsd6.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Resources\Suit.png" />
     <None Include="Resources\Lan-Socket.png" />
     <None Include="Resources\Button-Settings.png" />
@@ -112,6 +173,9 @@
     <None Include="Resources\save-24.png" />
     <None Include="Resources\close-window-24.png" />
     <None Include="Resources\white-delete-30.png" />
+    <EmbeddedResource Include="Core\Libs\Widgets\ConnectWidget.resx">
+      <DependentUpon>ConnectWidget.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\ConfigForms\AuthForm.resx">
       <DependentUpon>AuthForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -132,6 +196,12 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Content Include="App.ico" />
+    <None Include="Connected Services\PostApi\configuration91.svcinfo" />
+    <None Include="Connected Services\PostApi\configuration.svcinfo" />
+    <None Include="Connected Services\PostApi\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="NLog.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -164,6 +234,12 @@
       <Project>{3a0d99ef-a649-494e-95a6-2cd403a6db0a}</Project>
       <Name>WcApi</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\PostApi\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

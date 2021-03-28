@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="4bd38adb-1f72-4d64-8016-df1052548f83" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://tracking.russianpost.ru/rtm34?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="rtm34_xsd2.xsd" MetadataType="Schema" ID="0a6b9c29-67c1-4ec5-b83e-646c75622d95" SourceId="1" SourceUrl="https://tracking.russianpost.ru/tracking-web-static/rtm34_xsd2.xml" />
+    <MetadataFile FileName="rtm34_xsd4.xsd" MetadataType="Schema" ID="f3daef83-776e-42e8-bab1-f9b529a71907" SourceId="1" SourceUrl="https://tracking.russianpost.ru/tracking-web-static/rtm34_xsd4.xml" />
+    <MetadataFile FileName="rtm34_xsd5.xsd" MetadataType="Schema" ID="b833e555-337a-4c07-b920-8093180f0b42" SourceId="1" SourceUrl="https://tracking.russianpost.ru/tracking-web-static/rtm34_xsd5.xml" />
+    <MetadataFile FileName="rtm34_xsd1.xsd" MetadataType="Schema" ID="e6204c7a-d216-4d3d-84dd-bb9f9ca0e309" SourceId="1" SourceUrl="https://tracking.russianpost.ru/tracking-web-static/rtm34_xsd1.xml" />
+    <MetadataFile FileName="rtm34_xsd3.xsd" MetadataType="Schema" ID="5e247f40-32ae-49ab-af71-46de0260ccfa" SourceId="1" SourceUrl="https://tracking.russianpost.ru/tracking-web-static/rtm34_xsd3.xml" />
+    <MetadataFile FileName="rtm34_xsd6.xsd" MetadataType="Schema" ID="77c461ae-04d7-4044-9214-eff7e9d8a805" SourceId="1" SourceUrl="https://tracking.russianpost.ru/tracking-web-static/rtm34_xsd6.xml" />
+    <MetadataFile FileName="OperationHistory12.wsdl" MetadataType="Wsdl" ID="b3572dc1-70c1-4588-b122-b88bb906c926" SourceId="1" SourceUrl="https://tracking.russianpost.ru/tracking-web-static/rtm34_wsdl.xml" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

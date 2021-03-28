@@ -1,15 +1,18 @@
 ﻿using System;
+using System.Drawing;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using DwUtils.Core;
-using WcApi.Cryptography;
+using DwUtils.Core.Libs.PostApi;
 
 namespace DwUtils.Forms.ConfigForms
 {
     public partial class AuthForm : Form
     {
-        private readonly Auth _auth;
+        private readonly PostApiAuth _auth;
+        
 
-        public Auth Auth => _auth;
+        public PostApiAuth Auth => _auth;
 
         public AuthForm()
         {
@@ -18,7 +21,18 @@ namespace DwUtils.Forms.ConfigForms
             // ReSharper disable once VirtualMemberCallInConstructor
             Text = $"{Properties.Settings.Default.AppName}: Авторизация";
 
-            _auth = Auth.Load(PathManager.AuthPath);
+            _auth = PostApiAuth.Load(PathManager.AuthPath);
+
+            connectWidget.CheckStatus = CheckStatus;
+            connectWidget.SuccessStatusColor = Color.FromArgb(255, 140, 193, 82);
+            connectWidget.ErrorStatusColor = Color.FromArgb(255, 233, 87, 63);
+        }
+
+        private async Task<bool> CheckStatus()
+        {
+            if (await Auth.TestAuthAsync())
+                return true;
+            return false;
         }
 
         private void AuthForm_Load(object sender, EventArgs e)
