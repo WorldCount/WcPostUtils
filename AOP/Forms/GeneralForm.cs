@@ -65,7 +65,7 @@ namespace AOP.Forms
 
             if (!License.CheckLicense(license, _key))
             {
-                await Utils.Telegram.SendMessage("Лицензия истекла.");
+                await Utils.Telegram.SendMessageAsync("Лицензия истекла.");
 
                 LicenseForm licenseForm = new LicenseForm(license, _key, Application.ProductName, Application.ProductVersion, Properties.Settings.Default.MailLicense, Icon);
                 if (licenseForm.ShowDialog(this) == DialogResult.OK)

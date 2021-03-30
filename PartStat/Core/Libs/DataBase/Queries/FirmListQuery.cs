@@ -19,7 +19,7 @@ namespace PartStat.Core.Libs.DataBase.Queries
             _request = request;
         }
 
-        public new string GetQuery()
+        private new string GetQuery()
         {
             StringBuilder sb = new StringBuilder();
 

@@ -19,7 +19,7 @@ namespace PartStat.Core.Libs.DataBase.Queries
             _request = request;
         }
 
-        public new string GetQuery()
+        public override string GetQuery()
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("select FIRST 1 f.DAPO, f.NSPI, f.INN, f.kpp, f.depcode, firm.FIRM_NAME from form_103 f");

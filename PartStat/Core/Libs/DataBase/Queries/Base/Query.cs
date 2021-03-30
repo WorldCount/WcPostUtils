@@ -16,7 +16,7 @@ namespace PartStat.Core.Libs.DataBase.Queries.Base
             _connect = connect;
         }
 
-        public string GetQuery()
+        public virtual string GetQuery()
         {
             throw new NotImplementedException();
         }
