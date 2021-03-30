@@ -15,6 +15,7 @@ namespace DwUtils
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
             Application.ThreadException += Application_ThreadException;
 
             DialogResult result;
@@ -33,7 +34,7 @@ namespace DwUtils
             }
 
             if (result == DialogResult.OK)
-                Application.Run(new GeneralForm());
+                Application.Run(generalForm);
         }
 
         private static void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)

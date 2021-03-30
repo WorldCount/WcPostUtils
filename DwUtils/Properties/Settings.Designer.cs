@@ -166,5 +166,29 @@ namespace DwUtils.Properties {
                 this["AuthFile"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("postitem.xml")]
+        public string PostItemConnectFile {
+            get {
+                return ((string)(this["PostItemConnectFile"]));
+            }
+            set {
+                this["PostItemConnectFile"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("postunit.xml")]
+        public string PostUnitConnectFile {
+            get {
+                return ((string)(this["PostUnitConnectFile"]));
+            }
+            set {
+                this["PostUnitConnectFile"] = value;
+            }
+        }
     }
 }

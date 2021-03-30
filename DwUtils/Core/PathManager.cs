@@ -11,6 +11,8 @@ namespace DwUtils.Core
         // Данные
         public static readonly string DbPath = Path.Combine(DataDir, Properties.Settings.Default.Database);
         public static readonly string AuthPath = Path.Combine(DataDir, Properties.Settings.Default.AuthFile);
+        public static readonly string PostItemConnectPath = Path.Combine(DataDir, Properties.Settings.Default.PostItemConnectFile);
+        public static readonly string PostUnitConnectPath = Path.Combine(DataDir, Properties.Settings.Default.PostUnitConnectFile);
 
         static PathManager()
         {

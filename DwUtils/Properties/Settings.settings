@@ -38,5 +38,11 @@
     <Setting Name="AuthFile" Type="System.String" Scope="User">
       <Value Profile="(Default)">auth.xml</Value>
     </Setting>
+    <Setting Name="PostItemConnectFile" Type="System.String" Scope="User">
+      <Value Profile="(Default)">postitem.xml</Value>
+    </Setting>
+    <Setting Name="PostUnitConnectFile" Type="System.String" Scope="User">
+      <Value Profile="(Default)">postunit.xml</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

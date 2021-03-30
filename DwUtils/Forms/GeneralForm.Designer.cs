@@ -30,6 +30,23 @@ namespace DwUtils.Forms
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GeneralForm));
             this.menuBar = new System.Windows.Forms.MenuStrip();
             this.fileMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -43,19 +60,50 @@ namespace DwUtils.Forms
             this.statusText = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusAuthor = new System.Windows.Forms.ToolStripStatusLabel();
             this.panelGeneral = new System.Windows.Forms.Panel();
+            this.cbUsers = new System.Windows.Forms.ComboBox();
+            this.userBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabsControl = new System.Windows.Forms.TabControl();
             this.tabReceived = new System.Windows.Forms.TabPage();
+            this.panelReceived = new System.Windows.Forms.Panel();
             this.tabReceivedDoc = new System.Windows.Forms.TabPage();
+            this.panelReceivedDoc = new System.Windows.Forms.Panel();
             this.tabOrgsDoc = new System.Windows.Forms.TabPage();
+            this.panelOrgDoc = new System.Windows.Forms.Panel();
             this.tabActiveUsers = new System.Windows.Forms.TabPage();
+            this.dataGridViewUserOnline = new System.Windows.Forms.DataGridView();
+            this.connectUserBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.panelActive = new System.Windows.Forms.Panel();
+            this.btnActiveUserLoad = new System.Windows.Forms.Button();
             this.labelLicense = new System.Windows.Forms.Label();
             this.labelInfoLicense = new System.Windows.Forms.Label();
             this.timerStatus = new System.Windows.Forms.Timer(this.components);
-            this.connectWidget1 = new DwUtils.Core.Libs.Widgets.ConnectWidget();
+            this.userIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.placeIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.userNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.placeNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.connectDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.workDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.isAdminDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.adminStatusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.isValidDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewReceive = new System.Windows.Forms.DataGridView();
+            this.dataGridViewDocReceive = new System.Windows.Forms.DataGridView();
+            this.dataGridViewDocOrg = new System.Windows.Forms.DataGridView();
             this.menuBar.SuspendLayout();
             this.statusBar.SuspendLayout();
+            this.panelGeneral.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).BeginInit();
             this.tabsControl.SuspendLayout();
             this.tabReceived.SuspendLayout();
+            this.tabReceivedDoc.SuspendLayout();
+            this.tabOrgsDoc.SuspendLayout();
+            this.tabActiveUsers.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUserOnline)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.connectUserBindingSource)).BeginInit();
+            this.panelActive.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReceive)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDocReceive)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDocOrg)).BeginInit();
             this.SuspendLayout();
             // 
             // menuBar
@@ -116,6 +164,7 @@ namespace DwUtils.Forms
             this.databaseToolStripMenuItem.Name = "databaseToolStripMenuItem";
             this.databaseToolStripMenuItem.Size = new System.Drawing.Size(263, 30);
             this.databaseToolStripMenuItem.Text = "Подключение к БД";
+            this.databaseToolStripMenuItem.Click += new System.EventHandler(this.databaseToolStripMenuItem_Click);
             // 
             // settingsMenuItem
             // 
@@ -160,11 +209,32 @@ namespace DwUtils.Forms
             // panelGeneral
             // 
             this.panelGeneral.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(74)))), ((int)(((byte)(84)))));
+            this.panelGeneral.Controls.Add(this.cbUsers);
             this.panelGeneral.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelGeneral.Location = new System.Drawing.Point(0, 40);
             this.panelGeneral.Name = "panelGeneral";
             this.panelGeneral.Size = new System.Drawing.Size(800, 44);
             this.panelGeneral.TabIndex = 2;
+            // 
+            // cbUsers
+            // 
+            this.cbUsers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbUsers.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbUsers.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbUsers.DataSource = this.userBindingSource;
+            this.cbUsers.DisplayMember = "Name";
+            this.cbUsers.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(74)))), ((int)(((byte)(84)))));
+            this.cbUsers.FormattingEnabled = true;
+            this.cbUsers.IntegralHeight = false;
+            this.cbUsers.Location = new System.Drawing.Point(581, 8);
+            this.cbUsers.Name = "cbUsers";
+            this.cbUsers.Size = new System.Drawing.Size(207, 28);
+            this.cbUsers.TabIndex = 0;
+            this.cbUsers.ValueMember = "Id";
+            // 
+            // userBindingSource
+            // 
+            this.userBindingSource.DataSource = typeof(DwUtils.Core.Models.Firebird.User);
             // 
             // tabsControl
             // 
@@ -183,41 +253,164 @@ namespace DwUtils.Forms
             // tabReceived
             // 
             this.tabReceived.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.tabReceived.Controls.Add(this.connectWidget1);
+            this.tabReceived.Controls.Add(this.dataGridViewReceive);
+            this.tabReceived.Controls.Add(this.panelReceived);
             this.tabReceived.Location = new System.Drawing.Point(4, 29);
             this.tabReceived.Name = "tabReceived";
-            this.tabReceived.Padding = new System.Windows.Forms.Padding(3);
             this.tabReceived.Size = new System.Drawing.Size(792, 311);
             this.tabReceived.TabIndex = 0;
             this.tabReceived.Text = "На вручение";
             // 
+            // panelReceived
+            // 
+            this.panelReceived.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
+            this.panelReceived.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelReceived.Location = new System.Drawing.Point(0, 0);
+            this.panelReceived.Name = "panelReceived";
+            this.panelReceived.Size = new System.Drawing.Size(792, 48);
+            this.panelReceived.TabIndex = 4;
+            // 
             // tabReceivedDoc
             // 
             this.tabReceivedDoc.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tabReceivedDoc.Controls.Add(this.dataGridViewDocReceive);
+            this.tabReceivedDoc.Controls.Add(this.panelReceivedDoc);
             this.tabReceivedDoc.Location = new System.Drawing.Point(4, 29);
             this.tabReceivedDoc.Name = "tabReceivedDoc";
             this.tabReceivedDoc.Size = new System.Drawing.Size(792, 311);
             this.tabReceivedDoc.TabIndex = 2;
             this.tabReceivedDoc.Text = "Накладные на прибытие";
             // 
+            // panelReceivedDoc
+            // 
+            this.panelReceivedDoc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
+            this.panelReceivedDoc.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelReceivedDoc.Location = new System.Drawing.Point(0, 0);
+            this.panelReceivedDoc.Name = "panelReceivedDoc";
+            this.panelReceivedDoc.Size = new System.Drawing.Size(792, 48);
+            this.panelReceivedDoc.TabIndex = 3;
+            // 
             // tabOrgsDoc
             // 
             this.tabOrgsDoc.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tabOrgsDoc.Controls.Add(this.dataGridViewDocOrg);
+            this.tabOrgsDoc.Controls.Add(this.panelOrgDoc);
             this.tabOrgsDoc.Location = new System.Drawing.Point(4, 29);
             this.tabOrgsDoc.Name = "tabOrgsDoc";
-            this.tabOrgsDoc.Padding = new System.Windows.Forms.Padding(3);
             this.tabOrgsDoc.Size = new System.Drawing.Size(792, 311);
             this.tabOrgsDoc.TabIndex = 1;
             this.tabOrgsDoc.Text = "Накладные на организации";
             // 
+            // panelOrgDoc
+            // 
+            this.panelOrgDoc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
+            this.panelOrgDoc.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelOrgDoc.Location = new System.Drawing.Point(0, 0);
+            this.panelOrgDoc.Name = "panelOrgDoc";
+            this.panelOrgDoc.Size = new System.Drawing.Size(792, 48);
+            this.panelOrgDoc.TabIndex = 3;
+            // 
             // tabActiveUsers
             // 
             this.tabActiveUsers.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tabActiveUsers.Controls.Add(this.dataGridViewUserOnline);
+            this.tabActiveUsers.Controls.Add(this.panelActive);
             this.tabActiveUsers.Location = new System.Drawing.Point(4, 29);
             this.tabActiveUsers.Name = "tabActiveUsers";
             this.tabActiveUsers.Size = new System.Drawing.Size(792, 311);
             this.tabActiveUsers.TabIndex = 3;
             this.tabActiveUsers.Text = "Подключенные пользователи";
+            // 
+            // dataGridViewUserOnline
+            // 
+            this.dataGridViewUserOnline.AllowUserToAddRows = false;
+            this.dataGridViewUserOnline.AllowUserToDeleteRows = false;
+            this.dataGridViewUserOnline.AllowUserToResizeRows = false;
+            this.dataGridViewUserOnline.AutoGenerateColumns = false;
+            this.dataGridViewUserOnline.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewUserOnline.BackgroundColor = System.Drawing.Color.WhiteSmoke;
+            this.dataGridViewUserOnline.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewUserOnline.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            this.dataGridViewUserOnline.ColumnHeadersHeight = 40;
+            this.dataGridViewUserOnline.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataGridViewUserOnline.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.userIdDataGridViewTextBoxColumn,
+            this.placeIdDataGridViewTextBoxColumn,
+            this.userNameDataGridViewTextBoxColumn,
+            this.placeNameDataGridViewTextBoxColumn,
+            this.connectDateDataGridViewTextBoxColumn,
+            this.workDateDataGridViewTextBoxColumn,
+            this.isAdminDataGridViewCheckBoxColumn,
+            this.adminStatusDataGridViewTextBoxColumn,
+            this.isValidDataGridViewCheckBoxColumn});
+            this.dataGridViewUserOnline.DataSource = this.connectUserBindingSource;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(74)))), ((int)(((byte)(84)))));
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(201)))), ((int)(((byte)(201)))));
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewUserOnline.DefaultCellStyle = dataGridViewCellStyle16;
+            this.dataGridViewUserOnline.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewUserOnline.EnableHeadersVisualStyles = false;
+            this.dataGridViewUserOnline.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.dataGridViewUserOnline.Location = new System.Drawing.Point(0, 48);
+            this.dataGridViewUserOnline.Name = "dataGridViewUserOnline";
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle17.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewUserOnline.RowHeadersDefaultCellStyle = dataGridViewCellStyle17;
+            this.dataGridViewUserOnline.RowHeadersVisible = false;
+            this.dataGridViewUserOnline.RowHeadersWidth = 40;
+            this.dataGridViewUserOnline.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridViewUserOnline.RowTemplate.Height = 40;
+            this.dataGridViewUserOnline.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dataGridViewUserOnline.Size = new System.Drawing.Size(792, 263);
+            this.dataGridViewUserOnline.TabIndex = 1;
+            this.dataGridViewUserOnline.TabStop = false;
+            // 
+            // connectUserBindingSource
+            // 
+            this.connectUserBindingSource.DataSource = typeof(DwUtils.Core.Models.Firebird.ConnectUser);
+            // 
+            // panelActive
+            // 
+            this.panelActive.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
+            this.panelActive.Controls.Add(this.btnActiveUserLoad);
+            this.panelActive.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelActive.Location = new System.Drawing.Point(0, 0);
+            this.panelActive.Name = "panelActive";
+            this.panelActive.Size = new System.Drawing.Size(792, 48);
+            this.panelActive.TabIndex = 2;
+            // 
+            // btnActiveUserLoad
+            // 
+            this.btnActiveUserLoad.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnActiveUserLoad.BackColor = System.Drawing.Color.Brown;
+            this.btnActiveUserLoad.FlatAppearance.BorderSize = 0;
+            this.btnActiveUserLoad.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.btnActiveUserLoad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnActiveUserLoad.ForeColor = System.Drawing.Color.White;
+            this.btnActiveUserLoad.Image = global::DwUtils.Properties.Resources.white_synchronize_24;
+            this.btnActiveUserLoad.Location = new System.Drawing.Point(748, 6);
+            this.btnActiveUserLoad.Name = "btnActiveUserLoad";
+            this.btnActiveUserLoad.Size = new System.Drawing.Size(36, 36);
+            this.btnActiveUserLoad.TabIndex = 20;
+            this.btnActiveUserLoad.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnActiveUserLoad.UseVisualStyleBackColor = false;
+            this.btnActiveUserLoad.Click += new System.EventHandler(this.btnActiveUserLoad_Click);
             // 
             // labelLicense
             // 
@@ -246,25 +439,224 @@ namespace DwUtils.Forms
             this.timerStatus.Interval = 3000;
             this.timerStatus.Tick += new System.EventHandler(this.timerStatus_Tick);
             // 
-            // connectWidget1
+            // userIdDataGridViewTextBoxColumn
             // 
-            this.connectWidget1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.connectWidget1.BorderColor = System.Drawing.Color.Gray;
-            this.connectWidget1.BorderStyle = System.Windows.Forms.ButtonBorderStyle.Dashed;
-            this.connectWidget1.BorderWidth = 1;
-            this.connectWidget1.ErrorStatusColor = System.Drawing.Color.Firebrick;
-            this.connectWidget1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.connectWidget1.Location = new System.Drawing.Point(368, 95);
-            this.connectWidget1.Message = "Сообщение";
-            this.connectWidget1.MessageColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(74)))), ((int)(((byte)(84)))));
-            this.connectWidget1.Name = "connectWidget1";
-            this.connectWidget1.Size = new System.Drawing.Size(246, 41);
-            this.connectWidget1.StatusBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(178)))), ((int)(((byte)(189)))));
-            this.connectWidget1.StatusBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(112)))), ((int)(((byte)(128)))));
-            this.connectWidget1.StatusBorderStyle = System.Windows.Forms.ButtonBorderStyle.Solid;
-            this.connectWidget1.StatusBorderWidth = 1;
-            this.connectWidget1.SuccessStatusColor = System.Drawing.Color.SeaGreen;
-            this.connectWidget1.TabIndex = 0;
+            this.userIdDataGridViewTextBoxColumn.DataPropertyName = "UserId";
+            this.userIdDataGridViewTextBoxColumn.HeaderText = "UserId";
+            this.userIdDataGridViewTextBoxColumn.Name = "userIdDataGridViewTextBoxColumn";
+            this.userIdDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // placeIdDataGridViewTextBoxColumn
+            // 
+            this.placeIdDataGridViewTextBoxColumn.DataPropertyName = "PlaceId";
+            this.placeIdDataGridViewTextBoxColumn.HeaderText = "PlaceId";
+            this.placeIdDataGridViewTextBoxColumn.Name = "placeIdDataGridViewTextBoxColumn";
+            this.placeIdDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // userNameDataGridViewTextBoxColumn
+            // 
+            this.userNameDataGridViewTextBoxColumn.DataPropertyName = "UserName";
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.userNameDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle11;
+            this.userNameDataGridViewTextBoxColumn.HeaderText = "Пользователь";
+            this.userNameDataGridViewTextBoxColumn.Name = "userNameDataGridViewTextBoxColumn";
+            this.userNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // placeNameDataGridViewTextBoxColumn
+            // 
+            this.placeNameDataGridViewTextBoxColumn.DataPropertyName = "PlaceName";
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.placeNameDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle12;
+            this.placeNameDataGridViewTextBoxColumn.HeaderText = "Место";
+            this.placeNameDataGridViewTextBoxColumn.Name = "placeNameDataGridViewTextBoxColumn";
+            this.placeNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // connectDateDataGridViewTextBoxColumn
+            // 
+            this.connectDateDataGridViewTextBoxColumn.DataPropertyName = "ConnectDate";
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.connectDateDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle13;
+            this.connectDateDataGridViewTextBoxColumn.HeaderText = "   Подключился";
+            this.connectDateDataGridViewTextBoxColumn.Name = "connectDateDataGridViewTextBoxColumn";
+            this.connectDateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // workDateDataGridViewTextBoxColumn
+            // 
+            this.workDateDataGridViewTextBoxColumn.DataPropertyName = "WorkDate";
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.workDateDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle14;
+            this.workDateDataGridViewTextBoxColumn.HeaderText = "  Работает";
+            this.workDateDataGridViewTextBoxColumn.Name = "workDateDataGridViewTextBoxColumn";
+            this.workDateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // isAdminDataGridViewCheckBoxColumn
+            // 
+            this.isAdminDataGridViewCheckBoxColumn.DataPropertyName = "IsAdmin";
+            this.isAdminDataGridViewCheckBoxColumn.HeaderText = "Админ";
+            this.isAdminDataGridViewCheckBoxColumn.Name = "isAdminDataGridViewCheckBoxColumn";
+            this.isAdminDataGridViewCheckBoxColumn.ReadOnly = true;
+            this.isAdminDataGridViewCheckBoxColumn.Visible = false;
+            // 
+            // adminStatusDataGridViewTextBoxColumn
+            // 
+            this.adminStatusDataGridViewTextBoxColumn.DataPropertyName = "AdminStatus";
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle15.NullValue = "НЕТ";
+            this.adminStatusDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle15;
+            this.adminStatusDataGridViewTextBoxColumn.HeaderText = "  Админ";
+            this.adminStatusDataGridViewTextBoxColumn.Name = "adminStatusDataGridViewTextBoxColumn";
+            this.adminStatusDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // isValidDataGridViewCheckBoxColumn
+            // 
+            this.isValidDataGridViewCheckBoxColumn.DataPropertyName = "IsValid";
+            this.isValidDataGridViewCheckBoxColumn.HeaderText = "IsValid";
+            this.isValidDataGridViewCheckBoxColumn.Name = "isValidDataGridViewCheckBoxColumn";
+            this.isValidDataGridViewCheckBoxColumn.Visible = false;
+            // 
+            // dataGridViewReceive
+            // 
+            this.dataGridViewReceive.AllowUserToAddRows = false;
+            this.dataGridViewReceive.AllowUserToDeleteRows = false;
+            this.dataGridViewReceive.AllowUserToResizeRows = false;
+            this.dataGridViewReceive.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewReceive.BackgroundColor = System.Drawing.Color.WhiteSmoke;
+            this.dataGridViewReceive.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewReceive.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridViewReceive.ColumnHeadersHeight = 40;
+            this.dataGridViewReceive.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(74)))), ((int)(((byte)(84)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(201)))), ((int)(((byte)(201)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewReceive.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridViewReceive.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewReceive.EnableHeadersVisualStyles = false;
+            this.dataGridViewReceive.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.dataGridViewReceive.Location = new System.Drawing.Point(0, 48);
+            this.dataGridViewReceive.Name = "dataGridViewReceive";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewReceive.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridViewReceive.RowHeadersVisible = false;
+            this.dataGridViewReceive.RowHeadersWidth = 40;
+            this.dataGridViewReceive.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridViewReceive.RowTemplate.Height = 40;
+            this.dataGridViewReceive.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dataGridViewReceive.Size = new System.Drawing.Size(792, 263);
+            this.dataGridViewReceive.TabIndex = 5;
+            this.dataGridViewReceive.TabStop = false;
+            // 
+            // dataGridViewDocReceive
+            // 
+            this.dataGridViewDocReceive.AllowUserToAddRows = false;
+            this.dataGridViewDocReceive.AllowUserToDeleteRows = false;
+            this.dataGridViewDocReceive.AllowUserToResizeRows = false;
+            this.dataGridViewDocReceive.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewDocReceive.BackgroundColor = System.Drawing.Color.WhiteSmoke;
+            this.dataGridViewDocReceive.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewDocReceive.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.dataGridViewDocReceive.ColumnHeadersHeight = 40;
+            this.dataGridViewDocReceive.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(74)))), ((int)(((byte)(84)))));
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(201)))), ((int)(((byte)(201)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewDocReceive.DefaultCellStyle = dataGridViewCellStyle5;
+            this.dataGridViewDocReceive.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewDocReceive.EnableHeadersVisualStyles = false;
+            this.dataGridViewDocReceive.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.dataGridViewDocReceive.Location = new System.Drawing.Point(0, 48);
+            this.dataGridViewDocReceive.Name = "dataGridViewDocReceive";
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewDocReceive.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            this.dataGridViewDocReceive.RowHeadersVisible = false;
+            this.dataGridViewDocReceive.RowHeadersWidth = 40;
+            this.dataGridViewDocReceive.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridViewDocReceive.RowTemplate.Height = 40;
+            this.dataGridViewDocReceive.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dataGridViewDocReceive.Size = new System.Drawing.Size(792, 263);
+            this.dataGridViewDocReceive.TabIndex = 6;
+            this.dataGridViewDocReceive.TabStop = false;
+            // 
+            // dataGridViewDocOrg
+            // 
+            this.dataGridViewDocOrg.AllowUserToAddRows = false;
+            this.dataGridViewDocOrg.AllowUserToDeleteRows = false;
+            this.dataGridViewDocOrg.AllowUserToResizeRows = false;
+            this.dataGridViewDocOrg.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewDocOrg.BackgroundColor = System.Drawing.Color.WhiteSmoke;
+            this.dataGridViewDocOrg.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewDocOrg.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            this.dataGridViewDocOrg.ColumnHeadersHeight = 40;
+            this.dataGridViewDocOrg.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(74)))), ((int)(((byte)(84)))));
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(201)))), ((int)(((byte)(201)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewDocOrg.DefaultCellStyle = dataGridViewCellStyle8;
+            this.dataGridViewDocOrg.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewDocOrg.EnableHeadersVisualStyles = false;
+            this.dataGridViewDocOrg.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.dataGridViewDocOrg.Location = new System.Drawing.Point(0, 48);
+            this.dataGridViewDocOrg.Name = "dataGridViewDocOrg";
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewDocOrg.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            this.dataGridViewDocOrg.RowHeadersVisible = false;
+            this.dataGridViewDocOrg.RowHeadersWidth = 40;
+            this.dataGridViewDocOrg.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridViewDocOrg.RowTemplate.Height = 40;
+            this.dataGridViewDocOrg.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dataGridViewDocOrg.Size = new System.Drawing.Size(792, 263);
+            this.dataGridViewDocOrg.TabIndex = 6;
+            this.dataGridViewDocOrg.TabStop = false;
             // 
             // GeneralForm
             // 
@@ -291,8 +683,19 @@ namespace DwUtils.Forms
             this.menuBar.PerformLayout();
             this.statusBar.ResumeLayout(false);
             this.statusBar.PerformLayout();
+            this.panelGeneral.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).EndInit();
             this.tabsControl.ResumeLayout(false);
             this.tabReceived.ResumeLayout(false);
+            this.tabReceivedDoc.ResumeLayout(false);
+            this.tabOrgsDoc.ResumeLayout(false);
+            this.tabActiveUsers.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUserOnline)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.connectUserBindingSource)).EndInit();
+            this.panelActive.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReceive)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDocReceive)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDocOrg)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -320,7 +723,27 @@ namespace DwUtils.Forms
         private System.Windows.Forms.ToolStripMenuItem infosMenuItem;
         private System.Windows.Forms.ToolStripMenuItem authMenuItem;
         private System.Windows.Forms.ToolStripMenuItem databaseToolStripMenuItem;
-        private Core.Libs.Widgets.ConnectWidget connectWidget1;
+        private System.Windows.Forms.ComboBox cbUsers;
+        private System.Windows.Forms.BindingSource userBindingSource;
+        private System.Windows.Forms.DataGridView dataGridViewUserOnline;
+        private System.Windows.Forms.BindingSource connectUserBindingSource;
+        private System.Windows.Forms.Panel panelActive;
+        private System.Windows.Forms.Panel panelReceivedDoc;
+        private System.Windows.Forms.Panel panelOrgDoc;
+        private System.Windows.Forms.Panel panelReceived;
+        private System.Windows.Forms.Button btnActiveUserLoad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn userIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn placeIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn userNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn placeNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn connectDateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn workDateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn isAdminDataGridViewCheckBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn adminStatusDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn isValidDataGridViewCheckBoxColumn;
+        private System.Windows.Forms.DataGridView dataGridViewReceive;
+        private System.Windows.Forms.DataGridView dataGridViewDocReceive;
+        private System.Windows.Forms.DataGridView dataGridViewDocOrg;
     }
 }
 

@@ -113,6 +113,16 @@ namespace DwUtils.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Folder {
+            get {
+                object obj = ResourceManager.GetObject("Folder", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Lan_Socket {
             get {
                 object obj = ResourceManager.GetObject("Lan_Socket", resourceCulture);
@@ -156,6 +166,16 @@ namespace DwUtils.Properties {
         internal static System.Drawing.Bitmap white_delete_30 {
             get {
                 object obj = ResourceManager.GetObject("white-delete-30", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap white_synchronize_24 {
+            get {
+                object obj = ResourceManager.GetObject("white-synchronize-24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

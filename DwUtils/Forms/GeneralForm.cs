@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -7,7 +9,10 @@ using System.Security.Principal;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DwUtils.Core;
+using DwUtils.Core.Libs.Database.Firebird;
+using DwUtils.Core.Libs.Database.Firebird.Queries;
 using DwUtils.Core.Libs.ServerRequest;
+using DwUtils.Core.Models.Firebird;
 using DwUtils.Forms.ConfigForms;
 using NLog;
 using WcApi.Cryptography;
@@ -21,7 +26,8 @@ namespace DwUtils.Forms
     {
 
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
-
+        private FbConnect _postUnitConnect;
+        private FbConnect _postItemConnect;
 
         #region Настройки
 
@@ -38,6 +44,35 @@ namespace DwUtils.Forms
 
         #endregion
 
+        public GeneralForm()
+        {
+            InitializeComponent();
+
+            WebRequest.DefaultWebProxy = null;
+
+            Logger.Info("Запуск программы.");
+
+            // Если было обновление приложения
+            if (Properties.Settings.Default.NeedUpgrade)
+                UpgradeSettings();
+
+            // ReSharper disable once VirtualMemberCallInConstructor
+            // ReSharper disable once LocalizableElement
+            Text = $"{Properties.Settings.Default.AppName} {Application.ProductVersion}";
+
+            LoadPos();
+
+            // Загрузка настроек
+            LoadSettings();
+            // Загрузка подключений
+            LoadConnect();
+            // Загрузка пользователей
+            LoadUsers();
+
+            // Настройка таблиц
+            InitDataGridViews();
+        }
+
         #region Лицензия
 
         private async void CheckLicense()
@@ -45,7 +80,12 @@ namespace DwUtils.Forms
             string license = Properties.Settings.Default.License;
             string exp = await Task.Run(() => License.GetLicenseExpiresString(license, _key));
 
-            labelLicense.Text = string.IsNullOrEmpty(exp) ? "Ошибка" : exp;
+
+            if (labelInfoLicense.InvokeRequired)
+                Invoke(new Action(() =>
+                {
+                    labelLicense.Text = string.IsNullOrEmpty(exp) ? "Ошибка" : exp;
+                }));
 
             _serverAuth = await ServerManager.GetServerAuth();
             if (!_serverAuth.Work)
@@ -201,25 +241,6 @@ namespace DwUtils.Forms
 
         #endregion
 
-        public GeneralForm()
-        {
-            InitializeComponent();
-
-            WebRequest.DefaultWebProxy = null;
-            
-            Logger.Info("Запуск программы.");
-
-            // Если было обновление приложения
-            if (Properties.Settings.Default.NeedUpgrade)
-                UpgradeSettings();
-
-            // ReSharper disable once VirtualMemberCallInConstructor
-            // ReSharper disable once LocalizableElement
-            Text = $"{Properties.Settings.Default.AppName} {Application.ProductVersion}";
-
-            LoadPos();
-        }
-
         #region Сообщения
 
         /// <summary>
@@ -299,9 +320,6 @@ namespace DwUtils.Forms
             // Параметры запуска приложения
             await Task.Run(CheckArgs);
 
-            // Загрузка настроек
-            LoadSettings();
-
             // Проверка лицензии
             CheckLicense();
         }
@@ -330,6 +348,42 @@ namespace DwUtils.Forms
             });
         }
 
+        private void LoadConnect()
+        {
+            _postUnitConnect = FbDataBase.PostUnit.GetConnect();
+            _postItemConnect = FbDataBase.PostItem.GetConnect();
+        }
+
+        private void LoadUsers()
+        {
+            userBindingSource.DataSource = null;
+            GetUsers q = new GetUsers(_postUnitConnect);
+            List<User> users = q.Run();
+            users.Insert(0, new User
+            {
+                Id = 0,
+                IsValid = false,
+                Name = "ВСЕ"
+            });
+            userBindingSource.DataSource = users;
+        }
+
+        private void InitDataGridViews()
+        {
+
+            placeNameDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            placeNameDataGridViewTextBoxColumn.Width = 300;
+
+            connectDateDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            connectDateDataGridViewTextBoxColumn.Width = 140;
+
+            workDateDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            workDateDataGridViewTextBoxColumn.Width = 140;
+
+            adminStatusDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            adminStatusDataGridViewTextBoxColumn.Width = 100;
+        }
+
         #endregion
 
         #region События Меню
@@ -340,7 +394,30 @@ namespace DwUtils.Forms
             authForm.ShowDialog(this);
         }
 
+        private void databaseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ConnectsForm connectsForm = new ConnectsForm();
+            if(connectsForm.ShowDialog(this) == DialogResult.OK)
+                LoadConnect();
+        }
+
+
         #endregion
 
+        #region Кнопки Кладки
+
+        #region Вкладка Активные пользователи
+
+        private void btnActiveUserLoad_Click(object sender, EventArgs e)
+        {
+            connectUserBindingSource.DataSource = null;
+            GetConnectUsers q = new GetConnectUsers(_postUnitConnect);
+            List<ConnectUser> connectUsers = q.Run();
+            connectUserBindingSource.DataSource = connectUsers;
+        }
+
+        #endregion
+
+        #endregion
     }
 }

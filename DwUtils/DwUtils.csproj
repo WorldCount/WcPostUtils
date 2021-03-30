@@ -84,6 +84,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Core\Libs\Database\Firebird\FbConnect.cs" />
+    <Compile Include="Core\Libs\Database\Firebird\FbDataBase.cs" />
+    <Compile Include="Core\Libs\Database\Firebird\Queries\Base\IQueryable.cs" />
+    <Compile Include="Core\Libs\Database\Firebird\Queries\Base\Query.cs" />
+    <Compile Include="Core\Libs\Database\Firebird\Queries\Base\SelectQuery.cs" />
+    <Compile Include="Core\Libs\Database\Firebird\Queries\GetConnectUsers.cs" />
+    <Compile Include="Core\Libs\Database\Firebird\Queries\GetUsers.cs" />
+    <Compile Include="Core\Libs\Database\Firebird\Queries\TestQuery.cs" />
     <Compile Include="Core\Libs\PostApi\PostApiAuth.cs" />
     <Compile Include="Core\Libs\ServerRequest\ServerManager.cs" />
     <Compile Include="Core\Libs\Widgets\ConnectWidget.cs">
@@ -92,8 +100,16 @@
     <Compile Include="Core\Libs\Widgets\ConnectWidget.Designer.cs">
       <DependentUpon>ConnectWidget.cs</DependentUpon>
     </Compile>
+    <Compile Include="Core\Models\Firebird\ConnectUser.cs" />
+    <Compile Include="Core\Models\Firebird\User.cs" />
     <Compile Include="Core\PathManager.cs" />
     <Compile Include="Core\Utils.cs" />
+    <Compile Include="Forms\ConfigForms\ConnectsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ConfigForms\ConnectsForm.Designer.cs">
+      <DependentUpon>ConnectsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ConfigForms\AuthForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,6 +130,10 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="Resources\white-synchronize-24.png" />
+    <None Include="Properties\DataSources\DwUtils.Core.Models.Firebird.ConnectUser.datasource" />
+    <None Include="Properties\DataSources\DwUtils.Core.Models.Firebird.User.datasource" />
+    <None Include="Resources\Folder.png" />
     <None Include="Connected Services\PostApi\DwUtils.PostApi.CustomDutyEvent.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -176,6 +196,9 @@
     <EmbeddedResource Include="Core\Libs\Widgets\ConnectWidget.resx">
       <DependentUpon>ConnectWidget.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ConfigForms\ConnectsForm.resx">
+      <DependentUpon>ConnectsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\ConfigForms\AuthForm.resx">
       <DependentUpon>AuthForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -223,7 +246,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Core\Models\" />
+    <Folder Include="Core\Services\Base\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Wc32Api\Wc32Api.csproj">
