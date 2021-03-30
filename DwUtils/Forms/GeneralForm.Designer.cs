@@ -71,6 +71,8 @@ namespace DwUtils.Forms
             this.tabReceivedDoc = new System.Windows.Forms.TabPage();
             this.dataGridViewDocReceive = new System.Windows.Forms.DataGridView();
             this.panelReceivedDoc = new System.Windows.Forms.Panel();
+            this.dateTimePickerOut = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerIn = new System.Windows.Forms.DateTimePicker();
             this.tabOrgsDoc = new System.Windows.Forms.TabPage();
             this.dataGridViewDocOrg = new System.Windows.Forms.DataGridView();
             this.panelOrgDoc = new System.Windows.Forms.Panel();
@@ -91,6 +93,21 @@ namespace DwUtils.Forms
             this.labelLicense = new System.Windows.Forms.Label();
             this.labelInfoLicense = new System.Windows.Forms.Label();
             this.timerStatus = new System.Windows.Forms.Timer(this.components);
+            this.btnReceiveDocLoad = new System.Windows.Forms.Button();
+            this.reestrBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.typeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.directionIndexDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.directionPlaceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stateIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.placeIdDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.createDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.editDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.userIdDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rpoCountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuBar.SuspendLayout();
             this.statusBar.SuspendLayout();
             this.panelGeneral.SuspendLayout();
@@ -100,12 +117,14 @@ namespace DwUtils.Forms
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReceive)).BeginInit();
             this.tabReceivedDoc.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDocReceive)).BeginInit();
+            this.panelReceivedDoc.SuspendLayout();
             this.tabOrgsDoc.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDocOrg)).BeginInit();
             this.tabActiveUsers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUserOnline)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.connectUserBindingSource)).BeginInit();
             this.panelActive.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.reestrBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // menuBar
@@ -364,6 +383,7 @@ namespace DwUtils.Forms
             this.dataGridViewDocReceive.AllowUserToAddRows = false;
             this.dataGridViewDocReceive.AllowUserToDeleteRows = false;
             this.dataGridViewDocReceive.AllowUserToResizeRows = false;
+            this.dataGridViewDocReceive.AutoGenerateColumns = false;
             this.dataGridViewDocReceive.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewDocReceive.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dataGridViewDocReceive.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -377,6 +397,21 @@ namespace DwUtils.Forms
             this.dataGridViewDocReceive.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewDocReceive.ColumnHeadersHeight = 40;
             this.dataGridViewDocReceive.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataGridViewDocReceive.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idDataGridViewTextBoxColumn,
+            this.numDataGridViewTextBoxColumn,
+            this.nameDataGridViewTextBoxColumn,
+            this.typeDataGridViewTextBoxColumn,
+            this.directionIndexDataGridViewTextBoxColumn,
+            this.directionPlaceDataGridViewTextBoxColumn,
+            this.stateIdDataGridViewTextBoxColumn,
+            this.placeIdDataGridViewTextBoxColumn1,
+            this.dateDataGridViewTextBoxColumn,
+            this.createDateDataGridViewTextBoxColumn,
+            this.editDateDataGridViewTextBoxColumn,
+            this.userIdDataGridViewTextBoxColumn1,
+            this.rpoCountDataGridViewTextBoxColumn});
+            this.dataGridViewDocReceive.DataSource = this.reestrBindingSource;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -410,11 +445,33 @@ namespace DwUtils.Forms
             // panelReceivedDoc
             // 
             this.panelReceivedDoc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
+            this.panelReceivedDoc.Controls.Add(this.btnReceiveDocLoad);
+            this.panelReceivedDoc.Controls.Add(this.dateTimePickerOut);
+            this.panelReceivedDoc.Controls.Add(this.dateTimePickerIn);
             this.panelReceivedDoc.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelReceivedDoc.Location = new System.Drawing.Point(0, 0);
             this.panelReceivedDoc.Name = "panelReceivedDoc";
             this.panelReceivedDoc.Size = new System.Drawing.Size(792, 48);
             this.panelReceivedDoc.TabIndex = 3;
+            // 
+            // dateTimePickerOut
+            // 
+            this.dateTimePickerOut.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
+            this.dateTimePickerOut.CalendarMonthBackground = System.Drawing.Color.White;
+            this.dateTimePickerOut.Location = new System.Drawing.Point(219, 11);
+            this.dateTimePickerOut.Name = "dateTimePickerOut";
+            this.dateTimePickerOut.Size = new System.Drawing.Size(200, 27);
+            this.dateTimePickerOut.TabIndex = 4;
+            // 
+            // dateTimePickerIn
+            // 
+            this.dateTimePickerIn.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
+            this.dateTimePickerIn.CalendarMonthBackground = System.Drawing.Color.White;
+            this.dateTimePickerIn.Location = new System.Drawing.Point(13, 11);
+            this.dateTimePickerIn.Name = "dateTimePickerIn";
+            this.dateTimePickerIn.Size = new System.Drawing.Size(200, 27);
+            this.dateTimePickerIn.TabIndex = 3;
+            this.dateTimePickerIn.ValueChanged += new System.EventHandler(this.dateTimePickerIn_ValueChanged);
             // 
             // tabOrgsDoc
             // 
@@ -688,6 +745,105 @@ namespace DwUtils.Forms
             this.timerStatus.Interval = 3000;
             this.timerStatus.Tick += new System.EventHandler(this.timerStatus_Tick);
             // 
+            // btnReceiveDocLoad
+            // 
+            this.btnReceiveDocLoad.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnReceiveDocLoad.BackColor = System.Drawing.Color.Brown;
+            this.btnReceiveDocLoad.FlatAppearance.BorderSize = 0;
+            this.btnReceiveDocLoad.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.btnReceiveDocLoad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReceiveDocLoad.ForeColor = System.Drawing.Color.White;
+            this.btnReceiveDocLoad.Image = global::DwUtils.Properties.Resources.white_synchronize_24;
+            this.btnReceiveDocLoad.Location = new System.Drawing.Point(748, 6);
+            this.btnReceiveDocLoad.Name = "btnReceiveDocLoad";
+            this.btnReceiveDocLoad.Size = new System.Drawing.Size(36, 36);
+            this.btnReceiveDocLoad.TabIndex = 21;
+            this.btnReceiveDocLoad.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnReceiveDocLoad.UseVisualStyleBackColor = false;
+            this.btnReceiveDocLoad.Click += new System.EventHandler(this.btnReceiveDocLoad_Click);
+            // 
+            // reestrBindingSource
+            // 
+            this.reestrBindingSource.DataSource = typeof(DwUtils.Core.Models.Firebird.Reestr);
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            // 
+            // numDataGridViewTextBoxColumn
+            // 
+            this.numDataGridViewTextBoxColumn.DataPropertyName = "Num";
+            this.numDataGridViewTextBoxColumn.HeaderText = "Num";
+            this.numDataGridViewTextBoxColumn.Name = "numDataGridViewTextBoxColumn";
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            // 
+            // typeDataGridViewTextBoxColumn
+            // 
+            this.typeDataGridViewTextBoxColumn.DataPropertyName = "Type";
+            this.typeDataGridViewTextBoxColumn.HeaderText = "Type";
+            this.typeDataGridViewTextBoxColumn.Name = "typeDataGridViewTextBoxColumn";
+            // 
+            // directionIndexDataGridViewTextBoxColumn
+            // 
+            this.directionIndexDataGridViewTextBoxColumn.DataPropertyName = "DirectionIndex";
+            this.directionIndexDataGridViewTextBoxColumn.HeaderText = "DirectionIndex";
+            this.directionIndexDataGridViewTextBoxColumn.Name = "directionIndexDataGridViewTextBoxColumn";
+            // 
+            // directionPlaceDataGridViewTextBoxColumn
+            // 
+            this.directionPlaceDataGridViewTextBoxColumn.DataPropertyName = "DirectionPlace";
+            this.directionPlaceDataGridViewTextBoxColumn.HeaderText = "DirectionPlace";
+            this.directionPlaceDataGridViewTextBoxColumn.Name = "directionPlaceDataGridViewTextBoxColumn";
+            // 
+            // stateIdDataGridViewTextBoxColumn
+            // 
+            this.stateIdDataGridViewTextBoxColumn.DataPropertyName = "StateId";
+            this.stateIdDataGridViewTextBoxColumn.HeaderText = "StateId";
+            this.stateIdDataGridViewTextBoxColumn.Name = "stateIdDataGridViewTextBoxColumn";
+            // 
+            // placeIdDataGridViewTextBoxColumn1
+            // 
+            this.placeIdDataGridViewTextBoxColumn1.DataPropertyName = "PlaceId";
+            this.placeIdDataGridViewTextBoxColumn1.HeaderText = "PlaceId";
+            this.placeIdDataGridViewTextBoxColumn1.Name = "placeIdDataGridViewTextBoxColumn1";
+            // 
+            // dateDataGridViewTextBoxColumn
+            // 
+            this.dateDataGridViewTextBoxColumn.DataPropertyName = "Date";
+            this.dateDataGridViewTextBoxColumn.HeaderText = "Date";
+            this.dateDataGridViewTextBoxColumn.Name = "dateDataGridViewTextBoxColumn";
+            // 
+            // createDateDataGridViewTextBoxColumn
+            // 
+            this.createDateDataGridViewTextBoxColumn.DataPropertyName = "CreateDate";
+            this.createDateDataGridViewTextBoxColumn.HeaderText = "CreateDate";
+            this.createDateDataGridViewTextBoxColumn.Name = "createDateDataGridViewTextBoxColumn";
+            // 
+            // editDateDataGridViewTextBoxColumn
+            // 
+            this.editDateDataGridViewTextBoxColumn.DataPropertyName = "EditDate";
+            this.editDateDataGridViewTextBoxColumn.HeaderText = "EditDate";
+            this.editDateDataGridViewTextBoxColumn.Name = "editDateDataGridViewTextBoxColumn";
+            // 
+            // userIdDataGridViewTextBoxColumn1
+            // 
+            this.userIdDataGridViewTextBoxColumn1.DataPropertyName = "UserId";
+            this.userIdDataGridViewTextBoxColumn1.HeaderText = "UserId";
+            this.userIdDataGridViewTextBoxColumn1.Name = "userIdDataGridViewTextBoxColumn1";
+            // 
+            // rpoCountDataGridViewTextBoxColumn
+            // 
+            this.rpoCountDataGridViewTextBoxColumn.DataPropertyName = "RpoCount";
+            this.rpoCountDataGridViewTextBoxColumn.HeaderText = "RpoCount";
+            this.rpoCountDataGridViewTextBoxColumn.Name = "rpoCountDataGridViewTextBoxColumn";
+            // 
             // GeneralForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -720,12 +876,14 @@ namespace DwUtils.Forms
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReceive)).EndInit();
             this.tabReceivedDoc.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDocReceive)).EndInit();
+            this.panelReceivedDoc.ResumeLayout(false);
             this.tabOrgsDoc.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDocOrg)).EndInit();
             this.tabActiveUsers.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUserOnline)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.connectUserBindingSource)).EndInit();
             this.panelActive.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.reestrBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -776,6 +934,23 @@ namespace DwUtils.Forms
         private System.Windows.Forms.DataGridView dataGridViewDocOrg;
         private System.Windows.Forms.ToolStripMenuItem createDbMenuItem;
         private System.Windows.Forms.Button btnSync;
+        private System.Windows.Forms.DateTimePicker dateTimePickerIn;
+        private System.Windows.Forms.DateTimePicker dateTimePickerOut;
+        private System.Windows.Forms.Button btnReceiveDocLoad;
+        private System.Windows.Forms.BindingSource reestrBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn numDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn typeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn directionIndexDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn directionPlaceDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn stateIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn placeIdDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn createDateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn editDateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn userIdDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn rpoCountDataGridViewTextBoxColumn;
     }
 }
 

@@ -40,7 +40,7 @@ namespace DwUtils.Core.Libs.Database.Firebird.Queries
             sb.Append(" group by r.reestrid, r.reestrnum, t.name, r.reestrtypeid, d.vali,  d.vals, r.reestrstateid, r.placeid, r.reestrdate, r.createtime, r.edittime, r.edituserid");
             sb.Append(" order by r.createtime desc");
 
-            return "";
+            return sb.ToString();
         }
 
         protected override List<Reestr> ParseResponse(FbDataReader reader)
@@ -55,7 +55,7 @@ namespace DwUtils.Core.Libs.Database.Firebird.Queries
 
                 Reestr reestr = new Reestr
                 {
-                    Id = reader.GetInt16(0),
+                    //Id = reader.GetInt16(0),
                     Num = reader.GetInt64(1),
                     Name = reader.GetString(2),
                     Type = reader.GetInt16(3),
@@ -65,7 +65,7 @@ namespace DwUtils.Core.Libs.Database.Firebird.Queries
                     CreateDate = reader.GetDateTime(9),
                     EditDate = reader.GetDateTime(10),
                     UserId = reader.GetInt16(11),
-                    RpoCount = reader.GetInt16(12)
+                    //RpoCount = reader.GetInt16(12)
                 };
 
                 if (!string.IsNullOrEmpty(index))

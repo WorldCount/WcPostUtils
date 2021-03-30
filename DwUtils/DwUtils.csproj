@@ -186,6 +186,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="Properties\DataSources\DwUtils.Core.Models.Firebird.Reestr.datasource" />
     <None Include="Resources\cloud-4-24.png" />
     <None Include="Resources\Lego-Bricks.png" />
     <None Include="Resources\white-synchronize-24.png" />

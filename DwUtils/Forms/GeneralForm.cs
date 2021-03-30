@@ -12,6 +12,7 @@ using DwUtils.Core;
 using DwUtils.Core.Libs.Database.Firebird;
 using DwUtils.Core.Libs.Database.Firebird.Connect;
 using DwUtils.Core.Libs.Database.Firebird.Queries;
+using DwUtils.Core.Libs.Database.Firebird.Queries.Params;
 using DwUtils.Core.Libs.ServerRequest;
 using DwUtils.Core.Models.Firebird;
 using DwUtils.Core.Services.Firebird;
@@ -440,5 +441,33 @@ namespace DwUtils.Forms
         #endregion
 
         #endregion
+
+        #region События Разное
+
+        private void dateTimePickerIn_ValueChanged(object sender, EventArgs e)
+        {
+            dateTimePickerOut.Value = dateTimePickerIn.Value;
+        }
+
+        #endregion
+
+        private void btnReceiveDocLoad_Click(object sender, EventArgs e)
+        {
+            reestrBindingSource.DataSource = null;
+
+            GetReestrParams param = new GetReestrParams
+            {
+                StartCreateDate = dateTimePickerIn.Value,
+                EndCreateDate = dateTimePickerOut.Value
+            };
+
+            User selectUser = (User) cbUsers.SelectedItem;
+            param.UserId = selectUser.Id;
+
+            GetReestr q = new GetReestr(_postItemConnect, param);
+            var data = q.Run();
+
+            reestrBindingSource.DataSource = data;
+        }
     }
 }

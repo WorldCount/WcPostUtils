@@ -14,7 +14,7 @@ namespace DwUtils.Core.Models.Firebird
             return new Firm
             {
                 Name = Name,
-                Code = Id
+                Id = Id
             };
         }
     }
