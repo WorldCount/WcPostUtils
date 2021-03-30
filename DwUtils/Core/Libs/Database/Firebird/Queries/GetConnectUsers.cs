@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Text;
+using DwUtils.Core.Libs.Database.Firebird.Connect;
 using DwUtils.Core.Libs.Database.Firebird.Queries.Base;
 using DwUtils.Core.Models.Firebird;
 using FirebirdSql.Data.FirebirdClient;
 
 namespace DwUtils.Core.Libs.Database.Firebird.Queries
 {
-    public class GetConnectUsers : Query
+    public class GetConnectUsers : PostUnitQuery
     {
-        public GetConnectUsers(FbConnect connect) : base(connect) { }
+        public GetConnectUsers(PostUnitConnect connect) : base(connect) { }
 
         public override string GetQuery()
         {

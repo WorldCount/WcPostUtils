@@ -7,13 +7,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DwUtils.Core.Libs.Database;
 using DwUtils.Core.Libs.Database.Firebird;
+using DwUtils.Core.Libs.Database.Firebird.Connect;
 
 namespace DwUtils.Forms.ConfigForms
 {
     public partial class ConnectsForm : Form
     {
-        private readonly FbConnect _postUnitConnect;
-        private readonly FbConnect _postItemConnect;
+        private readonly PostUnitConnect _postUnitConnect;
+        private readonly PostItemConnect _postItemConnect;
 
         public ConnectsForm()
         {

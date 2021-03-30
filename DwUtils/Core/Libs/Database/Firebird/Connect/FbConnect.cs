@@ -2,9 +2,9 @@
 using System.Threading.Tasks;
 using FirebirdSql.Data.FirebirdClient;
 
-namespace DwUtils.Core.Libs.Database.Firebird
+namespace DwUtils.Core.Libs.Database.Firebird.Connect
 {
-    public class FbConnect
+    public class FbConnect : IFbConnect
     {
         public string Host { get; set; }
         public string Path { get; set; }

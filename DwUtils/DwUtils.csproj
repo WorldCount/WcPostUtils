@@ -8,10 +8,11 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>DwUtils</RootNamespace>
     <AssemblyName>DwUtils</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -84,14 +85,19 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Core\Libs\Database\Firebird\FbConnect.cs" />
+    <Compile Include="Core\Libs\Database\Firebird\Connect\FbConnect.cs" />
+    <Compile Include="Core\Libs\Database\Firebird\Connect\IFbConnect.cs" />
+    <Compile Include="Core\Libs\Database\Firebird\Connect\PostItemConnect.cs" />
+    <Compile Include="Core\Libs\Database\Firebird\Connect\PostUnitConnect.cs" />
     <Compile Include="Core\Libs\Database\Firebird\FbDataBase.cs" />
     <Compile Include="Core\Libs\Database\Firebird\Queries\Base\IQueryable.cs" />
+    <Compile Include="Core\Libs\Database\Firebird\Queries\Base\PostItemQuery.cs" />
+    <Compile Include="Core\Libs\Database\Firebird\Queries\Base\PostUnitQuery.cs" />
+    <Compile Include="Core\Libs\Database\Firebird\Queries\Base\PostItemSelectQuery.cs" />
     <Compile Include="Core\Libs\Database\Firebird\Queries\Base\Query.cs" />
-    <Compile Include="Core\Libs\Database\Firebird\Queries\Base\SelectQuery.cs" />
+    <Compile Include="Core\Libs\Database\Firebird\Queries\Base\PostUnitSelectQuery.cs" />
     <Compile Include="Core\Libs\Database\Firebird\Queries\GetConnectUsers.cs" />
     <Compile Include="Core\Libs\Database\Firebird\Queries\GetUsers.cs" />
-    <Compile Include="Core\Libs\Database\Firebird\Queries\TestQuery.cs" />
     <Compile Include="Core\Libs\PostApi\PostApiAuth.cs" />
     <Compile Include="Core\Libs\ServerRequest\ServerManager.cs" />
     <Compile Include="Core\Libs\Widgets\ConnectWidget.cs">
@@ -100,9 +106,16 @@
     <Compile Include="Core\Libs\Widgets\ConnectWidget.Designer.cs">
       <DependentUpon>ConnectWidget.cs</DependentUpon>
     </Compile>
+    <Compile Include="Core\Models\Base\IEntity.cs" />
     <Compile Include="Core\Models\Firebird\ConnectUser.cs" />
+    <Compile Include="Core\Models\Firebird\Reestr.cs" />
     <Compile Include="Core\Models\Firebird\User.cs" />
     <Compile Include="Core\PathManager.cs" />
+    <Compile Include="Core\Services\Base\PostItemRepository.cs" />
+    <Compile Include="Core\Services\Base\PostUnitRepository.cs" />
+    <Compile Include="Core\Services\Firebird\ConnectUserRepository.cs" />
+    <Compile Include="Core\Services\Firebird\ReestrRepository.cs" />
+    <Compile Include="Core\Services\Firebird\UserRepository.cs" />
     <Compile Include="Core\Utils.cs" />
     <Compile Include="Forms\ConfigForms\ConnectsForm.cs">
       <SubType>Form</SubType>
@@ -245,9 +258,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Core\Services\Base\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Wc32Api\Wc32Api.csproj">
       <Project>{f422d6e4-fdd2-4aa8-a1af-23ab9f988067}</Project>

@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Data;
+using DwUtils.Core.Libs.Database.Firebird.Connect;
 using FirebirdSql.Data.FirebirdClient;
 
 namespace DwUtils.Core.Libs.Database.Firebird.Queries.Base
 {
-    public abstract class SelectQuery<T> : Query
+    public abstract class PostUnitSelectQuery<T> : Query<PostUnitConnect>
     {
-        protected SelectQuery(FbConnect connect) : base(connect) { }
+        protected PostUnitSelectQuery(PostUnitConnect connect) : base(connect) { }
 
         public abstract override string GetQuery();
 

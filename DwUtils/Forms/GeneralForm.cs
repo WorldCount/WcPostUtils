@@ -10,9 +10,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DwUtils.Core;
 using DwUtils.Core.Libs.Database.Firebird;
+using DwUtils.Core.Libs.Database.Firebird.Connect;
 using DwUtils.Core.Libs.Database.Firebird.Queries;
 using DwUtils.Core.Libs.ServerRequest;
 using DwUtils.Core.Models.Firebird;
+using DwUtils.Core.Services.Firebird;
 using DwUtils.Forms.ConfigForms;
 using NLog;
 using WcApi.Cryptography;
@@ -26,8 +28,16 @@ namespace DwUtils.Forms
     {
 
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
-        private FbConnect _postUnitConnect;
-        private FbConnect _postItemConnect;
+        private PostUnitConnect _postUnitConnect;
+        private PostItemConnect _postItemConnect;
+
+        #region Репозитории
+
+        private UserRepository _userRepository;
+        private ConnectUserRepository _connectUserRepository;
+
+        #endregion
+
 
         #region Настройки
 
@@ -331,6 +341,7 @@ namespace DwUtils.Forms
 
         private void GeneralForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            Logger.Debug("Закрытие программы");
             SaveSettings();
             SavePos();
         }
@@ -352,13 +363,15 @@ namespace DwUtils.Forms
         {
             _postUnitConnect = FbDataBase.PostUnit.GetConnect();
             _postItemConnect = FbDataBase.PostItem.GetConnect();
+
+            _userRepository = new UserRepository(_postUnitConnect);
+            _connectUserRepository = new ConnectUserRepository(_postUnitConnect);
         }
 
         private void LoadUsers()
         {
             userBindingSource.DataSource = null;
-            GetUsers q = new GetUsers(_postUnitConnect);
-            List<User> users = q.Run();
+            List<User> users = _userRepository.GetAll().ToList();
             users.Insert(0, new User
             {
                 Id = 0,
@@ -371,6 +384,7 @@ namespace DwUtils.Forms
         private void InitDataGridViews()
         {
 
+            // Вкладка Подключенные пользователи
             placeNameDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             placeNameDataGridViewTextBoxColumn.Width = 300;
 
@@ -397,8 +411,11 @@ namespace DwUtils.Forms
         private void databaseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ConnectsForm connectsForm = new ConnectsForm();
-            if(connectsForm.ShowDialog(this) == DialogResult.OK)
+            if (connectsForm.ShowDialog(this) == DialogResult.OK)
+            {
                 LoadConnect();
+                LoadUsers();
+            }
         }
 
 
@@ -411,9 +428,7 @@ namespace DwUtils.Forms
         private void btnActiveUserLoad_Click(object sender, EventArgs e)
         {
             connectUserBindingSource.DataSource = null;
-            GetConnectUsers q = new GetConnectUsers(_postUnitConnect);
-            List<ConnectUser> connectUsers = q.Run();
-            connectUserBindingSource.DataSource = connectUsers;
+            connectUserBindingSource.DataSource = _connectUserRepository.GetAll();
         }
 
         #endregion

@@ -1,24 +1,25 @@
 ﻿using System;
+using DwUtils.Core.Libs.Database.Firebird.Connect;
 using NLog;
 
 namespace DwUtils.Core.Libs.Database.Firebird.Queries.Base
 {
-    public abstract class Query : IQueryable, IDisposable
+    public abstract class Query<T> : IQueryable<T>, IDisposable
     {
-        private readonly FbConnect _connect;
+        private readonly T _connect;
         public static readonly Logger Logger = LogManager.GetCurrentClassLogger();
 
         // ReSharper disable once ConvertToAutoProperty
-        public FbConnect Connect => _connect;
+        public T Connect => _connect;
 
-        protected Query(FbConnect connect)
+        protected Query(T connect)
         {
             _connect = connect;
         }
 
         public abstract string GetQuery();
 
-        public FbConnect GetConnect()
+        public T GetConnect()
         {
             return _connect;
         }

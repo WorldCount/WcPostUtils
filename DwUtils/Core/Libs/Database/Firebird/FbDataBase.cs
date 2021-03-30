@@ -1,20 +1,20 @@
 ﻿using System.IO;
+using DwUtils.Core.Libs.Database.Firebird.Connect;
 using WcApi.Xml;
-
 namespace DwUtils.Core.Libs.Database.Firebird
 {
     public static class FbDataBase
     {
         public static class PostItem
         {
-            public static FbConnect GetConnect()
+            public static PostItemConnect GetConnect()
             {
                 if (!File.Exists(PathManager.PostItemConnectPath))
-                    return new FbConnect();
-                return Serializer.Load<FbConnect>(PathManager.PostItemConnectPath);
+                    return new PostItemConnect();
+                return Serializer.Load<PostItemConnect>(PathManager.PostItemConnectPath);
             }
 
-            public static void SaveConnect(FbConnect connect)
+            public static void SaveConnect(PostItemConnect connect)
             {
                 Serializer.Save(PathManager.PostItemConnectPath, connect);
             }
@@ -22,14 +22,14 @@ namespace DwUtils.Core.Libs.Database.Firebird
 
         public static class PostUnit
         {
-            public static FbConnect GetConnect()
+            public static PostUnitConnect GetConnect()
             {
                 if (!File.Exists(PathManager.PostUnitConnectPath))
-                    return new FbConnect();
-                return Serializer.Load<FbConnect>(PathManager.PostUnitConnectPath);
+                    return new PostUnitConnect();
+                return Serializer.Load<PostUnitConnect>(PathManager.PostUnitConnectPath);
             }
 
-            public static void SaveConnect(FbConnect connect)
+            public static void SaveConnect(PostUnitConnect connect)
             {
                 Serializer.Save(PathManager.PostUnitConnectPath, connect);
             }
