@@ -44,6 +44,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Widgets\Nets\ConnectWidget.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Widgets\Nets\ConnectWidget.Designer.cs">
+      <DependentUpon>ConnectWidget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Widgets\ProgresBars\ColoredProgressBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Widgets\TextBoxs\BorderTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -53,6 +62,11 @@
   <ItemGroup>
     <Folder Include="DataTypes\" />
     <Folder Include="Forms\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Widgets\Nets\ConnectWidget.resx">
+      <DependentUpon>ConnectWidget.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

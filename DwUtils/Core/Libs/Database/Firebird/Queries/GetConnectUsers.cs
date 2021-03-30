@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using System.Collections.Generic;
 using System.Text;
 using DwUtils.Core.Libs.Database.Firebird.Connect;
 using DwUtils.Core.Libs.Database.Firebird.Queries.Base;
@@ -9,7 +7,7 @@ using FirebirdSql.Data.FirebirdClient;
 
 namespace DwUtils.Core.Libs.Database.Firebird.Queries
 {
-    public class GetConnectUsers : PostUnitQuery
+    public class GetConnectUsers : PostUnitSelectQuery<List<ConnectUser>>
     {
         public GetConnectUsers(PostUnitConnect connect) : base(connect) { }
 
@@ -23,64 +21,29 @@ namespace DwUtils.Core.Libs.Database.Firebird.Queries
             return sb.ToString();
         }
 
-        public List<ConnectUser> Run()
+        protected override List<ConnectUser> ParseResponse(FbDataReader reader)
         {
-            string q = GetQuery();
-            Logger.Debug($"Запрос в БД: {q}");
+            List<ConnectUser> data = new List<ConnectUser>();
 
-            List<ConnectUser> connectUsers = new List<ConnectUser>();
-
-            FbConnection fbConnection = null;
-            FbDataReader reader = null;
-            FbTransaction fbTransaction = null;
-
-            try
+            while (reader.Read())
             {
-                fbConnection = new FbConnection(Connect.ToString());
-                if (fbConnection.State == ConnectionState.Closed)
-                    fbConnection.Open();
-
-                fbTransaction = fbConnection.BeginTransaction();
-
-                FbCommand selectCommand = new FbCommand(q, fbConnection) { Transaction = fbTransaction };
-                reader = selectCommand.ExecuteReader();
-
-                while (reader.Read())
+                ConnectUser dbUser = new ConnectUser
                 {
-                    ConnectUser dbUser = new ConnectUser
-                    {
-                        UserId = reader.GetInt32(0),
-                        PlaceId = reader.GetInt32(1),
-                        ConnectDate = reader.GetDateTime(2),
-                        WorkDate = reader.GetDateTime(3),
-                        UserName = reader.GetString(4),
-                        PlaceName = reader.GetString(5),
-                        IsAdmin = reader.GetBoolean(6),
-                        IsValid = reader.GetBoolean(7)
-                    };
+                    UserId = reader.GetInt32(0),
+                    PlaceId = reader.GetInt32(1),
+                    ConnectDate = reader.GetDateTime(2),
+                    WorkDate = reader.GetDateTime(3),
+                    UserName = reader.GetString(4),
+                    PlaceName = reader.GetString(5),
+                    IsAdmin = reader.GetBoolean(6),
+                    IsValid = reader.GetBoolean(7)
+                };
 
-                    connectUsers.Add(dbUser);
-                }
+                data.Add(dbUser);
+            }
 
-                Logger.Debug($"Запрос вернул записей: {connectUsers.Count}");
-                return connectUsers;
-            }
-            catch (Exception e)
-            {
-                Logger.Error($"Ошибка при запросе: {q}");
-                Logger.Error(e);
-                Logger.Error(e.Message);
-
-                fbTransaction?.Rollback();
-                return null;
-            }
-            finally
-            {
-                reader?.Close();
-                fbTransaction?.Dispose();
-                fbConnection?.Close();
-            }
+            Logger.Debug($"Запрос вернул записей: {data.Count}");
+            return data;
         }
-
     }
 }

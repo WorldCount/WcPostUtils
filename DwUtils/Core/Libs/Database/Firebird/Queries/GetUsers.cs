@@ -17,7 +17,7 @@ namespace DwUtils.Core.Libs.Database.Firebird.Queries
 
         protected override List<User> ParseResponse(FbDataReader reader)
         {
-            List<User> users = new List<User>();
+            List<User> data = new List<User>();
 
             while (reader.Read())
             {
@@ -30,11 +30,11 @@ namespace DwUtils.Core.Libs.Database.Firebird.Queries
                     IsValid = reader.GetBoolean(4)
                 };
 
-                users.Add(dbUser);
+                data.Add(dbUser);
             }
 
-            Logger.Debug($"Запрос вернул записей: {users.Count}");
-            return users;
+            Logger.Debug($"Запрос вернул записей: {data.Count}");
+            return data;
         }
     }
 }

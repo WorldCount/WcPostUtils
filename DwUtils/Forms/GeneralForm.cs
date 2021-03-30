@@ -16,6 +16,7 @@ using DwUtils.Core.Libs.ServerRequest;
 using DwUtils.Core.Models.Firebird;
 using DwUtils.Core.Services.Firebird;
 using DwUtils.Forms.ConfigForms;
+using DwUtils.Forms.WorkForms;
 using NLog;
 using WcApi.Cryptography;
 using WcApi.Net;
@@ -418,6 +419,11 @@ namespace DwUtils.Forms
             }
         }
 
+        private void createDbMenuItem_Click(object sender, EventArgs e)
+        {
+            CreateDbForm createDbForm = new CreateDbForm();
+            createDbForm.ShowDialog(this);
+        }
 
         #endregion
 
