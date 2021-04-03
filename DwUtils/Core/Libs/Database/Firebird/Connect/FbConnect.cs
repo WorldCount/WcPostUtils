@@ -14,6 +14,7 @@ namespace DwUtils.Core.Libs.Database.Firebird.Connect
         public int ServerType { get; set; } = 0;
         public string Charset { get; set; } = "WIN1251";
         public int WireCrypt { get; set; } = 0;
+        public int ConnectionTimeout { get; set; } = 1000;
 
         public override string ToString()
         {
@@ -26,7 +27,8 @@ namespace DwUtils.Core.Libs.Database.Firebird.Connect
                 DataSource = Host,
                 ServerType = (FbServerType) ServerType,
                 Port = Port,
-                WireCrypt = (FbWireCrypt) WireCrypt
+                WireCrypt = (FbWireCrypt) WireCrypt,
+                ConnectionTimeout = ConnectionTimeout
             };
 
             return fbConnection.ToString();

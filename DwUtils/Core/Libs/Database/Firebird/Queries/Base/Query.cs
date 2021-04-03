@@ -1,5 +1,4 @@
 ﻿using System;
-using DwUtils.Core.Libs.Database.Firebird.Connect;
 using NLog;
 
 namespace DwUtils.Core.Libs.Database.Firebird.Queries.Base

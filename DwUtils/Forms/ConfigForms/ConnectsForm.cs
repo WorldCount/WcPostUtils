@@ -5,7 +5,6 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DwUtils.Core.Libs.Database;
 using DwUtils.Core.Libs.Database.Firebird;
 using DwUtils.Core.Libs.Database.Firebird.Connect;
 
@@ -76,13 +75,15 @@ namespace DwUtils.Forms.ConfigForms
             cbCryptPostUnit.Items.Add("Включено");
             cbCryptPostUnit.Items.Add("Рекомендуется");
 
-            // Биндинги
+            #region Биндинги
+
             // PostItem
             tbHostPostItem.DataBindings.Add("Text", _postItemConnect, "Host", false, DataSourceUpdateMode.OnPropertyChanged);
             tbPasswordPostItem.DataBindings.Add("Text", _postItemConnect, "Password", false, DataSourceUpdateMode.OnPropertyChanged);
             tbLoginPostItem.DataBindings.Add("Text", _postItemConnect, "Login", false, DataSourceUpdateMode.OnPropertyChanged);
             tbPathPostItem.DataBindings.Add("Text", _postItemConnect, "Path", false, DataSourceUpdateMode.OnPropertyChanged);
             tbPortPostItem.DataBindings.Add("Text", _postItemConnect, "Port", false, DataSourceUpdateMode.OnPropertyChanged);
+            tbTimeoutPostItem.DataBindings.Add("Text", _postItemConnect, "ConnectionTimeout", false, DataSourceUpdateMode.OnPropertyChanged);
             cbServerTypePostItem.DataBindings.Add("SelectedIndex", _postItemConnect, "ServerType", false, DataSourceUpdateMode.OnPropertyChanged);
             cbCryptPostItem.DataBindings.Add("SelectedIndex", _postItemConnect, "WireCrypt", false, DataSourceUpdateMode.OnPropertyChanged);
 
@@ -92,8 +93,11 @@ namespace DwUtils.Forms.ConfigForms
             tbLoginPostUnit.DataBindings.Add("Text", _postUnitConnect, "Login", false, DataSourceUpdateMode.OnPropertyChanged);
             tbPathPostUnit.DataBindings.Add("Text", _postUnitConnect, "Path", false, DataSourceUpdateMode.OnPropertyChanged);
             tbPortPostUnit.DataBindings.Add("Text", _postUnitConnect, "Port", false, DataSourceUpdateMode.OnPropertyChanged);
+            tbTimeoutPostUnit.DataBindings.Add("Text", _postUnitConnect, "ConnectionTimeout", false, DataSourceUpdateMode.OnPropertyChanged);
             cbServerTypePostUnit.DataBindings.Add("SelectedIndex", _postUnitConnect, "ServerType", false, DataSourceUpdateMode.OnPropertyChanged);
             cbCryptPostUnit.DataBindings.Add("SelectedIndex", _postUnitConnect, "WireCrypt", false, DataSourceUpdateMode.OnPropertyChanged);
+
+            #endregion
         }
 
         private void ConnectsForm_KeyDown(object sender, KeyEventArgs e)
@@ -121,6 +125,14 @@ namespace DwUtils.Forms.ConfigForms
         }
 
         private void tbPort_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void tbTimeout_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
             {

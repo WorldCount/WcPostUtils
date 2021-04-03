@@ -18,6 +18,12 @@ namespace DwUtils.Core.Libs.Database.Firebird.Queries.Base
             string q = GetQuery();
             Logger.Debug($"Запрос в БД: {q}");
 
+            if (!GetConnect().TestConnect())
+            {
+                Logger.Error($"Нет подключения к [{GetConnect()}]");
+                return default;
+            }
+
             FbConnection fbConnection = null;
             FbDataReader reader = null;
             FbTransaction fbTransaction = null;

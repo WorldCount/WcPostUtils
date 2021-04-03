@@ -31,26 +31,29 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConnectsForm));
             this.tabsControl = new System.Windows.Forms.TabControl();
             this.tabPostUnit = new System.Windows.Forms.TabPage();
-            this.tabPostItem = new System.Windows.Forms.TabPage();
-            this.labelInfo = new System.Windows.Forms.Label();
+            this.connectPostUnit = new DwUtils.Core.Libs.Widgets.ConnectWidget();
             this.groupBoxPostUnit = new System.Windows.Forms.GroupBox();
+            this.cbCryptPostUnit = new System.Windows.Forms.ComboBox();
+            this.lblCryptPostUnit = new System.Windows.Forms.Label();
+            this.tbPortPostUnit = new Wc32Api.Widgets.TextBoxs.BorderTextBox();
+            this.lblPortPostUnit = new System.Windows.Forms.Label();
+            this.cbServerTypePostUnit = new System.Windows.Forms.ComboBox();
+            this.tbServerTypePostUnit = new System.Windows.Forms.Label();
+            this.tbPasswordPostUnit = new Wc32Api.Widgets.TextBoxs.BorderTextBox();
+            this.tbLoginPostUnit = new Wc32Api.Widgets.TextBoxs.BorderTextBox();
+            this.btnChoosePostUnit = new System.Windows.Forms.Button();
+            this.lblPostUnit = new System.Windows.Forms.Label();
+            this.lblLoginPostUnit = new System.Windows.Forms.Label();
+            this.tbPathPostUnit = new Wc32Api.Widgets.TextBoxs.BorderTextBox();
+            this.lblPathPostUnit = new System.Windows.Forms.Label();
+            this.btnAutoPostUnit = new System.Windows.Forms.Button();
             this.tbHostPostUnit = new Wc32Api.Widgets.TextBoxs.BorderTextBox();
             this.lblHostPostUnit = new System.Windows.Forms.Label();
-            this.btnAutoPostUnit = new System.Windows.Forms.Button();
-            this.lblPathPostUnit = new System.Windows.Forms.Label();
-            this.tbPathPostUnit = new Wc32Api.Widgets.TextBoxs.BorderTextBox();
-            this.lblLoginPostUnit = new System.Windows.Forms.Label();
-            this.lblPostUnit = new System.Windows.Forms.Label();
-            this.btnChoosePostUnit = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.tbLoginPostUnit = new Wc32Api.Widgets.TextBoxs.BorderTextBox();
-            this.tbPasswordPostUnit = new Wc32Api.Widgets.TextBoxs.BorderTextBox();
-            this.tbServerTypePostUnit = new System.Windows.Forms.Label();
-            this.cbServerTypePostUnit = new System.Windows.Forms.ComboBox();
-            this.lblPortPostUnit = new System.Windows.Forms.Label();
-            this.tbPortPostUnit = new Wc32Api.Widgets.TextBoxs.BorderTextBox();
+            this.tabPostItem = new System.Windows.Forms.TabPage();
+            this.connectPostItem = new DwUtils.Core.Libs.Widgets.ConnectWidget();
             this.groupBoxPostItem = new System.Windows.Forms.GroupBox();
+            this.cbCryptPostItem = new System.Windows.Forms.ComboBox();
+            this.lblCryptPostItem = new System.Windows.Forms.Label();
             this.tbPortPostItem = new Wc32Api.Widgets.TextBoxs.BorderTextBox();
             this.lblPortPostItem = new System.Windows.Forms.Label();
             this.cbServerTypePostItem = new System.Windows.Forms.ComboBox();
@@ -65,16 +68,17 @@
             this.btnAutoPostItem = new System.Windows.Forms.Button();
             this.tbHostPostItem = new Wc32Api.Widgets.TextBoxs.BorderTextBox();
             this.lblHostPostItem = new System.Windows.Forms.Label();
-            this.connectPostItem = new DwUtils.Core.Libs.Widgets.ConnectWidget();
-            this.connectPostUnit = new DwUtils.Core.Libs.Widgets.ConnectWidget();
-            this.lblCryptPostUnit = new System.Windows.Forms.Label();
-            this.cbCryptPostUnit = new System.Windows.Forms.ComboBox();
-            this.cbCryptPostItem = new System.Windows.Forms.ComboBox();
-            this.lblCryptPostItem = new System.Windows.Forms.Label();
+            this.labelInfo = new System.Windows.Forms.Label();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.tbTimeoutPostUnit = new Wc32Api.Widgets.TextBoxs.BorderTextBox();
+            this.lblTimeoutPostUnit = new System.Windows.Forms.Label();
+            this.tbTimeoutPostItem = new Wc32Api.Widgets.TextBoxs.BorderTextBox();
+            this.lblTimeoutPostItem = new System.Windows.Forms.Label();
             this.tabsControl.SuspendLayout();
             this.tabPostUnit.SuspendLayout();
-            this.tabPostItem.SuspendLayout();
             this.groupBoxPostUnit.SuspendLayout();
+            this.tabPostItem.SuspendLayout();
             this.groupBoxPostItem.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -105,34 +109,33 @@
             this.tabPostUnit.TabIndex = 0;
             this.tabPostUnit.Text = "PostUnit";
             // 
-            // tabPostItem
+            // connectPostUnit
             // 
-            this.tabPostItem.BackColor = System.Drawing.Color.White;
-            this.tabPostItem.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tabPostItem.Controls.Add(this.connectPostItem);
-            this.tabPostItem.Controls.Add(this.groupBoxPostItem);
-            this.tabPostItem.Location = new System.Drawing.Point(4, 29);
-            this.tabPostItem.Name = "tabPostItem";
-            this.tabPostItem.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPostItem.Size = new System.Drawing.Size(714, 398);
-            this.tabPostItem.TabIndex = 1;
-            this.tabPostItem.Text = "PostItem";
-            // 
-            // labelInfo
-            // 
-            this.labelInfo.AutoSize = true;
-            this.labelInfo.Font = new System.Drawing.Font("Segoe UI", 14.26415F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(74)))), ((int)(((byte)(84)))));
-            this.labelInfo.Location = new System.Drawing.Point(12, 9);
-            this.labelInfo.Name = "labelInfo";
-            this.labelInfo.Size = new System.Drawing.Size(186, 28);
-            this.labelInfo.TabIndex = 6;
-            this.labelInfo.Text = "Подключение к БД";
+            this.connectPostUnit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.connectPostUnit.BorderColor = System.Drawing.Color.Gray;
+            this.connectPostUnit.BorderStyle = System.Windows.Forms.ButtonBorderStyle.Dashed;
+            this.connectPostUnit.BorderWidth = 1;
+            this.connectPostUnit.ErrorStatusColor = System.Drawing.Color.Firebrick;
+            this.connectPostUnit.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.connectPostUnit.Location = new System.Drawing.Point(27, 331);
+            this.connectPostUnit.Message = "Подключение к PostUnit";
+            this.connectPostUnit.MessageColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(74)))), ((int)(((byte)(84)))));
+            this.connectPostUnit.Name = "connectPostUnit";
+            this.connectPostUnit.Size = new System.Drawing.Size(375, 40);
+            this.connectPostUnit.StatusBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(178)))), ((int)(((byte)(189)))));
+            this.connectPostUnit.StatusBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(112)))), ((int)(((byte)(128)))));
+            this.connectPostUnit.StatusBorderStyle = System.Windows.Forms.ButtonBorderStyle.Solid;
+            this.connectPostUnit.StatusBorderWidth = 1;
+            this.connectPostUnit.SuccessStatusColor = System.Drawing.Color.SeaGreen;
+            this.connectPostUnit.TabIndex = 3;
             // 
             // groupBoxPostUnit
             // 
             this.groupBoxPostUnit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxPostUnit.Controls.Add(this.tbTimeoutPostUnit);
+            this.groupBoxPostUnit.Controls.Add(this.lblTimeoutPostUnit);
             this.groupBoxPostUnit.Controls.Add(this.cbCryptPostUnit);
             this.groupBoxPostUnit.Controls.Add(this.lblCryptPostUnit);
             this.groupBoxPostUnit.Controls.Add(this.tbPortPostUnit);
@@ -155,6 +158,201 @@
             this.groupBoxPostUnit.TabIndex = 0;
             this.groupBoxPostUnit.TabStop = false;
             this.groupBoxPostUnit.Text = "Подключение к PostUnit";
+            // 
+            // cbCryptPostUnit
+            // 
+            this.cbCryptPostUnit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbCryptPostUnit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(74)))), ((int)(((byte)(84)))));
+            this.cbCryptPostUnit.FormattingEnabled = true;
+            this.cbCryptPostUnit.Location = new System.Drawing.Point(158, 270);
+            this.cbCryptPostUnit.Name = "cbCryptPostUnit";
+            this.cbCryptPostUnit.Size = new System.Drawing.Size(247, 28);
+            this.cbCryptPostUnit.TabIndex = 16;
+            // 
+            // lblCryptPostUnit
+            // 
+            this.lblCryptPostUnit.AutoSize = true;
+            this.lblCryptPostUnit.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblCryptPostUnit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(74)))), ((int)(((byte)(84)))));
+            this.lblCryptPostUnit.Location = new System.Drawing.Point(16, 269);
+            this.lblCryptPostUnit.Name = "lblCryptPostUnit";
+            this.lblCryptPostUnit.Size = new System.Drawing.Size(136, 25);
+            this.lblCryptPostUnit.TabIndex = 15;
+            this.lblCryptPostUnit.Text = "Шифрование:";
+            // 
+            // tbPortPostUnit
+            // 
+            this.tbPortPostUnit.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbPortPostUnit.BackColor = System.Drawing.Color.White;
+            this.tbPortPostUnit.BorderHeight = 2;
+            this.tbPortPostUnit.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbPortPostUnit.EnterColor = System.Drawing.Color.Firebrick;
+            this.tbPortPostUnit.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbPortPostUnit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
+            this.tbPortPostUnit.LeaveColor = System.Drawing.Color.SteelBlue;
+            this.tbPortPostUnit.Location = new System.Drawing.Point(498, 226);
+            this.tbPortPostUnit.Name = "tbPortPostUnit";
+            this.tbPortPostUnit.Size = new System.Drawing.Size(90, 26);
+            this.tbPortPostUnit.TabIndex = 14;
+            this.tbPortPostUnit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbPort_KeyPress);
+            // 
+            // lblPortPostUnit
+            // 
+            this.lblPortPostUnit.AutoSize = true;
+            this.lblPortPostUnit.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblPortPostUnit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(74)))), ((int)(((byte)(84)))));
+            this.lblPortPostUnit.Location = new System.Drawing.Point(431, 227);
+            this.lblPortPostUnit.Name = "lblPortPostUnit";
+            this.lblPortPostUnit.Size = new System.Drawing.Size(61, 25);
+            this.lblPortPostUnit.TabIndex = 13;
+            this.lblPortPostUnit.Text = "Порт:";
+            // 
+            // cbServerTypePostUnit
+            // 
+            this.cbServerTypePostUnit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbServerTypePostUnit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(74)))), ((int)(((byte)(84)))));
+            this.cbServerTypePostUnit.FormattingEnabled = true;
+            this.cbServerTypePostUnit.Location = new System.Drawing.Point(158, 227);
+            this.cbServerTypePostUnit.Name = "cbServerTypePostUnit";
+            this.cbServerTypePostUnit.Size = new System.Drawing.Size(247, 28);
+            this.cbServerTypePostUnit.TabIndex = 12;
+            // 
+            // tbServerTypePostUnit
+            // 
+            this.tbServerTypePostUnit.AutoSize = true;
+            this.tbServerTypePostUnit.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbServerTypePostUnit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(74)))), ((int)(((byte)(84)))));
+            this.tbServerTypePostUnit.Location = new System.Drawing.Point(16, 227);
+            this.tbServerTypePostUnit.Name = "tbServerTypePostUnit";
+            this.tbServerTypePostUnit.Size = new System.Drawing.Size(125, 25);
+            this.tbServerTypePostUnit.TabIndex = 11;
+            this.tbServerTypePostUnit.Text = "Тип сервера:";
+            // 
+            // tbPasswordPostUnit
+            // 
+            this.tbPasswordPostUnit.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbPasswordPostUnit.BackColor = System.Drawing.Color.White;
+            this.tbPasswordPostUnit.BorderHeight = 2;
+            this.tbPasswordPostUnit.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbPasswordPostUnit.EnterColor = System.Drawing.Color.Firebrick;
+            this.tbPasswordPostUnit.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbPasswordPostUnit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
+            this.tbPasswordPostUnit.LeaveColor = System.Drawing.Color.SteelBlue;
+            this.tbPasswordPostUnit.Location = new System.Drawing.Point(106, 179);
+            this.tbPasswordPostUnit.Name = "tbPasswordPostUnit";
+            this.tbPasswordPostUnit.PasswordChar = '*';
+            this.tbPasswordPostUnit.Size = new System.Drawing.Size(482, 26);
+            this.tbPasswordPostUnit.TabIndex = 10;
+            // 
+            // tbLoginPostUnit
+            // 
+            this.tbLoginPostUnit.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbLoginPostUnit.BackColor = System.Drawing.Color.White;
+            this.tbLoginPostUnit.BorderHeight = 2;
+            this.tbLoginPostUnit.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbLoginPostUnit.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.tbLoginPostUnit.EnterColor = System.Drawing.Color.Firebrick;
+            this.tbLoginPostUnit.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbLoginPostUnit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
+            this.tbLoginPostUnit.LeaveColor = System.Drawing.Color.SteelBlue;
+            this.tbLoginPostUnit.Location = new System.Drawing.Point(165, 131);
+            this.tbLoginPostUnit.Name = "tbLoginPostUnit";
+            this.tbLoginPostUnit.Size = new System.Drawing.Size(423, 26);
+            this.tbLoginPostUnit.TabIndex = 9;
+            // 
+            // btnChoosePostUnit
+            // 
+            this.btnChoosePostUnit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnChoosePostUnit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(74)))), ((int)(((byte)(84)))));
+            this.btnChoosePostUnit.FlatAppearance.BorderSize = 0;
+            this.btnChoosePostUnit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(178)))), ((int)(((byte)(189)))));
+            this.btnChoosePostUnit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(109)))), ((int)(((byte)(120)))));
+            this.btnChoosePostUnit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnChoosePostUnit.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnChoosePostUnit.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnChoosePostUnit.Location = new System.Drawing.Point(594, 80);
+            this.btnChoosePostUnit.Name = "btnChoosePostUnit";
+            this.btnChoosePostUnit.Size = new System.Drawing.Size(100, 34);
+            this.btnChoosePostUnit.TabIndex = 8;
+            this.btnChoosePostUnit.TabStop = false;
+            this.btnChoosePostUnit.Text = " ...";
+            this.btnChoosePostUnit.UseVisualStyleBackColor = false;
+            this.btnChoosePostUnit.Click += new System.EventHandler(this.btnChoosePostUnit_Click);
+            // 
+            // lblPostUnit
+            // 
+            this.lblPostUnit.AutoSize = true;
+            this.lblPostUnit.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblPostUnit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(74)))), ((int)(((byte)(84)))));
+            this.lblPostUnit.Location = new System.Drawing.Point(16, 179);
+            this.lblPostUnit.Name = "lblPostUnit";
+            this.lblPostUnit.Size = new System.Drawing.Size(84, 25);
+            this.lblPostUnit.TabIndex = 7;
+            this.lblPostUnit.Text = "Пароль:";
+            // 
+            // lblLoginPostUnit
+            // 
+            this.lblLoginPostUnit.AutoSize = true;
+            this.lblLoginPostUnit.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblLoginPostUnit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(74)))), ((int)(((byte)(84)))));
+            this.lblLoginPostUnit.Location = new System.Drawing.Point(16, 132);
+            this.lblLoginPostUnit.Name = "lblLoginPostUnit";
+            this.lblLoginPostUnit.Size = new System.Drawing.Size(143, 25);
+            this.lblLoginPostUnit.TabIndex = 7;
+            this.lblLoginPostUnit.Text = "Пользователь:";
+            // 
+            // tbPathPostUnit
+            // 
+            this.tbPathPostUnit.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbPathPostUnit.BackColor = System.Drawing.Color.White;
+            this.tbPathPostUnit.BorderHeight = 2;
+            this.tbPathPostUnit.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbPathPostUnit.EnterColor = System.Drawing.Color.Firebrick;
+            this.tbPathPostUnit.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbPathPostUnit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
+            this.tbPathPostUnit.LeaveColor = System.Drawing.Color.SteelBlue;
+            this.tbPathPostUnit.Location = new System.Drawing.Point(126, 83);
+            this.tbPathPostUnit.Name = "tbPathPostUnit";
+            this.tbPathPostUnit.Size = new System.Drawing.Size(462, 26);
+            this.tbPathPostUnit.TabIndex = 6;
+            // 
+            // lblPathPostUnit
+            // 
+            this.lblPathPostUnit.AutoSize = true;
+            this.lblPathPostUnit.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblPathPostUnit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(74)))), ((int)(((byte)(84)))));
+            this.lblPathPostUnit.Location = new System.Drawing.Point(16, 83);
+            this.lblPathPostUnit.Name = "lblPathPostUnit";
+            this.lblPathPostUnit.Size = new System.Drawing.Size(104, 25);
+            this.lblPathPostUnit.TabIndex = 5;
+            this.lblPathPostUnit.Text = "Путь к БД:";
+            // 
+            // btnAutoPostUnit
+            // 
+            this.btnAutoPostUnit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAutoPostUnit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(74)))), ((int)(((byte)(84)))));
+            this.btnAutoPostUnit.FlatAppearance.BorderSize = 0;
+            this.btnAutoPostUnit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(178)))), ((int)(((byte)(189)))));
+            this.btnAutoPostUnit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(109)))), ((int)(((byte)(120)))));
+            this.btnAutoPostUnit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAutoPostUnit.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAutoPostUnit.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnAutoPostUnit.Location = new System.Drawing.Point(594, 32);
+            this.btnAutoPostUnit.Name = "btnAutoPostUnit";
+            this.btnAutoPostUnit.Size = new System.Drawing.Size(100, 34);
+            this.btnAutoPostUnit.TabIndex = 4;
+            this.btnAutoPostUnit.TabStop = false;
+            this.btnAutoPostUnit.Text = "Авто";
+            this.btnAutoPostUnit.UseVisualStyleBackColor = false;
+            this.btnAutoPostUnit.Click += new System.EventHandler(this.btnAutoPostUnit_Click);
             // 
             // tbHostPostUnit
             // 
@@ -184,225 +382,46 @@
             this.lblHostPostUnit.TabIndex = 2;
             this.lblHostPostUnit.Text = "Хост:";
             // 
-            // btnAutoPostUnit
+            // tabPostItem
             // 
-            this.btnAutoPostUnit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAutoPostUnit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(74)))), ((int)(((byte)(84)))));
-            this.btnAutoPostUnit.FlatAppearance.BorderSize = 0;
-            this.btnAutoPostUnit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(178)))), ((int)(((byte)(189)))));
-            this.btnAutoPostUnit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(109)))), ((int)(((byte)(120)))));
-            this.btnAutoPostUnit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAutoPostUnit.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAutoPostUnit.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnAutoPostUnit.Location = new System.Drawing.Point(594, 32);
-            this.btnAutoPostUnit.Name = "btnAutoPostUnit";
-            this.btnAutoPostUnit.Size = new System.Drawing.Size(100, 34);
-            this.btnAutoPostUnit.TabIndex = 4;
-            this.btnAutoPostUnit.TabStop = false;
-            this.btnAutoPostUnit.Text = "Авто";
-            this.btnAutoPostUnit.UseVisualStyleBackColor = false;
-            this.btnAutoPostUnit.Click += new System.EventHandler(this.btnAutoPostUnit_Click);
+            this.tabPostItem.BackColor = System.Drawing.Color.White;
+            this.tabPostItem.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tabPostItem.Controls.Add(this.connectPostItem);
+            this.tabPostItem.Controls.Add(this.groupBoxPostItem);
+            this.tabPostItem.Location = new System.Drawing.Point(4, 29);
+            this.tabPostItem.Name = "tabPostItem";
+            this.tabPostItem.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPostItem.Size = new System.Drawing.Size(714, 398);
+            this.tabPostItem.TabIndex = 1;
+            this.tabPostItem.Text = "PostItem";
             // 
-            // lblPathPostUnit
+            // connectPostItem
             // 
-            this.lblPathPostUnit.AutoSize = true;
-            this.lblPathPostUnit.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblPathPostUnit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(74)))), ((int)(((byte)(84)))));
-            this.lblPathPostUnit.Location = new System.Drawing.Point(16, 83);
-            this.lblPathPostUnit.Name = "lblPathPostUnit";
-            this.lblPathPostUnit.Size = new System.Drawing.Size(104, 25);
-            this.lblPathPostUnit.TabIndex = 5;
-            this.lblPathPostUnit.Text = "Путь к БД:";
-            // 
-            // tbPathPostUnit
-            // 
-            this.tbPathPostUnit.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.connectPostItem.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbPathPostUnit.BackColor = System.Drawing.Color.White;
-            this.tbPathPostUnit.BorderHeight = 2;
-            this.tbPathPostUnit.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbPathPostUnit.EnterColor = System.Drawing.Color.Firebrick;
-            this.tbPathPostUnit.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbPathPostUnit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
-            this.tbPathPostUnit.LeaveColor = System.Drawing.Color.SteelBlue;
-            this.tbPathPostUnit.Location = new System.Drawing.Point(126, 83);
-            this.tbPathPostUnit.Name = "tbPathPostUnit";
-            this.tbPathPostUnit.Size = new System.Drawing.Size(462, 26);
-            this.tbPathPostUnit.TabIndex = 6;
-            // 
-            // lblLoginPostUnit
-            // 
-            this.lblLoginPostUnit.AutoSize = true;
-            this.lblLoginPostUnit.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblLoginPostUnit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(74)))), ((int)(((byte)(84)))));
-            this.lblLoginPostUnit.Location = new System.Drawing.Point(16, 132);
-            this.lblLoginPostUnit.Name = "lblLoginPostUnit";
-            this.lblLoginPostUnit.Size = new System.Drawing.Size(143, 25);
-            this.lblLoginPostUnit.TabIndex = 7;
-            this.lblLoginPostUnit.Text = "Пользователь:";
-            // 
-            // lblPostUnit
-            // 
-            this.lblPostUnit.AutoSize = true;
-            this.lblPostUnit.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblPostUnit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(74)))), ((int)(((byte)(84)))));
-            this.lblPostUnit.Location = new System.Drawing.Point(16, 179);
-            this.lblPostUnit.Name = "lblPostUnit";
-            this.lblPostUnit.Size = new System.Drawing.Size(84, 25);
-            this.lblPostUnit.TabIndex = 7;
-            this.lblPostUnit.Text = "Пароль:";
-            // 
-            // btnChoosePostUnit
-            // 
-            this.btnChoosePostUnit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnChoosePostUnit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(74)))), ((int)(((byte)(84)))));
-            this.btnChoosePostUnit.FlatAppearance.BorderSize = 0;
-            this.btnChoosePostUnit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(178)))), ((int)(((byte)(189)))));
-            this.btnChoosePostUnit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(109)))), ((int)(((byte)(120)))));
-            this.btnChoosePostUnit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnChoosePostUnit.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnChoosePostUnit.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnChoosePostUnit.Location = new System.Drawing.Point(594, 80);
-            this.btnChoosePostUnit.Name = "btnChoosePostUnit";
-            this.btnChoosePostUnit.Size = new System.Drawing.Size(100, 34);
-            this.btnChoosePostUnit.TabIndex = 8;
-            this.btnChoosePostUnit.TabStop = false;
-            this.btnChoosePostUnit.Text = " ...";
-            this.btnChoosePostUnit.UseVisualStyleBackColor = false;
-            this.btnChoosePostUnit.Click += new System.EventHandler(this.btnChoosePostUnit_Click);
-            // 
-            // btnSave
-            // 
-            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSave.BackColor = System.Drawing.Color.SeaGreen;
-            this.btnSave.FlatAppearance.BorderSize = 0;
-            this.btnSave.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
-            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 10.18868F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Image = global::DwUtils.Properties.Resources.save_24;
-            this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSave.Location = new System.Drawing.Point(592, 489);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(120, 40);
-            this.btnSave.TabIndex = 3;
-            this.btnSave.Text = "Сохранить";
-            this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSave.UseVisualStyleBackColor = false;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancel.BackColor = System.Drawing.Color.Firebrick;
-            this.btnCancel.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.btnCancel.FlatAppearance.BorderSize = 0;
-            this.btnCancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
-            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 10.18868F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.Image = global::DwUtils.Properties.Resources.close_window_24;
-            this.btnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancel.Location = new System.Drawing.Point(466, 489);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(120, 40);
-            this.btnCancel.TabIndex = 4;
-            this.btnCancel.Text = "Отменить";
-            this.btnCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCancel.UseVisualStyleBackColor = false;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            // 
-            // tbLoginPostUnit
-            // 
-            this.tbLoginPostUnit.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbLoginPostUnit.BackColor = System.Drawing.Color.White;
-            this.tbLoginPostUnit.BorderHeight = 2;
-            this.tbLoginPostUnit.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbLoginPostUnit.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.tbLoginPostUnit.EnterColor = System.Drawing.Color.Firebrick;
-            this.tbLoginPostUnit.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbLoginPostUnit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
-            this.tbLoginPostUnit.LeaveColor = System.Drawing.Color.SteelBlue;
-            this.tbLoginPostUnit.Location = new System.Drawing.Point(165, 131);
-            this.tbLoginPostUnit.Name = "tbLoginPostUnit";
-            this.tbLoginPostUnit.Size = new System.Drawing.Size(423, 26);
-            this.tbLoginPostUnit.TabIndex = 9;
-            // 
-            // tbPasswordPostUnit
-            // 
-            this.tbPasswordPostUnit.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbPasswordPostUnit.BackColor = System.Drawing.Color.White;
-            this.tbPasswordPostUnit.BorderHeight = 2;
-            this.tbPasswordPostUnit.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbPasswordPostUnit.EnterColor = System.Drawing.Color.Firebrick;
-            this.tbPasswordPostUnit.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbPasswordPostUnit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
-            this.tbPasswordPostUnit.LeaveColor = System.Drawing.Color.SteelBlue;
-            this.tbPasswordPostUnit.Location = new System.Drawing.Point(106, 179);
-            this.tbPasswordPostUnit.Name = "tbPasswordPostUnit";
-            this.tbPasswordPostUnit.PasswordChar = '*';
-            this.tbPasswordPostUnit.Size = new System.Drawing.Size(482, 26);
-            this.tbPasswordPostUnit.TabIndex = 10;
-            // 
-            // tbServerTypePostUnit
-            // 
-            this.tbServerTypePostUnit.AutoSize = true;
-            this.tbServerTypePostUnit.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbServerTypePostUnit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(74)))), ((int)(((byte)(84)))));
-            this.tbServerTypePostUnit.Location = new System.Drawing.Point(16, 227);
-            this.tbServerTypePostUnit.Name = "tbServerTypePostUnit";
-            this.tbServerTypePostUnit.Size = new System.Drawing.Size(125, 25);
-            this.tbServerTypePostUnit.TabIndex = 11;
-            this.tbServerTypePostUnit.Text = "Тип сервера:";
-            // 
-            // cbServerTypePostUnit
-            // 
-            this.cbServerTypePostUnit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbServerTypePostUnit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(74)))), ((int)(((byte)(84)))));
-            this.cbServerTypePostUnit.FormattingEnabled = true;
-            this.cbServerTypePostUnit.Location = new System.Drawing.Point(158, 227);
-            this.cbServerTypePostUnit.Name = "cbServerTypePostUnit";
-            this.cbServerTypePostUnit.Size = new System.Drawing.Size(247, 28);
-            this.cbServerTypePostUnit.TabIndex = 12;
-            // 
-            // lblPortPostUnit
-            // 
-            this.lblPortPostUnit.AutoSize = true;
-            this.lblPortPostUnit.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblPortPostUnit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(74)))), ((int)(((byte)(84)))));
-            this.lblPortPostUnit.Location = new System.Drawing.Point(431, 227);
-            this.lblPortPostUnit.Name = "lblPortPostUnit";
-            this.lblPortPostUnit.Size = new System.Drawing.Size(61, 25);
-            this.lblPortPostUnit.TabIndex = 13;
-            this.lblPortPostUnit.Text = "Порт:";
-            // 
-            // tbPortPostUnit
-            // 
-            this.tbPortPostUnit.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbPortPostUnit.BackColor = System.Drawing.Color.White;
-            this.tbPortPostUnit.BorderHeight = 2;
-            this.tbPortPostUnit.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbPortPostUnit.EnterColor = System.Drawing.Color.Firebrick;
-            this.tbPortPostUnit.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbPortPostUnit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
-            this.tbPortPostUnit.LeaveColor = System.Drawing.Color.SteelBlue;
-            this.tbPortPostUnit.Location = new System.Drawing.Point(498, 226);
-            this.tbPortPostUnit.Name = "tbPortPostUnit";
-            this.tbPortPostUnit.Size = new System.Drawing.Size(90, 26);
-            this.tbPortPostUnit.TabIndex = 14;
-            this.tbPortPostUnit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbPort_KeyPress);
+            this.connectPostItem.BorderColor = System.Drawing.Color.Gray;
+            this.connectPostItem.BorderStyle = System.Windows.Forms.ButtonBorderStyle.Dashed;
+            this.connectPostItem.BorderWidth = 1;
+            this.connectPostItem.ErrorStatusColor = System.Drawing.Color.Firebrick;
+            this.connectPostItem.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.connectPostItem.Location = new System.Drawing.Point(27, 331);
+            this.connectPostItem.Message = "Подключение к PostItem";
+            this.connectPostItem.MessageColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(74)))), ((int)(((byte)(84)))));
+            this.connectPostItem.Name = "connectPostItem";
+            this.connectPostItem.Size = new System.Drawing.Size(375, 40);
+            this.connectPostItem.StatusBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(178)))), ((int)(((byte)(189)))));
+            this.connectPostItem.StatusBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(112)))), ((int)(((byte)(128)))));
+            this.connectPostItem.StatusBorderStyle = System.Windows.Forms.ButtonBorderStyle.Solid;
+            this.connectPostItem.StatusBorderWidth = 1;
+            this.connectPostItem.SuccessStatusColor = System.Drawing.Color.SeaGreen;
+            this.connectPostItem.TabIndex = 2;
             // 
             // groupBoxPostItem
             // 
             this.groupBoxPostItem.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxPostItem.Controls.Add(this.tbTimeoutPostItem);
+            this.groupBoxPostItem.Controls.Add(this.lblTimeoutPostItem);
             this.groupBoxPostItem.Controls.Add(this.cbCryptPostItem);
             this.groupBoxPostItem.Controls.Add(this.lblCryptPostItem);
             this.groupBoxPostItem.Controls.Add(this.tbPortPostItem);
@@ -425,6 +444,27 @@
             this.groupBoxPostItem.TabIndex = 1;
             this.groupBoxPostItem.TabStop = false;
             this.groupBoxPostItem.Text = "Подключение к PostItem";
+            // 
+            // cbCryptPostItem
+            // 
+            this.cbCryptPostItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbCryptPostItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(74)))), ((int)(((byte)(84)))));
+            this.cbCryptPostItem.FormattingEnabled = true;
+            this.cbCryptPostItem.Location = new System.Drawing.Point(158, 270);
+            this.cbCryptPostItem.Name = "cbCryptPostItem";
+            this.cbCryptPostItem.Size = new System.Drawing.Size(247, 28);
+            this.cbCryptPostItem.TabIndex = 18;
+            // 
+            // lblCryptPostItem
+            // 
+            this.lblCryptPostItem.AutoSize = true;
+            this.lblCryptPostItem.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblCryptPostItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(74)))), ((int)(((byte)(84)))));
+            this.lblCryptPostItem.Location = new System.Drawing.Point(16, 269);
+            this.lblCryptPostItem.Name = "lblCryptPostItem";
+            this.lblCryptPostItem.Size = new System.Drawing.Size(136, 25);
+            this.lblCryptPostItem.TabIndex = 17;
+            this.lblCryptPostItem.Text = "Шифрование:";
             // 
             // tbPortPostItem
             // 
@@ -449,7 +489,7 @@
             this.lblPortPostItem.AutoSize = true;
             this.lblPortPostItem.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lblPortPostItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(74)))), ((int)(((byte)(84)))));
-            this.lblPortPostItem.Location = new System.Drawing.Point(431, 226);
+            this.lblPortPostItem.Location = new System.Drawing.Point(431, 227);
             this.lblPortPostItem.Name = "lblPortPostItem";
             this.lblPortPostItem.Size = new System.Drawing.Size(61, 25);
             this.lblPortPostItem.TabIndex = 13;
@@ -628,89 +668,115 @@
             this.lblHostPostItem.TabIndex = 2;
             this.lblHostPostItem.Text = "Хост:";
             // 
-            // connectPostItem
+            // labelInfo
             // 
-            this.connectPostItem.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.labelInfo.AutoSize = true;
+            this.labelInfo.Font = new System.Drawing.Font("Segoe UI", 14.26415F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(74)))), ((int)(((byte)(84)))));
+            this.labelInfo.Location = new System.Drawing.Point(12, 9);
+            this.labelInfo.Name = "labelInfo";
+            this.labelInfo.Size = new System.Drawing.Size(186, 28);
+            this.labelInfo.TabIndex = 6;
+            this.labelInfo.Text = "Подключение к БД";
+            // 
+            // btnSave
+            // 
+            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSave.BackColor = System.Drawing.Color.SeaGreen;
+            this.btnSave.FlatAppearance.BorderSize = 0;
+            this.btnSave.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 10.18868F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnSave.ForeColor = System.Drawing.Color.White;
+            this.btnSave.Image = global::DwUtils.Properties.Resources.save_24;
+            this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSave.Location = new System.Drawing.Point(592, 489);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(120, 40);
+            this.btnSave.TabIndex = 3;
+            this.btnSave.Text = "Сохранить";
+            this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancel.BackColor = System.Drawing.Color.Firebrick;
+            this.btnCancel.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnCancel.FlatAppearance.BorderSize = 0;
+            this.btnCancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 10.18868F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnCancel.ForeColor = System.Drawing.Color.White;
+            this.btnCancel.Image = global::DwUtils.Properties.Resources.close_window_24;
+            this.btnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCancel.Location = new System.Drawing.Point(466, 489);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(120, 40);
+            this.btnCancel.TabIndex = 4;
+            this.btnCancel.Text = "Отменить";
+            this.btnCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // tbTimeoutPostUnit
+            // 
+            this.tbTimeoutPostUnit.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.connectPostItem.BorderColor = System.Drawing.Color.Gray;
-            this.connectPostItem.BorderStyle = System.Windows.Forms.ButtonBorderStyle.Dashed;
-            this.connectPostItem.BorderWidth = 1;
-            this.connectPostItem.ErrorStatusColor = System.Drawing.Color.Firebrick;
-            this.connectPostItem.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.connectPostItem.Location = new System.Drawing.Point(27, 338);
-            this.connectPostItem.Message = "Подключение к PostItem";
-            this.connectPostItem.MessageColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(74)))), ((int)(((byte)(84)))));
-            this.connectPostItem.Name = "connectPostItem";
-            this.connectPostItem.Size = new System.Drawing.Size(375, 40);
-            this.connectPostItem.StatusBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(178)))), ((int)(((byte)(189)))));
-            this.connectPostItem.StatusBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(112)))), ((int)(((byte)(128)))));
-            this.connectPostItem.StatusBorderStyle = System.Windows.Forms.ButtonBorderStyle.Solid;
-            this.connectPostItem.StatusBorderWidth = 1;
-            this.connectPostItem.SuccessStatusColor = System.Drawing.Color.SeaGreen;
-            this.connectPostItem.TabIndex = 2;
+            this.tbTimeoutPostUnit.BackColor = System.Drawing.Color.White;
+            this.tbTimeoutPostUnit.BorderHeight = 2;
+            this.tbTimeoutPostUnit.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbTimeoutPostUnit.EnterColor = System.Drawing.Color.Firebrick;
+            this.tbTimeoutPostUnit.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbTimeoutPostUnit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
+            this.tbTimeoutPostUnit.LeaveColor = System.Drawing.Color.SteelBlue;
+            this.tbTimeoutPostUnit.Location = new System.Drawing.Point(525, 268);
+            this.tbTimeoutPostUnit.Name = "tbTimeoutPostUnit";
+            this.tbTimeoutPostUnit.Size = new System.Drawing.Size(63, 26);
+            this.tbTimeoutPostUnit.TabIndex = 18;
+            this.tbTimeoutPostUnit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbTimeout_KeyPress);
             // 
-            // connectPostUnit
+            // lblTimeoutPostUnit
             // 
-            this.connectPostUnit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.lblTimeoutPostUnit.AutoSize = true;
+            this.lblTimeoutPostUnit.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblTimeoutPostUnit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(74)))), ((int)(((byte)(84)))));
+            this.lblTimeoutPostUnit.Location = new System.Drawing.Point(431, 269);
+            this.lblTimeoutPostUnit.Name = "lblTimeoutPostUnit";
+            this.lblTimeoutPostUnit.Size = new System.Drawing.Size(88, 25);
+            this.lblTimeoutPostUnit.TabIndex = 17;
+            this.lblTimeoutPostUnit.Text = "Таймаут:";
+            // 
+            // tbTimeoutPostItem
+            // 
+            this.tbTimeoutPostItem.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.connectPostUnit.BorderColor = System.Drawing.Color.Gray;
-            this.connectPostUnit.BorderStyle = System.Windows.Forms.ButtonBorderStyle.Dashed;
-            this.connectPostUnit.BorderWidth = 1;
-            this.connectPostUnit.ErrorStatusColor = System.Drawing.Color.Firebrick;
-            this.connectPostUnit.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.connectPostUnit.Location = new System.Drawing.Point(27, 338);
-            this.connectPostUnit.Message = "Подключение к PostUnit";
-            this.connectPostUnit.MessageColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(74)))), ((int)(((byte)(84)))));
-            this.connectPostUnit.Name = "connectPostUnit";
-            this.connectPostUnit.Size = new System.Drawing.Size(375, 40);
-            this.connectPostUnit.StatusBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(178)))), ((int)(((byte)(189)))));
-            this.connectPostUnit.StatusBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(112)))), ((int)(((byte)(128)))));
-            this.connectPostUnit.StatusBorderStyle = System.Windows.Forms.ButtonBorderStyle.Solid;
-            this.connectPostUnit.StatusBorderWidth = 1;
-            this.connectPostUnit.SuccessStatusColor = System.Drawing.Color.SeaGreen;
-            this.connectPostUnit.TabIndex = 3;
+            this.tbTimeoutPostItem.BackColor = System.Drawing.Color.White;
+            this.tbTimeoutPostItem.BorderHeight = 2;
+            this.tbTimeoutPostItem.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbTimeoutPostItem.EnterColor = System.Drawing.Color.Firebrick;
+            this.tbTimeoutPostItem.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbTimeoutPostItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
+            this.tbTimeoutPostItem.LeaveColor = System.Drawing.Color.SteelBlue;
+            this.tbTimeoutPostItem.Location = new System.Drawing.Point(525, 268);
+            this.tbTimeoutPostItem.Name = "tbTimeoutPostItem";
+            this.tbTimeoutPostItem.Size = new System.Drawing.Size(63, 26);
+            this.tbTimeoutPostItem.TabIndex = 20;
+            this.tbTimeoutPostItem.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbTimeout_KeyPress);
             // 
-            // lblCryptPostUnit
+            // lblTimeoutPostItem
             // 
-            this.lblCryptPostUnit.AutoSize = true;
-            this.lblCryptPostUnit.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblCryptPostUnit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(74)))), ((int)(((byte)(84)))));
-            this.lblCryptPostUnit.Location = new System.Drawing.Point(16, 269);
-            this.lblCryptPostUnit.Name = "lblCryptPostUnit";
-            this.lblCryptPostUnit.Size = new System.Drawing.Size(136, 25);
-            this.lblCryptPostUnit.TabIndex = 15;
-            this.lblCryptPostUnit.Text = "Шифрование:";
-            // 
-            // cbCryptPostUnit
-            // 
-            this.cbCryptPostUnit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbCryptPostUnit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(74)))), ((int)(((byte)(84)))));
-            this.cbCryptPostUnit.FormattingEnabled = true;
-            this.cbCryptPostUnit.Location = new System.Drawing.Point(158, 270);
-            this.cbCryptPostUnit.Name = "cbCryptPostUnit";
-            this.cbCryptPostUnit.Size = new System.Drawing.Size(247, 28);
-            this.cbCryptPostUnit.TabIndex = 16;
-            // 
-            // cbCryptPostItem
-            // 
-            this.cbCryptPostItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbCryptPostItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(74)))), ((int)(((byte)(84)))));
-            this.cbCryptPostItem.FormattingEnabled = true;
-            this.cbCryptPostItem.Location = new System.Drawing.Point(158, 270);
-            this.cbCryptPostItem.Name = "cbCryptPostItem";
-            this.cbCryptPostItem.Size = new System.Drawing.Size(247, 28);
-            this.cbCryptPostItem.TabIndex = 18;
-            // 
-            // lblCryptPostItem
-            // 
-            this.lblCryptPostItem.AutoSize = true;
-            this.lblCryptPostItem.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblCryptPostItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(74)))), ((int)(((byte)(84)))));
-            this.lblCryptPostItem.Location = new System.Drawing.Point(16, 269);
-            this.lblCryptPostItem.Name = "lblCryptPostItem";
-            this.lblCryptPostItem.Size = new System.Drawing.Size(136, 25);
-            this.lblCryptPostItem.TabIndex = 17;
-            this.lblCryptPostItem.Text = "Шифрование:";
+            this.lblTimeoutPostItem.AutoSize = true;
+            this.lblTimeoutPostItem.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblTimeoutPostItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(74)))), ((int)(((byte)(84)))));
+            this.lblTimeoutPostItem.Location = new System.Drawing.Point(431, 269);
+            this.lblTimeoutPostItem.Name = "lblTimeoutPostItem";
+            this.lblTimeoutPostItem.Size = new System.Drawing.Size(88, 25);
+            this.lblTimeoutPostItem.TabIndex = 19;
+            this.lblTimeoutPostItem.Text = "Таймаут:";
             // 
             // ConnectsForm
             // 
@@ -733,9 +799,9 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ConnectsForm_KeyDown);
             this.tabsControl.ResumeLayout(false);
             this.tabPostUnit.ResumeLayout(false);
-            this.tabPostItem.ResumeLayout(false);
             this.groupBoxPostUnit.ResumeLayout(false);
             this.groupBoxPostUnit.PerformLayout();
+            this.tabPostItem.ResumeLayout(false);
             this.groupBoxPostItem.ResumeLayout(false);
             this.groupBoxPostItem.PerformLayout();
             this.ResumeLayout(false);
@@ -787,5 +853,9 @@
         private System.Windows.Forms.Label lblCryptPostUnit;
         private System.Windows.Forms.ComboBox cbCryptPostItem;
         private System.Windows.Forms.Label lblCryptPostItem;
+        private Wc32Api.Widgets.TextBoxs.BorderTextBox tbTimeoutPostUnit;
+        private System.Windows.Forms.Label lblTimeoutPostUnit;
+        private Wc32Api.Widgets.TextBoxs.BorderTextBox tbTimeoutPostItem;
+        private System.Windows.Forms.Label lblTimeoutPostItem;
     }
 }
