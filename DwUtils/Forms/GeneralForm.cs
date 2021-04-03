@@ -343,7 +343,7 @@ namespace DwUtils.Forms
 
         private void GeneralForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Logger.Debug("Закрытие программы");
+            Logger.Info("Закрытие программы");
             SaveSettings();
             SavePos();
         }
