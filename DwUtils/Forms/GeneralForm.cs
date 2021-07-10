@@ -322,7 +322,7 @@ namespace DwUtils.Forms
 
         private async void GeneralForm_Load(object sender, EventArgs e)
         {
-            await CreateDirs();
+            await CreateDirsAsync();
 
             _key = await Task.Run(() => LicenseKey.GetKey(Host.GetIp(), AuthKey.Key, Application.ProductName));
 
@@ -352,7 +352,7 @@ namespace DwUtils.Forms
 
         #region Методы
 
-        private Task CreateDirs()
+        private Task CreateDirsAsync()
         {
             return Task.Run(() =>
             {
@@ -446,19 +446,25 @@ namespace DwUtils.Forms
 
         private void dateTimePickerIn_ValueChanged(object sender, EventArgs e)
         {
-            dateTimePickerOut.Value = dateTimePickerIn.Value;
+            receiveDateTimePickerEnd.Value = receiveDateTimePickerStart.Value;
+        }
+
+        private void orgDateTimePickerStart_ValueChanged(object sender, EventArgs e)
+        {
+            orgDateTimePickerEnd.Value = orgDateTimePickerStart.Value;
         }
 
         #endregion
 
         private void btnReceiveDocLoad_Click(object sender, EventArgs e)
         {
-            reestrBindingSource.DataSource = null;
+            receiveReestrBindingSource.DataSource = null;
 
             GetReestrParams param = new GetReestrParams
             {
-                StartCreateDate = dateTimePickerIn.Value,
-                EndCreateDate = dateTimePickerOut.Value
+                StartCreateDate = receiveDateTimePickerStart.Value,
+                EndCreateDate = receiveDateTimePickerEnd.Value,
+                ReestrType = 11
             };
 
             User selectUser = (User) cbUsers.SelectedItem;
@@ -467,7 +473,27 @@ namespace DwUtils.Forms
             GetReestr q = new GetReestr(_postItemConnect, param);
             var data = q.Run();
 
-            reestrBindingSource.DataSource = data;
+            receiveReestrBindingSource.DataSource = data;
+        }
+
+        private void btnOrgDocLoad_Click(object sender, EventArgs e)
+        {
+            orgReestrBindingSource.DataSource = null;
+
+            GetReestrParams param = new GetReestrParams
+            {
+                StartCreateDate = orgDateTimePickerStart.Value,
+                EndCreateDate = orgDateTimePickerEnd.Value,
+                ReestrType = 7
+            };
+
+            User selectUser = (User)cbUsers.SelectedItem;
+            param.UserId = selectUser.Id;
+
+            GetReestr q = new GetReestr(_postItemConnect, param);
+            var data = q.Run();
+
+            orgReestrBindingSource.DataSource = data;
         }
     }
 }

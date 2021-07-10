@@ -61,6 +61,7 @@ namespace DwUtils.Forms
             this.statusText = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusAuthor = new System.Windows.Forms.ToolStripStatusLabel();
             this.panelGeneral = new System.Windows.Forms.Panel();
+            this.lblUsers = new System.Windows.Forms.Label();
             this.btnSync = new System.Windows.Forms.Button();
             this.cbUsers = new System.Windows.Forms.ComboBox();
             this.userBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -70,12 +71,18 @@ namespace DwUtils.Forms
             this.panelReceived = new System.Windows.Forms.Panel();
             this.tabReceivedDoc = new System.Windows.Forms.TabPage();
             this.dataGridViewDocReceive = new System.Windows.Forms.DataGridView();
+            this.receiveReestrBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panelReceivedDoc = new System.Windows.Forms.Panel();
-            this.dateTimePickerOut = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePickerIn = new System.Windows.Forms.DateTimePicker();
+            this.btnReceiveDocLoad = new System.Windows.Forms.Button();
+            this.receiveDateTimePickerEnd = new System.Windows.Forms.DateTimePicker();
+            this.receiveDateTimePickerStart = new System.Windows.Forms.DateTimePicker();
             this.tabOrgsDoc = new System.Windows.Forms.TabPage();
             this.dataGridViewDocOrg = new System.Windows.Forms.DataGridView();
+            this.orgReestrBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panelOrgDoc = new System.Windows.Forms.Panel();
+            this.btnOrgDocLoad = new System.Windows.Forms.Button();
+            this.orgDateTimePickerEnd = new System.Windows.Forms.DateTimePicker();
+            this.orgDateTimePickerStart = new System.Windows.Forms.DateTimePicker();
             this.tabActiveUsers = new System.Windows.Forms.TabPage();
             this.dataGridViewUserOnline = new System.Windows.Forms.DataGridView();
             this.userIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -93,21 +100,32 @@ namespace DwUtils.Forms
             this.labelLicense = new System.Windows.Forms.Label();
             this.labelInfoLicense = new System.Windows.Forms.Label();
             this.timerStatus = new System.Windows.Forms.Timer(this.components);
-            this.btnReceiveDocLoad = new System.Windows.Forms.Button();
-            this.reestrBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.numDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.typeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.directionIndexDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.directionPlaceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.stateIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.placeIdDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.createDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.editDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.userIdDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rpoCountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.placeIdDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.userIdDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewComboBoxColumn1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.menuBar.SuspendLayout();
             this.statusBar.SuspendLayout();
             this.panelGeneral.SuspendLayout();
@@ -117,14 +135,16 @@ namespace DwUtils.Forms
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReceive)).BeginInit();
             this.tabReceivedDoc.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDocReceive)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.receiveReestrBindingSource)).BeginInit();
             this.panelReceivedDoc.SuspendLayout();
             this.tabOrgsDoc.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDocOrg)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.orgReestrBindingSource)).BeginInit();
+            this.panelOrgDoc.SuspendLayout();
             this.tabActiveUsers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUserOnline)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.connectUserBindingSource)).BeginInit();
             this.panelActive.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.reestrBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // menuBar
@@ -240,6 +260,7 @@ namespace DwUtils.Forms
             // panelGeneral
             // 
             this.panelGeneral.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(74)))), ((int)(((byte)(84)))));
+            this.panelGeneral.Controls.Add(this.lblUsers);
             this.panelGeneral.Controls.Add(this.btnSync);
             this.panelGeneral.Controls.Add(this.cbUsers);
             this.panelGeneral.Dock = System.Windows.Forms.DockStyle.Top;
@@ -247,6 +268,18 @@ namespace DwUtils.Forms
             this.panelGeneral.Name = "panelGeneral";
             this.panelGeneral.Size = new System.Drawing.Size(800, 44);
             this.panelGeneral.TabIndex = 2;
+            // 
+            // lblUsers
+            // 
+            this.lblUsers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblUsers.AutoSize = true;
+            this.lblUsers.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblUsers.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.lblUsers.Location = new System.Drawing.Point(422, 12);
+            this.lblUsers.Name = "lblUsers";
+            this.lblUsers.Size = new System.Drawing.Size(111, 20);
+            this.lblUsers.TabIndex = 20;
+            this.lblUsers.Text = "Пользователь:";
             // 
             // btnSync
             // 
@@ -399,19 +432,19 @@ namespace DwUtils.Forms
             this.dataGridViewDocReceive.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridViewDocReceive.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idDataGridViewTextBoxColumn,
+            this.dateDataGridViewTextBoxColumn,
             this.numDataGridViewTextBoxColumn,
             this.nameDataGridViewTextBoxColumn,
             this.typeDataGridViewTextBoxColumn,
             this.directionIndexDataGridViewTextBoxColumn,
             this.directionPlaceDataGridViewTextBoxColumn,
             this.stateIdDataGridViewTextBoxColumn,
-            this.placeIdDataGridViewTextBoxColumn1,
-            this.dateDataGridViewTextBoxColumn,
             this.createDateDataGridViewTextBoxColumn,
             this.editDateDataGridViewTextBoxColumn,
-            this.userIdDataGridViewTextBoxColumn1,
-            this.rpoCountDataGridViewTextBoxColumn});
-            this.dataGridViewDocReceive.DataSource = this.reestrBindingSource;
+            this.rpoCountDataGridViewTextBoxColumn,
+            this.placeIdDataGridViewTextBoxColumn1,
+            this.userIdDataGridViewTextBoxColumn1});
+            this.dataGridViewDocReceive.DataSource = this.receiveReestrBindingSource;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -442,36 +475,57 @@ namespace DwUtils.Forms
             this.dataGridViewDocReceive.TabIndex = 6;
             this.dataGridViewDocReceive.TabStop = false;
             // 
+            // receiveReestrBindingSource
+            // 
+            this.receiveReestrBindingSource.DataSource = typeof(DwUtils.Core.Models.Firebird.Reestr);
+            // 
             // panelReceivedDoc
             // 
             this.panelReceivedDoc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
             this.panelReceivedDoc.Controls.Add(this.btnReceiveDocLoad);
-            this.panelReceivedDoc.Controls.Add(this.dateTimePickerOut);
-            this.panelReceivedDoc.Controls.Add(this.dateTimePickerIn);
+            this.panelReceivedDoc.Controls.Add(this.receiveDateTimePickerEnd);
+            this.panelReceivedDoc.Controls.Add(this.receiveDateTimePickerStart);
             this.panelReceivedDoc.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelReceivedDoc.Location = new System.Drawing.Point(0, 0);
             this.panelReceivedDoc.Name = "panelReceivedDoc";
             this.panelReceivedDoc.Size = new System.Drawing.Size(792, 48);
             this.panelReceivedDoc.TabIndex = 3;
             // 
-            // dateTimePickerOut
+            // btnReceiveDocLoad
             // 
-            this.dateTimePickerOut.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
-            this.dateTimePickerOut.CalendarMonthBackground = System.Drawing.Color.White;
-            this.dateTimePickerOut.Location = new System.Drawing.Point(219, 11);
-            this.dateTimePickerOut.Name = "dateTimePickerOut";
-            this.dateTimePickerOut.Size = new System.Drawing.Size(200, 27);
-            this.dateTimePickerOut.TabIndex = 4;
+            this.btnReceiveDocLoad.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnReceiveDocLoad.BackColor = System.Drawing.Color.Brown;
+            this.btnReceiveDocLoad.FlatAppearance.BorderSize = 0;
+            this.btnReceiveDocLoad.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.btnReceiveDocLoad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReceiveDocLoad.ForeColor = System.Drawing.Color.White;
+            this.btnReceiveDocLoad.Image = global::DwUtils.Properties.Resources.white_synchronize_24;
+            this.btnReceiveDocLoad.Location = new System.Drawing.Point(748, 6);
+            this.btnReceiveDocLoad.Name = "btnReceiveDocLoad";
+            this.btnReceiveDocLoad.Size = new System.Drawing.Size(36, 36);
+            this.btnReceiveDocLoad.TabIndex = 21;
+            this.btnReceiveDocLoad.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnReceiveDocLoad.UseVisualStyleBackColor = false;
+            this.btnReceiveDocLoad.Click += new System.EventHandler(this.btnReceiveDocLoad_Click);
             // 
-            // dateTimePickerIn
+            // receiveDateTimePickerEnd
             // 
-            this.dateTimePickerIn.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
-            this.dateTimePickerIn.CalendarMonthBackground = System.Drawing.Color.White;
-            this.dateTimePickerIn.Location = new System.Drawing.Point(13, 11);
-            this.dateTimePickerIn.Name = "dateTimePickerIn";
-            this.dateTimePickerIn.Size = new System.Drawing.Size(200, 27);
-            this.dateTimePickerIn.TabIndex = 3;
-            this.dateTimePickerIn.ValueChanged += new System.EventHandler(this.dateTimePickerIn_ValueChanged);
+            this.receiveDateTimePickerEnd.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
+            this.receiveDateTimePickerEnd.CalendarMonthBackground = System.Drawing.Color.White;
+            this.receiveDateTimePickerEnd.Location = new System.Drawing.Point(219, 11);
+            this.receiveDateTimePickerEnd.Name = "receiveDateTimePickerEnd";
+            this.receiveDateTimePickerEnd.Size = new System.Drawing.Size(200, 27);
+            this.receiveDateTimePickerEnd.TabIndex = 4;
+            // 
+            // receiveDateTimePickerStart
+            // 
+            this.receiveDateTimePickerStart.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
+            this.receiveDateTimePickerStart.CalendarMonthBackground = System.Drawing.Color.White;
+            this.receiveDateTimePickerStart.Location = new System.Drawing.Point(13, 11);
+            this.receiveDateTimePickerStart.Name = "receiveDateTimePickerStart";
+            this.receiveDateTimePickerStart.Size = new System.Drawing.Size(200, 27);
+            this.receiveDateTimePickerStart.TabIndex = 3;
+            this.receiveDateTimePickerStart.ValueChanged += new System.EventHandler(this.dateTimePickerIn_ValueChanged);
             // 
             // tabOrgsDoc
             // 
@@ -489,6 +543,7 @@ namespace DwUtils.Forms
             this.dataGridViewDocOrg.AllowUserToAddRows = false;
             this.dataGridViewDocOrg.AllowUserToDeleteRows = false;
             this.dataGridViewDocOrg.AllowUserToResizeRows = false;
+            this.dataGridViewDocOrg.AutoGenerateColumns = false;
             this.dataGridViewDocOrg.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewDocOrg.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dataGridViewDocOrg.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -502,6 +557,21 @@ namespace DwUtils.Forms
             this.dataGridViewDocOrg.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridViewDocOrg.ColumnHeadersHeight = 40;
             this.dataGridViewDocOrg.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataGridViewDocOrg.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn9,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn6,
+            this.dataGridViewTextBoxColumn7,
+            this.dataGridViewTextBoxColumn10,
+            this.dataGridViewTextBoxColumn11,
+            this.dataGridViewTextBoxColumn12,
+            this.dataGridViewTextBoxColumn8,
+            this.dataGridViewComboBoxColumn1});
+            this.dataGridViewDocOrg.DataSource = this.orgReestrBindingSource;
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -529,17 +599,60 @@ namespace DwUtils.Forms
             this.dataGridViewDocOrg.RowTemplate.Height = 40;
             this.dataGridViewDocOrg.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dataGridViewDocOrg.Size = new System.Drawing.Size(792, 263);
-            this.dataGridViewDocOrg.TabIndex = 6;
+            this.dataGridViewDocOrg.TabIndex = 7;
             this.dataGridViewDocOrg.TabStop = false;
+            // 
+            // orgReestrBindingSource
+            // 
+            this.orgReestrBindingSource.DataSource = typeof(DwUtils.Core.Models.Firebird.Reestr);
             // 
             // panelOrgDoc
             // 
             this.panelOrgDoc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
+            this.panelOrgDoc.Controls.Add(this.btnOrgDocLoad);
+            this.panelOrgDoc.Controls.Add(this.orgDateTimePickerEnd);
+            this.panelOrgDoc.Controls.Add(this.orgDateTimePickerStart);
             this.panelOrgDoc.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelOrgDoc.Location = new System.Drawing.Point(0, 0);
             this.panelOrgDoc.Name = "panelOrgDoc";
             this.panelOrgDoc.Size = new System.Drawing.Size(792, 48);
             this.panelOrgDoc.TabIndex = 3;
+            // 
+            // btnOrgDocLoad
+            // 
+            this.btnOrgDocLoad.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOrgDocLoad.BackColor = System.Drawing.Color.Brown;
+            this.btnOrgDocLoad.FlatAppearance.BorderSize = 0;
+            this.btnOrgDocLoad.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.btnOrgDocLoad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOrgDocLoad.ForeColor = System.Drawing.Color.White;
+            this.btnOrgDocLoad.Image = global::DwUtils.Properties.Resources.white_synchronize_24;
+            this.btnOrgDocLoad.Location = new System.Drawing.Point(748, 6);
+            this.btnOrgDocLoad.Name = "btnOrgDocLoad";
+            this.btnOrgDocLoad.Size = new System.Drawing.Size(36, 36);
+            this.btnOrgDocLoad.TabIndex = 24;
+            this.btnOrgDocLoad.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnOrgDocLoad.UseVisualStyleBackColor = false;
+            this.btnOrgDocLoad.Click += new System.EventHandler(this.btnOrgDocLoad_Click);
+            // 
+            // orgDateTimePickerEnd
+            // 
+            this.orgDateTimePickerEnd.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
+            this.orgDateTimePickerEnd.CalendarMonthBackground = System.Drawing.Color.White;
+            this.orgDateTimePickerEnd.Location = new System.Drawing.Point(219, 11);
+            this.orgDateTimePickerEnd.Name = "orgDateTimePickerEnd";
+            this.orgDateTimePickerEnd.Size = new System.Drawing.Size(200, 27);
+            this.orgDateTimePickerEnd.TabIndex = 23;
+            // 
+            // orgDateTimePickerStart
+            // 
+            this.orgDateTimePickerStart.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
+            this.orgDateTimePickerStart.CalendarMonthBackground = System.Drawing.Color.White;
+            this.orgDateTimePickerStart.Location = new System.Drawing.Point(13, 11);
+            this.orgDateTimePickerStart.Name = "orgDateTimePickerStart";
+            this.orgDateTimePickerStart.Size = new System.Drawing.Size(200, 27);
+            this.orgDateTimePickerStart.TabIndex = 22;
+            this.orgDateTimePickerStart.ValueChanged += new System.EventHandler(this.orgDateTimePickerStart_ValueChanged);
             // 
             // tabActiveUsers
             // 
@@ -745,104 +858,213 @@ namespace DwUtils.Forms
             this.timerStatus.Interval = 3000;
             this.timerStatus.Tick += new System.EventHandler(this.timerStatus_Tick);
             // 
-            // btnReceiveDocLoad
-            // 
-            this.btnReceiveDocLoad.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnReceiveDocLoad.BackColor = System.Drawing.Color.Brown;
-            this.btnReceiveDocLoad.FlatAppearance.BorderSize = 0;
-            this.btnReceiveDocLoad.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
-            this.btnReceiveDocLoad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReceiveDocLoad.ForeColor = System.Drawing.Color.White;
-            this.btnReceiveDocLoad.Image = global::DwUtils.Properties.Resources.white_synchronize_24;
-            this.btnReceiveDocLoad.Location = new System.Drawing.Point(748, 6);
-            this.btnReceiveDocLoad.Name = "btnReceiveDocLoad";
-            this.btnReceiveDocLoad.Size = new System.Drawing.Size(36, 36);
-            this.btnReceiveDocLoad.TabIndex = 21;
-            this.btnReceiveDocLoad.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnReceiveDocLoad.UseVisualStyleBackColor = false;
-            this.btnReceiveDocLoad.Click += new System.EventHandler(this.btnReceiveDocLoad_Click);
-            // 
-            // reestrBindingSource
-            // 
-            this.reestrBindingSource.DataSource = typeof(DwUtils.Core.Models.Firebird.Reestr);
-            // 
             // idDataGridViewTextBoxColumn
             // 
             this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
             this.idDataGridViewTextBoxColumn.HeaderText = "Id";
             this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            // 
-            // numDataGridViewTextBoxColumn
-            // 
-            this.numDataGridViewTextBoxColumn.DataPropertyName = "Num";
-            this.numDataGridViewTextBoxColumn.HeaderText = "Num";
-            this.numDataGridViewTextBoxColumn.Name = "numDataGridViewTextBoxColumn";
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            // 
-            // typeDataGridViewTextBoxColumn
-            // 
-            this.typeDataGridViewTextBoxColumn.DataPropertyName = "Type";
-            this.typeDataGridViewTextBoxColumn.HeaderText = "Type";
-            this.typeDataGridViewTextBoxColumn.Name = "typeDataGridViewTextBoxColumn";
-            // 
-            // directionIndexDataGridViewTextBoxColumn
-            // 
-            this.directionIndexDataGridViewTextBoxColumn.DataPropertyName = "DirectionIndex";
-            this.directionIndexDataGridViewTextBoxColumn.HeaderText = "DirectionIndex";
-            this.directionIndexDataGridViewTextBoxColumn.Name = "directionIndexDataGridViewTextBoxColumn";
-            // 
-            // directionPlaceDataGridViewTextBoxColumn
-            // 
-            this.directionPlaceDataGridViewTextBoxColumn.DataPropertyName = "DirectionPlace";
-            this.directionPlaceDataGridViewTextBoxColumn.HeaderText = "DirectionPlace";
-            this.directionPlaceDataGridViewTextBoxColumn.Name = "directionPlaceDataGridViewTextBoxColumn";
-            // 
-            // stateIdDataGridViewTextBoxColumn
-            // 
-            this.stateIdDataGridViewTextBoxColumn.DataPropertyName = "StateId";
-            this.stateIdDataGridViewTextBoxColumn.HeaderText = "StateId";
-            this.stateIdDataGridViewTextBoxColumn.Name = "stateIdDataGridViewTextBoxColumn";
-            // 
-            // placeIdDataGridViewTextBoxColumn1
-            // 
-            this.placeIdDataGridViewTextBoxColumn1.DataPropertyName = "PlaceId";
-            this.placeIdDataGridViewTextBoxColumn1.HeaderText = "PlaceId";
-            this.placeIdDataGridViewTextBoxColumn1.Name = "placeIdDataGridViewTextBoxColumn1";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idDataGridViewTextBoxColumn.Visible = false;
             // 
             // dateDataGridViewTextBoxColumn
             // 
             this.dateDataGridViewTextBoxColumn.DataPropertyName = "Date";
-            this.dateDataGridViewTextBoxColumn.HeaderText = "Date";
+            this.dateDataGridViewTextBoxColumn.HeaderText = "Дата";
             this.dateDataGridViewTextBoxColumn.Name = "dateDataGridViewTextBoxColumn";
+            this.dateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // numDataGridViewTextBoxColumn
+            // 
+            this.numDataGridViewTextBoxColumn.DataPropertyName = "Num";
+            this.numDataGridViewTextBoxColumn.HeaderText = "Номер";
+            this.numDataGridViewTextBoxColumn.Name = "numDataGridViewTextBoxColumn";
+            this.numDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Название";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.nameDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // typeDataGridViewTextBoxColumn
+            // 
+            this.typeDataGridViewTextBoxColumn.DataPropertyName = "Type";
+            this.typeDataGridViewTextBoxColumn.HeaderText = "Тип";
+            this.typeDataGridViewTextBoxColumn.Name = "typeDataGridViewTextBoxColumn";
+            this.typeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.typeDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // directionIndexDataGridViewTextBoxColumn
+            // 
+            this.directionIndexDataGridViewTextBoxColumn.DataPropertyName = "DirectionIndex";
+            this.directionIndexDataGridViewTextBoxColumn.HeaderText = "Индекс";
+            this.directionIndexDataGridViewTextBoxColumn.Name = "directionIndexDataGridViewTextBoxColumn";
+            this.directionIndexDataGridViewTextBoxColumn.ReadOnly = true;
+            this.directionIndexDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // directionPlaceDataGridViewTextBoxColumn
+            // 
+            this.directionPlaceDataGridViewTextBoxColumn.DataPropertyName = "DirectionPlace";
+            this.directionPlaceDataGridViewTextBoxColumn.HeaderText = "Место";
+            this.directionPlaceDataGridViewTextBoxColumn.Name = "directionPlaceDataGridViewTextBoxColumn";
+            this.directionPlaceDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // stateIdDataGridViewTextBoxColumn
+            // 
+            this.stateIdDataGridViewTextBoxColumn.DataPropertyName = "StateId";
+            this.stateIdDataGridViewTextBoxColumn.HeaderText = "Статус";
+            this.stateIdDataGridViewTextBoxColumn.Name = "stateIdDataGridViewTextBoxColumn";
+            this.stateIdDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // createDateDataGridViewTextBoxColumn
             // 
             this.createDateDataGridViewTextBoxColumn.DataPropertyName = "CreateDate";
-            this.createDateDataGridViewTextBoxColumn.HeaderText = "CreateDate";
+            this.createDateDataGridViewTextBoxColumn.HeaderText = "Создано";
             this.createDateDataGridViewTextBoxColumn.Name = "createDateDataGridViewTextBoxColumn";
+            this.createDateDataGridViewTextBoxColumn.ReadOnly = true;
+            this.createDateDataGridViewTextBoxColumn.Visible = false;
             // 
             // editDateDataGridViewTextBoxColumn
             // 
             this.editDateDataGridViewTextBoxColumn.DataPropertyName = "EditDate";
-            this.editDateDataGridViewTextBoxColumn.HeaderText = "EditDate";
+            this.editDateDataGridViewTextBoxColumn.HeaderText = "Изменено";
             this.editDateDataGridViewTextBoxColumn.Name = "editDateDataGridViewTextBoxColumn";
-            // 
-            // userIdDataGridViewTextBoxColumn1
-            // 
-            this.userIdDataGridViewTextBoxColumn1.DataPropertyName = "UserId";
-            this.userIdDataGridViewTextBoxColumn1.HeaderText = "UserId";
-            this.userIdDataGridViewTextBoxColumn1.Name = "userIdDataGridViewTextBoxColumn1";
+            this.editDateDataGridViewTextBoxColumn.ReadOnly = true;
+            this.editDateDataGridViewTextBoxColumn.Visible = false;
             // 
             // rpoCountDataGridViewTextBoxColumn
             // 
             this.rpoCountDataGridViewTextBoxColumn.DataPropertyName = "RpoCount";
-            this.rpoCountDataGridViewTextBoxColumn.HeaderText = "RpoCount";
+            this.rpoCountDataGridViewTextBoxColumn.HeaderText = "Количество";
             this.rpoCountDataGridViewTextBoxColumn.Name = "rpoCountDataGridViewTextBoxColumn";
+            this.rpoCountDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // placeIdDataGridViewTextBoxColumn1
+            // 
+            this.placeIdDataGridViewTextBoxColumn1.DataPropertyName = "PlaceId";
+            this.placeIdDataGridViewTextBoxColumn1.HeaderText = "Участок";
+            this.placeIdDataGridViewTextBoxColumn1.Name = "placeIdDataGridViewTextBoxColumn1";
+            this.placeIdDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // userIdDataGridViewTextBoxColumn1
+            // 
+            this.userIdDataGridViewTextBoxColumn1.DataPropertyName = "UserId";
+            this.userIdDataGridViewTextBoxColumn1.DataSource = this.userBindingSource;
+            this.userIdDataGridViewTextBoxColumn1.DisplayMember = "Name";
+            this.userIdDataGridViewTextBoxColumn1.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.userIdDataGridViewTextBoxColumn1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.userIdDataGridViewTextBoxColumn1.HeaderText = "Пользователь";
+            this.userIdDataGridViewTextBoxColumn1.Name = "userIdDataGridViewTextBoxColumn1";
+            this.userIdDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.userIdDataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.userIdDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.userIdDataGridViewTextBoxColumn1.ValueMember = "Id";
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Id";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Id";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.DataPropertyName = "Date";
+            this.dataGridViewTextBoxColumn9.HeaderText = "Дата";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            this.dataGridViewTextBoxColumn9.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "Num";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Номер";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "Name";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Название";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "Type";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Тип";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "DirectionIndex";
+            this.dataGridViewTextBoxColumn5.HeaderText = "Индекс";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.dataGridViewTextBoxColumn5.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "DirectionPlace";
+            this.dataGridViewTextBoxColumn6.HeaderText = "Место";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "StateId";
+            this.dataGridViewTextBoxColumn7.HeaderText = "Статус";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.DataPropertyName = "CreateDate";
+            this.dataGridViewTextBoxColumn10.HeaderText = "Создано";
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            this.dataGridViewTextBoxColumn10.ReadOnly = true;
+            this.dataGridViewTextBoxColumn10.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn11
+            // 
+            this.dataGridViewTextBoxColumn11.DataPropertyName = "EditDate";
+            this.dataGridViewTextBoxColumn11.HeaderText = "Изменено";
+            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            this.dataGridViewTextBoxColumn11.ReadOnly = true;
+            this.dataGridViewTextBoxColumn11.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn12
+            // 
+            this.dataGridViewTextBoxColumn12.DataPropertyName = "RpoCount";
+            this.dataGridViewTextBoxColumn12.HeaderText = "Количество";
+            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
+            this.dataGridViewTextBoxColumn12.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.DataPropertyName = "PlaceId";
+            this.dataGridViewTextBoxColumn8.HeaderText = "Участок";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.ReadOnly = true;
+            // 
+            // dataGridViewComboBoxColumn1
+            // 
+            this.dataGridViewComboBoxColumn1.DataPropertyName = "UserId";
+            this.dataGridViewComboBoxColumn1.DataSource = this.userBindingSource;
+            this.dataGridViewComboBoxColumn1.DisplayMember = "Name";
+            this.dataGridViewComboBoxColumn1.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.dataGridViewComboBoxColumn1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.dataGridViewComboBoxColumn1.HeaderText = "Пользователь";
+            this.dataGridViewComboBoxColumn1.Name = "dataGridViewComboBoxColumn1";
+            this.dataGridViewComboBoxColumn1.ReadOnly = true;
+            this.dataGridViewComboBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewComboBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.dataGridViewComboBoxColumn1.ValueMember = "Id";
             // 
             // GeneralForm
             // 
@@ -870,20 +1092,23 @@ namespace DwUtils.Forms
             this.statusBar.ResumeLayout(false);
             this.statusBar.PerformLayout();
             this.panelGeneral.ResumeLayout(false);
+            this.panelGeneral.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).EndInit();
             this.tabsControl.ResumeLayout(false);
             this.tabReceived.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReceive)).EndInit();
             this.tabReceivedDoc.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDocReceive)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.receiveReestrBindingSource)).EndInit();
             this.panelReceivedDoc.ResumeLayout(false);
             this.tabOrgsDoc.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDocOrg)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.orgReestrBindingSource)).EndInit();
+            this.panelOrgDoc.ResumeLayout(false);
             this.tabActiveUsers.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUserOnline)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.connectUserBindingSource)).EndInit();
             this.panelActive.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.reestrBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -931,26 +1156,44 @@ namespace DwUtils.Forms
         private System.Windows.Forms.DataGridViewCheckBoxColumn isValidDataGridViewCheckBoxColumn;
         private System.Windows.Forms.DataGridView dataGridViewReceive;
         private System.Windows.Forms.DataGridView dataGridViewDocReceive;
-        private System.Windows.Forms.DataGridView dataGridViewDocOrg;
         private System.Windows.Forms.ToolStripMenuItem createDbMenuItem;
         private System.Windows.Forms.Button btnSync;
-        private System.Windows.Forms.DateTimePicker dateTimePickerIn;
-        private System.Windows.Forms.DateTimePicker dateTimePickerOut;
+        private System.Windows.Forms.DateTimePicker receiveDateTimePickerStart;
+        private System.Windows.Forms.DateTimePicker receiveDateTimePickerEnd;
         private System.Windows.Forms.Button btnReceiveDocLoad;
-        private System.Windows.Forms.BindingSource reestrBindingSource;
+        private System.Windows.Forms.BindingSource receiveReestrBindingSource;
+        private System.Windows.Forms.DataGridView dataGridViewDocOrg;
+        private System.Windows.Forms.Button btnOrgDocLoad;
+        private System.Windows.Forms.DateTimePicker orgDateTimePickerEnd;
+        private System.Windows.Forms.DateTimePicker orgDateTimePickerStart;
+        private System.Windows.Forms.BindingSource orgReestrBindingSource;
+        private System.Windows.Forms.Label lblUsers;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn numDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn typeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn directionIndexDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn directionPlaceDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn stateIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn placeIdDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn createDateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn editDateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn userIdDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn rpoCountDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn placeIdDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewComboBoxColumn userIdDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewComboBoxColumn1;
     }
 }
 

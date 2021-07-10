@@ -25,8 +25,8 @@ namespace DwUtils.Forms.ConfigForms
             _postUnitConnect = FbDataBase.PostUnit.GetConnect();
             _postItemConnect = FbDataBase.PostItem.GetConnect();
 
-            connectPostItem.CheckStatus = CheckPostItemConnect;
-            connectPostUnit.CheckStatus = CheckPostUnitConnect;
+            connectPostItem.CheckStatus = CheckPostItemConnectAsync;
+            connectPostUnit.CheckStatus = CheckPostUnitConnectAsync;
 
             WcApi.Keyboard.Keyboard.SetEnglishLanguage();
         }
@@ -45,14 +45,14 @@ namespace DwUtils.Forms.ConfigForms
             FbDataBase.PostUnit.SaveConnect(_postUnitConnect);
         }
 
-        private async Task<bool> CheckPostItemConnect()
+        private async Task<bool> CheckPostItemConnectAsync()
         {
             if (await _postItemConnect.TestConnectAsync())
                 return true;
             return false;
         }
 
-        private async Task<bool> CheckPostUnitConnect()
+        private async Task<bool> CheckPostUnitConnectAsync()
         {
             if (await _postUnitConnect.TestConnectAsync())
                 return true;

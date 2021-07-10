@@ -13,5 +13,7 @@ namespace DwUtils.Core.Libs.Database.Firebird.Queries.Params
         public int StateId { get; set; }
         /// <summary>Пользователь</summary>
         public int UserId { get; set; }
+        /// <summary>Тип накладной</summary>
+        public int ReestrType { get; set; }
     }
 }
