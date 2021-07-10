@@ -1,4 +1,4 @@
-﻿namespace LK.Forms
+﻿namespace LK.Forms.ReportForms
 {
     partial class OrgMassReportForm
     {

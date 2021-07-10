@@ -12,7 +12,7 @@ using LK.Core.Libs.TarifManager;
 using LK.Core.Libs.TarifManager.PostTypes;
 using LK.Core.Libs.TarifManager.Tarif;
 
-namespace LK.Forms
+namespace LK.Forms.ReportForms
 {
     public partial class OrgMassReportForm : Form
     {
