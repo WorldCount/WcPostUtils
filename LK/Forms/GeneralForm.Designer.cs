@@ -1800,7 +1800,7 @@ namespace LK.Forms
             this.KeyPreview = true;
             this.Name = "GeneralForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "PartStat";
+            this.Text = "LK";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GeneralForm_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.GeneralForm_FormClosed);
             this.Load += new System.EventHandler(this.GeneralForm_Load);

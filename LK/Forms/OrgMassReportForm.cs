@@ -319,7 +319,8 @@ namespace LK.Forms
             MassReportPrintDocument document = new MassReportPrintDocument(dataGridView, _singleReport, columnWidth, true)
             {
                 PrintController = printController,
-                PrintNumPageInfo = true
+                PrintNumPageInfo = true,
+                ReportTitle = "ЛК"
             };
 
             return document;

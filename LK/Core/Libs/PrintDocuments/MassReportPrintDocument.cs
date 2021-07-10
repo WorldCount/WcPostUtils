@@ -48,6 +48,7 @@ namespace LK.Core.Libs.PrintDocuments
         // Отображать номера страниц
         public bool PrintNumPageInfo { get; set; }
         public int PagesCount { get; set; } = 0;
+        public string ReportTitle { get; set; } = "";
 
         public MassReportPrintDocument(DataGridView dataGridView, SingleReportData singleReport, int[] columnWidths, bool clear = false)
         {
@@ -299,7 +300,11 @@ namespace LK.Core.Libs.PrintDocuments
             Rectangle rect = new Rectangle(e.MarginBounds.Left, marginTop, pageWidth, offset);
 
             e.Graphics.DrawString(_singleReport.FirmName, PrintPens.HeaderBoldFont, PrintPens.ForeBrush, rect, stringFormat);
-            //e.Graphics.DrawRectangle(Pens.Black, rect);
+
+            Rectangle titleRect = new Rectangle(e.MarginBounds.Right - 78, marginTop, 40, offset + 20);
+            e.Graphics.DrawString(ReportTitle, PrintPens.HeaderBoldFont, PrintPens.ForeBrush, titleRect, stringFormat);
+            
+            e.Graphics.DrawRectangle(Pens.Black, titleRect);
             marginTop += offset;
 
             string info = $"ИНН: {_singleReport.FirmInn}";
