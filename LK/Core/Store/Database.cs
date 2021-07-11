@@ -6,13 +6,10 @@ using System.Threading.Tasks;
 using LK.Core.Models.DB;
 using LK.Core.Models.DB.Types;
 using LK.Core.Models.Filters;
-using LK.Core.Models.Reports;
 using LK.Core.Models.Types;
 using LK.Core.Store.Connect;
 using NLog;
-using SQLite;
 using SQLiteNetExtensions.Extensions;
-using System.Data.SQLite;
 using SQLiteCommand = SQLite.SQLiteCommand;
 
 namespace LK.Core.Store

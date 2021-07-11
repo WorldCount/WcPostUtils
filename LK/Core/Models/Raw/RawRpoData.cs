@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Text.RegularExpressions;
-using LK.Core.Libs.DataManagers;
-using LK.Core.Libs.DataManagers.Models;
 using LK.Core.Models.DB;
 using LK.Core.Models.Types;
 using NPOI.SS.UserModel;

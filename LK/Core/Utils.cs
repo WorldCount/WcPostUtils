@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Net;
-using System.Security.Principal;
 using WcApi.Net;
 
 namespace LK.Core
