@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Threading.Tasks;
@@ -17,12 +18,21 @@ namespace LK.Forms
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
 
         private readonly Color _windowBorderColor = Color.Teal;
+
+        private readonly List<Firm> _firms;
+
         public int WindowBorderWidth { get; set; } = 2;
         public ButtonBorderStyle WindowsBorderStyle { get; set; } = ButtonBorderStyle.Dashed;
 
         public CreateDbForm()
         {
             InitializeComponent();
+
+            labelDate.Text = $"Делаю копию организаций";
+            labelInfo.Text = "";
+            coloredProgressBar.Value = 0;
+
+            _firms = Database.GetFirms();
 
             labelDate.Text = $"Создание БД";
             labelInfo.Text = "";
@@ -126,17 +136,20 @@ namespace LK.Forms
                     {
                         SetInfo("Создаю таблицу организаций...", 10, maxInit);
                         await Task.Run(() => db.CreateTable<Firm>());
+
+                        SetInfo("Заполняю таблицу организаций...", 11, maxInit);
+                        await Task.Run(() => DatabaseData.FillFirmsTable(_firms));
                     }
 
                     if (!Database.TableExist<FirmList>())
                     {
-                        SetInfo("Создаю таблицу списков организаций...", 11, maxInit);
+                        SetInfo("Создаю таблицу списков организаций...", 12, maxInit);
                         await Task.Run(() => db.CreateTable<FirmList>());
                     }
 
                     if (!Database.TableExist<Rpo>())
                     {
-                        SetInfo("Создаю таблицу рпо...", 12, maxInit);
+                        SetInfo("Создаю таблицу рпо...", 13, maxInit);
                         await Task.Run(() => db.CreateTable<Rpo>());
                     }
                 }

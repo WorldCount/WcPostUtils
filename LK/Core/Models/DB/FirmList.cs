@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Windows.Forms;
 using LK.Core.Libs.TarifManager.PostTypes;
 using LK.Core.Models.Types;
-using LK.Core.Store;
 using SQLite;
 using SQLiteNetExtensions.Attributes;
-using WcApi.Finance;
 
 namespace LK.Core.Models.DB
 {
@@ -51,17 +48,17 @@ namespace LK.Core.Models.DB
         [OneToMany(CascadeOperations = CascadeOperation.All)]
         public virtual List<Rpo> Rpos { get; set; } = new List<Rpo>();
 
+
         [ForeignKey(typeof(Firm)), Indexed]
         public int FirmId { get; set; }
 
-        //[OneToOne(CascadeOperations = CascadeOperation.All)]
         [ManyToOne(CascadeOperations = CascadeOperation.All)]
         public virtual Firm Firm { get; set; }
+
 
         [ForeignKey(typeof(Operator))]
         public int OperatorId { get; set; }
 
-        //[OneToOne(CascadeOperations = CascadeOperation.All)]
         [ManyToOne(CascadeOperations = CascadeOperation.All)]
         public virtual Operator Operator { get; set; }
 

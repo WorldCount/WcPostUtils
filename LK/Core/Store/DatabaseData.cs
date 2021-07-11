@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using LK.Core.Models.DB;
 using LK.Core.Models.DB.Types;
-using SQLite;
+using LK.Core.Store.Connect;
 
 namespace LK.Core.Store
 {
@@ -16,7 +16,7 @@ namespace LK.Core.Store
             Status s3 = new Status { Name = "Отклонено" };
             Status s4 = new Status { Name = "Отсутствует" };
 
-            using (var db = new SQLiteConnection(PathManager.DbPath))
+            using (var db = DbConnect.GetConnection())
                 db.InsertAll(new object[] { s1, s2, s3, s4 });
         }
 
@@ -34,7 +34,7 @@ namespace LK.Core.Store
 
         public static void FillMailTypeTable()
         {
-            using (var db = new SQLiteConnection(PathManager.DbPath))
+            using (var db = DbConnect.GetConnection())
                 db.InsertAll(GetMailTypes());
         }
 
@@ -52,7 +52,7 @@ namespace LK.Core.Store
 
         public static void FillMailCategoryTable()
         {
-            using (var db = new SQLiteConnection(PathManager.DbPath))
+            using (var db = DbConnect.GetConnection())
                 db.InsertAll(GetMailCategories());
         }
 
@@ -63,8 +63,14 @@ namespace LK.Core.Store
             Notice p3 = new Notice { Code = 2, Name = "Заказное уведомление", ShortName = "Зау.Ув" };
             Notice p5 = new Notice { Code = 16384, Name = "Электронное уведомление", ShortName = "Эл.Ув" };
 
-            using (var db = new SQLiteConnection(PathManager.DbPath))
+            using (var db = DbConnect.GetConnection())
                 db.InsertAll(new object[] { p1, p2, p3, p5 });
+        }
+
+        public static void FillFirmsTable(List<Firm> firms)
+        {
+            using (var db = DbConnect.GetConnection())
+                db.InsertAll(firms);
         }
 
         #endregion

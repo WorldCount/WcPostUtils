@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using LK.Core.Models.DB;
-using SQLite;
+using LK.Core.Store.Connect;
 
 namespace LK.Core.Store.Manager
 {
@@ -29,7 +29,7 @@ namespace LK.Core.Store.Manager
             {
                 oper = new Operator(fullName);
 
-                using (var db = new SQLiteConnection(PathManager.DbPath))
+                using (var db = DbConnect.GetConnection())
                 {
                     db.Insert(oper);
                     _operators = db.Table<Operator>().ToList();

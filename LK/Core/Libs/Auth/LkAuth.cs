@@ -32,7 +32,14 @@ namespace LK.Core.Libs.Auth
             //ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
             //ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
 
-            HttpClientHandler handler = new HttpClientHandler { CookieContainer = new CookieContainer { Capacity = 100 }, UseCookies = true, SslProtocols = SslProtocols.Tls12 | SslProtocols.Tls11 | SslProtocols.Tls };
+            HttpClientHandler handler = new HttpClientHandler
+            {
+                CookieContainer = new CookieContainer {Capacity = 100}, UseCookies = true
+            };
+
+
+            //handler.SslProtocols = SslProtocols.Tls12 | SslProtocols.Tls11 | SslProtocols.Tls;
+
             _client = new HttpClient(handler);
 
             _username = auth.Login;

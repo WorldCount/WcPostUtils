@@ -459,7 +459,7 @@ namespace LK.Forms
             FirmListFilter firmListFilter = new FirmListFilter
             {
                 StartDate = dateTimePickerIn.Value,
-                EndDate = dateTimePickerOut.Value,
+                EndDate = dateTimePickerOut.Value.AddDays(1),
                 FirmId = firm.Id,
 
                 StartNum = startNum,
@@ -474,7 +474,10 @@ namespace LK.Forms
 
             };
 
-            _firmLists = Database.GetFirmsList(firmListFilter);
+            //_firmLists = Database.GetFirmsList(firmListFilter);
+            //_firmLists = new List<FirmList>();
+            _firmLists = Database.GetFirmsListManual(firmListFilter);
+            //var d = Database.GetFirmsListManual(firmListFilter);
 
             _checkAllFlag = true;
 

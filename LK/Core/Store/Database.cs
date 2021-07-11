@@ -1,15 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices;
+using System.Text;
 using System.Threading.Tasks;
 using LK.Core.Models.DB;
 using LK.Core.Models.DB.Types;
 using LK.Core.Models.Filters;
+using LK.Core.Models.Reports;
 using LK.Core.Models.Types;
+using LK.Core.Store.Connect;
 using NLog;
 using SQLite;
 using SQLiteNetExtensions.Extensions;
+using System.Data.SQLite;
+using SQLiteCommand = SQLite.SQLiteCommand;
 
 namespace LK.Core.Store
 {
@@ -21,7 +25,7 @@ namespace LK.Core.Store
         {
             try
             {
-                using (var db = new SQLiteConnection(PathManager.DbPath))
+                using (var db = DbConnect.GetConnection())
                 {
                     if (!TableExist<Operator>())
                     {
@@ -87,7 +91,7 @@ namespace LK.Core.Store
         {
             const string q = "SELECT name FROM sqlite_master WHERE type='table' AND name=?";
 
-            using (var db = new SQLiteConnection(PathManager.DbPath))
+            using (var db = DbConnect.GetConnection())
             {
                 SQLiteCommand cmd = db.CreateCommand(q, typeof(T).Name);
                 return cmd.ExecuteScalar<string>() != null;
@@ -100,7 +104,7 @@ namespace LK.Core.Store
 
         public static Firm GetFirm(string inn, string kpp)
         {
-            using (var db = new SQLiteConnection(PathManager.DbPath))
+            using (var db = DbConnect.GetConnection())
             {
                 return db.Table<Firm>().Where(f => f.Inn == inn).FirstOrDefault(f => f.Kpp == kpp);
             }
@@ -108,7 +112,7 @@ namespace LK.Core.Store
 
         public static Firm GetFirm(int id)
         {
-            using (var db = new SQLiteConnection(PathManager.DbPath))
+            using (var db = DbConnect.GetConnection())
             {
                 return db.Get<Firm>(id);
             }
@@ -126,7 +130,7 @@ namespace LK.Core.Store
 
         public static int SaveFirm(Firm firm)
         {
-            using (var db = new SQLiteConnection(PathManager.DbPath))
+            using (var db = DbConnect.GetConnection())
             {
                 if (firm.Id != 0)
                 {
@@ -141,7 +145,7 @@ namespace LK.Core.Store
 
         public static void UpdateFirms(List<Firm> firms)
         {
-            using (var db = new SQLiteConnection(PathManager.DbPath))
+            using (var db = DbConnect.GetConnection())
             {
                 db.UpdateAll(firms);
             }
@@ -149,7 +153,7 @@ namespace LK.Core.Store
 
         public static void UpdateFirm(Firm firm)
         {
-            using (var db = new SQLiteConnection(PathManager.DbPath))
+            using (var db = DbConnect.GetConnection())
             {
                 db.Update(firm);
             }
@@ -164,7 +168,7 @@ namespace LK.Core.Store
         {
             try
             {
-                using (var db = new SQLiteConnection(PathManager.DbPath))
+                using (var db = DbConnect.GetConnection())
                 {
                     return db.Table<Firm>().OrderBy(f => f.ShortName).ToList();
                 }
@@ -190,7 +194,7 @@ namespace LK.Core.Store
 
         public static MailType GetMailType(string name)
         {
-            using (var db = new SQLiteConnection(PathManager.DbPath))
+            using (var db = DbConnect.GetConnection())
             {
                 return db.Table<MailType>().FirstOrDefault(m => m.Name == name);
             }
@@ -198,7 +202,7 @@ namespace LK.Core.Store
         
         public static MailType GetMailType(int id)
         {
-            using (var db = new SQLiteConnection(PathManager.DbPath))
+            using (var db = DbConnect.GetConnection())
             {
                 return db.Table<MailType>().FirstOrDefault(m => m.Id == id);
             }
@@ -218,7 +222,7 @@ namespace LK.Core.Store
         {
             try
             {
-                using (var db = new SQLiteConnection(PathManager.DbPath))
+                using (var db = DbConnect.GetConnection())
                 {
                     return db.Table<MailType>().ToList();
                 }
@@ -240,7 +244,7 @@ namespace LK.Core.Store
         {
             try
             {
-                using (var db = new SQLiteConnection(PathManager.DbPath))
+                using (var db = DbConnect.GetConnection())
                 {
                     return db.Table<MailType>().Where(m => m.Enable).ToList();
                 }
@@ -260,7 +264,7 @@ namespace LK.Core.Store
 
         public static void UpdateMailTypes(List<MailType> mailTypes)
         {
-            using (var db = new SQLiteConnection(PathManager.DbPath))
+            using (var db = DbConnect.GetConnection())
             {
                 db.UpdateAll(mailTypes);
             }
@@ -272,7 +276,7 @@ namespace LK.Core.Store
 
         public static MailCategory GetMailCategory(string name)
         {
-            using (var db = new SQLiteConnection(PathManager.DbPath))
+            using (var db = DbConnect.GetConnection())
             {
                 return db.Table<MailCategory>().FirstOrDefault(c => c.Name == name);
             }
@@ -281,7 +285,7 @@ namespace LK.Core.Store
         
         public static MailCategory GetMailCategory(int id)
         {
-            using (var db = new SQLiteConnection(PathManager.DbPath))
+            using (var db = DbConnect.GetConnection())
             {
                 return db.Table<MailCategory>().FirstOrDefault(c => c.Id == id);
             }
@@ -293,7 +297,7 @@ namespace LK.Core.Store
             try
             {
                 List<MailCategory> d;
-                using (var db = new SQLiteConnection(PathManager.DbPath))
+                using (var db = DbConnect.GetConnection())
                 {
                     d = db.Table<MailCategory>().ToList();
                 }
@@ -313,7 +317,7 @@ namespace LK.Core.Store
             {
                 List<MailCategory> d;
 
-                using (var db = new SQLiteConnection(PathManager.DbPath))
+                using (var db = DbConnect.GetConnection())
                 {
                     d = db.Table<MailCategory>().Where(c => c.Enable).ToList();
                 }
@@ -350,7 +354,7 @@ namespace LK.Core.Store
 
         public static void UpdateMailCategories(List<MailCategory> mailCategories)
         {
-            using (var db = new SQLiteConnection(PathManager.DbPath))
+            using (var db = DbConnect.GetConnection())
             {
                 db.UpdateAll(mailCategories);
             }
@@ -362,7 +366,7 @@ namespace LK.Core.Store
 
         public static Status GetStatus(string name)
         {
-            using (var db = new SQLiteConnection(PathManager.DbPath))
+            using (var db = DbConnect.GetConnection())
             {
                 return db.Table<Status>().FirstOrDefault(s => s.Name == name);
             }
@@ -371,7 +375,7 @@ namespace LK.Core.Store
 
         public static Status GetStatus(int id)
         {
-            using (var db = new SQLiteConnection(PathManager.DbPath))
+            using (var db = DbConnect.GetConnection())
             {
                 return db.Table<Status>().FirstOrDefault(s => s.Id == id);
             }
@@ -380,7 +384,7 @@ namespace LK.Core.Store
 
         public static List<Status> GetStatuses()
         {
-            using (var db = new SQLiteConnection(PathManager.DbPath))
+            using (var db = DbConnect.GetConnection())
             {
                 return db.Table<Status>().ToList();
             }
@@ -410,7 +414,7 @@ namespace LK.Core.Store
 
         public static int SaveFirmList(FirmList firmList)
         {
-            using (var db = new SQLiteConnection(PathManager.DbPath))
+            using (var db = DbConnect.GetConnection())
             {
                 if (firmList.Id != 0)
                 {
@@ -425,7 +429,7 @@ namespace LK.Core.Store
 
         public static int SaveAllFirmList(List<FirmList> firmLists)
         {
-            using (var db = new SQLiteConnection(PathManager.DbPath))
+            using (var db = DbConnect.GetConnection())
             {
                 return db.InsertAll(firmLists);
             }
@@ -435,7 +439,7 @@ namespace LK.Core.Store
         {
             DateTime s = Utils.CropDate(date);
             DateTime e = Utils.CropDate(date, 23, 59, 59);
-            using (var db = new SQLiteConnection(PathManager.DbPath))
+            using (var db = DbConnect.GetConnection())
             {
                 return db.Table<FirmList>().Where(f => f.Date >= s && f.Date <= e).ToList();
             }
@@ -443,7 +447,7 @@ namespace LK.Core.Store
 
         public static List<FirmList> GetFirmsList(Firm firm, DateTime date)
         {
-            using (var db = new SQLiteConnection(PathManager.DbPath))
+            using (var db = DbConnect.GetConnection())
             {
                 return db.Table<FirmList>().Where(f => f.FirmId == firm.Id && f.Date == date).ToList();
             }
@@ -452,7 +456,7 @@ namespace LK.Core.Store
         public static List<FirmList> GetFirmsList(Firm firm, DateTime startDate, DateTime endDate)
         {
 
-            using (var db = new SQLiteConnection(PathManager.DbPath))
+            using (var db = DbConnect.GetConnection())
             {
                 var q = db.Table<FirmList>().Where(f => f.ReceptionDate >= startDate && f.ReceptionDate <= endDate);
 
@@ -465,7 +469,7 @@ namespace LK.Core.Store
 
         public static List<FirmList> GetFirmsList(FirmListFilter filter)
         {
-            using (var db = new SQLiteConnection(PathManager.DbPath))
+            using (var db = DbConnect.GetConnection())
             {
                 var q = db.Table<FirmList>().Where(f => f.ReceptionDate >= filter.StartDate && f.ReceptionDate <= filter.EndDate);
 
@@ -509,10 +513,117 @@ namespace LK.Core.Store
             }
         }
 
+        public static List<FirmList> GetFirmsListManual(FirmListFilter filter)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("select fl.Id, fl.Date, f.ShortName, fl.Num, fl.MailCategory, fl.MailType, fl.MailClass, fl.Count, fl.CountFact, ");
+            sb.Append("fl.CountReturn, fl.CountMiss, fl.Notice, fl.MassRate, fl.MassRateNds, fl.AviaRate, fl.Value, fl.ValueRate, ");
+            sb.Append("fl.ReceptionDate, fl.Inventory, fl.Ops, o.LastName, o.FirstName, o.MiddleName, o.FullName, o.Id, ");
+            sb.Append("f.id, f.Name, f.ShortName, f.Inn, f.Kpp, f.Contract from FirmList fl ");
+            sb.Append("join Operator o on fl.OperatorId = o.Id ");
+            sb.Append("join Firm f on fl.FirmId = f.Id ");
+            sb.Append($"where ReceptionDate >= date('{filter.StartDate:yyyy-MM-dd}') and ReceptionDate < date('{filter.EndDate:yyyy-MM-dd}')");
+
+            if (filter.FirmId != 0)
+                sb.Append($" and fl.FirmId = {filter.FirmId}");
+
+            if (filter.MailClass != MailClass.ВСЕ)
+                sb.Append($" and fl.MailClass = {(int) filter.MailClass}");
+
+
+            if (filter.ErrorType == ErrorType.Возвращено)
+                sb.Append($" and fl.CountReturn > 0");
+
+            if (filter.ErrorType == ErrorType.Пропущено)
+                sb.Append($" and fl.CountMiss > 0");
+
+            if (filter.StartNum > 0)
+                sb.Append($" and fl.Num >= {filter.StartNum}");
+
+            if (filter.EndNum > 0)
+                sb.Append($" and fl.Num <= {filter.EndNum}");
+
+            if (filter.MailCategoryId > 0)
+                sb.Append($" and fl.MailCategory = {filter.MailCategoryId}");
+
+            if (filter.MailTypeId > 0)
+                sb.Append($" and fl.MailType = {filter.MailTypeId}");
+
+            if (filter.OperatorId > 0)
+                sb.Append($" and fl.OperatorId = {filter.OperatorId}");
+
+            string q = sb.ToString();
+
+            Logger.Debug(q);
+
+            List<FirmList> firmLists = new List<FirmList>();
+
+            using (var db = DbConnect.GetManualConnection())
+            {
+                System.Data.SQLite.SQLiteCommand cmd = new System.Data.SQLite.SQLiteCommand(q, db);
+
+                db.Open();
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        FirmList f = new FirmList
+                        {
+                            Id = reader.GetInt32(0),
+                            Date = reader.GetDateTime(1),
+                            Num = reader.GetInt32(3),
+                            MailCategory = reader.GetInt32(4),
+                            MailType = reader.GetInt32(5),
+                            MailClass = (MailClass)reader.GetInt32(6),
+                            Count = reader.GetInt32(7),
+                            CountFact = reader.GetInt32(8),
+                            CountReturn = reader.GetInt32(9),
+                            CountMiss = reader.GetInt32(10),
+                            Notice = reader.GetInt32(11),
+                            MassRate = reader.GetDouble(12),
+                            MassRateNds = reader.GetDouble(13),
+                            AviaRate = reader.GetDouble(14),
+                            Value = reader.GetDouble(15),
+                            ValueRate = reader.GetDouble(16),
+                            ReceptionDate = reader.GetDateTime(17),
+                            Inventory = reader.GetBoolean(18),
+                            Ops = reader.GetString(19),
+                            OperatorId = reader.GetInt32(24),
+                            Operator = new Operator
+                            {
+                                Id = reader.GetInt32(24),
+                                FullName = reader.GetString(23),
+                                FirstName = reader.GetString(21),
+                                LastName = reader.GetString(20),
+                                MiddleName = reader.GetString(22)
+                            },
+                            FirmId = reader.GetInt32(25),
+                            Firm = new Firm
+                            {
+                                Id = reader.GetInt32(25),
+                                Name = reader.GetString(26),
+                                ShortName = reader.GetString(27),
+                                Inn = reader.GetString(28),
+                                Kpp = reader.GetString(29),
+                                Contract = reader.GetString(30)
+                            }
+                        };
+
+                        firmLists.Add(f);
+                    }
+                }
+
+                db.Close();
+            }
+
+            return firmLists;
+        }
+
         public static List<FirmList> GetFirmsListAndChildren(Firm firm, DateTime startDate, DateTime endDate)
         {
 
-            using (var db = new SQLiteConnection(PathManager.DbPath))
+            using (var db = DbConnect.GetConnection())
             {
                 var q = db.Table<FirmList>().Where(f => f.Date >= startDate && f.Date <= endDate);
 
@@ -530,7 +641,7 @@ namespace LK.Core.Store
 
         public static List<FirmList> GetFirmListsAndChildrenByIds(List<int> ids)
         {
-            using (var db = new SQLiteConnection(PathManager.DbPath))
+            using (var db = DbConnect.GetConnection())
             {
                 List<FirmList> r = db.Table<FirmList>().Where(f => ids.Contains(f.Id)).ToList();
                 foreach (FirmList f in r)
@@ -541,7 +652,7 @@ namespace LK.Core.Store
 
         public static List<Rpo> FirmListRpos(int firmListId)
         {
-            using (var db = new SQLiteConnection(PathManager.DbPath))
+            using (var db = DbConnect.GetConnection())
             {
                 return db.Table<Rpo>().Where(r => r.FirmListId == firmListId).ToList();
             }
@@ -549,7 +660,7 @@ namespace LK.Core.Store
 
         public static FirmList GetFirmList(int id)
         {
-            using (var db = new SQLiteConnection(PathManager.DbPath))
+            using (var db = DbConnect.GetConnection())
             {
                 return db.Table<FirmList>().FirstOrDefault(r => r.Id == id);
             }
@@ -557,7 +668,7 @@ namespace LK.Core.Store
 
         public static FirmList GetFirmList(DateTime date, int num)
         {
-            using (var db = new SQLiteConnection(PathManager.DbPath))
+            using (var db = DbConnect.GetConnection())
             {
                 return db.Table<FirmList>().Where(r => r.Date == date).FirstOrDefault(r => r.Num == num);
             }
@@ -565,7 +676,7 @@ namespace LK.Core.Store
 
         public static FirmList GetFirmList(int firmId, DateTime date, int num)
         {
-            using (var db = new SQLiteConnection(PathManager.DbPath))
+            using (var db = DbConnect.GetConnection())
             {
                 return db.Table<FirmList>().Where(r => r.FirmId == firmId).Where(r => r.Date == date).FirstOrDefault(r => r.Num == num);
             }
@@ -593,7 +704,7 @@ namespace LK.Core.Store
 
         public static void UpdateFirmLists(List<FirmList> firmLists)
         {
-            using (var db = new SQLiteConnection(PathManager.DbPath))
+            using (var db = DbConnect.GetConnection())
             {
                 db.UpdateAll(firmLists);
             }
@@ -605,7 +716,7 @@ namespace LK.Core.Store
 
         public static int SaveRpo(Rpo rpo)
         {
-            using (var db = new SQLiteConnection(PathManager.DbPath))
+            using (var db = DbConnect.GetConnection())
             {
                 if (rpo.Id != 0)
                 {
@@ -621,7 +732,7 @@ namespace LK.Core.Store
 
         public static int SaveAllRpo(List<Rpo> rpos)
         {
-            using (var db = new SQLiteConnection(PathManager.DbPath))
+            using (var db = DbConnect.GetConnection())
             {
                 return db.InsertAll(rpos);
             }
@@ -629,7 +740,7 @@ namespace LK.Core.Store
 
         public static Rpo GetRpo(int id)
         {
-            using (var db = new SQLiteConnection(PathManager.DbPath))
+            using (var db = DbConnect.GetConnection())
             {
                 return db.Table<Rpo>().FirstOrDefault(r => r.Id == id);
             }
@@ -637,7 +748,7 @@ namespace LK.Core.Store
 
         public static Rpo GetRpo(string barcode, bool onlyAccept = false)
         {
-            using (var db = new SQLiteConnection(PathManager.DbPath))
+            using (var db = DbConnect.GetConnection())
             {
                 if (onlyAccept)
                     return db.Table<Rpo>().Where(r => r.StatusId == 2).FirstOrDefault(r => r.Barcode == barcode);
@@ -647,7 +758,7 @@ namespace LK.Core.Store
 
         public static List<Rpo> GetRpos(string  barcode, bool onlyAccept = false)
         {
-            using (var db = new SQLiteConnection(PathManager.DbPath))
+            using (var db = DbConnect.GetConnection())
             {
                 if (onlyAccept)
                     return db.Table<Rpo>().Where(r => r.StatusId == 2).Where(r => r.Barcode == barcode).ToList();
@@ -657,7 +768,7 @@ namespace LK.Core.Store
 
         public static List<Rpo> GetRposByListsIds(int[] ids)
         {
-            using (var db = new SQLiteConnection(PathManager.DbPath))
+            using (var db = DbConnect.GetConnection())
             {
                 return db.Query<Rpo>($"SELECT * from RPO where firmListId IN ({string.Join(",", ids)}) and statusId = 2 order by MassRate");
             }
@@ -665,7 +776,7 @@ namespace LK.Core.Store
 
         public static List<Rpo> GetRpos(int firmListId)
         {
-            using (var db = new SQLiteConnection(PathManager.DbPath))
+            using (var db = DbConnect.GetConnection())
             {
                 return db.Table<Rpo>().Where(r => r.FirmListId == firmListId).ToList();
             }
@@ -702,7 +813,7 @@ namespace LK.Core.Store
 
         public static int SaveOperator(Operator oper)
         {
-            using (var db = new SQLiteConnection(PathManager.DbPath))
+            using (var db = DbConnect.GetConnection())
             {
                 if (oper.Id != 0)
                 {
@@ -717,7 +828,7 @@ namespace LK.Core.Store
 
         public static Operator GetOperator(int id)
         {
-            using (var db = new SQLiteConnection(PathManager.DbPath))
+            using (var db = DbConnect.GetConnection())
             {
                 return db.Table<Operator>().FirstOrDefault(o => o.Id == id);
             }
@@ -726,7 +837,7 @@ namespace LK.Core.Store
 
         public static Operator GetOperator(string fullName)
         {
-            using (var db = new SQLiteConnection(PathManager.DbPath))
+            using (var db = DbConnect.GetConnection())
             {
                 return db.Table<Operator>().FirstOrDefault(o => o.FullName == fullName);
             }
@@ -735,7 +846,7 @@ namespace LK.Core.Store
 
         public static List<Operator> GetAllOperator()
         {
-            using (var db = new SQLiteConnection(PathManager.DbPath))
+            using (var db = DbConnect.GetConnection())
             {
                 return db.Table<Operator>().OrderBy(o => o.LastName).ToList();
             }
@@ -743,7 +854,7 @@ namespace LK.Core.Store
 
         public static void UpdateOperators(List<Operator> operators)
         {
-            using (var db = new SQLiteConnection(PathManager.DbPath))
+            using (var db = DbConnect.GetConnection())
             {
                 db.UpdateAll(operators);
             }
@@ -756,7 +867,7 @@ namespace LK.Core.Store
         public static List<Rpo> GetValueRpos(DateTime startDate, DateTime endDate)
         {
 
-            using (var db = new SQLiteConnection(PathManager.DbPath))
+            using (var db = DbConnect.GetConnection())
             {
                 var q = db.Table<Rpo>().Where(r => r.ReceptionDate >= startDate && r.ReceptionDate <= endDate && r.StatusId == 2 && r.Value > 0);
 

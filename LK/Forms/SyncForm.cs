@@ -19,7 +19,6 @@ using NPOI.HSSF.UserModel;
 using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
 using NLog;
-using NLog.Fluent;
 using WcApi.Cryptography;
 using WcApi.Finance;
 

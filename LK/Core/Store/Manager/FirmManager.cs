@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using LK.Core.Models.DB;
-using SQLite;
+using LK.Core.Store.Connect;
 
 namespace LK.Core.Store.Manager
 {
@@ -27,13 +27,24 @@ namespace LK.Core.Store.Manager
             if (firm == null)
             {
                 firm = new Firm {Inn = inn, Kpp = kpp, Name = name, ShortName = name, Contract = contract};
-                using (var db = new SQLiteConnection(PathManager.DbPath))
+                using (var db = DbConnect.GetConnection())
                 {
                     db.Insert(firm);
                     _firms = db.Table<Firm>().ToList();
                 }
+            }
+            else
+            {
+                if (firm.Contract != contract)
+                {
+                    firm.Contract = contract;
 
-                firm = GetFirm(inn, kpp);
+                    using (var db = DbConnect.GetConnection())
+                    {
+                        db.Update(firm);
+                        _firms = db.Table<Firm>().ToList();
+                    }
+                }
             }
 
             return firm;

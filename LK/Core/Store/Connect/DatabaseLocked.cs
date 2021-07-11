@@ -22,7 +22,7 @@ namespace LK.Core.Store.Connect
 
         public DatabaseLocked()
         {
-            _database = new SQLiteConnection(PathManager.DbPath);
+            _database = DbConnect.GetConnection();
             _databaseData = new DatabaseDataLocked(this);
         }
 
