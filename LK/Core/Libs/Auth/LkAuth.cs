@@ -20,7 +20,7 @@ namespace LK.Core.Libs.Auth
         public LkAuth(string username, string password)
         {
 
-            HttpClientHandler handler = new HttpClientHandler { CookieContainer = new CookieContainer { Capacity = 100 }, UseCookies = true, SslProtocols = SslProtocols.Tls12 | SslProtocols.Tls11 | SslProtocols.Tls };
+            HttpClientHandler handler = new HttpClientHandler { CookieContainer = new CookieContainer { Capacity = 100 }, UseCookies = true };
             _client = new HttpClient(handler);
 
             _username = username;
