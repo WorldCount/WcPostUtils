@@ -44,6 +44,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Widgets\Buttons\WcButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Widgets\Labels\WcLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Widgets\Nets\ConnectWidget.cs">
       <SubType>UserControl</SubType>
     </Compile>
