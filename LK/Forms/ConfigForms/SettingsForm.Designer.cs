@@ -51,8 +51,8 @@
             this.tbParcelStartWeight = new System.Windows.Forms.TextBox();
             this.labelParcelStartWeight = new System.Windows.Forms.Label();
             this.panelButton = new System.Windows.Forms.Panel();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnSave = new Wc32Api.Widgets.Buttons.WcButton();
+            this.btnCancel = new Wc32Api.Widgets.Buttons.WcButton();
             this.tabControl.SuspendLayout();
             this.tabPagePay.SuspendLayout();
             this.groupBoxPay.SuspendLayout();
@@ -95,7 +95,7 @@
             this.tbStep.BackColor = System.Drawing.Color.White;
             this.tbStep.Font = new System.Drawing.Font("Consolas", 12.22642F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbStep.ForeColor = System.Drawing.Color.DimGray;
-            this.tbStep.Location = new System.Drawing.Point(18, 278);
+            this.tbStep.Location = new System.Drawing.Point(18, 264);
             this.tbStep.MaxLength = 5;
             this.tbStep.Name = "tbStep";
             this.tbStep.Size = new System.Drawing.Size(76, 27);
@@ -108,7 +108,7 @@
             this.labelStep.AutoSize = true;
             this.labelStep.Font = new System.Drawing.Font("Segoe UI", 10.86792F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelStep.ForeColor = System.Drawing.Color.DimGray;
-            this.labelStep.Location = new System.Drawing.Point(14, 255);
+            this.labelStep.Location = new System.Drawing.Point(14, 241);
             this.labelStep.Name = "labelStep";
             this.labelStep.Size = new System.Drawing.Size(263, 20);
             this.labelStep.TabIndex = 3;
@@ -127,7 +127,7 @@
             this.groupBoxPay.ForeColor = System.Drawing.Color.DimGray;
             this.groupBoxPay.Location = new System.Drawing.Point(8, 6);
             this.groupBoxPay.Name = "groupBoxPay";
-            this.groupBoxPay.Size = new System.Drawing.Size(470, 230);
+            this.groupBoxPay.Size = new System.Drawing.Size(470, 216);
             this.groupBoxPay.TabIndex = 0;
             this.groupBoxPay.TabStop = false;
             this.groupBoxPay.Text = "Плата";
@@ -344,6 +344,10 @@
             // 
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSave.BackColor = System.Drawing.Color.SeaGreen;
+            this.btnSave.BorderColor = System.Drawing.Color.Silver;
+            this.btnSave.BorderRadius = 4;
+            this.btnSave.BorderThickness = 1F;
+            this.btnSave.DisabledBackColor = System.Drawing.Color.Gray;
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -351,9 +355,10 @@
             this.btnSave.ForeColor = System.Drawing.Color.White;
             this.btnSave.Image = global::LK.Properties.Resources.save_24;
             this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSave.Location = new System.Drawing.Point(362, 16);
+            this.btnSave.Location = new System.Drawing.Point(362, 10);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(120, 40);
+            this.btnSave.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            this.btnSave.Size = new System.Drawing.Size(120, 46);
             this.btnSave.TabIndex = 8;
             this.btnSave.Text = "Сохранить";
             this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -364,6 +369,10 @@
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.BackColor = System.Drawing.Color.Firebrick;
+            this.btnCancel.BorderColor = System.Drawing.Color.Silver;
+            this.btnCancel.BorderRadius = 4;
+            this.btnCancel.BorderThickness = 1F;
+            this.btnCancel.DisabledBackColor = System.Drawing.Color.Gray;
             this.btnCancel.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.btnCancel.FlatAppearance.BorderSize = 0;
             this.btnCancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
@@ -372,9 +381,10 @@
             this.btnCancel.ForeColor = System.Drawing.Color.White;
             this.btnCancel.Image = global::LK.Properties.Resources.close_window_24;
             this.btnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancel.Location = new System.Drawing.Point(236, 16);
+            this.btnCancel.Location = new System.Drawing.Point(236, 10);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(120, 40);
+            this.btnCancel.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            this.btnCancel.Size = new System.Drawing.Size(120, 46);
             this.btnCancel.TabIndex = 9;
             this.btnCancel.Text = "Отменить";
             this.btnCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -420,8 +430,8 @@
         private System.Windows.Forms.TabPage tabPagePay;
         private System.Windows.Forms.TabPage tabPageMail;
         private System.Windows.Forms.Panel panelButton;
-        private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Button btnCancel;
+        private Wc32Api.Widgets.Buttons.WcButton btnSave;
+        private Wc32Api.Widgets.Buttons.WcButton btnCancel;
         private System.Windows.Forms.GroupBox groupBoxMail;
         private System.Windows.Forms.TextBox tbMailEndWeight;
         private System.Windows.Forms.Label labelMailEndWeight;

@@ -35,21 +35,21 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ValueReportForm));
             this.labelOrg = new System.Windows.Forms.Label();
             this.comboBoxOrgs = new System.Windows.Forms.ComboBox();
+            this.firmBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lblInfo = new System.Windows.Forms.Label();
             this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.DateTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DayDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AllCountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnLoad = new System.Windows.Forms.Button();
+            this.btnLoad = new Wc32Api.Widgets.Buttons.WcButton();
             this.labelCopy = new System.Windows.Forms.Label();
             this.numericUpDownCopy = new System.Windows.Forms.NumericUpDown();
-            this.btnPrint = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.firmBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.btnPrint = new Wc32Api.Widgets.Buttons.WcButton();
+            this.btnCancel = new Wc32Api.Widgets.Buttons.WcButton();
+            ((System.ComponentModel.ISupportInitialize)(this.firmBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCopy)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.firmBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // labelOrg
@@ -81,6 +81,10 @@
             this.comboBoxOrgs.Size = new System.Drawing.Size(300, 29);
             this.comboBoxOrgs.TabIndex = 15;
             this.comboBoxOrgs.ValueMember = "Id";
+            // 
+            // firmBindingSource
+            // 
+            this.firmBindingSource.DataSource = typeof(LK.Core.Models.DB.Firm);
             // 
             // lblInfo
             // 
@@ -188,15 +192,20 @@
             // btnLoad
             // 
             this.btnLoad.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnLoad.BorderColor = System.Drawing.Color.Silver;
+            this.btnLoad.BorderRadius = 4;
+            this.btnLoad.BorderThickness = 1F;
+            this.btnLoad.DisabledBackColor = System.Drawing.Color.Gray;
             this.btnLoad.FlatAppearance.BorderSize = 0;
             this.btnLoad.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.btnLoad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLoad.ForeColor = System.Drawing.Color.White;
             this.btnLoad.Image = global::LK.Properties.Resources.white_synchronize_24;
             this.btnLoad.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLoad.Location = new System.Drawing.Point(528, 27);
+            this.btnLoad.Location = new System.Drawing.Point(528, 24);
             this.btnLoad.Name = "btnLoad";
-            this.btnLoad.Size = new System.Drawing.Size(127, 40);
+            this.btnLoad.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            this.btnLoad.Size = new System.Drawing.Size(127, 46);
             this.btnLoad.TabIndex = 18;
             this.btnLoad.Text = "Загрузить";
             this.btnLoad.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -209,7 +218,7 @@
             this.labelCopy.AutoSize = true;
             this.labelCopy.Font = new System.Drawing.Font("Segoe UI Semibold", 10.86792F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelCopy.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
-            this.labelCopy.Location = new System.Drawing.Point(12, 412);
+            this.labelCopy.Location = new System.Drawing.Point(12, 406);
             this.labelCopy.Name = "labelCopy";
             this.labelCopy.Size = new System.Drawing.Size(54, 20);
             this.labelCopy.TabIndex = 19;
@@ -220,7 +229,7 @@
             this.numericUpDownCopy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.numericUpDownCopy.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.numericUpDownCopy.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
-            this.numericUpDownCopy.Location = new System.Drawing.Point(72, 408);
+            this.numericUpDownCopy.Location = new System.Drawing.Point(72, 402);
             this.numericUpDownCopy.Minimum = new decimal(new int[] {
             1,
             0,
@@ -240,6 +249,10 @@
             // 
             this.btnPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPrint.BackColor = System.Drawing.Color.SeaGreen;
+            this.btnPrint.BorderColor = System.Drawing.Color.Silver;
+            this.btnPrint.BorderRadius = 4;
+            this.btnPrint.BorderThickness = 1F;
+            this.btnPrint.DisabledBackColor = System.Drawing.Color.Gray;
             this.btnPrint.FlatAppearance.BorderSize = 0;
             this.btnPrint.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
             this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -247,9 +260,10 @@
             this.btnPrint.ForeColor = System.Drawing.Color.White;
             this.btnPrint.Image = global::LK.Properties.Resources.Printer;
             this.btnPrint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPrint.Location = new System.Drawing.Point(542, 401);
+            this.btnPrint.Location = new System.Drawing.Point(542, 392);
             this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(120, 40);
+            this.btnPrint.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            this.btnPrint.Size = new System.Drawing.Size(120, 46);
             this.btnPrint.TabIndex = 21;
             this.btnPrint.Text = "Печать";
             this.btnPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -260,6 +274,10 @@
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.BackColor = System.Drawing.Color.Firebrick;
+            this.btnCancel.BorderColor = System.Drawing.Color.Silver;
+            this.btnCancel.BorderRadius = 4;
+            this.btnCancel.BorderThickness = 1F;
+            this.btnCancel.DisabledBackColor = System.Drawing.Color.Gray;
             this.btnCancel.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.btnCancel.FlatAppearance.BorderSize = 0;
             this.btnCancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
@@ -268,18 +286,15 @@
             this.btnCancel.ForeColor = System.Drawing.Color.White;
             this.btnCancel.Image = global::LK.Properties.Resources.close_window_24;
             this.btnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancel.Location = new System.Drawing.Point(668, 401);
+            this.btnCancel.Location = new System.Drawing.Point(668, 392);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(120, 40);
+            this.btnCancel.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            this.btnCancel.Size = new System.Drawing.Size(120, 46);
             this.btnCancel.TabIndex = 22;
             this.btnCancel.Text = "Отменить";
             this.btnCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            // 
-            // firmBindingSource
-            // 
-            this.firmBindingSource.DataSource = typeof(LK.Core.Models.DB.Firm);
             // 
             // ValueReportForm
             // 
@@ -304,9 +319,9 @@
             this.Text = "ValueReportForm";
             this.Load += new System.EventHandler(this.ValueReportForm_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ValueReportForm_KeyDown);
+            ((System.ComponentModel.ISupportInitialize)(this.firmBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCopy)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.firmBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -322,11 +337,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DateTypeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn DayDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn AllCountDataGridViewTextBoxColumn;
-        private System.Windows.Forms.Button btnLoad;
+        private Wc32Api.Widgets.Buttons.WcButton btnLoad;
         private System.Windows.Forms.Label labelCopy;
         private System.Windows.Forms.NumericUpDown numericUpDownCopy;
-        private System.Windows.Forms.Button btnPrint;
-        private System.Windows.Forms.Button btnCancel;
+        private Wc32Api.Widgets.Buttons.WcButton btnPrint;
+        private Wc32Api.Widgets.Buttons.WcButton btnCancel;
         private System.Windows.Forms.BindingSource firmBindingSource;
     }
 }

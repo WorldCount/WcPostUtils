@@ -44,10 +44,10 @@
             this.rateNdsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tarifBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.labelMessage = new System.Windows.Forms.Label();
-            this.btnUpdate = new System.Windows.Forms.Button();
-            this.btnLoad = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnUpdate = new Wc32Api.Widgets.Buttons.WcButton();
+            this.btnLoad = new Wc32Api.Widgets.Buttons.WcButton();
+            this.btnSave = new Wc32Api.Widgets.Buttons.WcButton();
+            this.btnCancel = new Wc32Api.Widgets.Buttons.WcButton();
             this.lblCount = new System.Windows.Forms.Label();
             this.tbFilter = new LK.Core.Libs.Widget.BorderTextBox();
             this.lblFilter = new System.Windows.Forms.Label();
@@ -178,9 +178,9 @@
             this.labelMessage.BackColor = System.Drawing.Color.WhiteSmoke;
             this.labelMessage.Font = new System.Drawing.Font("Segoe UI", 8.830189F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelMessage.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.labelMessage.Location = new System.Drawing.Point(334, 399);
+            this.labelMessage.Location = new System.Drawing.Point(324, 399);
             this.labelMessage.Name = "labelMessage";
-            this.labelMessage.Size = new System.Drawing.Size(206, 40);
+            this.labelMessage.Size = new System.Drawing.Size(216, 40);
             this.labelMessage.TabIndex = 0;
             this.labelMessage.Text = "Сообщение";
             this.labelMessage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -189,6 +189,10 @@
             // 
             this.btnUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnUpdate.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnUpdate.BorderColor = System.Drawing.Color.Silver;
+            this.btnUpdate.BorderRadius = 4;
+            this.btnUpdate.BorderThickness = 1F;
+            this.btnUpdate.DisabledBackColor = System.Drawing.Color.Gray;
             this.btnUpdate.FlatAppearance.BorderSize = 0;
             this.btnUpdate.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
             this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -196,9 +200,10 @@
             this.btnUpdate.ForeColor = System.Drawing.Color.White;
             this.btnUpdate.Image = global::LK.Properties.Resources.white_restart_24;
             this.btnUpdate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUpdate.Location = new System.Drawing.Point(12, 399);
+            this.btnUpdate.Location = new System.Drawing.Point(12, 393);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(120, 40);
+            this.btnUpdate.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            this.btnUpdate.Size = new System.Drawing.Size(120, 46);
             this.btnUpdate.TabIndex = 1;
             this.btnUpdate.TabStop = false;
             this.btnUpdate.Text = "Обновить";
@@ -210,6 +215,10 @@
             // 
             this.btnLoad.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnLoad.BackColor = System.Drawing.Color.SlateGray;
+            this.btnLoad.BorderColor = System.Drawing.Color.Silver;
+            this.btnLoad.BorderRadius = 4;
+            this.btnLoad.BorderThickness = 1F;
+            this.btnLoad.DisabledBackColor = System.Drawing.Color.Gray;
             this.btnLoad.FlatAppearance.BorderSize = 0;
             this.btnLoad.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
             this.btnLoad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -217,9 +226,10 @@
             this.btnLoad.ForeColor = System.Drawing.Color.White;
             this.btnLoad.Image = global::LK.Properties.Resources.white_synchronize_24;
             this.btnLoad.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLoad.Location = new System.Drawing.Point(138, 399);
+            this.btnLoad.Location = new System.Drawing.Point(138, 393);
             this.btnLoad.Name = "btnLoad";
-            this.btnLoad.Size = new System.Drawing.Size(190, 40);
+            this.btnLoad.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            this.btnLoad.Size = new System.Drawing.Size(180, 46);
             this.btnLoad.TabIndex = 2;
             this.btnLoad.TabStop = false;
             this.btnLoad.Text = "Загрузить с сервера";
@@ -231,6 +241,10 @@
             // 
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSave.BackColor = System.Drawing.Color.SeaGreen;
+            this.btnSave.BorderColor = System.Drawing.Color.Silver;
+            this.btnSave.BorderRadius = 4;
+            this.btnSave.BorderThickness = 1F;
+            this.btnSave.DisabledBackColor = System.Drawing.Color.Gray;
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -238,9 +252,10 @@
             this.btnSave.ForeColor = System.Drawing.Color.White;
             this.btnSave.Image = global::LK.Properties.Resources.save_24;
             this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSave.Location = new System.Drawing.Point(672, 399);
+            this.btnSave.Location = new System.Drawing.Point(672, 393);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(120, 40);
+            this.btnSave.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            this.btnSave.Size = new System.Drawing.Size(120, 46);
             this.btnSave.TabIndex = 4;
             this.btnSave.Text = "Сохранить";
             this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -251,6 +266,10 @@
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.BackColor = System.Drawing.Color.Firebrick;
+            this.btnCancel.BorderColor = System.Drawing.Color.Silver;
+            this.btnCancel.BorderRadius = 4;
+            this.btnCancel.BorderThickness = 1F;
+            this.btnCancel.DisabledBackColor = System.Drawing.Color.Gray;
             this.btnCancel.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.btnCancel.FlatAppearance.BorderSize = 0;
             this.btnCancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
@@ -259,9 +278,10 @@
             this.btnCancel.ForeColor = System.Drawing.Color.White;
             this.btnCancel.Image = global::LK.Properties.Resources.close_window_24;
             this.btnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancel.Location = new System.Drawing.Point(546, 399);
+            this.btnCancel.Location = new System.Drawing.Point(546, 393);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(120, 40);
+            this.btnCancel.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            this.btnCancel.Size = new System.Drawing.Size(120, 46);
             this.btnCancel.TabIndex = 3;
             this.btnCancel.Text = "Отменить";
             this.btnCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -349,10 +369,10 @@
         private System.Windows.Forms.Label labelInfo;
         private System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.Label labelMessage;
-        private System.Windows.Forms.Button btnUpdate;
-        private System.Windows.Forms.Button btnLoad;
-        private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Button btnCancel;
+        private Wc32Api.Widgets.Buttons.WcButton btnUpdate;
+        private Wc32Api.Widgets.Buttons.WcButton btnLoad;
+        private Wc32Api.Widgets.Buttons.WcButton btnSave;
+        private Wc32Api.Widgets.Buttons.WcButton btnCancel;
         private System.Windows.Forms.Label lblCount;
         private Core.Libs.Widget.BorderTextBox tbFilter;
         private System.Windows.Forms.Label lblFilter;

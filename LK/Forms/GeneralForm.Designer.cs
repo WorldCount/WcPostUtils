@@ -77,11 +77,11 @@ namespace LK.Forms
             this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
             this.printerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelFilter = new System.Windows.Forms.Panel();
-            this.btnSync = new System.Windows.Forms.Button();
-            this.btnLoad = new System.Windows.Forms.Button();
+            this.btnSync = new Wc32Api.Widgets.Buttons.WcButton();
+            this.btnLoad = new Wc32Api.Widgets.Buttons.WcButton();
             this.labelDateOut = new System.Windows.Forms.Label();
             this.labelDateIn = new System.Windows.Forms.Label();
-            this.btnClearFilter = new System.Windows.Forms.Button();
+            this.btnClearFilter = new Wc32Api.Widgets.Buttons.WcButton();
             this.labelOrg = new System.Windows.Forms.Label();
             this.dateTimePickerOut = new System.Windows.Forms.DateTimePicker();
             this.dateTimePickerIn = new System.Windows.Forms.DateTimePicker();
@@ -144,14 +144,14 @@ namespace LK.Forms
             this.textBoxListOut = new System.Windows.Forms.TextBox();
             this.textBoxListIn = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnPrintReport = new System.Windows.Forms.Button();
-            this.btnReport = new System.Windows.Forms.Button();
-            this.btnUncheckAll = new System.Windows.Forms.Button();
-            this.btnCheckAll = new System.Windows.Forms.Button();
+            this.btnPrintReport = new Wc32Api.Widgets.Buttons.WcButton();
+            this.btnReport = new Wc32Api.Widgets.Buttons.WcButton();
+            this.btnUncheckAll = new Wc32Api.Widgets.Buttons.WcButton();
+            this.btnCheckAll = new Wc32Api.Widgets.Buttons.WcButton();
             this.checkBoxPrintPreview = new System.Windows.Forms.CheckBox();
             this.labelBarcode = new System.Windows.Forms.Label();
             this.tbBarcode = new System.Windows.Forms.TextBox();
-            this.btnTablePrint = new System.Windows.Forms.Button();
+            this.btnTablePrint = new Wc32Api.Widgets.Buttons.WcButton();
             this.imageListCheckBox = new System.Windows.Forms.ImageList(this.components);
             this.labelLicense = new System.Windows.Forms.Label();
             this.labelInfoLicense = new System.Windows.Forms.Label();
@@ -434,14 +434,19 @@ namespace LK.Forms
             // 
             this.btnSync.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSync.BackColor = System.Drawing.Color.OrangeRed;
+            this.btnSync.BorderColor = System.Drawing.Color.Silver;
+            this.btnSync.BorderRadius = 2;
+            this.btnSync.BorderThickness = 1F;
+            this.btnSync.DisabledBackColor = System.Drawing.Color.Gray;
             this.btnSync.FlatAppearance.BorderSize = 0;
-            this.btnSync.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.btnSync.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
             this.btnSync.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSync.ForeColor = System.Drawing.Color.White;
             this.btnSync.Image = global::LK.Properties.Resources.cloud_4_24;
-            this.btnSync.Location = new System.Drawing.Point(1221, 26);
+            this.btnSync.Location = new System.Drawing.Point(1219, 22);
             this.btnSync.Name = "btnSync";
-            this.btnSync.Size = new System.Drawing.Size(40, 40);
+            this.btnSync.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            this.btnSync.Size = new System.Drawing.Size(46, 46);
             this.btnSync.TabIndex = 18;
             this.btnSync.TabStop = false;
             this.btnSync.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -451,15 +456,20 @@ namespace LK.Forms
             // btnLoad
             // 
             this.btnLoad.BackColor = System.Drawing.Color.Brown;
+            this.btnLoad.BorderColor = System.Drawing.Color.Silver;
+            this.btnLoad.BorderRadius = 2;
+            this.btnLoad.BorderThickness = 1F;
+            this.btnLoad.DisabledBackColor = System.Drawing.Color.DimGray;
             this.btnLoad.FlatAppearance.BorderSize = 0;
-            this.btnLoad.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.btnLoad.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
             this.btnLoad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLoad.ForeColor = System.Drawing.Color.White;
             this.btnLoad.Image = global::LK.Properties.Resources.white_synchronize_24;
             this.btnLoad.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLoad.Location = new System.Drawing.Point(730, 26);
+            this.btnLoad.Location = new System.Drawing.Point(730, 22);
             this.btnLoad.Name = "btnLoad";
-            this.btnLoad.Size = new System.Drawing.Size(127, 40);
+            this.btnLoad.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            this.btnLoad.Size = new System.Drawing.Size(127, 46);
             this.btnLoad.TabIndex = 4;
             this.btnLoad.Text = "Загрузить";
             this.btnLoad.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -491,14 +501,19 @@ namespace LK.Forms
             // btnClearFilter
             // 
             this.btnClearFilter.BackColor = System.Drawing.Color.SlateGray;
+            this.btnClearFilter.BorderColor = System.Drawing.Color.Silver;
+            this.btnClearFilter.BorderRadius = 2;
+            this.btnClearFilter.BorderThickness = 1F;
+            this.btnClearFilter.DisabledBackColor = System.Drawing.Color.DimGray;
             this.btnClearFilter.FlatAppearance.BorderSize = 0;
-            this.btnClearFilter.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.btnClearFilter.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
             this.btnClearFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClearFilter.ForeColor = System.Drawing.Color.White;
             this.btnClearFilter.Image = global::LK.Properties.Resources.trash_2_24;
-            this.btnClearFilter.Location = new System.Drawing.Point(863, 26);
+            this.btnClearFilter.Location = new System.Drawing.Point(863, 22);
             this.btnClearFilter.Name = "btnClearFilter";
-            this.btnClearFilter.Size = new System.Drawing.Size(40, 40);
+            this.btnClearFilter.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            this.btnClearFilter.Size = new System.Drawing.Size(46, 46);
             this.btnClearFilter.TabIndex = 0;
             this.btnClearFilter.TabStop = false;
             this.btnClearFilter.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1198,15 +1213,20 @@ namespace LK.Forms
             // btnPrintReport
             // 
             this.btnPrintReport.BackColor = System.Drawing.Color.SlateGray;
+            this.btnPrintReport.BorderColor = System.Drawing.Color.Silver;
+            this.btnPrintReport.BorderRadius = 2;
+            this.btnPrintReport.BorderThickness = 1F;
+            this.btnPrintReport.DisabledBackColor = System.Drawing.Color.DimGray;
             this.btnPrintReport.FlatAppearance.BorderSize = 0;
-            this.btnPrintReport.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.btnPrintReport.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
             this.btnPrintReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPrintReport.ForeColor = System.Drawing.Color.White;
             this.btnPrintReport.Image = global::LK.Properties.Resources.Portable_Printer;
             this.btnPrintReport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPrintReport.Location = new System.Drawing.Point(456, 6);
+            this.btnPrintReport.Location = new System.Drawing.Point(456, 2);
             this.btnPrintReport.Name = "btnPrintReport";
-            this.btnPrintReport.Size = new System.Drawing.Size(172, 40);
+            this.btnPrintReport.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            this.btnPrintReport.Size = new System.Drawing.Size(172, 46);
             this.btnPrintReport.TabIndex = 17;
             this.btnPrintReport.Text = "Печать отчета";
             this.btnPrintReport.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1216,15 +1236,20 @@ namespace LK.Forms
             // btnReport
             // 
             this.btnReport.BackColor = System.Drawing.Color.SlateGray;
+            this.btnReport.BorderColor = System.Drawing.Color.Silver;
+            this.btnReport.BorderRadius = 2;
+            this.btnReport.BorderThickness = 1F;
+            this.btnReport.DisabledBackColor = System.Drawing.Color.DimGray;
             this.btnReport.FlatAppearance.BorderSize = 0;
-            this.btnReport.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.btnReport.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
             this.btnReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReport.ForeColor = System.Drawing.Color.White;
             this.btnReport.Image = global::LK.Properties.Resources.Invoice;
             this.btnReport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReport.Location = new System.Drawing.Point(343, 6);
+            this.btnReport.Location = new System.Drawing.Point(343, 2);
             this.btnReport.Name = "btnReport";
-            this.btnReport.Size = new System.Drawing.Size(107, 40);
+            this.btnReport.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            this.btnReport.Size = new System.Drawing.Size(107, 46);
             this.btnReport.TabIndex = 17;
             this.btnReport.Text = "Отчет";
             this.btnReport.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1234,15 +1259,20 @@ namespace LK.Forms
             // btnUncheckAll
             // 
             this.btnUncheckAll.BackColor = System.Drawing.Color.Gray;
+            this.btnUncheckAll.BorderColor = System.Drawing.Color.Silver;
+            this.btnUncheckAll.BorderRadius = 2;
+            this.btnUncheckAll.BorderThickness = 1F;
+            this.btnUncheckAll.DisabledBackColor = System.Drawing.Color.Gray;
             this.btnUncheckAll.FlatAppearance.BorderSize = 0;
-            this.btnUncheckAll.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.btnUncheckAll.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
             this.btnUncheckAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUncheckAll.ForeColor = System.Drawing.Color.White;
             this.btnUncheckAll.Image = ((System.Drawing.Image)(resources.GetObject("btnUncheckAll.Image")));
             this.btnUncheckAll.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnUncheckAll.Location = new System.Drawing.Point(763, 6);
+            this.btnUncheckAll.Location = new System.Drawing.Point(763, 2);
             this.btnUncheckAll.Name = "btnUncheckAll";
-            this.btnUncheckAll.Size = new System.Drawing.Size(40, 40);
+            this.btnUncheckAll.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            this.btnUncheckAll.Size = new System.Drawing.Size(46, 46);
             this.btnUncheckAll.TabIndex = 16;
             this.btnUncheckAll.UseVisualStyleBackColor = false;
             this.btnUncheckAll.Click += new System.EventHandler(this.btnUncheckAll_Click);
@@ -1250,15 +1280,20 @@ namespace LK.Forms
             // btnCheckAll
             // 
             this.btnCheckAll.BackColor = System.Drawing.Color.Gray;
+            this.btnCheckAll.BorderColor = System.Drawing.Color.Silver;
+            this.btnCheckAll.BorderRadius = 2;
+            this.btnCheckAll.BorderThickness = 1F;
+            this.btnCheckAll.DisabledBackColor = System.Drawing.Color.Gray;
             this.btnCheckAll.FlatAppearance.BorderSize = 0;
-            this.btnCheckAll.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.btnCheckAll.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
             this.btnCheckAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCheckAll.ForeColor = System.Drawing.Color.White;
             this.btnCheckAll.Image = ((System.Drawing.Image)(resources.GetObject("btnCheckAll.Image")));
             this.btnCheckAll.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCheckAll.Location = new System.Drawing.Point(717, 6);
+            this.btnCheckAll.Location = new System.Drawing.Point(717, 2);
             this.btnCheckAll.Name = "btnCheckAll";
-            this.btnCheckAll.Size = new System.Drawing.Size(40, 40);
+            this.btnCheckAll.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            this.btnCheckAll.Size = new System.Drawing.Size(46, 46);
             this.btnCheckAll.TabIndex = 15;
             this.btnCheckAll.UseVisualStyleBackColor = false;
             this.btnCheckAll.Click += new System.EventHandler(this.btnCheckAll_Click);
@@ -1318,16 +1353,21 @@ namespace LK.Forms
             // btnTablePrint
             // 
             this.btnTablePrint.BackColor = System.Drawing.Color.SlateGray;
+            this.btnTablePrint.BorderColor = System.Drawing.Color.Silver;
+            this.btnTablePrint.BorderRadius = 2;
+            this.btnTablePrint.BorderThickness = 1F;
+            this.btnTablePrint.DisabledBackColor = System.Drawing.Color.DimGray;
             this.btnTablePrint.Enabled = false;
             this.btnTablePrint.FlatAppearance.BorderSize = 0;
-            this.btnTablePrint.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.btnTablePrint.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
             this.btnTablePrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTablePrint.ForeColor = System.Drawing.Color.White;
             this.btnTablePrint.Image = global::LK.Properties.Resources.Printer;
             this.btnTablePrint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnTablePrint.Location = new System.Drawing.Point(224, 6);
+            this.btnTablePrint.Location = new System.Drawing.Point(224, 2);
             this.btnTablePrint.Name = "btnTablePrint";
-            this.btnTablePrint.Size = new System.Drawing.Size(113, 40);
+            this.btnTablePrint.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            this.btnTablePrint.Size = new System.Drawing.Size(113, 46);
             this.btnTablePrint.TabIndex = 14;
             this.btnTablePrint.Text = "Печать";
             this.btnTablePrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1860,11 +1900,11 @@ namespace LK.Forms
         private System.Windows.Forms.Label labelMailCategory;
         private System.Windows.Forms.Label labelMailType;
         private System.Windows.Forms.ToolStripMenuItem statusToolStripMenuItem;
-        private System.Windows.Forms.Button btnLoad;
+        private Wc32Api.Widgets.Buttons.WcButton btnLoad;
         private System.Windows.Forms.ToolStripMenuItem colorsToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.Button btnTablePrint;
+        private Wc32Api.Widgets.Buttons.WcButton btnTablePrint;
         private System.Windows.Forms.ToolStripMenuItem configToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem tarifsToolStripMenuItem;
@@ -1885,7 +1925,7 @@ namespace LK.Forms
         private System.Windows.Forms.Label labelClass;
         private System.Windows.Forms.ComboBox comboBoxListClass;
         private System.Windows.Forms.CheckBox checkBoxPrintPreview;
-        private System.Windows.Forms.Button btnClearFilter;
+        private Wc32Api.Widgets.Buttons.WcButton btnClearFilter;
         private System.Windows.Forms.Label labelOperator;
         private System.Windows.Forms.ComboBox comboBoxOperator;
         private System.Windows.Forms.Label labelLicense;
@@ -1894,10 +1934,10 @@ namespace LK.Forms
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem checkAllToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem uncheckAllToolStripMenuItem;
-        private System.Windows.Forms.Button btnUncheckAll;
-        private System.Windows.Forms.Button btnCheckAll;
+        private Wc32Api.Widgets.Buttons.WcButton btnUncheckAll;
+        private Wc32Api.Widgets.Buttons.WcButton btnCheckAll;
         private System.Windows.Forms.ImageList imageListCheckBox;
-        private System.Windows.Forms.Button btnReport;
+        private Wc32Api.Widgets.Buttons.WcButton btnReport;
         private System.Windows.Forms.ToolStripMenuItem reportsToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
         private System.Windows.Forms.ToolStripMenuItem checkFirmListStripMenuItem;
@@ -1905,8 +1945,8 @@ namespace LK.Forms
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
         private System.Windows.Forms.ToolStripMenuItem inverseCheckToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
-        private System.Windows.Forms.Button btnPrintReport;
-        private System.Windows.Forms.Button btnSync;
+        private Wc32Api.Widgets.Buttons.WcButton btnPrintReport;
+        private Wc32Api.Widgets.Buttons.WcButton btnSync;
         private System.Windows.Forms.ToolStripMenuItem setHandToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator11;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator12;

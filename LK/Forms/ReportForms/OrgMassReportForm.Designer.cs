@@ -48,8 +48,8 @@
             this.labelInter = new System.Windows.Forms.Label();
             this.labelUnkown = new System.Windows.Forms.Label();
             this.labelCity = new System.Windows.Forms.Label();
-            this.btnPrint = new System.Windows.Forms.Button();
-            this.btnClose = new System.Windows.Forms.Button();
+            this.btnPrint = new Wc32Api.Widgets.Buttons.WcButton();
+            this.btnClose = new Wc32Api.Widgets.Buttons.WcButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -259,6 +259,10 @@
             // 
             this.btnPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPrint.BackColor = System.Drawing.Color.SeaGreen;
+            this.btnPrint.BorderColor = System.Drawing.Color.Silver;
+            this.btnPrint.BorderRadius = 4;
+            this.btnPrint.BorderThickness = 1F;
+            this.btnPrint.DisabledBackColor = System.Drawing.Color.Gray;
             this.btnPrint.FlatAppearance.BorderSize = 0;
             this.btnPrint.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
             this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -266,9 +270,10 @@
             this.btnPrint.ForeColor = System.Drawing.Color.White;
             this.btnPrint.Image = global::LK.Properties.Resources.Printer;
             this.btnPrint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPrint.Location = new System.Drawing.Point(546, 408);
+            this.btnPrint.Location = new System.Drawing.Point(546, 403);
             this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(120, 40);
+            this.btnPrint.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            this.btnPrint.Size = new System.Drawing.Size(120, 46);
             this.btnPrint.TabIndex = 28;
             this.btnPrint.Text = "Печать";
             this.btnPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -279,6 +284,10 @@
             // 
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnClose.BackColor = System.Drawing.Color.Firebrick;
+            this.btnClose.BorderColor = System.Drawing.Color.Silver;
+            this.btnClose.BorderRadius = 4;
+            this.btnClose.BorderThickness = 1F;
+            this.btnClose.DisabledBackColor = System.Drawing.Color.Gray;
             this.btnClose.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
@@ -287,9 +296,10 @@
             this.btnClose.ForeColor = System.Drawing.Color.White;
             this.btnClose.Image = global::LK.Properties.Resources.close_window_24;
             this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.Location = new System.Drawing.Point(672, 408);
+            this.btnClose.Location = new System.Drawing.Point(672, 403);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(120, 40);
+            this.btnClose.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            this.btnClose.Size = new System.Drawing.Size(120, 46);
             this.btnClose.TabIndex = 27;
             this.btnClose.Text = "Закрыть";
             this.btnClose.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -348,7 +358,7 @@
         private System.Windows.Forms.Label labelInter;
         private System.Windows.Forms.Label labelUnkown;
         private System.Windows.Forms.Label labelCity;
-        private System.Windows.Forms.Button btnPrint;
-        private System.Windows.Forms.Button btnClose;
+        private Wc32Api.Widgets.Buttons.WcButton btnPrint;
+        private Wc32Api.Widgets.Buttons.WcButton btnClose;
     }
 }
