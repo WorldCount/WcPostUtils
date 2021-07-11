@@ -78,7 +78,7 @@ namespace LK.Forms
         private async void Work()
         {
 
-            int maxInit = 12;
+            int maxInit = 13;
 
             SetInfo("Инициализация БД...", 0, maxInit);
             try
