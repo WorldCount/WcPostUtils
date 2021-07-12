@@ -310,5 +310,17 @@ namespace LK.Properties {
                 this["FirmFieldsFile"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("rpoFields.xml")]
+        public string RpoFieldsFile {
+            get {
+                return ((string)(this["RpoFieldsFile"]));
+            }
+            set {
+                this["RpoFieldsFile"] = value;
+            }
+        }
     }
 }

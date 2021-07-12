@@ -1459,5 +1459,11 @@ namespace LK.Forms
             FirmRowForm firmRowForm = new FirmRowForm();
             firmRowForm.ShowDialog(this);
         }
+
+        private void parseRpoConfigMenuItem_Click(object sender, EventArgs e)
+        {
+            RpoRowForm rpoRowForm = new RpoRowForm();
+            rpoRowForm.ShowDialog(this);
+        }
     }
 }

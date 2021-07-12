@@ -1565,11 +1565,11 @@ namespace LK.Forms
             // 
             // parseRpoConfigMenuItem
             // 
-            this.parseRpoConfigMenuItem.Enabled = false;
             this.parseRpoConfigMenuItem.Image = global::LK.Properties.Resources.File_Excel;
             this.parseRpoConfigMenuItem.Name = "parseRpoConfigMenuItem";
             this.parseRpoConfigMenuItem.Size = new System.Drawing.Size(258, 28);
             this.parseRpoConfigMenuItem.Text = "Парсинг РПО";
+            this.parseRpoConfigMenuItem.Click += new System.EventHandler(this.parseRpoConfigMenuItem_Click);
             // 
             // transMenuItem
             // 

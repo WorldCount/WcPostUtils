@@ -114,6 +114,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\Libs\Configs\ConfigRowRpoType.cs" />
+    <Compile Include="Core\Libs\Configs\ConfigRpoField.cs" />
     <Compile Include="Core\Libs\DataReports\ValueReport.cs" />
     <Compile Include="Core\Libs\Extension\StringExtensions.cs" />
     <Compile Include="Core\Libs\PrintDocuments\MassReportPrintDocument.cs">
@@ -196,6 +198,7 @@
     <Compile Include="Core\Libs\TarifManager\Tarif\NoticeTarif.cs" />
     <Compile Include="Core\PathManager.cs" />
     <Compile Include="Core\Store\Manager\ConfigFirmFieldManager.cs" />
+    <Compile Include="Core\Store\Manager\ConfigRpoFieldManager.cs" />
     <Compile Include="Core\Store\Manager\FirmListManager.cs" />
     <Compile Include="Core\Store\Manager\FirmManager.cs" />
     <Compile Include="Core\Store\Manager\MailCategoryManager.cs" />
@@ -209,6 +212,12 @@
     </Compile>
     <Compile Include="Forms\ConfigForms\AuthForm.Designer.cs">
       <DependentUpon>AuthForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ConfigForms\RpoRowForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ConfigForms\RpoRowForm.Designer.cs">
+      <DependentUpon>RpoRowForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\ConfigForms\FirmRowForm.cs">
       <SubType>Form</SubType>
@@ -403,6 +412,9 @@
     <None Include="Resources\cat_license.png" />
     <EmbeddedResource Include="Forms\ConfigForms\AuthForm.resx">
       <DependentUpon>AuthForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ConfigForms\RpoRowForm.resx">
+      <DependentUpon>RpoRowForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ConfigForms\FirmRowForm.resx">
       <DependentUpon>FirmRowForm.cs</DependentUpon>

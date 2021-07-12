@@ -53,6 +53,7 @@ namespace LK.Forms
         private readonly FirmManager _firmManager = new FirmManager();
         private readonly OperatorManager _operatorManager = new OperatorManager();
         private readonly ConfigFirmFieldManager _configFirmFieldManager;
+        private readonly ConfigRpoFieldManager _configRpoFieldManager;
 
         #endregion
 
@@ -68,6 +69,7 @@ namespace LK.Forms
             _reportOutDate = outDate;
 
             _configFirmFieldManager = new ConfigFirmFieldManager();
+            _configRpoFieldManager = new ConfigRpoFieldManager();
 
             string inD = _reportInDate.ToString("dd.MM.yyyy");
             string outD = _reportOutDate.ToString("dd.MM.yyyy");
@@ -101,6 +103,9 @@ namespace LK.Forms
         {
             _configFirmFieldManager.Load();
             _configFirmFieldManager.DecrementRowNum();
+
+            _configRpoFieldManager.Load();
+            _configRpoFieldManager.DecrementRowNum();
 
             Work();
         }
@@ -252,7 +257,7 @@ namespace LK.Forms
 
                 try
                 {
-                    RawRpoData raw = new RawRpoData(row);
+                    RawRpoData raw = new RawRpoData(row, _configRpoFieldManager);
 
                     if (raw.Parse() == false)
                     {

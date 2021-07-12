@@ -2,6 +2,7 @@
 using System.Text.RegularExpressions;
 using LK.Core.Models.DB;
 using LK.Core.Models.Types;
+using LK.Core.Store.Manager;
 using NPOI.SS.UserModel;
 
 namespace LK.Core.Models.Raw
@@ -9,7 +10,7 @@ namespace LK.Core.Models.Raw
     public class RawRpoData : IDisposable
     {
         private IRow _row;
-
+        private ConfigRpoFieldManager _cm;
         public Exception Exception { get; set; }
 
         #region Public
@@ -41,9 +42,10 @@ namespace LK.Core.Models.Raw
 
         #endregion
 
-        public RawRpoData(IRow row)
+        public RawRpoData(IRow row, ConfigRpoFieldManager cm)
         {
             _row = row;
+            _cm = cm;
         }
 
         public bool Parse()
@@ -71,26 +73,26 @@ namespace LK.Core.Models.Raw
         {
             try
             {
-                Barcode = _row.GetCell(6, MissingCellPolicy.RETURN_BLANK_AS_NULL).ToString().Trim();
-                Type = _row.GetCell(7, MissingCellPolicy.RETURN_BLANK_AS_NULL).ToString().Trim();
-                Category = _row.GetCell(8, MissingCellPolicy.RETURN_BLANK_AS_NULL).ToString().Trim();
+                Barcode = _row.GetCell(_cm.Barcode.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).ToString().Trim();
+                Type = _row.GetCell(_cm.Type.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).ToString().Trim();
+                Category = _row.GetCell(_cm.Category.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).ToString().Trim();
 
-                MassRate = _row.GetCell(9, MissingCellPolicy.RETURN_BLANK_AS_NULL).NumericCellValue / 100;
-                NoticeRate = _row.GetCell(10, MissingCellPolicy.RETURN_BLANK_AS_NULL).NumericCellValue / 100;
-                AviaRate = _row.GetCell(11, MissingCellPolicy.RETURN_BLANK_AS_NULL).NumericCellValue / 100;
-                Value = _row.GetCell(12, MissingCellPolicy.RETURN_BLANK_AS_NULL).NumericCellValue / 100;
-                ValueRate = _row.GetCell(13, MissingCellPolicy.RETURN_BLANK_AS_NULL).NumericCellValue / 100;
+                MassRate = _row.GetCell(_cm.MassRate.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).NumericCellValue / 100;
+                NoticeRate = _row.GetCell(_cm.NoticeRate.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).NumericCellValue / 100;
+                AviaRate = _row.GetCell(_cm.AviaRate.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).NumericCellValue / 100;
+                Value = _row.GetCell(_cm.Value.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).NumericCellValue / 100;
+                ValueRate = _row.GetCell(_cm.ValueRate.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).NumericCellValue / 100;
 
-                Status = _row.GetCell(14, MissingCellPolicy.RETURN_BLANK_AS_NULL).ToString().Trim();
-                Reason = _row.GetCell(15, MissingCellPolicy.RETURN_BLANK_AS_NULL).ToString().Trim();
-                ReceptDate = _row.GetCell(16, MissingCellPolicy.RETURN_BLANK_AS_NULL).DateCellValue;
+                Status = _row.GetCell(_cm.Status.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).ToString().Trim();
+                Reason = _row.GetCell(_cm.StatusMessage.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).ToString().Trim();
+                ReceptDate = _row.GetCell(_cm.ReceptDate.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).DateCellValue;
 
-                string o = _row.GetCell(17, MissingCellPolicy.RETURN_BLANK_AS_NULL).ToString().Trim();
+                string o = _row.GetCell(_cm.Oper.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).ToString().Trim();
                 Operator = o.Contains("  ") ? Regex.Replace(o, "[ ]+", " ") : o;
 
-                OpsIndex = _row.GetCell(18, MissingCellPolicy.RETURN_BLANK_AS_NULL).ToString().Trim();
-                IndexTo = _row.GetCell(19, MissingCellPolicy.RETURN_BLANK_AS_NULL).ToString().Trim();
-                Address = _row.GetCell(20, MissingCellPolicy.RETURN_BLANK_AS_NULL).ToString().Trim();
+                OpsIndex = _row.GetCell(_cm.Ops.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).ToString().Trim();
+                IndexTo = _row.GetCell(_cm.Index.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).ToString().Trim();
+                Address = _row.GetCell(_cm.Address.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).ToString().Trim();
             }
             catch (Exception e)
             {

@@ -181,20 +181,20 @@ namespace LK.Core.Store.Manager
 
             Type = new ConfigFirmField {Desc = "Вид ПО", NumColumn = 8, Type = ConfigRowFirmType.Type };
             Category = new ConfigFirmField {Desc = "Категория ПО", NumColumn = 9, Type = ConfigRowFirmType.Category };
-            AllCount = new ConfigFirmField {Desc = "Количество отправлений в списке", NumColumn = 10, Type = ConfigRowFirmType.AllCount };
-            FactCount = new ConfigFirmField {Desc = "Количество отсканированных отправлений", NumColumn = 11, Type = ConfigRowFirmType.FactCount };
-            ReturnCount = new ConfigFirmField {Desc = "Количество отправлений на возврат", NumColumn = 12, Type = ConfigRowFirmType.ReturnCount };
-            MissCount = new ConfigFirmField {Desc = "Отсутствует отпрвлений", NumColumn = 13, Type = ConfigRowFirmType.MissCount };
+            AllCount = new ConfigFirmField {Desc = "Количество отправлений в списке", NumColumn = 11, Type = ConfigRowFirmType.AllCount };
+            FactCount = new ConfigFirmField {Desc = "Количество отсканированных отправлений", NumColumn = 12, Type = ConfigRowFirmType.FactCount };
+            ReturnCount = new ConfigFirmField {Desc = "Количество отправлений на возврат", NumColumn = 13, Type = ConfigRowFirmType.ReturnCount };
+            MissCount = new ConfigFirmField {Desc = "Отсутствует отпрвлений", NumColumn = 14, Type = ConfigRowFirmType.MissCount };
 
-            MassRate = new ConfigFirmField {Desc = "Сумма весового сбора", NumColumn = 14, Type = ConfigRowFirmType.MassRate };
-            AviaRate = new ConfigFirmField {Desc = "Сумма авиатарифа", NumColumn = 15, Type = ConfigRowFirmType.AviaRate };
-            Value = new ConfigFirmField {Desc = "Сумма объявленной ценности", NumColumn = 16, Type = ConfigRowFirmType.Value };
-            ValueRate = new ConfigFirmField {Desc = "Сумма платы за объявленную ценность", NumColumn = 17, Type = ConfigRowFirmType.ValueRate };
+            MassRate = new ConfigFirmField {Desc = "Сумма весового сбора", NumColumn = 15, Type = ConfigRowFirmType.MassRate };
+            AviaRate = new ConfigFirmField {Desc = "Сумма авиатарифа", NumColumn = 16, Type = ConfigRowFirmType.AviaRate };
+            Value = new ConfigFirmField {Desc = "Сумма объявленной ценности", NumColumn = 17, Type = ConfigRowFirmType.Value };
+            ValueRate = new ConfigFirmField {Desc = "Сумма платы за объявленную ценность", NumColumn = 18, Type = ConfigRowFirmType.ValueRate };
 
-            ReceptDate = new ConfigFirmField {Desc = "Дата приема списка", NumColumn = 18, Type = ConfigRowFirmType.ReceptDate };
+            ReceptDate = new ConfigFirmField {Desc = "Дата приема списка", NumColumn = 19, Type = ConfigRowFirmType.ReceptDate };
 
-            Oper = new ConfigFirmField {Desc = "ФИО оператора", NumColumn = 19, Type = ConfigRowFirmType.Operator };
-            OpsIndex = new ConfigFirmField {Desc = "Индекс ОПС", NumColumn = 20, Type = ConfigRowFirmType.OpsIndex };
+            Oper = new ConfigFirmField {Desc = "ФИО оператора", NumColumn = 20, Type = ConfigRowFirmType.Operator };
+            OpsIndex = new ConfigFirmField {Desc = "Индекс ОПС", NumColumn = 21, Type = ConfigRowFirmType.OpsIndex };
 
             configFirmFields.AddRange(new List<ConfigFirmField>
             {

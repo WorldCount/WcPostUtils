@@ -551,7 +551,7 @@ namespace LK.Core.Store
 
             string q = sb.ToString();
 
-            Logger.Debug(q);
+            //Logger.Debug(q);
 
             List<FirmList> firmLists = new List<FirmList>();
 
