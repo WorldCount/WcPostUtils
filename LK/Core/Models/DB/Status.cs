@@ -1,13 +1,11 @@
-﻿using SQLite;
-
-namespace LK.Core.Models.DB
+﻿namespace LK.Core.Models.DB
 {
     public class Status
     {
-        [PrimaryKey, AutoIncrement]
+        [SQLite.PrimaryKey, SQLite.AutoIncrement]
         public int Id { get; set; }
 
-        [Indexed]
+        [SQLite.Indexed]
         public string Name { get; set; }
     }
 }

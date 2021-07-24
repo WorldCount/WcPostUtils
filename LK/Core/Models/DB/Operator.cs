@@ -1,15 +1,14 @@
 ﻿using System.Collections.Generic;
-using SQLite;
 using SQLiteNetExtensions.Attributes;
 
 namespace LK.Core.Models.DB
 {
     public class Operator
     {
-        [PrimaryKey, AutoIncrement]
+        [SQLite.PrimaryKey, SQLite.AutoIncrement]
         public int Id { get; set; }
 
-        [Indexed] 
+        [SQLite.Indexed] 
         public string FullName { get; set; } = "";
 
         public string LastName { get; set; } = "";
@@ -52,9 +51,9 @@ namespace LK.Core.Models.DB
         }
 
         [OneToMany(CascadeOperations = CascadeOperation.All)]
-        public virtual List<FirmList> FirmLists { get; set; } = new List<FirmList>();
+        public List<FirmList> FirmLists { get; set; } = new List<FirmList>();
 
         [OneToMany(CascadeOperations = CascadeOperation.All)]
-        public virtual List<Rpo> Rpos { get; set; } = new List<Rpo>();
+        public List<Rpo> Rpos { get; set; } = new List<Rpo>();
     }
 }

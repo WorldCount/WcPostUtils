@@ -456,6 +456,9 @@ namespace LK.Forms
             if (!string.IsNullOrEmpty(eNum))
                 endNum = int.Parse(eNum);
 
+            if(firm == null)
+                return;
+
             FirmListFilter firmListFilter = new FirmListFilter
             {
                 StartDate = dateTimePickerIn.Value,

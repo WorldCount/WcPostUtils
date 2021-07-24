@@ -189,7 +189,7 @@ namespace LK.Core.Store
             {
                 using (var db = DbConnect.GetConnection())
                 {
-                    db.Delete(firms);
+                    db.DeleteAll(firms, recursive: true);
                 }
             }
             catch (Exception e)

@@ -2,22 +2,21 @@
 using System.Collections.Generic;
 using LK.Core.Libs.TarifManager.PostTypes;
 using LK.Core.Models.Types;
-using SQLite;
 using SQLiteNetExtensions.Attributes;
 
 namespace LK.Core.Models.DB
 {
     public class FirmList
     {
-        [PrimaryKey, AutoIncrement]
+        [SQLite.PrimaryKey, SQLite.AutoIncrement]
         public int Id { get; set; }
 
-        [Ignore] public virtual bool Check { get; set; } = true;
+        [SQLite.Ignore] public virtual bool Check { get; set; } = true;
 
-        [Indexed]
+        [SQLite.Indexed]
         public DateTime Date { get; set; }
 
-        [Indexed]
+        [SQLite.Indexed]
         public int Num { get; set; }
 
         public int MailCategory { get; set; }
@@ -46,25 +45,23 @@ namespace LK.Core.Models.DB
         #region Отношения
 
         [OneToMany(CascadeOperations = CascadeOperation.All)]
-        public virtual List<Rpo> Rpos { get; set; } = new List<Rpo>();
+        public List<Rpo> Rpos { get; set; } = new List<Rpo>();
 
-
-        [ForeignKey(typeof(Firm)), Indexed]
+        [ForeignKey(typeof(Firm)), SQLite.Indexed]
         public int FirmId { get; set; }
 
         [ManyToOne(CascadeOperations = CascadeOperation.All)]
-        public virtual Firm Firm { get; set; }
-
+        public Firm Firm { get; set; }
 
         [ForeignKey(typeof(Operator))]
         public int OperatorId { get; set; }
 
         [ManyToOne(CascadeOperations = CascadeOperation.All)]
-        public virtual Operator Operator { get; set; }
+        public Operator Operator { get; set; }
 
         #endregion
 
-        [Ignore]
+        [SQLite.Ignore]
         public string MailClassName
         {
             get
@@ -75,7 +72,7 @@ namespace LK.Core.Models.DB
             }
         }
 
-        [Ignore]
+        [SQLite.Ignore]
         public string PostMarkName
         {
             get
@@ -96,7 +93,7 @@ namespace LK.Core.Models.DB
             }
         }
 
-        [Ignore]
+        [SQLite.Ignore]
         public string OperatorName
         {
             get
@@ -107,7 +104,7 @@ namespace LK.Core.Models.DB
             }
         }
 
-        [Ignore]
+        [SQLite.Ignore]
         public string FirmName
         {
             get

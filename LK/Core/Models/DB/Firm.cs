@@ -1,30 +1,30 @@
 ﻿using System.Collections.Generic;
-using SQLite;
 using SQLiteNetExtensions.Attributes;
 
 namespace LK.Core.Models.DB
 {
     public class Firm
     {
-        [PrimaryKey, AutoIncrement]
+        [SQLite.PrimaryKey, SQLite.AutoIncrement]
         public int Id { get; set; }
 
-        [Ignore] public virtual bool Check { get; set; } = false;
+        [SQLite.Ignore] public virtual bool Check { get; set; } = false;
 
         public string Name { get; set; }
 
         public string ShortName { get; set; }
 
-        [Indexed]
+        [SQLite.Indexed]
         public string Inn { get; set; }
 
-        [Indexed]
+        [SQLite.Indexed]
         public string Kpp { get; set; }
 
+        [SQLite.Indexed]
         public string Contract { get; set; }
 
         [OneToMany(CascadeOperations = CascadeOperation.All)]
-        public virtual List<FirmList> FirmLists { get; set; } = new List<FirmList>();
+        public List<FirmList> FirmLists { get; set; } = new List<FirmList>();
 
         public override string ToString()
         {

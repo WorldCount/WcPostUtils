@@ -187,7 +187,7 @@
             this.toolStripSeparator1,
             this.removeSelectMenuItem});
             this.contextMenu.Name = "contextMenu";
-            this.contextMenu.Size = new System.Drawing.Size(227, 88);
+            this.contextMenu.Size = new System.Drawing.Size(227, 110);
             // 
             // toolStripSeparator2
             // 
@@ -216,7 +216,6 @@
             // 
             // removeSelectMenuItem
             // 
-            this.removeSelectMenuItem.Enabled = false;
             this.removeSelectMenuItem.Name = "removeSelectMenuItem";
             this.removeSelectMenuItem.Size = new System.Drawing.Size(226, 24);
             this.removeSelectMenuItem.Text = "Удалить выделенные";

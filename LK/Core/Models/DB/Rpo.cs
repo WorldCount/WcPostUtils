@@ -1,14 +1,13 @@
 ﻿using System;
 using LK.Core.Libs.TarifManager.PostTypes;
 using LK.Core.Models.Types;
-using SQLite;
 using SQLiteNetExtensions.Attributes;
 
 namespace LK.Core.Models.DB
 {
     public class Rpo
     {
-        [PrimaryKey, AutoIncrement]
+        [SQLite.PrimaryKey, SQLite.AutoIncrement]
         public int Id { get; set; }
 
         public string Barcode { get; set; }
@@ -43,17 +42,17 @@ namespace LK.Core.Models.DB
         public int StatusId { get; set; }
 
         [OneToMany(CascadeOperations = CascadeOperation.All)]
-        public virtual Status Status { get; set; }
+        public Status Status { get; set; }
 
         [ForeignKey(typeof(Operator))]
         public int OperatorId { get; set; }
 
         [OneToMany(CascadeOperations = CascadeOperation.All)]
-        public virtual Operator Operator { get; set; }
+        public Operator Operator { get; set; }
 
         #endregion
 
-        [Ignore]
+        [SQLite.Ignore]
         public string MailClassName
         {
             get
@@ -64,10 +63,10 @@ namespace LK.Core.Models.DB
             }
         }
 
-        [Ignore]
+        [SQLite.Ignore]
         public string DateName => ReceptionDate.ToShortDateString();
 
-        [Ignore]
+        [SQLite.Ignore]
         public DateTime ReceptionDateTrim => new DateTime(ReceptionDate.Year, ReceptionDate.Month, ReceptionDate.Day);
 
         #region Методы
