@@ -15,14 +15,14 @@ namespace LK.Core.Store.Manager
             _firms = Database.GetFirms();
         }
 
-        public Firm GetFirm(string inn, string kpp)
+        public Firm GetFirm(string inn, string kpp, string contract)
         {
-            return _firms.FirstOrDefault(f => f.Inn == inn && f.Kpp == kpp);
+            return _firms.FirstOrDefault(f => f.Inn == inn && f.Kpp == kpp && f.Contract == contract);
         }
 
         public Firm GetOrCreateFirm(string inn, string kpp, string name, string contract)
         {
-            Firm firm = GetFirm(inn, kpp);
+            Firm firm = GetFirm(inn, kpp, contract);
 
             if (firm == null)
             {
@@ -31,19 +31,6 @@ namespace LK.Core.Store.Manager
                 {
                     db.Insert(firm);
                     _firms = db.Table<Firm>().ToList();
-                }
-            }
-            else
-            {
-                if (firm.Contract != contract)
-                {
-                    firm.Contract = contract;
-
-                    using (var db = DbConnect.GetConnection())
-                    {
-                        db.Update(firm);
-                        _firms = db.Table<Firm>().ToList();
-                    }
                 }
             }
 

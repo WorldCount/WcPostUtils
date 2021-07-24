@@ -18,6 +18,7 @@ namespace LK.Core.Models.Raw
         public int Num { get; private set; }
         public string Inn { get; private set; }
         public string Kpp { get; private set; }
+        public string Contract { get; private set; }
 
         public DateTime Date { get; private set; }
         public DateTime ReceptDate { get; private set; }
@@ -53,12 +54,13 @@ namespace LK.Core.Models.Raw
             try
             {
                 // Список
-                Date = _row.GetCell(0, MissingCellPolicy.RETURN_BLANK_AS_NULL).DateCellValue;
-                Num = (int) _row.GetCell(1, MissingCellPolicy.RETURN_BLANK_AS_NULL).NumericCellValue;
+                Date = _row.GetCell(_cm.ListDate.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).DateCellValue;
+                Num = (int) _row.GetCell(_cm.ListNum.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).NumericCellValue;
 
                 // Организация
-                Inn = _row.GetCell(3, MissingCellPolicy.RETURN_BLANK_AS_NULL).ToString().Trim();
-                Kpp = _row.GetCell(4, MissingCellPolicy.RETURN_BLANK_AS_NULL).ToString().Trim();
+                Inn = _row.GetCell(_cm.Inn.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).ToString().Trim();
+                Kpp = _row.GetCell(_cm.Kpp.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).ToString().Trim();
+                Contract = _row.GetCell(_cm.Contract.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).ToString().Trim();
             }
             catch (Exception e)
             {

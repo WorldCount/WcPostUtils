@@ -9,6 +9,8 @@ namespace LK.Core.Models.DB
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
 
+        [Ignore] public virtual bool Check { get; set; } = false;
+
         public string Name { get; set; }
 
         public string ShortName { get; set; }

@@ -183,6 +183,26 @@ namespace LK.Core.Store
             return Task.Run(GetFirms);
         }
 
+        public static void DeleteFirms(List<Firm> firms)
+        {
+            try
+            {
+                using (var db = DbConnect.GetConnection())
+                {
+                    db.Delete(firms);
+                }
+            }
+            catch (Exception e)
+            {
+                Logger.Error(e.Message);
+            }
+        }
+
+        public static Task DeleteFirmsAsync(List<Firm> firms)
+        {
+            return Task.Run(() => DeleteFirms(firms));
+        }
+
         #endregion
 
         #region Запросы по типам

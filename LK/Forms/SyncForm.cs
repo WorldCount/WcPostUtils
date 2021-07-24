@@ -265,11 +265,11 @@ namespace LK.Forms
                         continue;
                     }
 
-                    Firm firm = _firmManager.GetFirm(raw.Inn, raw.Kpp);
+                    Firm firm = _firmManager.GetFirm(raw.Inn, raw.Kpp, raw.Contract);
 
                     if (firm is null)
                     {
-                        Logger.Error($"Не удалось получить данные по организации: Inn = '{raw.Inn}', Kpp = '{raw.Kpp}'");
+                        Logger.Error($"Не удалось получить данные по организации: Inn = '{raw.Inn}', Kpp = '{raw.Kpp}', Contract = '{raw.Contract}'");
                         continue;
                     }
 

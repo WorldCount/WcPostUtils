@@ -471,13 +471,9 @@ namespace LK.Forms
 
                 MailClass = (MailClass) Enum.Parse(typeof(MailClass), mailClass),
                 ErrorType = (ErrorType) Enum.Parse(typeof(ErrorType), errorType),
-
             };
 
-            //_firmLists = Database.GetFirmsList(firmListFilter);
-            //_firmLists = new List<FirmList>();
             _firmLists = Database.GetFirmsListManual(firmListFilter);
-            //var d = Database.GetFirmsListManual(firmListFilter);
 
             _checkAllFlag = true;
 

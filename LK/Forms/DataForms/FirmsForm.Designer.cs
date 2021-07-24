@@ -35,11 +35,18 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FirmsForm));
             this.labelInfo = new System.Windows.Forms.Label();
             this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.checkDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.shortNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.innDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.kppDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contractDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.checkAllMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.uncheckAllMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.removeSelectMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.firmBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lblCount = new System.Windows.Forms.Label();
             this.lblFilter = new System.Windows.Forms.Label();
@@ -48,6 +55,7 @@
             this.btnUpdate = new Wc32Api.Widgets.Buttons.WcButton();
             this.tbFilter = new LK.Core.Libs.Widget.BorderTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
+            this.contextMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.firmBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -84,11 +92,13 @@
             this.dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView.ColumnHeadersHeight = 40;
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.checkDataGridViewCheckBoxColumn,
             this.nameDataGridViewTextBoxColumn,
             this.shortNameDataGridViewTextBoxColumn,
             this.innDataGridViewTextBoxColumn,
             this.kppDataGridViewTextBoxColumn,
             this.contractDataGridViewTextBoxColumn});
+            this.dataGridView.ContextMenuStrip = this.contextMenu;
             this.dataGridView.DataSource = this.firmBindingSource;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
@@ -119,6 +129,17 @@
             this.dataGridView.ShowRowErrors = false;
             this.dataGridView.Size = new System.Drawing.Size(860, 325);
             this.dataGridView.TabIndex = 19;
+            this.dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellClick);
+            this.dataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellDoubleClick);
+            this.dataGridView.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView_CellMouseUp);
+            this.dataGridView.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridView_CellPainting);
+            this.dataGridView.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView_ColumnHeaderMouseClick);
+            // 
+            // checkDataGridViewCheckBoxColumn
+            // 
+            this.checkDataGridViewCheckBoxColumn.DataPropertyName = "Check";
+            this.checkDataGridViewCheckBoxColumn.HeaderText = "Отм";
+            this.checkDataGridViewCheckBoxColumn.Name = "checkDataGridViewCheckBoxColumn";
             // 
             // nameDataGridViewTextBoxColumn
             // 
@@ -153,6 +174,53 @@
             this.contractDataGridViewTextBoxColumn.HeaderText = "Договор";
             this.contractDataGridViewTextBoxColumn.Name = "contractDataGridViewTextBoxColumn";
             this.contractDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // contextMenu
+            // 
+            this.contextMenu.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.contextMenu.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.contextMenu.ImageScalingSize = new System.Drawing.Size(32, 32);
+            this.contextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripSeparator2,
+            this.checkAllMenuItem,
+            this.uncheckAllMenuItem,
+            this.toolStripSeparator1,
+            this.removeSelectMenuItem});
+            this.contextMenu.Name = "contextMenu";
+            this.contextMenu.Size = new System.Drawing.Size(227, 88);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(223, 6);
+            // 
+            // checkAllMenuItem
+            // 
+            this.checkAllMenuItem.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.checkAllMenuItem.Name = "checkAllMenuItem";
+            this.checkAllMenuItem.Size = new System.Drawing.Size(226, 24);
+            this.checkAllMenuItem.Text = "Отметить все";
+            this.checkAllMenuItem.Click += new System.EventHandler(this.checkAllMenuItem_Click);
+            // 
+            // uncheckAllMenuItem
+            // 
+            this.uncheckAllMenuItem.Name = "uncheckAllMenuItem";
+            this.uncheckAllMenuItem.Size = new System.Drawing.Size(226, 24);
+            this.uncheckAllMenuItem.Text = "Снять все отметки";
+            this.uncheckAllMenuItem.Click += new System.EventHandler(this.uncheckAllMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(223, 6);
+            // 
+            // removeSelectMenuItem
+            // 
+            this.removeSelectMenuItem.Enabled = false;
+            this.removeSelectMenuItem.Name = "removeSelectMenuItem";
+            this.removeSelectMenuItem.Size = new System.Drawing.Size(226, 24);
+            this.removeSelectMenuItem.Text = "Удалить выделенные";
+            this.removeSelectMenuItem.Click += new System.EventHandler(this.removeSelectMenuItem_Click);
             // 
             // firmBindingSource
             // 
@@ -298,6 +366,7 @@
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.FirmsForm_Paint);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FirmsForm_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
+            this.contextMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.firmBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -312,13 +381,20 @@
         private Wc32Api.Widgets.Buttons.WcButton btnSave;
         private Wc32Api.Widgets.Buttons.WcButton btnCancel;
         private System.Windows.Forms.BindingSource firmBindingSource;
+        private System.Windows.Forms.Label lblCount;
+        private System.Windows.Forms.Label lblFilter;
+        private Core.Libs.Widget.BorderTextBox tbFilter;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn checkDataGridViewCheckBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn shortNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn innDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn kppDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn contractDataGridViewTextBoxColumn;
-        private System.Windows.Forms.Label lblCount;
-        private System.Windows.Forms.Label lblFilter;
-        private Core.Libs.Widget.BorderTextBox tbFilter;
+        private System.Windows.Forms.ContextMenuStrip contextMenu;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem checkAllMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem uncheckAllMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem removeSelectMenuItem;
     }
 }
