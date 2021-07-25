@@ -39,6 +39,7 @@ namespace LK.Forms
         #endregion
         private string _error;
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
+        private readonly bool _loggingMode = Properties.Settings.Default.LoggingMode;
 
         private readonly Color _windowBorderColor = Color.Teal;
         public int WindowBorderWidth { get; set; } = 2;
@@ -181,7 +182,8 @@ namespace LK.Forms
                 _error = "Ошибка доступа к файлу с отчетом";
                 DialogResult = DialogResult.Cancel;
 
-                Logger.Error($"{_error}: {e}");
+                if(_loggingMode)
+                    Logger.Error($"{_error}: {e}");
                 return;
             }
             
@@ -191,7 +193,8 @@ namespace LK.Forms
                 _error = "Ошибка загрузки файла";
                 DialogResult = DialogResult.Cancel;
 
-                Logger.Error(_error);
+                if(_loggingMode)
+                    Logger.Error(_error);
                 return;
             }
             else
@@ -215,7 +218,8 @@ namespace LK.Forms
             catch (Exception exception)
             {
                 _error = exception.Message;
-                Logger.Error(exception);
+                if(_loggingMode)
+                    Logger.Error(exception);
                 DialogResult = DialogResult.Cancel;
                 Close();
             }
@@ -234,7 +238,8 @@ namespace LK.Forms
             catch (Exception exception)
             {
                 _error = exception.Message;
-                Logger.Error(exception);
+                if(_loggingMode)
+                    Logger.Error(exception);
                 DialogResult = DialogResult.Cancel;
                 Close();
             }
@@ -286,7 +291,8 @@ namespace LK.Forms
 
                     if (raw.Parse() == false)
                     {
-                        Logger.Error($"RawRpoData.Parse, Row [{i}]: {raw.Exception.Message}");
+                        if(_loggingMode)
+                            Logger.Error($"RawRpoData.Parse, Row [{i}]: {raw.Exception.Message}");
                         continue;
                     }
 
@@ -294,7 +300,8 @@ namespace LK.Forms
 
                     if (firm is null)
                     {
-                        Logger.Error($"Не удалось получить данные по организации: Inn = '{raw.Inn}', Kpp = '{raw.Kpp}', Contract = '{raw.Contract}'");
+                        if(_loggingMode)
+                            Logger.Error($"Не удалось получить данные по организации: Inn = '{raw.Inn}', Kpp = '{raw.Kpp}', Contract = '{raw.Contract}'");
                         continue;
                     }
 
@@ -306,7 +313,8 @@ namespace LK.Forms
 
                     if (raw.ParseNext() == false)
                     {
-                        Logger.Error($"RawRpoData.ParseNext, Row [{i}]: {raw.Exception.Message}");
+                        if(_loggingMode)
+                            Logger.Error($"RawRpoData.ParseNext, Row [{i}]: {raw.Exception.Message}");
                         continue;
                     }
 
@@ -362,7 +370,8 @@ namespace LK.Forms
                 catch (Exception e)
                 {
                     _error = e.Message;
-                    Logger.Error(e);
+                    if(_loggingMode)
+                        Logger.Error(e);
                     DialogResult = DialogResult.Cancel;
                     Close();
                 }
@@ -407,7 +416,8 @@ namespace LK.Forms
 
                     if (raw.Parse() == false)
                     {
-                        Logger.Error($"RawListData.Parse, Row [{i}]: {raw.Exception.Message}");
+                        if(_loggingMode)
+                            Logger.Error($"RawListData.Parse, Row [{i}]: {raw.Exception.Message}");
                         continue;
                     }
 
@@ -421,7 +431,8 @@ namespace LK.Forms
 
                     if (raw.ParseNext() == false)
                     {
-                        Logger.Error($"RawListData.ParseNext, Row [{i}]: {raw.Exception.Message}");
+                        if(_loggingMode)
+                            Logger.Error($"RawListData.ParseNext, Row [{i}]: {raw.Exception.Message}");
                         continue;
                     }
 
@@ -445,7 +456,8 @@ namespace LK.Forms
                 catch (Exception e)
                 {
                     _error = e.Message;
-                    Logger.Error(e);
+                    if(_loggingMode)
+                        Logger.Error(e);
                     DialogResult = DialogResult.Cancel;
                     Close();
                 }

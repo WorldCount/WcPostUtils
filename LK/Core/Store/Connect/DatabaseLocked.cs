@@ -15,6 +15,7 @@ namespace LK.Core.Store.Connect
         private readonly SQLiteConnection _database;
         private readonly DatabaseDataLocked _databaseData;
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
+        private readonly bool _loggingMode = Properties.Settings.Default.LoggingMode;
 
         // ReSharper disable once InconsistentNaming
         // ReSharper disable once ConvertToAutoProperty
@@ -80,7 +81,8 @@ namespace LK.Core.Store.Connect
             }
             catch (Exception e)
             {
-                Logger.Error(e.Message);
+                if(_loggingMode)
+                    Logger.Error(e.Message);
                 return false;
             }
         }
@@ -156,7 +158,8 @@ namespace LK.Core.Store.Connect
             }
             catch (Exception e)
             {
-                Logger.Error(e.Message);
+                if (_loggingMode)
+                    Logger.Error(e.Message);
                 return new List<Firm>();
             }
             
@@ -201,7 +204,8 @@ namespace LK.Core.Store.Connect
             }
             catch (Exception e)
             {
-                Logger.Error(e.Message);
+                if (_loggingMode)
+                    Logger.Error(e.Message);
                 return new List<MailType>();
             }
             
@@ -220,7 +224,8 @@ namespace LK.Core.Store.Connect
             }
             catch (Exception e)
             {
-                Logger.Error(e.Message);
+                if (_loggingMode)
+                    Logger.Error(e.Message);
                 return new List<MailType>();
             }
         }
@@ -257,7 +262,8 @@ namespace LK.Core.Store.Connect
             }
             catch (Exception e)
             {
-                Logger.Error(e.Message);
+                if (_loggingMode)
+                    Logger.Error(e.Message);
                 return new List<MailCategory>();
             }
         }
@@ -270,7 +276,8 @@ namespace LK.Core.Store.Connect
             }
             catch (Exception e)
             {
-                Logger.Error(e.Message);
+                if (_loggingMode)
+                    Logger.Error(e.Message);
                 return new List<MailCategory>();
             }
         }

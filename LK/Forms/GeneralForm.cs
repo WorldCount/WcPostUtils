@@ -39,6 +39,7 @@ namespace LK.Forms
     public partial class GeneralForm : Form
     {
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
+        private bool _loggingMode = Properties.Settings.Default.LoggingMode;
 
         #region Настройки
 
@@ -92,7 +93,8 @@ namespace LK.Forms
 
             WebRequest.DefaultWebProxy = null;
 
-            Logger.Info("Запуск программы.");
+            if(_loggingMode)
+                Logger.Info("Запуск программы.");
 
             // Если было обновление приложения
             if (Properties.Settings.Default.NeedUpgrade)
@@ -268,7 +270,8 @@ namespace LK.Forms
                     }
                     catch(Exception e)
                     {
-                        Logger.Error(e);
+                        if(_loggingMode)
+                            Logger.Error(e);
                         licenseDate = DateTime.Today.AddYears(1);
                     }
 
@@ -1409,7 +1412,8 @@ namespace LK.Forms
 
         private void GeneralForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Logger.Info("Завершение программы.");
+            if(_loggingMode)
+                Logger.Info("Завершение программы.");
         }
 
         private void authMenuItem_Click(object sender, EventArgs e)
@@ -1436,7 +1440,11 @@ namespace LK.Forms
             if (settingsForm.ShowDialog(this) == DialogResult.OK)
             {
                 await LoadConfigs();
+
+                _loggingMode = Properties.Settings.Default.LoggingMode;
             }
+
+            
         }
 
         private void updateMenuItem_Click(object sender, EventArgs e)

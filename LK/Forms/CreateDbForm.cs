@@ -16,6 +16,7 @@ namespace LK.Forms
     public partial class CreateDbForm : Form
     {
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
+        private readonly bool _loggingMode = Properties.Settings.Default.LoggingMode;
 
         private readonly Color _windowBorderColor = Color.Teal;
 
@@ -45,7 +46,8 @@ namespace LK.Forms
             }
             catch (Exception e)
             {
-                Logger.Error($"Ошибка при удалении БД: {e.Message}");
+                if(_loggingMode)
+                    Logger.Error($"Ошибка при удалении БД: {e.Message}");
             }
             
         }
@@ -156,7 +158,8 @@ namespace LK.Forms
             }
             catch (Exception e)
             {
-                Logger.Error(e.Message);
+                if(_loggingMode)
+                    Logger.Error(e.Message);
             }
 
             Close();
