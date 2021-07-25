@@ -4,6 +4,7 @@ using System.Drawing;
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LK.Core;
 using LK.Core.Libs.Auth;
 using LK.Core.Libs.Auth.Model;
 using LK.Core.Libs.DataManagers;
@@ -79,6 +80,22 @@ namespace LK.Forms
             coloredProgressBar.Value = 0;
         }
 
+        private void RemoveOldReport()
+        {
+            string[] reports = Directory.GetFiles(PathManager.ReportPath);
+            foreach (string file in reports)
+            {
+                try
+                {
+                    File.Delete(file);
+                }
+                catch
+                {
+                    continue;
+                }
+            }
+        }
+
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
@@ -137,6 +154,14 @@ namespace LK.Forms
                 DialogResult = DialogResult.Cancel;
                 Close();
             }
+
+            #endregion
+
+            #region Удаление старых отчетов
+
+            SetInfo("Удаляю старые отчеты...", 0);
+            RemoveOldReport();
+            SetInfo("Удаляю старые отчеты...   Ok!", 100);
 
             #endregion
 
