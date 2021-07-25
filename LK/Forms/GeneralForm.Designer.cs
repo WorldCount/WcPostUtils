@@ -466,7 +466,7 @@ namespace LK.Forms
             this.btnLoad.ForeColor = System.Drawing.Color.White;
             this.btnLoad.Image = global::LK.Properties.Resources.white_synchronize_24;
             this.btnLoad.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLoad.Location = new System.Drawing.Point(730, 22);
+            this.btnLoad.Location = new System.Drawing.Point(834, 22);
             this.btnLoad.Name = "btnLoad";
             this.btnLoad.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.btnLoad.Size = new System.Drawing.Size(127, 46);
@@ -481,7 +481,7 @@ namespace LK.Forms
             this.labelDateOut.AutoSize = true;
             this.labelDateOut.Font = new System.Drawing.Font("Segoe UI", 10.18868F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelDateOut.ForeColor = System.Drawing.Color.White;
-            this.labelDateOut.Location = new System.Drawing.Point(520, 9);
+            this.labelDateOut.Location = new System.Drawing.Point(624, 9);
             this.labelDateOut.Name = "labelDateOut";
             this.labelDateOut.Size = new System.Drawing.Size(62, 19);
             this.labelDateOut.TabIndex = 3;
@@ -492,7 +492,7 @@ namespace LK.Forms
             this.labelDateIn.AutoSize = true;
             this.labelDateIn.Font = new System.Drawing.Font("Segoe UI", 10.18868F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelDateIn.ForeColor = System.Drawing.Color.White;
-            this.labelDateIn.Location = new System.Drawing.Point(314, 9);
+            this.labelDateIn.Location = new System.Drawing.Point(418, 9);
             this.labelDateIn.Name = "labelDateIn";
             this.labelDateIn.Size = new System.Drawing.Size(56, 19);
             this.labelDateIn.TabIndex = 3;
@@ -510,7 +510,7 @@ namespace LK.Forms
             this.btnClearFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClearFilter.ForeColor = System.Drawing.Color.White;
             this.btnClearFilter.Image = global::LK.Properties.Resources.trash_2_24;
-            this.btnClearFilter.Location = new System.Drawing.Point(863, 22);
+            this.btnClearFilter.Location = new System.Drawing.Point(967, 22);
             this.btnClearFilter.Name = "btnClearFilter";
             this.btnClearFilter.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.btnClearFilter.Size = new System.Drawing.Size(46, 46);
@@ -535,7 +535,7 @@ namespace LK.Forms
             // 
             this.dateTimePickerOut.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
             this.dateTimePickerOut.CalendarMonthBackground = System.Drawing.Color.White;
-            this.dateTimePickerOut.Location = new System.Drawing.Point(524, 33);
+            this.dateTimePickerOut.Location = new System.Drawing.Point(628, 33);
             this.dateTimePickerOut.Name = "dateTimePickerOut";
             this.dateTimePickerOut.Size = new System.Drawing.Size(200, 27);
             this.dateTimePickerOut.TabIndex = 3;
@@ -544,7 +544,7 @@ namespace LK.Forms
             // 
             this.dateTimePickerIn.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
             this.dateTimePickerIn.CalendarMonthBackground = System.Drawing.Color.White;
-            this.dateTimePickerIn.Location = new System.Drawing.Point(318, 33);
+            this.dateTimePickerIn.Location = new System.Drawing.Point(422, 33);
             this.dateTimePickerIn.Name = "dateTimePickerIn";
             this.dateTimePickerIn.Size = new System.Drawing.Size(200, 27);
             this.dateTimePickerIn.TabIndex = 2;
@@ -565,7 +565,7 @@ namespace LK.Forms
             this.comboBoxOrgs.IntegralHeight = false;
             this.comboBoxOrgs.Location = new System.Drawing.Point(12, 33);
             this.comboBoxOrgs.Name = "comboBoxOrgs";
-            this.comboBoxOrgs.Size = new System.Drawing.Size(300, 27);
+            this.comboBoxOrgs.Size = new System.Drawing.Size(404, 27);
             this.comboBoxOrgs.TabIndex = 1;
             this.comboBoxOrgs.ValueMember = "Id";
             this.comboBoxOrgs.SelectedIndexChanged += new System.EventHandler(this.comboBoxOrgs_SelectedIndexChanged);
@@ -1806,7 +1806,7 @@ namespace LK.Forms
             this.licenseMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
             this.licenseMenuItem.Image = global::LK.Properties.Resources.Coin_Dollar;
             this.licenseMenuItem.Name = "licenseMenuItem";
-            this.licenseMenuItem.Size = new System.Drawing.Size(183, 28);
+            this.licenseMenuItem.Size = new System.Drawing.Size(184, 28);
             this.licenseMenuItem.Text = "Лицензия";
             this.licenseMenuItem.Click += new System.EventHandler(this.licenseMenuItem_Click);
             // 
@@ -1815,7 +1815,7 @@ namespace LK.Forms
             this.updateMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
             this.updateMenuItem.Image = global::LK.Properties.Resources.Button_Dashboard;
             this.updateMenuItem.Name = "updateMenuItem";
-            this.updateMenuItem.Size = new System.Drawing.Size(183, 28);
+            this.updateMenuItem.Size = new System.Drawing.Size(184, 28);
             this.updateMenuItem.Text = "Обновление";
             this.updateMenuItem.Click += new System.EventHandler(this.updateMenuItem_Click);
             // 
