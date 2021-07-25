@@ -53,6 +53,10 @@
             this.panelButton = new System.Windows.Forms.Panel();
             this.btnSave = new Wc32Api.Widgets.Buttons.WcButton();
             this.btnCancel = new Wc32Api.Widgets.Buttons.WcButton();
+            this.tabPageDebug = new System.Windows.Forms.TabPage();
+            this.groupBoxDebug = new System.Windows.Forms.GroupBox();
+            this.labelDebug = new System.Windows.Forms.Label();
+            this.checkBoxLog = new System.Windows.Forms.CheckBox();
             this.tabControl.SuspendLayout();
             this.tabPagePay.SuspendLayout();
             this.groupBoxPay.SuspendLayout();
@@ -61,6 +65,8 @@
             this.tabPageParcel.SuspendLayout();
             this.groupBoxParcel.SuspendLayout();
             this.panelButton.SuspendLayout();
+            this.tabPageDebug.SuspendLayout();
+            this.groupBoxDebug.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl
@@ -68,6 +74,7 @@
             this.tabControl.Controls.Add(this.tabPagePay);
             this.tabControl.Controls.Add(this.tabPageMail);
             this.tabControl.Controls.Add(this.tabPageParcel);
+            this.tabControl.Controls.Add(this.tabPageDebug);
             this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl.Location = new System.Drawing.Point(0, 0);
             this.tabControl.Name = "tabControl";
@@ -95,7 +102,7 @@
             this.tbStep.BackColor = System.Drawing.Color.White;
             this.tbStep.Font = new System.Drawing.Font("Consolas", 12.22642F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbStep.ForeColor = System.Drawing.Color.DimGray;
-            this.tbStep.Location = new System.Drawing.Point(18, 264);
+            this.tbStep.Location = new System.Drawing.Point(18, 257);
             this.tbStep.MaxLength = 5;
             this.tbStep.Name = "tbStep";
             this.tbStep.Size = new System.Drawing.Size(76, 27);
@@ -108,7 +115,7 @@
             this.labelStep.AutoSize = true;
             this.labelStep.Font = new System.Drawing.Font("Segoe UI", 10.86792F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelStep.ForeColor = System.Drawing.Color.DimGray;
-            this.labelStep.Location = new System.Drawing.Point(14, 241);
+            this.labelStep.Location = new System.Drawing.Point(14, 234);
             this.labelStep.Name = "labelStep";
             this.labelStep.Size = new System.Drawing.Size(263, 20);
             this.labelStep.TabIndex = 3;
@@ -127,7 +134,7 @@
             this.groupBoxPay.ForeColor = System.Drawing.Color.DimGray;
             this.groupBoxPay.Location = new System.Drawing.Point(8, 6);
             this.groupBoxPay.Name = "groupBoxPay";
-            this.groupBoxPay.Size = new System.Drawing.Size(470, 216);
+            this.groupBoxPay.Size = new System.Drawing.Size(470, 209);
             this.groupBoxPay.TabIndex = 0;
             this.groupBoxPay.TabStop = false;
             this.groupBoxPay.Text = "Плата";
@@ -182,10 +189,10 @@
             // 
             this.tabPageMail.Controls.Add(this.groupBoxMail);
             this.tabPageMail.ImageIndex = 1;
-            this.tabPageMail.Location = new System.Drawing.Point(4, 22);
+            this.tabPageMail.Location = new System.Drawing.Point(4, 29);
             this.tabPageMail.Name = "tabPageMail";
             this.tabPageMail.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageMail.Size = new System.Drawing.Size(486, 377);
+            this.tabPageMail.Size = new System.Drawing.Size(486, 370);
             this.tabPageMail.TabIndex = 1;
             this.tabPageMail.Text = "Письма";
             this.tabPageMail.UseVisualStyleBackColor = true;
@@ -203,7 +210,7 @@
             this.groupBoxMail.ForeColor = System.Drawing.Color.DimGray;
             this.groupBoxMail.Location = new System.Drawing.Point(8, 6);
             this.groupBoxMail.Name = "groupBoxMail";
-            this.groupBoxMail.Size = new System.Drawing.Size(470, 237);
+            this.groupBoxMail.Size = new System.Drawing.Size(470, 230);
             this.groupBoxMail.TabIndex = 1;
             this.groupBoxMail.TabStop = false;
             this.groupBoxMail.Text = "Письма";
@@ -258,10 +265,10 @@
             // 
             this.tabPageParcel.Controls.Add(this.groupBoxParcel);
             this.tabPageParcel.ImageIndex = 2;
-            this.tabPageParcel.Location = new System.Drawing.Point(4, 22);
+            this.tabPageParcel.Location = new System.Drawing.Point(4, 29);
             this.tabPageParcel.Name = "tabPageParcel";
             this.tabPageParcel.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageParcel.Size = new System.Drawing.Size(486, 377);
+            this.tabPageParcel.Size = new System.Drawing.Size(486, 370);
             this.tabPageParcel.TabIndex = 2;
             this.tabPageParcel.Text = "Бандероли";
             this.tabPageParcel.UseVisualStyleBackColor = true;
@@ -279,7 +286,7 @@
             this.groupBoxParcel.ForeColor = System.Drawing.Color.DimGray;
             this.groupBoxParcel.Location = new System.Drawing.Point(8, 6);
             this.groupBoxParcel.Name = "groupBoxParcel";
-            this.groupBoxParcel.Size = new System.Drawing.Size(472, 237);
+            this.groupBoxParcel.Size = new System.Drawing.Size(472, 230);
             this.groupBoxParcel.TabIndex = 1;
             this.groupBoxParcel.TabStop = false;
             this.groupBoxParcel.Text = "Бандероли";
@@ -391,6 +398,55 @@
             this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
+            // tabPageDebug
+            // 
+            this.tabPageDebug.Controls.Add(this.groupBoxDebug);
+            this.tabPageDebug.Location = new System.Drawing.Point(4, 29);
+            this.tabPageDebug.Name = "tabPageDebug";
+            this.tabPageDebug.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageDebug.Size = new System.Drawing.Size(486, 370);
+            this.tabPageDebug.TabIndex = 3;
+            this.tabPageDebug.Text = "Отладка";
+            this.tabPageDebug.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxDebug
+            // 
+            this.groupBoxDebug.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxDebug.Controls.Add(this.checkBoxLog);
+            this.groupBoxDebug.Controls.Add(this.labelDebug);
+            this.groupBoxDebug.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.groupBoxDebug.ForeColor = System.Drawing.Color.DimGray;
+            this.groupBoxDebug.Location = new System.Drawing.Point(6, 6);
+            this.groupBoxDebug.Name = "groupBoxDebug";
+            this.groupBoxDebug.Size = new System.Drawing.Size(472, 230);
+            this.groupBoxDebug.TabIndex = 2;
+            this.groupBoxDebug.TabStop = false;
+            this.groupBoxDebug.Text = "Отладка";
+            // 
+            // labelDebug
+            // 
+            this.labelDebug.AutoSize = true;
+            this.labelDebug.Font = new System.Drawing.Font("Segoe UI", 10.86792F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelDebug.ForeColor = System.Drawing.Color.DimGray;
+            this.labelDebug.Location = new System.Drawing.Point(6, 38);
+            this.labelDebug.Name = "labelDebug";
+            this.labelDebug.Size = new System.Drawing.Size(172, 20);
+            this.labelDebug.TabIndex = 0;
+            this.labelDebug.Text = "Включить логирование";
+            // 
+            // checkBoxLog
+            // 
+            this.checkBoxLog.AutoSize = true;
+            this.checkBoxLog.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBoxLog.Location = new System.Drawing.Point(12, 62);
+            this.checkBoxLog.Name = "checkBoxLog";
+            this.checkBoxLog.Size = new System.Drawing.Size(105, 25);
+            this.checkBoxLog.TabIndex = 1;
+            this.checkBoxLog.Text = "Вести логи";
+            this.checkBoxLog.UseVisualStyleBackColor = true;
+            // 
             // SettingsForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -420,6 +476,9 @@
             this.groupBoxParcel.ResumeLayout(false);
             this.groupBoxParcel.PerformLayout();
             this.panelButton.ResumeLayout(false);
+            this.tabPageDebug.ResumeLayout(false);
+            this.groupBoxDebug.ResumeLayout(false);
+            this.groupBoxDebug.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -450,5 +509,9 @@
         private System.Windows.Forms.Label lblNds;
         private System.Windows.Forms.TextBox tbStep;
         private System.Windows.Forms.Label labelStep;
+        private System.Windows.Forms.TabPage tabPageDebug;
+        private System.Windows.Forms.GroupBox groupBoxDebug;
+        private System.Windows.Forms.CheckBox checkBoxLog;
+        private System.Windows.Forms.Label labelDebug;
     }
 }

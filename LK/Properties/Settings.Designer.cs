@@ -322,5 +322,17 @@ namespace LK.Properties {
                 this["RpoFieldsFile"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool LoggingMode {
+            get {
+                return ((bool)(this["LoggingMode"]));
+            }
+            set {
+                this["LoggingMode"] = value;
+            }
+        }
     }
 }

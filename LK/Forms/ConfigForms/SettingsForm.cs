@@ -55,6 +55,8 @@ namespace LK.Forms.ConfigForms
             _mailEndWeightConfig = ConfigManager.GetConfigByName(ConfigName.MailEndWeight);
             _parcelStartWeightConfig = ConfigManager.GetConfigByName(ConfigName.ParcelStartWeight);
             _parcelEndWeightConfig = ConfigManager.GetConfigByName(ConfigName.ParcelEndWeight);
+
+            checkBoxLog.Checked = Properties.Settings.Default.LoggingMode;
         }
 
         private void SaveConfigs()
@@ -70,7 +72,11 @@ namespace LK.Forms.ConfigForms
                 _parcelEndWeightConfig
             };
 
+            Properties.Settings.Default.LoggingMode = checkBoxLog.Checked;
+
             ConfigManager.Save(configs);
+
+            Properties.Settings.Default.Save();
         }
 
         private void SettingsForm_Load(object sender, EventArgs e)
