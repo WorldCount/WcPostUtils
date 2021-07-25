@@ -11,6 +11,7 @@ namespace LK.Forms.DataForms
     public partial class FirmsForm : Form
     {
         private List<Firm> _firms;
+        private int CheckCount { get; set; }
 
         public FirmsForm()
         {
@@ -94,7 +95,14 @@ namespace LK.Forms.DataForms
                 firm.Check = !firm.Check;
             }
 
+            UpdateDeleteButton();
             UpdateData();
+        }
+
+        private void UpdateDeleteButton()
+        {
+            int check = _firms.Count(f => f.Check);
+            btnDelete.Enabled = check > 0;
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -196,6 +204,7 @@ namespace LK.Forms.DataForms
                 if (firm != null)
                 {
                     firm.Check = !firm.Check;
+                    UpdateDeleteButton();
                 }
             }
         }
@@ -209,6 +218,7 @@ namespace LK.Forms.DataForms
                 if (firm != null)
                 {
                     firm.Check = !firm.Check;
+                    UpdateDeleteButton();
                 }
             }
         }
@@ -237,6 +247,7 @@ namespace LK.Forms.DataForms
                 firm.Check = true;
             }
 
+            UpdateDeleteButton();
             UpdateData();
         }
 
@@ -247,10 +258,16 @@ namespace LK.Forms.DataForms
                 firm.Check = false;
             }
 
+            UpdateDeleteButton();
             UpdateData();
         }
 
         private async void removeSelectMenuItem_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private async void btnDelete_Click(object sender, EventArgs e)
         {
             List<Firm> deletefirms = new List<Firm>();
 
@@ -258,11 +275,11 @@ namespace LK.Forms.DataForms
 
             foreach (Firm firm in firms)
             {
-                if(firm.Check)
+                if (firm.Check)
                     deletefirms.Add(firm);
             }
 
-            if(deletefirms.Count == 0)
+            if (deletefirms.Count == 0)
                 return;
 
             if (MessageBox.Show($"Вы уверены, что хотите удалить {deletefirms.Count} Организаций и все их списки?",
@@ -272,6 +289,8 @@ namespace LK.Forms.DataForms
 
                 lblFilter.Text = "";
                 _firms = LoadData();
+
+                UpdateDeleteButton();
                 UpdateData();
             }
         }

@@ -42,18 +42,17 @@
             this.kppDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contractDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.checkAllMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.uncheckAllMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.removeSelectMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.firmBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lblCount = new System.Windows.Forms.Label();
             this.lblFilter = new System.Windows.Forms.Label();
             this.btnSave = new Wc32Api.Widgets.Buttons.WcButton();
             this.btnCancel = new Wc32Api.Widgets.Buttons.WcButton();
             this.btnUpdate = new Wc32Api.Widgets.Buttons.WcButton();
+            this.btnDelete = new Wc32Api.Widgets.Buttons.WcButton();
             this.tbFilter = new LK.Core.Libs.Widget.BorderTextBox();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.contextMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.firmBindingSource)).BeginInit();
@@ -181,45 +180,28 @@
             this.contextMenu.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.contextMenu.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.contextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripSeparator2,
             this.checkAllMenuItem,
-            this.uncheckAllMenuItem,
-            this.toolStripSeparator1,
-            this.removeSelectMenuItem});
+            this.toolStripSeparator3,
+            this.uncheckAllMenuItem});
             this.contextMenu.Name = "contextMenu";
-            this.contextMenu.Size = new System.Drawing.Size(227, 110);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(223, 6);
+            this.contextMenu.Size = new System.Drawing.Size(222, 86);
             // 
             // checkAllMenuItem
             // 
             this.checkAllMenuItem.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.checkAllMenuItem.Image = global::LK.Properties.Resources.checked_32;
             this.checkAllMenuItem.Name = "checkAllMenuItem";
-            this.checkAllMenuItem.Size = new System.Drawing.Size(226, 24);
+            this.checkAllMenuItem.Size = new System.Drawing.Size(221, 38);
             this.checkAllMenuItem.Text = "Отметить все";
             this.checkAllMenuItem.Click += new System.EventHandler(this.checkAllMenuItem_Click);
             // 
             // uncheckAllMenuItem
             // 
+            this.uncheckAllMenuItem.Image = global::LK.Properties.Resources.unchecked_32;
             this.uncheckAllMenuItem.Name = "uncheckAllMenuItem";
-            this.uncheckAllMenuItem.Size = new System.Drawing.Size(226, 24);
+            this.uncheckAllMenuItem.Size = new System.Drawing.Size(221, 38);
             this.uncheckAllMenuItem.Text = "Снять все отметки";
             this.uncheckAllMenuItem.Click += new System.EventHandler(this.uncheckAllMenuItem_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(223, 6);
-            // 
-            // removeSelectMenuItem
-            // 
-            this.removeSelectMenuItem.Name = "removeSelectMenuItem";
-            this.removeSelectMenuItem.Size = new System.Drawing.Size(226, 24);
-            this.removeSelectMenuItem.Text = "Удалить выделенные";
-            this.removeSelectMenuItem.Click += new System.EventHandler(this.removeSelectMenuItem_Click);
             // 
             // firmBindingSource
             // 
@@ -325,6 +307,32 @@
             this.btnUpdate.UseVisualStyleBackColor = false;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
+            // btnDelete
+            // 
+            this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnDelete.BackColor = System.Drawing.Color.Firebrick;
+            this.btnDelete.BorderColor = System.Drawing.Color.Silver;
+            this.btnDelete.BorderRadius = 4;
+            this.btnDelete.BorderThickness = 1F;
+            this.btnDelete.DisabledBackColor = System.Drawing.Color.Gray;
+            this.btnDelete.Enabled = false;
+            this.btnDelete.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnDelete.FlatAppearance.BorderSize = 0;
+            this.btnDelete.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
+            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDelete.Font = new System.Drawing.Font("Segoe UI", 10.18868F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnDelete.ForeColor = System.Drawing.Color.White;
+            this.btnDelete.Image = global::LK.Properties.Resources.trash_2_24;
+            this.btnDelete.Location = new System.Drawing.Point(168, 393);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            this.btnDelete.Size = new System.Drawing.Size(46, 46);
+            this.btnDelete.TabIndex = 0;
+            this.btnDelete.TabStop = false;
+            this.btnDelete.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
             // tbFilter
             // 
             this.tbFilter.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -340,11 +348,17 @@
             this.tbFilter.TabIndex = 30;
             this.tbFilter.TextChanged += new System.EventHandler(this.tbFilter_TextChanged);
             // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(218, 6);
+            // 
             // FirmsForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(884, 451);
+            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.tbFilter);
             this.Controls.Add(this.lblFilter);
             this.Controls.Add(this.lblCount);
@@ -390,10 +404,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn kppDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn contractDataGridViewTextBoxColumn;
         private System.Windows.Forms.ContextMenuStrip contextMenu;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem checkAllMenuItem;
         private System.Windows.Forms.ToolStripMenuItem uncheckAllMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem removeSelectMenuItem;
+        private Wc32Api.Widgets.Buttons.WcButton btnDelete;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
     }
 }

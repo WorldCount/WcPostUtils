@@ -1123,11 +1123,19 @@ namespace LK.Forms
             }
         }
 
-        private void tbBarcode_KeyDown(object sender, KeyEventArgs e)
+        private async void tbBarcode_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter && tbBarcode.Text.Trim().Length >= 13)
-            {
+            string barcode = tbBarcode.Text.Trim();
 
+            if (e.KeyCode == Keys.Enter && barcode.Length >= 13)
+            {
+                FirmList firmList = await Database.GetFirmListByBarcodeAsync(barcode);
+                if (firmList != null)
+                {
+                    MessageBox.Show(firmList.Count.ToString());
+                }
+
+                tbBarcode.Clear();
             }
         }
 

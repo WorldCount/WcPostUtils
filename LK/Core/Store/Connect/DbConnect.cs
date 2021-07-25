@@ -1,17 +1,16 @@
-﻿using SQLite;
-
+﻿
 namespace LK.Core.Store.Connect
 {
     public static class DbConnect
     {
-        public static SQLiteConnection GetConnection()
+        public static SQLite.SQLiteConnection GetConnection()
         {
-            return new SQLiteConnection(PathManager.DbPath, false);
+            return new SQLite.SQLiteConnection(PathManager.DbPath, false);
         }
 
-        public static System.Data.SQLite.SQLiteConnection GetManualConnection()
+        public static Microsoft.Data.Sqlite.SqliteConnection GetManualConnection()
         {
-            return new System.Data.SQLite.SQLiteConnection($"Data Source={PathManager.DbPath}; Version=3;");
+            return new Microsoft.Data.Sqlite.SqliteConnection($"Data Source={PathManager.DbPath}");
         }
     }
 }

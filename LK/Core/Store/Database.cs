@@ -96,7 +96,6 @@ namespace LK.Core.Store
         }
 
         
-
         #region Запросы по организациям
 
         public static Firm GetFirm(string inn, string kpp)
@@ -530,6 +529,49 @@ namespace LK.Core.Store
             }
         }
 
+        private static int GetFirmListIdByBarcode(string barcode)
+        {
+            string q = $"select FirmListId from Rpo where barcode = '{barcode}' limit 1";
+            int id;
+
+            using (var db = DbConnect.GetManualConnection())
+            {
+                Microsoft.Data.Sqlite.SqliteCommand cmd = new Microsoft.Data.Sqlite.SqliteCommand(q, db);
+
+                db.Open();
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    try
+                    {
+                        reader.Read();
+                        id = reader.GetInt32(0);
+                    }
+                    catch
+                    {
+                        return 0;
+                    }
+                }
+
+                db.Close();
+            }
+
+            return id;
+        }
+
+        public static FirmList GetFirmListByBarcode(string barcode)
+        {
+            int id = GetFirmListIdByBarcode(barcode);
+            if (id != 0)
+                return GetFirmList(id);
+            return null;
+        }
+
+        public static Task<FirmList> GetFirmListByBarcodeAsync(string barcode)
+        {
+            return Task.Run(() => GetFirmListByBarcode(barcode));
+        }
+
         public static List<FirmList> GetFirmsListManual(FirmListFilter filter)
         {
             StringBuilder sb = new StringBuilder();
@@ -577,7 +619,7 @@ namespace LK.Core.Store
 
             using (var db = DbConnect.GetManualConnection())
             {
-                System.Data.SQLite.SQLiteCommand cmd = new System.Data.SQLite.SQLiteCommand(q, db);
+                Microsoft.Data.Sqlite.SqliteCommand cmd = new Microsoft.Data.Sqlite.SqliteCommand(q, db);
 
                 db.Open();
 
