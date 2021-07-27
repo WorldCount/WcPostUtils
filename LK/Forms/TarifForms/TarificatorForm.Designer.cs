@@ -181,8 +181,6 @@
             this.btnAdd.BackColor = System.Drawing.Color.SeaGreen;
             this.btnAdd.BorderColor = System.Drawing.Color.Silver;
             this.btnAdd.BorderRadius = 4;
-            this.btnAdd.BorderThickness = 1F;
-            this.btnAdd.DisabledBackColor = System.Drawing.Color.Gray;
             this.btnAdd.FlatAppearance.BorderSize = 0;
             this.btnAdd.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -206,8 +204,6 @@
             this.btnCancel.BackColor = System.Drawing.Color.Firebrick;
             this.btnCancel.BorderColor = System.Drawing.Color.Silver;
             this.btnCancel.BorderRadius = 4;
-            this.btnCancel.BorderThickness = 1F;
-            this.btnCancel.DisabledBackColor = System.Drawing.Color.Gray;
             this.btnCancel.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.btnCancel.FlatAppearance.BorderSize = 0;
             this.btnCancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));

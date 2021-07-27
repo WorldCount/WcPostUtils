@@ -261,8 +261,6 @@
             this.btnPrint.BackColor = System.Drawing.Color.SeaGreen;
             this.btnPrint.BorderColor = System.Drawing.Color.Silver;
             this.btnPrint.BorderRadius = 4;
-            this.btnPrint.BorderThickness = 1F;
-            this.btnPrint.DisabledBackColor = System.Drawing.Color.Gray;
             this.btnPrint.FlatAppearance.BorderSize = 0;
             this.btnPrint.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
             this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -286,8 +284,6 @@
             this.btnClose.BackColor = System.Drawing.Color.Firebrick;
             this.btnClose.BorderColor = System.Drawing.Color.Silver;
             this.btnClose.BorderRadius = 4;
-            this.btnClose.BorderThickness = 1F;
-            this.btnClose.DisabledBackColor = System.Drawing.Color.Gray;
             this.btnClose.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));

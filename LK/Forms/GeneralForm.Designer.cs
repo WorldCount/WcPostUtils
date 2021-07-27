@@ -434,32 +434,40 @@ namespace LK.Forms
             // 
             this.btnSync.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSync.BackColor = System.Drawing.Color.OrangeRed;
+            this.btnSync.BackgroundColor = System.Drawing.Color.OrangeRed;
             this.btnSync.BorderColor = System.Drawing.Color.Silver;
-            this.btnSync.BorderRadius = 2;
-            this.btnSync.BorderThickness = 1F;
-            this.btnSync.DisabledBackColor = System.Drawing.Color.Gray;
+            this.btnSync.BorderRadius = 4F;
+            this.btnSync.BorderSize = 0;
+            this.btnSync.DisableBackgroundColor = System.Drawing.Color.DimGray;
+            this.btnSync.DisableBorderColor = System.Drawing.Color.Silver;
             this.btnSync.FlatAppearance.BorderSize = 0;
             this.btnSync.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
             this.btnSync.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSync.ForeColor = System.Drawing.Color.White;
             this.btnSync.Image = global::LK.Properties.Resources.cloud_4_24;
             this.btnSync.Location = new System.Drawing.Point(1219, 22);
+            this.btnSync.MouseDownBackColor = System.Drawing.Color.Empty;
+            this.btnSync.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
             this.btnSync.Name = "btnSync";
             this.btnSync.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.btnSync.Size = new System.Drawing.Size(46, 46);
+            this.btnSync.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             this.btnSync.TabIndex = 18;
             this.btnSync.TabStop = false;
             this.btnSync.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSync.TextColor = System.Drawing.Color.White;
             this.btnSync.UseVisualStyleBackColor = false;
             this.btnSync.Click += new System.EventHandler(this.btnSync_Click);
             // 
             // btnLoad
             // 
             this.btnLoad.BackColor = System.Drawing.Color.Brown;
+            this.btnLoad.BackgroundColor = System.Drawing.Color.Brown;
             this.btnLoad.BorderColor = System.Drawing.Color.Silver;
-            this.btnLoad.BorderRadius = 2;
-            this.btnLoad.BorderThickness = 1F;
-            this.btnLoad.DisabledBackColor = System.Drawing.Color.DimGray;
+            this.btnLoad.BorderRadius = 4F;
+            this.btnLoad.BorderSize = 0;
+            this.btnLoad.DisableBackgroundColor = System.Drawing.Color.DimGray;
+            this.btnLoad.DisableBorderColor = System.Drawing.Color.Silver;
             this.btnLoad.FlatAppearance.BorderSize = 0;
             this.btnLoad.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
             this.btnLoad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -467,12 +475,16 @@ namespace LK.Forms
             this.btnLoad.Image = global::LK.Properties.Resources.white_synchronize_24;
             this.btnLoad.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnLoad.Location = new System.Drawing.Point(834, 22);
+            this.btnLoad.MouseDownBackColor = System.Drawing.Color.Empty;
+            this.btnLoad.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
             this.btnLoad.Name = "btnLoad";
             this.btnLoad.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.btnLoad.Size = new System.Drawing.Size(127, 46);
+            this.btnLoad.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             this.btnLoad.TabIndex = 4;
             this.btnLoad.Text = "Загрузить";
             this.btnLoad.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnLoad.TextColor = System.Drawing.Color.White;
             this.btnLoad.UseVisualStyleBackColor = false;
             this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
             // 
@@ -501,22 +513,28 @@ namespace LK.Forms
             // btnClearFilter
             // 
             this.btnClearFilter.BackColor = System.Drawing.Color.SlateGray;
+            this.btnClearFilter.BackgroundColor = System.Drawing.Color.SlateGray;
             this.btnClearFilter.BorderColor = System.Drawing.Color.Silver;
-            this.btnClearFilter.BorderRadius = 2;
-            this.btnClearFilter.BorderThickness = 1F;
-            this.btnClearFilter.DisabledBackColor = System.Drawing.Color.DimGray;
+            this.btnClearFilter.BorderRadius = 4F;
+            this.btnClearFilter.BorderSize = 0;
+            this.btnClearFilter.DisableBackgroundColor = System.Drawing.Color.DimGray;
+            this.btnClearFilter.DisableBorderColor = System.Drawing.Color.Silver;
             this.btnClearFilter.FlatAppearance.BorderSize = 0;
             this.btnClearFilter.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
             this.btnClearFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClearFilter.ForeColor = System.Drawing.Color.White;
             this.btnClearFilter.Image = global::LK.Properties.Resources.trash_2_24;
             this.btnClearFilter.Location = new System.Drawing.Point(967, 22);
+            this.btnClearFilter.MouseDownBackColor = System.Drawing.Color.Empty;
+            this.btnClearFilter.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
             this.btnClearFilter.Name = "btnClearFilter";
             this.btnClearFilter.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.btnClearFilter.Size = new System.Drawing.Size(46, 46);
+            this.btnClearFilter.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             this.btnClearFilter.TabIndex = 0;
             this.btnClearFilter.TabStop = false;
             this.btnClearFilter.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnClearFilter.TextColor = System.Drawing.Color.White;
             this.btnClearFilter.UseVisualStyleBackColor = false;
             this.btnClearFilter.Click += new System.EventHandler(this.btnClearFilter_Click);
             // 
@@ -1213,88 +1231,112 @@ namespace LK.Forms
             // btnPrintReport
             // 
             this.btnPrintReport.BackColor = System.Drawing.Color.SlateGray;
+            this.btnPrintReport.BackgroundColor = System.Drawing.Color.SlateGray;
             this.btnPrintReport.BorderColor = System.Drawing.Color.Silver;
-            this.btnPrintReport.BorderRadius = 2;
-            this.btnPrintReport.BorderThickness = 1F;
-            this.btnPrintReport.DisabledBackColor = System.Drawing.Color.DimGray;
+            this.btnPrintReport.BorderRadius = 4F;
+            this.btnPrintReport.BorderSize = 0;
+            this.btnPrintReport.DisableBackgroundColor = System.Drawing.Color.DimGray;
+            this.btnPrintReport.DisableBorderColor = System.Drawing.Color.Silver;
             this.btnPrintReport.FlatAppearance.BorderSize = 0;
-            this.btnPrintReport.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
+            this.btnPrintReport.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.btnPrintReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPrintReport.ForeColor = System.Drawing.Color.White;
             this.btnPrintReport.Image = global::LK.Properties.Resources.Portable_Printer;
             this.btnPrintReport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnPrintReport.Location = new System.Drawing.Point(456, 2);
+            this.btnPrintReport.MouseDownBackColor = System.Drawing.Color.Empty;
+            this.btnPrintReport.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.btnPrintReport.Name = "btnPrintReport";
             this.btnPrintReport.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.btnPrintReport.Size = new System.Drawing.Size(172, 46);
+            this.btnPrintReport.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             this.btnPrintReport.TabIndex = 17;
             this.btnPrintReport.Text = "Печать отчета";
             this.btnPrintReport.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnPrintReport.TextColor = System.Drawing.Color.White;
             this.btnPrintReport.UseVisualStyleBackColor = false;
             this.btnPrintReport.Click += new System.EventHandler(this.btnPrintReport_Click);
             // 
             // btnReport
             // 
             this.btnReport.BackColor = System.Drawing.Color.SlateGray;
+            this.btnReport.BackgroundColor = System.Drawing.Color.SlateGray;
             this.btnReport.BorderColor = System.Drawing.Color.Silver;
-            this.btnReport.BorderRadius = 2;
-            this.btnReport.BorderThickness = 1F;
-            this.btnReport.DisabledBackColor = System.Drawing.Color.DimGray;
+            this.btnReport.BorderRadius = 4F;
+            this.btnReport.BorderSize = 0;
+            this.btnReport.DisableBackgroundColor = System.Drawing.Color.DimGray;
+            this.btnReport.DisableBorderColor = System.Drawing.Color.Silver;
             this.btnReport.FlatAppearance.BorderSize = 0;
-            this.btnReport.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
+            this.btnReport.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.btnReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReport.ForeColor = System.Drawing.Color.White;
             this.btnReport.Image = global::LK.Properties.Resources.Invoice;
             this.btnReport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnReport.Location = new System.Drawing.Point(343, 2);
+            this.btnReport.MouseDownBackColor = System.Drawing.Color.Empty;
+            this.btnReport.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.btnReport.Name = "btnReport";
             this.btnReport.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.btnReport.Size = new System.Drawing.Size(107, 46);
+            this.btnReport.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             this.btnReport.TabIndex = 17;
             this.btnReport.Text = "Отчет";
             this.btnReport.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnReport.TextColor = System.Drawing.Color.White;
             this.btnReport.UseVisualStyleBackColor = false;
             this.btnReport.Click += new System.EventHandler(this.btnReport_Click);
             // 
             // btnUncheckAll
             // 
             this.btnUncheckAll.BackColor = System.Drawing.Color.Gray;
+            this.btnUncheckAll.BackgroundColor = System.Drawing.Color.Gray;
             this.btnUncheckAll.BorderColor = System.Drawing.Color.Silver;
-            this.btnUncheckAll.BorderRadius = 2;
-            this.btnUncheckAll.BorderThickness = 1F;
-            this.btnUncheckAll.DisabledBackColor = System.Drawing.Color.Gray;
+            this.btnUncheckAll.BorderRadius = 4F;
+            this.btnUncheckAll.BorderSize = 0;
+            this.btnUncheckAll.DisableBackgroundColor = System.Drawing.Color.DimGray;
+            this.btnUncheckAll.DisableBorderColor = System.Drawing.Color.Silver;
             this.btnUncheckAll.FlatAppearance.BorderSize = 0;
-            this.btnUncheckAll.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
+            this.btnUncheckAll.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.btnUncheckAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUncheckAll.ForeColor = System.Drawing.Color.White;
             this.btnUncheckAll.Image = ((System.Drawing.Image)(resources.GetObject("btnUncheckAll.Image")));
             this.btnUncheckAll.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnUncheckAll.Location = new System.Drawing.Point(763, 2);
+            this.btnUncheckAll.Location = new System.Drawing.Point(769, 2);
+            this.btnUncheckAll.MouseDownBackColor = System.Drawing.Color.Empty;
+            this.btnUncheckAll.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.btnUncheckAll.Name = "btnUncheckAll";
             this.btnUncheckAll.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.btnUncheckAll.Size = new System.Drawing.Size(46, 46);
+            this.btnUncheckAll.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             this.btnUncheckAll.TabIndex = 16;
+            this.btnUncheckAll.TextColor = System.Drawing.Color.White;
             this.btnUncheckAll.UseVisualStyleBackColor = false;
             this.btnUncheckAll.Click += new System.EventHandler(this.btnUncheckAll_Click);
             // 
             // btnCheckAll
             // 
             this.btnCheckAll.BackColor = System.Drawing.Color.Gray;
+            this.btnCheckAll.BackgroundColor = System.Drawing.Color.Gray;
             this.btnCheckAll.BorderColor = System.Drawing.Color.Silver;
-            this.btnCheckAll.BorderRadius = 2;
-            this.btnCheckAll.BorderThickness = 1F;
-            this.btnCheckAll.DisabledBackColor = System.Drawing.Color.Gray;
+            this.btnCheckAll.BorderRadius = 4F;
+            this.btnCheckAll.BorderSize = 0;
+            this.btnCheckAll.DisableBackgroundColor = System.Drawing.Color.DimGray;
+            this.btnCheckAll.DisableBorderColor = System.Drawing.Color.Silver;
             this.btnCheckAll.FlatAppearance.BorderSize = 0;
-            this.btnCheckAll.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
+            this.btnCheckAll.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.btnCheckAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCheckAll.ForeColor = System.Drawing.Color.White;
             this.btnCheckAll.Image = ((System.Drawing.Image)(resources.GetObject("btnCheckAll.Image")));
             this.btnCheckAll.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCheckAll.Location = new System.Drawing.Point(717, 2);
+            this.btnCheckAll.MouseDownBackColor = System.Drawing.Color.Empty;
+            this.btnCheckAll.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.btnCheckAll.Name = "btnCheckAll";
             this.btnCheckAll.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.btnCheckAll.Size = new System.Drawing.Size(46, 46);
+            this.btnCheckAll.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             this.btnCheckAll.TabIndex = 15;
+            this.btnCheckAll.TextColor = System.Drawing.Color.White;
             this.btnCheckAll.UseVisualStyleBackColor = false;
             this.btnCheckAll.Click += new System.EventHandler(this.btnCheckAll_Click);
             // 
@@ -1353,24 +1395,30 @@ namespace LK.Forms
             // btnTablePrint
             // 
             this.btnTablePrint.BackColor = System.Drawing.Color.SlateGray;
+            this.btnTablePrint.BackgroundColor = System.Drawing.Color.SlateGray;
             this.btnTablePrint.BorderColor = System.Drawing.Color.Silver;
-            this.btnTablePrint.BorderRadius = 2;
-            this.btnTablePrint.BorderThickness = 1F;
-            this.btnTablePrint.DisabledBackColor = System.Drawing.Color.DimGray;
+            this.btnTablePrint.BorderRadius = 4F;
+            this.btnTablePrint.BorderSize = 0;
+            this.btnTablePrint.DisableBackgroundColor = System.Drawing.Color.DimGray;
+            this.btnTablePrint.DisableBorderColor = System.Drawing.Color.Silver;
             this.btnTablePrint.Enabled = false;
             this.btnTablePrint.FlatAppearance.BorderSize = 0;
-            this.btnTablePrint.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
+            this.btnTablePrint.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.btnTablePrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTablePrint.ForeColor = System.Drawing.Color.White;
             this.btnTablePrint.Image = global::LK.Properties.Resources.Printer;
             this.btnTablePrint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnTablePrint.Location = new System.Drawing.Point(224, 2);
+            this.btnTablePrint.MouseDownBackColor = System.Drawing.Color.Empty;
+            this.btnTablePrint.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.btnTablePrint.Name = "btnTablePrint";
             this.btnTablePrint.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.btnTablePrint.Size = new System.Drawing.Size(113, 46);
+            this.btnTablePrint.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             this.btnTablePrint.TabIndex = 14;
             this.btnTablePrint.Text = "Печать";
             this.btnTablePrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnTablePrint.TextColor = System.Drawing.Color.White;
             this.btnTablePrint.UseVisualStyleBackColor = false;
             this.btnTablePrint.Click += new System.EventHandler(this.btnTablePrint_Click);
             // 
@@ -1806,7 +1854,7 @@ namespace LK.Forms
             this.licenseMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
             this.licenseMenuItem.Image = global::LK.Properties.Resources.Coin_Dollar;
             this.licenseMenuItem.Name = "licenseMenuItem";
-            this.licenseMenuItem.Size = new System.Drawing.Size(184, 28);
+            this.licenseMenuItem.Size = new System.Drawing.Size(183, 28);
             this.licenseMenuItem.Text = "Лицензия";
             this.licenseMenuItem.Click += new System.EventHandler(this.licenseMenuItem_Click);
             // 
@@ -1815,7 +1863,7 @@ namespace LK.Forms
             this.updateMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
             this.updateMenuItem.Image = global::LK.Properties.Resources.Button_Dashboard;
             this.updateMenuItem.Name = "updateMenuItem";
-            this.updateMenuItem.Size = new System.Drawing.Size(184, 28);
+            this.updateMenuItem.Size = new System.Drawing.Size(183, 28);
             this.updateMenuItem.Text = "Обновление";
             this.updateMenuItem.Click += new System.EventHandler(this.updateMenuItem_Click);
             // 
