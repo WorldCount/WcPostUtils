@@ -441,13 +441,13 @@ namespace LK.Forms
             this.btnSync.DisableBackgroundColor = System.Drawing.Color.DimGray;
             this.btnSync.DisableBorderColor = System.Drawing.Color.Silver;
             this.btnSync.FlatAppearance.BorderSize = 0;
-            this.btnSync.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
+            this.btnSync.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkOrange;
             this.btnSync.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSync.ForeColor = System.Drawing.Color.White;
             this.btnSync.Image = global::LK.Properties.Resources.cloud_4_24;
             this.btnSync.Location = new System.Drawing.Point(1219, 22);
             this.btnSync.MouseDownBackColor = System.Drawing.Color.Empty;
-            this.btnSync.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
+            this.btnSync.MouseOverBackColor = System.Drawing.Color.DarkOrange;
             this.btnSync.Name = "btnSync";
             this.btnSync.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.btnSync.Size = new System.Drawing.Size(46, 46);
