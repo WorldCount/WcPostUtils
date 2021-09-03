@@ -22,6 +22,7 @@ using LK.Core.Models.DB.Types;
 using LK.Core.Models.Filters;
 using LK.Core.Models.Types;
 using LK.Core.Store;
+using LK.Core.Store.ExportFile;
 using LK.Forms.ConfigForms;
 using LK.Forms.DataForms;
 using LK.Forms.ReportForms;
@@ -59,7 +60,6 @@ namespace LK.Forms
 
         #endregion
 
-
         #region Объекты данных
 
         private List<MailType> _mailTypes;
@@ -80,6 +80,7 @@ namespace LK.Forms
         #region Конфиги
 
         private Config _defaultPrinterConfig;
+        private Config _exportPathConfig;
 
         #endregion
 
@@ -503,6 +504,7 @@ namespace LK.Forms
             await Task.Run(() =>
             {
                 _defaultPrinterConfig = ConfigManager.GetConfigByName(ConfigName.DefaultPrinterName) ?? ConfigManager.CreateDefaultPrinterName();
+                _exportPathConfig = ConfigManager.GetConfigByName(ConfigName.ExportPath) ?? ConfigManager.CreateDefaultExportPath();
             });
             
         }
@@ -1479,6 +1481,43 @@ namespace LK.Forms
         {
             RpoRowForm rpoRowForm = new RpoRowForm();
             rpoRowForm.ShowDialog(this);
+        }
+
+        private void btnExportToFile_Click(object sender, EventArgs e)
+        {
+            btnExportToFile.Enabled = false;
+
+            List<FirmList> checkedFirmLists = GetCheckedFirmLists();
+            if (checkedFirmLists == null || checkedFirmLists.Count == 0)
+                return;
+
+
+            int[] ids = checkedFirmLists.Select(checkedFirmList => checkedFirmList.Id).ToArray();
+            List<Rpo> rpos = Database.GetRposByListsIds(ids);
+
+            ExportPartPostFile exportFile = new ExportPartPostFile();
+            foreach (Rpo rpo in rpos)
+            {
+                ExportFileString exportFileString = rpo.ToExportFileString();
+                MailCategory c = _mailCategories.FirstOrDefault(d => d.Id == rpo.MailCategory);
+                if (c != null)
+                {
+                    exportFileString.MailCtg = c.Code.ToString();
+                    if(c.Code == 0)
+                        continue;
+                }
+
+                MailType t = _mailTypes.FirstOrDefault(d => d.Id == rpo.MailType);
+                if (t != null)
+                    exportFileString.MailType = t.Code.ToString();
+
+                exportFile.Add(exportFileString);
+            }
+
+            exportFile.ExportToFile(_exportPathConfig.Value);
+
+            btnExportToFile.Enabled = true;
+            SuccessMessage("Выгрузка завершена!");
         }
     }
 }

@@ -50,13 +50,18 @@
             this.labelParcelEndWeight = new System.Windows.Forms.Label();
             this.tbParcelStartWeight = new System.Windows.Forms.TextBox();
             this.labelParcelStartWeight = new System.Windows.Forms.Label();
+            this.tabPageDebug = new System.Windows.Forms.TabPage();
+            this.groupBoxDebug = new System.Windows.Forms.GroupBox();
+            this.checkBoxLog = new System.Windows.Forms.CheckBox();
+            this.labelDebug = new System.Windows.Forms.Label();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.groupBoxExport = new System.Windows.Forms.GroupBox();
+            this.btnExportDir = new System.Windows.Forms.Button();
+            this.labelExportPath = new System.Windows.Forms.Label();
             this.panelButton = new System.Windows.Forms.Panel();
             this.btnSave = new Wc32Api.Widgets.Buttons.WcButton();
             this.btnCancel = new Wc32Api.Widgets.Buttons.WcButton();
-            this.tabPageDebug = new System.Windows.Forms.TabPage();
-            this.groupBoxDebug = new System.Windows.Forms.GroupBox();
-            this.labelDebug = new System.Windows.Forms.Label();
-            this.checkBoxLog = new System.Windows.Forms.CheckBox();
+            this.tbExportPathNew = new System.Windows.Forms.TextBox();
             this.tabControl.SuspendLayout();
             this.tabPagePay.SuspendLayout();
             this.groupBoxPay.SuspendLayout();
@@ -64,9 +69,11 @@
             this.groupBoxMail.SuspendLayout();
             this.tabPageParcel.SuspendLayout();
             this.groupBoxParcel.SuspendLayout();
-            this.panelButton.SuspendLayout();
             this.tabPageDebug.SuspendLayout();
             this.groupBoxDebug.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.groupBoxExport.SuspendLayout();
+            this.panelButton.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl
@@ -75,6 +82,7 @@
             this.tabControl.Controls.Add(this.tabPageMail);
             this.tabControl.Controls.Add(this.tabPageParcel);
             this.tabControl.Controls.Add(this.tabPageDebug);
+            this.tabControl.Controls.Add(this.tabPage1);
             this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl.Location = new System.Drawing.Point(0, 0);
             this.tabControl.Name = "tabControl";
@@ -102,7 +110,7 @@
             this.tbStep.BackColor = System.Drawing.Color.White;
             this.tbStep.Font = new System.Drawing.Font("Consolas", 12.22642F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbStep.ForeColor = System.Drawing.Color.DimGray;
-            this.tbStep.Location = new System.Drawing.Point(18, 257);
+            this.tbStep.Location = new System.Drawing.Point(18, 222);
             this.tbStep.MaxLength = 5;
             this.tbStep.Name = "tbStep";
             this.tbStep.Size = new System.Drawing.Size(76, 27);
@@ -115,7 +123,7 @@
             this.labelStep.AutoSize = true;
             this.labelStep.Font = new System.Drawing.Font("Segoe UI", 10.86792F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelStep.ForeColor = System.Drawing.Color.DimGray;
-            this.labelStep.Location = new System.Drawing.Point(14, 234);
+            this.labelStep.Location = new System.Drawing.Point(14, 199);
             this.labelStep.Name = "labelStep";
             this.labelStep.Size = new System.Drawing.Size(263, 20);
             this.labelStep.TabIndex = 3;
@@ -134,7 +142,7 @@
             this.groupBoxPay.ForeColor = System.Drawing.Color.DimGray;
             this.groupBoxPay.Location = new System.Drawing.Point(8, 6);
             this.groupBoxPay.Name = "groupBoxPay";
-            this.groupBoxPay.Size = new System.Drawing.Size(470, 209);
+            this.groupBoxPay.Size = new System.Drawing.Size(470, 174);
             this.groupBoxPay.TabIndex = 0;
             this.groupBoxPay.TabStop = false;
             this.groupBoxPay.Text = "Плата";
@@ -189,10 +197,10 @@
             // 
             this.tabPageMail.Controls.Add(this.groupBoxMail);
             this.tabPageMail.ImageIndex = 1;
-            this.tabPageMail.Location = new System.Drawing.Point(4, 29);
+            this.tabPageMail.Location = new System.Drawing.Point(4, 22);
             this.tabPageMail.Name = "tabPageMail";
             this.tabPageMail.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageMail.Size = new System.Drawing.Size(486, 370);
+            this.tabPageMail.Size = new System.Drawing.Size(486, 377);
             this.tabPageMail.TabIndex = 1;
             this.tabPageMail.Text = "Письма";
             this.tabPageMail.UseVisualStyleBackColor = true;
@@ -210,7 +218,7 @@
             this.groupBoxMail.ForeColor = System.Drawing.Color.DimGray;
             this.groupBoxMail.Location = new System.Drawing.Point(8, 6);
             this.groupBoxMail.Name = "groupBoxMail";
-            this.groupBoxMail.Size = new System.Drawing.Size(470, 230);
+            this.groupBoxMail.Size = new System.Drawing.Size(470, 216);
             this.groupBoxMail.TabIndex = 1;
             this.groupBoxMail.TabStop = false;
             this.groupBoxMail.Text = "Письма";
@@ -286,7 +294,7 @@
             this.groupBoxParcel.ForeColor = System.Drawing.Color.DimGray;
             this.groupBoxParcel.Location = new System.Drawing.Point(8, 6);
             this.groupBoxParcel.Name = "groupBoxParcel";
-            this.groupBoxParcel.Size = new System.Drawing.Size(472, 230);
+            this.groupBoxParcel.Size = new System.Drawing.Size(472, 202);
             this.groupBoxParcel.TabIndex = 1;
             this.groupBoxParcel.TabStop = false;
             this.groupBoxParcel.Text = "Бандероли";
@@ -337,63 +345,6 @@
             this.labelParcelStartWeight.TabIndex = 0;
             this.labelParcelStartWeight.Text = "Минимальный вес (грамм):";
             // 
-            // panelButton
-            // 
-            this.panelButton.Controls.Add(this.btnSave);
-            this.panelButton.Controls.Add(this.btnCancel);
-            this.panelButton.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelButton.Location = new System.Drawing.Point(0, 403);
-            this.panelButton.Name = "panelButton";
-            this.panelButton.Size = new System.Drawing.Size(494, 68);
-            this.panelButton.TabIndex = 1;
-            // 
-            // btnSave
-            // 
-            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSave.BackColor = System.Drawing.Color.SeaGreen;
-            this.btnSave.BorderColor = System.Drawing.Color.Silver;
-            this.btnSave.BorderRadius = 4;
-            this.btnSave.FlatAppearance.BorderSize = 0;
-            this.btnSave.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
-            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 10.18868F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Image = global::LK.Properties.Resources.save_24;
-            this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSave.Location = new System.Drawing.Point(362, 10);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
-            this.btnSave.Size = new System.Drawing.Size(120, 46);
-            this.btnSave.TabIndex = 8;
-            this.btnSave.Text = "Сохранить";
-            this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSave.UseVisualStyleBackColor = false;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancel.BackColor = System.Drawing.Color.Firebrick;
-            this.btnCancel.BorderColor = System.Drawing.Color.Silver;
-            this.btnCancel.BorderRadius = 4;
-            this.btnCancel.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.btnCancel.FlatAppearance.BorderSize = 0;
-            this.btnCancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
-            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 10.18868F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.Image = global::LK.Properties.Resources.close_window_24;
-            this.btnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancel.Location = new System.Drawing.Point(236, 10);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
-            this.btnCancel.Size = new System.Drawing.Size(120, 46);
-            this.btnCancel.TabIndex = 9;
-            this.btnCancel.Text = "Отменить";
-            this.btnCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCancel.UseVisualStyleBackColor = false;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            // 
             // tabPageDebug
             // 
             this.tabPageDebug.Controls.Add(this.groupBoxDebug);
@@ -416,10 +367,21 @@
             this.groupBoxDebug.ForeColor = System.Drawing.Color.DimGray;
             this.groupBoxDebug.Location = new System.Drawing.Point(6, 6);
             this.groupBoxDebug.Name = "groupBoxDebug";
-            this.groupBoxDebug.Size = new System.Drawing.Size(472, 230);
+            this.groupBoxDebug.Size = new System.Drawing.Size(472, 209);
             this.groupBoxDebug.TabIndex = 2;
             this.groupBoxDebug.TabStop = false;
             this.groupBoxDebug.Text = "Отладка";
+            // 
+            // checkBoxLog
+            // 
+            this.checkBoxLog.AutoSize = true;
+            this.checkBoxLog.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBoxLog.Location = new System.Drawing.Point(12, 62);
+            this.checkBoxLog.Name = "checkBoxLog";
+            this.checkBoxLog.Size = new System.Drawing.Size(105, 25);
+            this.checkBoxLog.TabIndex = 1;
+            this.checkBoxLog.Text = "Вести логи";
+            this.checkBoxLog.UseVisualStyleBackColor = true;
             // 
             // labelDebug
             // 
@@ -432,16 +394,144 @@
             this.labelDebug.TabIndex = 0;
             this.labelDebug.Text = "Включить логирование";
             // 
-            // checkBoxLog
+            // tabPage1
             // 
-            this.checkBoxLog.AutoSize = true;
-            this.checkBoxLog.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.checkBoxLog.Location = new System.Drawing.Point(12, 62);
-            this.checkBoxLog.Name = "checkBoxLog";
-            this.checkBoxLog.Size = new System.Drawing.Size(105, 25);
-            this.checkBoxLog.TabIndex = 1;
-            this.checkBoxLog.Text = "Вести логи";
-            this.checkBoxLog.UseVisualStyleBackColor = true;
+            this.tabPage1.Controls.Add(this.groupBoxExport);
+            this.tabPage1.Location = new System.Drawing.Point(4, 29);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Size = new System.Drawing.Size(486, 370);
+            this.tabPage1.TabIndex = 4;
+            this.tabPage1.Text = "Экспорт";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxExport
+            // 
+            this.groupBoxExport.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxExport.Controls.Add(this.tbExportPathNew);
+            this.groupBoxExport.Controls.Add(this.btnExportDir);
+            this.groupBoxExport.Controls.Add(this.labelExportPath);
+            this.groupBoxExport.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.groupBoxExport.ForeColor = System.Drawing.Color.DimGray;
+            this.groupBoxExport.Location = new System.Drawing.Point(8, 6);
+            this.groupBoxExport.Name = "groupBoxExport";
+            this.groupBoxExport.Size = new System.Drawing.Size(470, 128);
+            this.groupBoxExport.TabIndex = 2;
+            this.groupBoxExport.TabStop = false;
+            this.groupBoxExport.Text = "Выгрузка файла";
+            // 
+            // btnExportDir
+            // 
+            this.btnExportDir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExportDir.BackColor = System.Drawing.Color.SeaGreen;
+            this.btnExportDir.FlatAppearance.BorderSize = 0;
+            this.btnExportDir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
+            this.btnExportDir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExportDir.Font = new System.Drawing.Font("Segoe UI", 10.18868F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnExportDir.ForeColor = System.Drawing.Color.White;
+            this.btnExportDir.Image = global::LK.Properties.Resources.folder_3_24;
+            this.btnExportDir.Location = new System.Drawing.Point(424, 53);
+            this.btnExportDir.Name = "btnExportDir";
+            this.btnExportDir.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            this.btnExportDir.Size = new System.Drawing.Size(40, 40);
+            this.btnExportDir.TabIndex = 9;
+            this.btnExportDir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnExportDir.UseVisualStyleBackColor = false;
+            this.btnExportDir.Click += new System.EventHandler(this.btnExportDir_Click);
+            // 
+            // labelExportPath
+            // 
+            this.labelExportPath.AutoSize = true;
+            this.labelExportPath.Font = new System.Drawing.Font("Segoe UI", 10.86792F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelExportPath.ForeColor = System.Drawing.Color.DimGray;
+            this.labelExportPath.Location = new System.Drawing.Point(6, 38);
+            this.labelExportPath.Name = "labelExportPath";
+            this.labelExportPath.Size = new System.Drawing.Size(182, 20);
+            this.labelExportPath.TabIndex = 0;
+            this.labelExportPath.Text = "Выгружать файл в папку:";
+            // 
+            // panelButton
+            // 
+            this.panelButton.Controls.Add(this.btnSave);
+            this.panelButton.Controls.Add(this.btnCancel);
+            this.panelButton.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelButton.Location = new System.Drawing.Point(0, 403);
+            this.panelButton.Name = "panelButton";
+            this.panelButton.Size = new System.Drawing.Size(494, 68);
+            this.panelButton.TabIndex = 1;
+            // 
+            // btnSave
+            // 
+            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSave.BackColor = System.Drawing.Color.SeaGreen;
+            this.btnSave.BackgroundColor = System.Drawing.Color.SeaGreen;
+            this.btnSave.BorderColor = System.Drawing.Color.Silver;
+            this.btnSave.BorderRadius = 4F;
+            this.btnSave.BorderSize = 0;
+            this.btnSave.DisableBackgroundColor = System.Drawing.Color.DimGray;
+            this.btnSave.DisableBorderColor = System.Drawing.Color.Silver;
+            this.btnSave.FlatAppearance.BorderSize = 0;
+            this.btnSave.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 10.18868F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnSave.ForeColor = System.Drawing.Color.White;
+            this.btnSave.Image = global::LK.Properties.Resources.save_24;
+            this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSave.Location = new System.Drawing.Point(362, 10);
+            this.btnSave.MouseDownBackColor = System.Drawing.Color.Empty;
+            this.btnSave.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            this.btnSave.Size = new System.Drawing.Size(120, 46);
+            this.btnSave.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            this.btnSave.TabIndex = 8;
+            this.btnSave.Text = "Сохранить";
+            this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSave.TextColor = System.Drawing.Color.White;
+            this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancel.BackColor = System.Drawing.Color.Firebrick;
+            this.btnCancel.BackgroundColor = System.Drawing.Color.Firebrick;
+            this.btnCancel.BorderColor = System.Drawing.Color.Silver;
+            this.btnCancel.BorderRadius = 4F;
+            this.btnCancel.BorderSize = 0;
+            this.btnCancel.DisableBackgroundColor = System.Drawing.Color.DimGray;
+            this.btnCancel.DisableBorderColor = System.Drawing.Color.Silver;
+            this.btnCancel.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnCancel.FlatAppearance.BorderSize = 0;
+            this.btnCancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 10.18868F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnCancel.ForeColor = System.Drawing.Color.White;
+            this.btnCancel.Image = global::LK.Properties.Resources.close_window_24;
+            this.btnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCancel.Location = new System.Drawing.Point(236, 10);
+            this.btnCancel.MouseDownBackColor = System.Drawing.Color.Empty;
+            this.btnCancel.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            this.btnCancel.Size = new System.Drawing.Size(120, 46);
+            this.btnCancel.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            this.btnCancel.TabIndex = 9;
+            this.btnCancel.Text = "Отменить";
+            this.btnCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCancel.TextColor = System.Drawing.Color.White;
+            this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // tbExportPathNew
+            // 
+            this.tbExportPathNew.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbExportPathNew.ForeColor = System.Drawing.Color.DimGray;
+            this.tbExportPathNew.Location = new System.Drawing.Point(10, 61);
+            this.tbExportPathNew.Name = "tbExportPathNew";
+            this.tbExportPathNew.Size = new System.Drawing.Size(408, 26);
+            this.tbExportPathNew.TabIndex = 10;
             // 
             // SettingsForm
             // 
@@ -471,10 +561,13 @@
             this.tabPageParcel.ResumeLayout(false);
             this.groupBoxParcel.ResumeLayout(false);
             this.groupBoxParcel.PerformLayout();
-            this.panelButton.ResumeLayout(false);
             this.tabPageDebug.ResumeLayout(false);
             this.groupBoxDebug.ResumeLayout(false);
             this.groupBoxDebug.PerformLayout();
+            this.tabPage1.ResumeLayout(false);
+            this.groupBoxExport.ResumeLayout(false);
+            this.groupBoxExport.PerformLayout();
+            this.panelButton.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -509,5 +602,10 @@
         private System.Windows.Forms.GroupBox groupBoxDebug;
         private System.Windows.Forms.CheckBox checkBoxLog;
         private System.Windows.Forms.Label labelDebug;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.GroupBox groupBoxExport;
+        private System.Windows.Forms.Label labelExportPath;
+        private System.Windows.Forms.Button btnExportDir;
+        private System.Windows.Forms.TextBox tbExportPathNew;
     }
 }

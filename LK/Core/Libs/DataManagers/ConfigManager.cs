@@ -40,6 +40,7 @@ namespace LK.Core.Libs.DataManagers
             Config configParcelEndWeight = CreateDefaultParcelEndWeight();
             Config configLastLoadReportDate = CreateDefaultLastLoadReportDate();
             Config configDefaultPrinterName = CreateDefaultPrinterName();
+            Config configExportPath = CreateDefaultExportPath();
 
             List<Config> configs = new List<Config>
             {
@@ -51,7 +52,8 @@ namespace LK.Core.Libs.DataManagers
                 configParcelStartWeight,
                 configParcelEndWeight,
                 configLastLoadReportDate,
-                configDefaultPrinterName
+                configDefaultPrinterName,
+                configExportPath
             };
 
             Save(configs);
@@ -80,7 +82,6 @@ namespace LK.Core.Libs.DataManagers
             return new Config(ConfigName.Value, "3");
         }
 
-
         public static Config CreateDefaultStep()
         {
             return new Config(ConfigName.Step, "20");
@@ -96,7 +97,6 @@ namespace LK.Core.Libs.DataManagers
             return new Config(ConfigName.MailEndWeight, "100");
         }
 
-
         public static Config CreateDefaultParcelStartWeight()
         {
             return new Config(ConfigName.ParcelStartWeight, "100");
@@ -106,6 +106,7 @@ namespace LK.Core.Libs.DataManagers
         {
             return new Config(ConfigName.ParcelEndWeight, "5000");
         }
+
         public static Config CreateDefaultLastLoadReportDate()
         {
             return new Config(ConfigName.LastLoadReportDate, DateTime.Today.ToString(CultureInfo.InvariantCulture));
@@ -115,6 +116,11 @@ namespace LK.Core.Libs.DataManagers
         {
             PrinterSettings settings = new PrinterSettings();
             return new Config(ConfigName.DefaultPrinterName, settings.PrinterName);
+        }
+
+        public static Config CreateDefaultExportPath()
+        {
+            return new Config(ConfigName.ExportPath, "C:\\rpo");
         }
 
         #endregion

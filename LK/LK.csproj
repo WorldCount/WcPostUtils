@@ -185,6 +185,8 @@
     <Compile Include="Core\Libs\TarifManager\Tarif\Base\INoticeTarif.cs" />
     <Compile Include="Core\Libs\TarifManager\Tarif\NoticeTarif.cs" />
     <Compile Include="Core\PathManager.cs" />
+    <Compile Include="Core\Store\ExportFile\ExportFileString.cs" />
+    <Compile Include="Core\Store\ExportFile\ExportPartPostFile.cs" />
     <Compile Include="Core\Store\Manager\ConfigFirmFieldManager.cs" />
     <Compile Include="Core\Store\Manager\ConfigRpoFieldManager.cs" />
     <Compile Include="Core\Store\Manager\FirmListManager.cs" />
@@ -338,6 +340,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="Resources\cloud-download-24.png" />
+    <None Include="Resources\folder-3-24.png" />
     <None Include="Resources\File-Excel.png" />
     <None Include="Properties\DataSources\LK.Core.Libs.Configs.ConfigFirmField.datasource" />
     <None Include="Resources\Button-Dashboard.png" />

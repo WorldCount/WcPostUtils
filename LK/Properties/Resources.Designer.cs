@@ -213,6 +213,16 @@ namespace LK.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap cloud_download_24 {
+            get {
+                object obj = ResourceManager.GetObject("cloud-download-24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Cloud_Refresh {
             get {
                 object obj = ResourceManager.GetObject("Cloud-Refresh", resourceCulture);
@@ -256,6 +266,16 @@ namespace LK.Properties {
         internal static System.Drawing.Bitmap File_Excel {
             get {
                 object obj = ResourceManager.GetObject("File-Excel", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap folder_3_24 {
+            get {
+                object obj = ResourceManager.GetObject("folder_3_24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

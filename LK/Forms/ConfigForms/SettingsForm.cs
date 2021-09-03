@@ -16,6 +16,7 @@ namespace LK.Forms.ConfigForms
         private Config _mailEndWeightConfig;
         private Config _parcelStartWeightConfig;
         private Config _parcelEndWeightConfig;
+        private Config _exportPathConfig;
 
         public SettingsForm()
         {
@@ -44,6 +45,7 @@ namespace LK.Forms.ConfigForms
             tbMailEndWeight.DataBindings.Add("Text", _mailEndWeightConfig, "Value", false, DataSourceUpdateMode.OnPropertyChanged);
             tbParcelStartWeight.DataBindings.Add("Text", _parcelStartWeightConfig, "Value", false, DataSourceUpdateMode.OnPropertyChanged);
             tbParcelEndWeight.DataBindings.Add("Text", _parcelEndWeightConfig, "Value", false, DataSourceUpdateMode.OnPropertyChanged);
+            tbExportPathNew.DataBindings.Add("Text", _exportPathConfig, "Value", false, DataSourceUpdateMode.OnPropertyChanged);
         }
 
         private void LoadConfigs()
@@ -55,6 +57,7 @@ namespace LK.Forms.ConfigForms
             _mailEndWeightConfig = ConfigManager.GetConfigByName(ConfigName.MailEndWeight);
             _parcelStartWeightConfig = ConfigManager.GetConfigByName(ConfigName.ParcelStartWeight);
             _parcelEndWeightConfig = ConfigManager.GetConfigByName(ConfigName.ParcelEndWeight);
+            _exportPathConfig = ConfigManager.GetConfigByName(ConfigName.ExportPath) ?? ConfigManager.CreateDefaultExportPath();
 
             checkBoxLog.Checked = Properties.Settings.Default.LoggingMode;
         }
@@ -69,7 +72,8 @@ namespace LK.Forms.ConfigForms
                 _mailStartWeightConfig,
                 _mailEndWeightConfig,
                 _parcelStartWeightConfig,
-                _parcelEndWeightConfig
+                _parcelEndWeightConfig,
+                _exportPathConfig
             };
 
             Properties.Settings.Default.LoggingMode = checkBoxLog.Checked;
@@ -106,6 +110,16 @@ namespace LK.Forms.ConfigForms
             // Esc
             if (e.KeyCode == Keys.Escape)
                 btnCancel.PerformClick();
+        }
+
+        private void btnExportDir_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
+            if (!string.IsNullOrEmpty(_exportPathConfig.Value))
+                folderBrowserDialog.SelectedPath = _exportPathConfig.Value;
+
+            if (folderBrowserDialog.ShowDialog(this) == DialogResult.OK)
+                tbExportPathNew.Text = folderBrowserDialog.SelectedPath;
         }
     }
 }

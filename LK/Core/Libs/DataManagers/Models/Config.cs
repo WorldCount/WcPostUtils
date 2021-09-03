@@ -13,7 +13,8 @@ namespace LK.Core.Libs.DataManagers.Models
         ParcelStartWeight,
         ParcelEndWeight,
         LastLoadReportDate,
-        DefaultPrinterName
+        DefaultPrinterName,
+        ExportPath
     }
 
     public class Config

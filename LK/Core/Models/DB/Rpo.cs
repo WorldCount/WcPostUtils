@@ -1,6 +1,7 @@
 ﻿using System;
 using LK.Core.Libs.TarifManager.PostTypes;
 using LK.Core.Models.Types;
+using LK.Core.Store.ExportFile;
 using SQLiteNetExtensions.Attributes;
 
 namespace LK.Core.Models.DB
@@ -101,6 +102,33 @@ namespace LK.Core.Models.DB
         public bool IsInventory()
         {
             return Inventory;
+        }
+
+        public ExportFileString ToExportFileString()
+        {
+            ExportFileString e = new ExportFileString
+            {
+                OperDate = ReceptionDate.ToString("yyyyMMdd"), Barcode = Barcode, IndexTo = Ops, Mass = "20",
+                MassRate = ((int)MassRate).ToString()
+            };
+
+            if (MailClass == MailClass.Международное)
+                e.MailDirect = "840";
+
+            // ReSharper disable once CompareOfFloatsByEqualityOperator
+            if (AviaRate != 0)
+                e.TransType = "2";
+
+            if (IsSimpleNotice())
+                e.PostMark = "1";
+            if (IsCustomNotice())
+                e.PostMark = "2";
+
+            // ReSharper disable once CompareOfFloatsByEqualityOperator
+            if (Value != 0)
+                e.Value = ((int) Value).ToString();
+
+            return e;
         }
 
         #endregion
