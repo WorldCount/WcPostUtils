@@ -92,7 +92,7 @@ namespace LK.Core.Models.DB
         public bool IsCustomNotice()
         {
             return PostMarkParser.IsCustomNotice(Notice);
-        }
+        }ние 
 
         public bool IsElectronicNotice()
         {
@@ -108,7 +108,7 @@ namespace LK.Core.Models.DB
         {
             ExportFileString e = new ExportFileString
             {
-                OperDate = ReceptionDate.ToString("yyyyMMdd"), Barcode = Barcode, IndexTo = Ops, Mass = "20",
+                OperDate = ReceptionDate.ToString("yyyyMMdd"), Barcode = Barcode, IndexTo = Index, Mass = "20",
                 MassRate = ((int)MassRate).ToString()
             };
 
