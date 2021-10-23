@@ -51,6 +51,7 @@
     <Compile Include="Cryptography\Md5Hash.cs" />
     <Compile Include="Cryptography\Types.cs" />
     <Compile Include="Database\DBF.cs" />
+    <Compile Include="Ext\EnumerableExt.cs" />
     <Compile Include="Ext\ListExt.cs" />
     <Compile Include="Ext\TextExt.cs" />
     <Compile Include="Finance\Nds.cs" />
