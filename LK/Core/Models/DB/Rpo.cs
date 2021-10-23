@@ -92,7 +92,7 @@ namespace LK.Core.Models.DB
         public bool IsCustomNotice()
         {
             return PostMarkParser.IsCustomNotice(Notice);
-        }ние 
+        }
 
         public bool IsElectronicNotice()
         {
