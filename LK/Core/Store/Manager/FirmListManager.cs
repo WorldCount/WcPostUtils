@@ -61,6 +61,7 @@ namespace LK.Core.Store.Manager
                 {
                     firmList.Recount(ndsConfig.GetIntValue(), valueConfig.GetIntValue());
                 }
+
                 Database.UpdateFirmLists(_firmLists);
             }
         }

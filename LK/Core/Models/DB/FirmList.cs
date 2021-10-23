@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using LK.Core.Libs.TarifManager.PostTypes;
 using LK.Core.Models.Types;
 using SQLiteNetExtensions.Attributes;
+using WcApi.Finance;
 
 namespace LK.Core.Models.DB
 {
@@ -121,18 +122,24 @@ namespace LK.Core.Models.DB
         {
             if (Id > 0 && Rpos != null)
             {
+                Count = 0;
                 CountFact = 0;
+
                 Value = 0;
 
                 ValueRate = 0;
                 MassRate = 0;
                 MassRateNds = 0;
 
+                Nds ndsCalc = new Nds(nds);
+
                 foreach (Rpo rpo in Rpos)
                 {
 
                     if (MailClass == MailClass.ВСЕ)
                         MailClass = rpo.MailClass;
+
+                    Count += 1;
 
                     if (rpo.StatusId == 2)
                     {
@@ -142,6 +149,8 @@ namespace LK.Core.Models.DB
                         MassRate += rpo.MassRate;
                     }
                 }
+
+                MassRateNds = ndsCalc.Plus(MassRate);
             }
         }
 

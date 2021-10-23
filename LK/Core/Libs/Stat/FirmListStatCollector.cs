@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using LK.Core.Libs.TarifManager;
 using LK.Core.Libs.TarifManager.PostTypes;
 using LK.Core.Libs.TarifManager.Tarif;
@@ -95,7 +91,7 @@ namespace LK.Core.Libs.Stat
             }
         }
 
-        public void AddStat(FirmList firmList)
+        private void AddStat(FirmList firmList)
         {
             if (firmList != null && firmList.Count > 0)
             {

@@ -15,10 +15,9 @@ namespace LK.Core.Store.Manager
             _operators = Database.GetAllOperator();
         }
 
-        public Operator GetOperator(string fullName)
+        private Operator GetOperator(string fullName)
         {
-            string[] s = fullName.Split(' ');
-            return _operators.FirstOrDefault(o => o.LastName.ToUpper() == s[0].ToUpper());
+            return _operators.FirstOrDefault(o => o.FullName.ToUpper() == fullName.ToUpper());
         }
 
         public Operator GetOrCreateOperator(string fullName)

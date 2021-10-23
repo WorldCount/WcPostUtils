@@ -774,6 +774,7 @@ namespace LK.Core.Store
             using (var db = DbConnect.GetConnection())
             {
                 db.UpdateAll(firmLists);
+                db.Commit();
             }
         }
 

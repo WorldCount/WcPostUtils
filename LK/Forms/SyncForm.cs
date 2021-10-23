@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using LK.Core;
@@ -21,6 +22,7 @@ using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
 using NLog;
 using WcApi.Cryptography;
+using WcApi.Ext;
 using WcApi.Finance;
 
 namespace LK.Forms
@@ -378,7 +380,11 @@ namespace LK.Forms
             }
 
             int count = Database.SaveAllRpo(rpos);
-            firmListManager.Recount(_recountFirmListIds);
+
+            var data = _recountFirmListIds.Chunk(500);
+            foreach (IEnumerable<int> ids in data)
+                firmListManager.Recount(ids.ToList());
+
             workbook = null;
         }
 
