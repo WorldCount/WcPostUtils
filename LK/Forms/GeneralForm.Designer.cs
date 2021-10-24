@@ -30,18 +30,15 @@ namespace LK.Forms
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GeneralForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.status = new System.Windows.Forms.StatusStrip();
-            this.statusText = new System.Windows.Forms.ToolStripStatusLabel();
-            this.statusAuthor = new System.Windows.Forms.ToolStripStatusLabel();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.reportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportsAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -150,6 +147,7 @@ namespace LK.Forms
             this.btnCheckAll = new Wc32Api.Widgets.Buttons.WcButton();
             this.labelBarcode = new System.Windows.Forms.Label();
             this.tbBarcode = new System.Windows.Forms.TextBox();
+            this.checkBoxPrintPreview = new System.Windows.Forms.CheckBox();
             this.btnTablePrint = new Wc32Api.Widgets.Buttons.WcButton();
             this.lblRpoCount = new Wc32Api.Widgets.Labels.WcLabel();
             this.btnClearRpo = new Wc32Api.Widgets.Buttons.WcButton();
@@ -158,7 +156,6 @@ namespace LK.Forms
             this.tbFilter = new LK.Core.Libs.Widget.BorderTextBox();
             this.lblFilter = new System.Windows.Forms.Label();
             this.btnExportToFile = new Wc32Api.Widgets.Buttons.WcButton();
-            this.checkBoxPrintPreview = new System.Windows.Forms.CheckBox();
             this.imageListCheckBox = new System.Windows.Forms.ImageList(this.components);
             this.labelLicense = new System.Windows.Forms.Label();
             this.labelInfoLicense = new System.Windows.Forms.Label();
@@ -208,6 +205,9 @@ namespace LK.Forms
             this.licenseMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.updateMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.status = new System.Windows.Forms.StatusStrip();
+            this.statusText = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusAuthor = new System.Windows.Forms.ToolStripStatusLabel();
             this.panelFilter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.firmBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.operatorBindingSource)).BeginInit();
@@ -224,31 +224,8 @@ namespace LK.Forms
             this.panel1.SuspendLayout();
             this.menu.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.status.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // status
-            // 
-            this.status.Font = new System.Drawing.Font("Consolas", 8.830189F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.status.ImageScalingSize = new System.Drawing.Size(18, 18);
-            this.status.Location = new System.Drawing.Point(0, 550);
-            this.status.Name = "status";
-            this.status.Size = new System.Drawing.Size(1273, 22);
-            this.status.TabIndex = 2;
-            this.status.Text = "Статус";
-            // 
-            // statusText
-            // 
-            this.statusText.Name = "statusText";
-            this.statusText.Size = new System.Drawing.Size(1144, 17);
-            this.statusText.Spring = true;
-            // 
-            // statusAuthor
-            // 
-            this.statusAuthor.Font = new System.Drawing.Font("Segoe UI", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.statusAuthor.ForeColor = System.Drawing.Color.DarkGray;
-            this.statusAuthor.Name = "statusAuthor";
-            this.statusAuthor.Size = new System.Drawing.Size(114, 17);
-            this.statusAuthor.Text = "WorldCount, 2020 ©";
             // 
             // reportsToolStripMenuItem
             // 
@@ -692,14 +669,14 @@ namespace LK.Forms
             this.dataGridViewList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewList.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dataGridViewList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 10.86792F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10.86792F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewList.ColumnHeadersHeight = 40;
             this.dataGridViewList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridViewList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -718,26 +695,26 @@ namespace LK.Forms
             this.receptionDateDataGridViewTextBoxColumn,
             this.operatorDataGridViewTextBoxColumn});
             this.dataGridViewList.DataSource = this.firmListBindingSource;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 10.86792F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(201)))), ((int)(((byte)(201)))));
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewList.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.86792F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(201)))), ((int)(((byte)(201)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewList.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewList.EnableHeadersVisualStyles = false;
             this.dataGridViewList.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
             this.dataGridViewList.Location = new System.Drawing.Point(0, 287);
             this.dataGridViewList.Name = "dataGridViewList";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 10.86792F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewList.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 10.86792F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewList.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewList.RowHeadersVisible = false;
             this.dataGridViewList.RowHeadersWidth = 40;
             this.dataGridViewList.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -860,9 +837,9 @@ namespace LK.Forms
             // rateDataGridViewTextBoxColumn
             // 
             this.rateDataGridViewTextBoxColumn.DataPropertyName = "MassRate";
-            dataGridViewCellStyle10.Format = "N2";
-            dataGridViewCellStyle10.NullValue = null;
-            this.rateDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle2.Format = "N2";
+            dataGridViewCellStyle2.NullValue = null;
+            this.rateDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
             this.rateDataGridViewTextBoxColumn.HeaderText = "Сбор";
             this.rateDataGridViewTextBoxColumn.Name = "rateDataGridViewTextBoxColumn";
             this.rateDataGridViewTextBoxColumn.ReadOnly = true;
@@ -997,14 +974,14 @@ namespace LK.Forms
             this.dataGridViewStat.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewStat.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dataGridViewStat.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI", 10.86792F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewStat.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 10.86792F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewStat.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewStat.ColumnHeadersHeight = 30;
             this.dataGridViewStat.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridViewStat.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -1015,27 +992,27 @@ namespace LK.Forms
             this.countDataGridViewTextBoxColumn1,
             this.rateDataGridViewTextBoxColumn1});
             this.dataGridViewStat.DataSource = this.statDataBindingSource;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle15.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Segoe UI", 10.86792F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewStat.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 10.86792F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewStat.DefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridViewStat.EnableHeadersVisualStyles = false;
             this.dataGridViewStat.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
             this.dataGridViewStat.Location = new System.Drawing.Point(0, 427);
             this.dataGridViewStat.MultiSelect = false;
             this.dataGridViewStat.Name = "dataGridViewStat";
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle16.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Segoe UI", 10.86792F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewStat.RowHeadersDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 10.86792F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewStat.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridViewStat.RowHeadersVisible = false;
             this.dataGridViewStat.RowHeadersWidth = 30;
             this.dataGridViewStat.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -1082,9 +1059,9 @@ namespace LK.Forms
             // rateDataGridViewTextBoxColumn1
             // 
             this.rateDataGridViewTextBoxColumn1.DataPropertyName = "Rate";
-            dataGridViewCellStyle14.Format = "N2";
-            dataGridViewCellStyle14.NullValue = null;
-            this.rateDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle6.Format = "N2";
+            dataGridViewCellStyle6.NullValue = null;
+            this.rateDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle6;
             this.rateDataGridViewTextBoxColumn1.HeaderText = "Плата";
             this.rateDataGridViewTextBoxColumn1.Name = "rateDataGridViewTextBoxColumn1";
             this.rateDataGridViewTextBoxColumn1.ReadOnly = true;
@@ -1228,6 +1205,7 @@ namespace LK.Forms
             this.panel1.Controls.Add(this.btnCheckAll);
             this.panel1.Controls.Add(this.labelBarcode);
             this.panel1.Controls.Add(this.tbBarcode);
+            this.panel1.Controls.Add(this.checkBoxPrintPreview);
             this.panel1.Controls.Add(this.btnTablePrint);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(179)))), ((int)(((byte)(179)))));
@@ -1373,6 +1351,34 @@ namespace LK.Forms
             this.tbBarcode.Enter += new System.EventHandler(this.tbBarcode_Enter);
             this.tbBarcode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbBarcode_KeyDown);
             // 
+            // checkBoxPrintPreview
+            // 
+            this.checkBoxPrintPreview.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkBoxPrintPreview.Appearance = System.Windows.Forms.Appearance.Button;
+            this.checkBoxPrintPreview.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.checkBoxPrintPreview.Checked = true;
+            this.checkBoxPrintPreview.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxPrintPreview.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
+            this.checkBoxPrintPreview.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
+            this.checkBoxPrintPreview.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
+            this.checkBoxPrintPreview.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
+            this.checkBoxPrintPreview.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.checkBoxPrintPreview.Font = new System.Drawing.Font("Segoe UI", 10.86792F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBoxPrintPreview.ForeColor = System.Drawing.Color.White;
+            this.checkBoxPrintPreview.Image = global::LK.Properties.Resources.white_checked_32;
+            this.checkBoxPrintPreview.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.checkBoxPrintPreview.Location = new System.Drawing.Point(1102, 7);
+            this.checkBoxPrintPreview.Name = "checkBoxPrintPreview";
+            this.checkBoxPrintPreview.Size = new System.Drawing.Size(159, 39);
+            this.checkBoxPrintPreview.TabIndex = 0;
+            this.checkBoxPrintPreview.TabStop = false;
+            this.checkBoxPrintPreview.Text = "Предпросмотр";
+            this.checkBoxPrintPreview.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.checkBoxPrintPreview.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.checkBoxPrintPreview.UseVisualStyleBackColor = false;
+            this.checkBoxPrintPreview.CheckedChanged += new System.EventHandler(this.checkBoxPrintPreview_CheckedChanged);
+            this.checkBoxPrintPreview.CheckStateChanged += new System.EventHandler(this.checkBoxPrintPreview_CheckStateChanged);
+            // 
             // btnTablePrint
             // 
             this.btnTablePrint.BackColor = System.Drawing.Color.SlateGray;
@@ -1405,7 +1411,6 @@ namespace LK.Forms
             // 
             // lblRpoCount
             // 
-            this.lblRpoCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblRpoCount.BackColor = System.Drawing.Color.SteelBlue;
             this.lblRpoCount.BorderRadius = 2;
             this.lblRpoCount.BorderThickness = 1F;
@@ -1516,6 +1521,7 @@ namespace LK.Forms
             this.tbFilter.Size = new System.Drawing.Size(220, 26);
             this.tbFilter.TabIndex = 0;
             this.tbFilter.TabStop = false;
+            this.tbFilter.TextChanged += new System.EventHandler(this.tbFilter_TextChanged);
             // 
             // lblFilter
             // 
@@ -1530,7 +1536,6 @@ namespace LK.Forms
             // 
             // btnExportToFile
             // 
-            this.btnExportToFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnExportToFile.BackColor = System.Drawing.Color.DodgerBlue;
             this.btnExportToFile.BackgroundColor = System.Drawing.Color.DodgerBlue;
             this.btnExportToFile.BorderColor = System.Drawing.Color.Silver;
@@ -1556,34 +1561,6 @@ namespace LK.Forms
             this.btnExportToFile.TextColor = System.Drawing.Color.White;
             this.btnExportToFile.UseVisualStyleBackColor = false;
             this.btnExportToFile.Click += new System.EventHandler(this.btnExportToFile_Click);
-            // 
-            // checkBoxPrintPreview
-            // 
-            this.checkBoxPrintPreview.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkBoxPrintPreview.Appearance = System.Windows.Forms.Appearance.Button;
-            this.checkBoxPrintPreview.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.checkBoxPrintPreview.Checked = true;
-            this.checkBoxPrintPreview.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxPrintPreview.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
-            this.checkBoxPrintPreview.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
-            this.checkBoxPrintPreview.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
-            this.checkBoxPrintPreview.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
-            this.checkBoxPrintPreview.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.checkBoxPrintPreview.Font = new System.Drawing.Font("Segoe UI", 10.86792F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.checkBoxPrintPreview.ForeColor = System.Drawing.Color.White;
-            this.checkBoxPrintPreview.Image = global::LK.Properties.Resources.white_checked_32;
-            this.checkBoxPrintPreview.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.checkBoxPrintPreview.Location = new System.Drawing.Point(885, 1);
-            this.checkBoxPrintPreview.Name = "checkBoxPrintPreview";
-            this.checkBoxPrintPreview.Size = new System.Drawing.Size(159, 39);
-            this.checkBoxPrintPreview.TabIndex = 0;
-            this.checkBoxPrintPreview.TabStop = false;
-            this.checkBoxPrintPreview.Text = "Предпросмотр";
-            this.checkBoxPrintPreview.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.checkBoxPrintPreview.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.checkBoxPrintPreview.UseVisualStyleBackColor = false;
-            this.checkBoxPrintPreview.CheckedChanged += new System.EventHandler(this.checkBoxPrintPreview_CheckedChanged);
-            this.checkBoxPrintPreview.CheckStateChanged += new System.EventHandler(this.checkBoxPrintPreview_CheckStateChanged);
             // 
             // imageListCheckBox
             // 
@@ -2047,21 +2024,47 @@ namespace LK.Forms
             this.panel2.Size = new System.Drawing.Size(1273, 46);
             this.panel2.TabIndex = 12;
             // 
+            // status
+            // 
+            this.status.Font = new System.Drawing.Font("Consolas", 8.830189F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.status.ImageScalingSize = new System.Drawing.Size(18, 18);
+            this.status.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.statusText,
+            this.statusAuthor});
+            this.status.Location = new System.Drawing.Point(0, 550);
+            this.status.Name = "status";
+            this.status.Size = new System.Drawing.Size(1273, 22);
+            this.status.TabIndex = 13;
+            this.status.Text = "Статус";
+            // 
+            // statusText
+            // 
+            this.statusText.Name = "statusText";
+            this.statusText.Size = new System.Drawing.Size(1144, 17);
+            this.statusText.Spring = true;
+            // 
+            // statusAuthor
+            // 
+            this.statusAuthor.Font = new System.Drawing.Font("Segoe UI", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.statusAuthor.ForeColor = System.Drawing.Color.DarkGray;
+            this.statusAuthor.Name = "statusAuthor";
+            this.statusAuthor.Size = new System.Drawing.Size(114, 17);
+            this.statusAuthor.Text = "WorldCount, 2020 ©";
+            // 
             // GeneralForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1273, 572);
+            this.Controls.Add(this.status);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.labelLicense);
             this.Controls.Add(this.labelInfoLicense);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelType);
-            this.Controls.Add(this.checkBoxPrintPreview);
             this.Controls.Add(this.dataGridViewStat);
             this.Controls.Add(this.dataGridViewList);
             this.Controls.Add(this.panelFilter);
-            this.Controls.Add(this.status);
             this.Controls.Add(this.menu);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Segoe UI", 10.86792F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -2097,16 +2100,14 @@ namespace LK.Forms
             this.menu.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.status.ResumeLayout(false);
+            this.status.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.StatusStrip status;
-        private System.Windows.Forms.ToolStripStatusLabel statusText;
-        private System.Windows.Forms.ToolStripStatusLabel statusAuthor;
         private System.Windows.Forms.ToolStripMenuItem connectToolStripMenuItem;
         private System.Windows.Forms.Panel panelFilter;
         private System.Windows.Forms.DataGridView dataGridViewList;
@@ -2273,6 +2274,9 @@ namespace LK.Forms
         private Wc32Api.Widgets.Buttons.WcButton btnDelRpo;
         private Wc32Api.Widgets.Labels.WcLabel lblRpoCount;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.StatusStrip status;
+        private System.Windows.Forms.ToolStripStatusLabel statusText;
+        private System.Windows.Forms.ToolStripStatusLabel statusAuthor;
     }
 }
 

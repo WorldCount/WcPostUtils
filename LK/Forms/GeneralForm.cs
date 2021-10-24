@@ -73,6 +73,13 @@ namespace LK.Forms
         // Очередь отчетов для печати
         private readonly ReportQueue<SingleReportData> _reportsQueue = new ReportQueue<SingleReportData>();
 
+        #region Выгрузка
+
+        private List<int> _exportIdFirms = new List<int>();
+        private List<Rpo> _exportRpos = new List<Rpo>();
+
+        #endregion
+
         #endregion
 
         #region Конфиги
@@ -339,7 +346,7 @@ namespace LK.Forms
         /// </summary>
         /// <param name="message"></param>
         /// <param name="color"></param>
-        public void SendStatucMessage(string message, Color color)
+        private void SendStatusMessage(string message, Color color)
         {
             statusText.ForeColor = color;
             statusText.Text = message;
@@ -348,36 +355,36 @@ namespace LK.Forms
 
         // Сообщение: обычное
         // ReSharper disable once UnusedMember.Global
-        public void NormalMessage(string message)
+        private void NormalMessage(string message)
         {
-            SendStatucMessage(message, Color.DimGray);
+            SendStatusMessage(message, Color.DimGray);
         }
 
         // Сообщение: успех
-        public void SuccessMessage(string message)
+        private void SuccessMessage(string message)
         {
-            SendStatucMessage(message, Color.Green);
+            SendStatusMessage(message, Color.Green);
         }
 
         // Сообщение: ошибка
-        public void ErrorMessage(string message)
+        private void ErrorMessage(string message)
         {
-            SendStatucMessage(message, Color.Firebrick);
+            SendStatusMessage(message, Color.Firebrick);
         }
 
         // Сообщение: предупреждение
-        public void WarningMessage(string message)
+        private void WarningMessage(string message)
         {
-            SendStatucMessage(message, Color.DarkOrange);
+            SendStatusMessage(message, Color.DarkOrange);
         }
 
         // Сообщение: информация
-        public void InfoMessage(string message)
+        private void InfoMessage(string message)
         {
-            SendStatucMessage(message, Color.DodgerBlue);
+            SendStatusMessage(message, Color.DodgerBlue);
         }
 
-        public async Task SendMessage(string msg)
+        private async Task SendMessage(string msg)
         {
             string req = await Task.Run(() =>
             {
@@ -592,10 +599,10 @@ namespace LK.Forms
             mailCategoryBindingSource.DataSource = _mailCategories;
         }
 
-        private void UpdateFirmList()
+        private void UpdateFirmList(List<FirmList> firmLists = null)
         {
             firmListBindingSource.DataSource = null;
-            firmListBindingSource.DataSource = _firmLists.ToSortableBindingList();
+            firmListBindingSource.DataSource = firmLists != null ? firmLists.ToSortableBindingList() : _firmLists.ToSortableBindingList();
 
             dataGridViewList.Sort(receptionDateDataGridViewTextBoxColumn, ListSortDirection.Ascending);
         }
@@ -653,7 +660,13 @@ namespace LK.Forms
 
         private List<FirmList> GetCheckedFirmLists()
         {
-            return _firmLists?.Where(f => f.Check).ToList();
+            return GetFirmListsBySource()?.Where(f => f.Check).ToList();
+        }
+
+        private List<FirmList> GetFirmListsBySource()
+        {
+            SortableBindingList<FirmList> firmLists = (SortableBindingList<FirmList>) firmListBindingSource.DataSource;
+            return firmLists?.ToList();
         }
 
         private Firm GetSelectFirm()
@@ -663,23 +676,30 @@ namespace LK.Forms
 
         private void CheckReverse()
         {
-            foreach (FirmList firmList in _firmLists)
+            List<FirmList> firmLists = GetFirmListsBySource();
+
+            if(firmLists == null)
+                return;
+
+            foreach (FirmList firmList in firmLists)
             {
                 firmList.Check = !firmList.Check;
             }
 
-            _collector = new FirmListStatCollector(_firmLists);
+            _collector = new FirmListStatCollector(firmLists);
             UpdateStat();
 
-            UpdateFirmList();
+            UpdateFirmList(firmLists);
         }
 
         private void CheckAll(string firmName = null)
         {
-            if (_firmLists == null)
+            List<FirmList> firmLists = GetFirmListsBySource();
+
+            if (firmLists == null)
                 return;
 
-            foreach (FirmList firmList in _firmLists)
+            foreach (FirmList firmList in firmLists)
             {
                 if (firmName != null)
                 {
@@ -693,18 +713,20 @@ namespace LK.Forms
                 }
             }
 
-            _collector = new FirmListStatCollector(_firmLists);
+            _collector = new FirmListStatCollector(firmLists);
             UpdateStat();
 
-            UpdateFirmList();
+            UpdateFirmList(firmLists);
         }
 
         private void UncheckAll(string firmName = null)
         {
-            if(_firmLists == null)
+            List<FirmList> firmLists = GetFirmListsBySource();
+
+            if (firmLists == null)
                 return;
 
-            foreach (FirmList firmList in _firmLists)
+            foreach (FirmList firmList in firmLists)
             {
                 if (firmName != null)
                 {
@@ -718,23 +740,28 @@ namespace LK.Forms
                 }
             }
 
-            _collector = new FirmListStatCollector(_firmLists);
+            _collector = new FirmListStatCollector(firmLists);
             UpdateStat();
 
-            UpdateFirmList();
+            UpdateFirmList(firmLists);
         }
 
         private void InverseCheck()
         {
-            foreach (FirmList firmList in _firmLists)
+            List<FirmList> firmLists = GetFirmListsBySource();
+
+            if (firmLists == null)
+                return;
+
+            foreach (FirmList firmList in firmLists)
             {
                 firmList.Check = !firmList.Check;
             }
 
-            _collector = new FirmListStatCollector(_firmLists);
+            _collector = new FirmListStatCollector(firmLists);
             UpdateStat();
 
-            UpdateFirmList();
+            UpdateFirmList(firmLists);
         }
 
         private FirmList GetFirmListByRowIndex(int rowIndex)
@@ -1239,20 +1266,21 @@ namespace LK.Forms
         private void btnExportToFile_Click(object sender, EventArgs e)
         {
             btnExportToFile.Enabled = false;
+            btnAddRpo.Enabled = false;
+            btnDelRpo.Enabled = false;
+            btnClearRpo.Enabled = false;
 
-            List<FirmList> checkedFirmLists = GetCheckedFirmLists();
-            if (checkedFirmLists == null || checkedFirmLists.Count == 0)
+            if (_exportRpos.Count == 0)
             {
                 btnExportToFile.Enabled = true;
+                btnAddRpo.Enabled = true;
+                btnDelRpo.Enabled = true;
+                btnClearRpo.Enabled = true;
                 return;
             }
 
-
-            int[] ids = checkedFirmLists.Select(checkedFirmList => checkedFirmList.Id).ToArray();
-            List<Rpo> rpos = Database.GetRposByListsIds(ids);
-
             ExportPartPostFile exportFile = new ExportPartPostFile();
-            foreach (Rpo rpo in rpos)
+            foreach (Rpo rpo in _exportRpos)
             {
                 ExportFileString exportFileString = rpo.ToExportFileString();
                 MailCategory c = _mailCategories.FirstOrDefault(d => d.Id == rpo.MailCategory);
@@ -1273,22 +1301,95 @@ namespace LK.Forms
             exportFile.ExportToFile(_exportPathConfig.Value);
 
             btnExportToFile.Enabled = true;
+            btnAddRpo.Enabled = true;
+            btnDelRpo.Enabled = true;
+            btnClearRpo.Enabled = true;
+
+            _exportRpos = new List<Rpo>();
+            _exportIdFirms = new List<int>();
+            lblRpoCount.Text = _exportRpos.Count.ToString();
+
             SuccessMessage("Выгрузка завершена!");
         }
 
         private void btnAddRpo_Click(object sender, EventArgs e)
         {
+            btnAddRpo.Enabled = false;
 
+            List<FirmList> checkedFirmLists = GetCheckedFirmLists();
+            if (checkedFirmLists == null || checkedFirmLists.Count == 0)
+            {
+                btnAddRpo.Enabled = true;
+                return;
+            }
+
+            int[] ids = checkedFirmLists.Select(checkedFirmList => checkedFirmList.Id).ToArray();
+            List<int> filtredIds = new List<int>();
+            foreach (int id in ids)
+            {
+                if (!_exportIdFirms.Contains(id))
+                {
+                    filtredIds.Add(id);
+                    _exportIdFirms.Add(id);
+                }
+            }
+
+            List<Rpo> rpos = Database.GetRposByListsIds(filtredIds.ToArray());
+            _exportRpos.AddRange(rpos);
+            lblRpoCount.Text = _exportRpos.Count.ToString();
+
+            btnAddRpo.Enabled = true;
+            SuccessMessage($"Добавлено {rpos.Count} РПО");
         }
 
         private void btnDelRpo_Click(object sender, EventArgs e)
         {
+            btnDelRpo.Enabled = false;
 
+            List<FirmList> checkedFirmLists = GetCheckedFirmLists();
+            if (checkedFirmLists == null || checkedFirmLists.Count == 0)
+            {
+                btnDelRpo.Enabled = true;
+                return;
+            }
+
+            int[] ids = checkedFirmLists.Select(checkedFirmList => checkedFirmList.Id).ToArray();
+            List<int> filtredIds = new List<int>();
+            foreach (int id in ids)
+            {
+                if (_exportIdFirms.Contains(id))
+                {
+                    filtredIds.Add(id);
+                    _exportIdFirms.Remove(id);
+                }
+            }
+
+            List<Rpo> rpos = Database.GetRposByListsIds(filtredIds.ToArray());
+
+            int count = 0;
+
+            foreach (Rpo rpo in rpos)
+            {
+                Rpo selectRpo = _exportRpos.FirstOrDefault(s => s.Id == rpo.Id);
+                if (selectRpo != null)
+                {
+                    _exportRpos.Remove(selectRpo);
+                    count++;
+                }
+            }
+
+            lblRpoCount.Text = _exportRpos.Count.ToString();
+
+            btnDelRpo.Enabled = true;
+            SuccessMessage($"Удалено {count} РПО");
         }
 
         private void btnClearRpo_Click(object sender, EventArgs e)
         {
-
+            _exportRpos = new List<Rpo>();
+            _exportIdFirms = new List<int>();
+            lblRpoCount.Text = _exportRpos.Count.ToString();
+            SuccessMessage("Очищено.");
         }
 
         #endregion
@@ -1535,5 +1636,31 @@ namespace LK.Forms
 
         #endregion
 
+        private void tbFilter_TextChanged(object sender, EventArgs e)
+        {
+            string q = tbFilter.Text.ToUpper();
+
+            if (!string.IsNullOrEmpty(q))
+            {
+                if (_firmLists != null && _firmLists.Count > 0)
+                {
+                    List<FirmList> filtered = _firmLists.Where(f =>
+                        f.FirmName.ToUpper().Contains(q) || f.OperatorName.ToUpper().Contains(q) ||
+                        f.Num.ToString().Contains(q)).ToList();
+                    firmListBindingSource.DataSource = filtered.ToSortableBindingList();
+                    _collector = new FirmListStatCollector(filtered);
+                    UpdateStat();
+                }
+            }
+            else
+            {
+                if (_firmLists != null && _firmLists.Count > 0)
+                {
+                    firmListBindingSource.DataSource = _firmLists.ToSortableBindingList();
+                    _collector = new FirmListStatCollector(_firmLists);
+                    UpdateStat();
+                }
+            }
+        }
     }
 }
