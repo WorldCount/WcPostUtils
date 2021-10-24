@@ -144,15 +144,21 @@ namespace LK.Forms
             this.textBoxListOut = new System.Windows.Forms.TextBox();
             this.textBoxListIn = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnExportToFile = new Wc32Api.Widgets.Buttons.WcButton();
             this.btnPrintReport = new Wc32Api.Widgets.Buttons.WcButton();
             this.btnReport = new Wc32Api.Widgets.Buttons.WcButton();
             this.btnUncheckAll = new Wc32Api.Widgets.Buttons.WcButton();
             this.btnCheckAll = new Wc32Api.Widgets.Buttons.WcButton();
-            this.checkBoxPrintPreview = new System.Windows.Forms.CheckBox();
             this.labelBarcode = new System.Windows.Forms.Label();
             this.tbBarcode = new System.Windows.Forms.TextBox();
             this.btnTablePrint = new Wc32Api.Widgets.Buttons.WcButton();
+            this.lblRpoCount = new Wc32Api.Widgets.Labels.WcLabel();
+            this.btnClearRpo = new Wc32Api.Widgets.Buttons.WcButton();
+            this.btnDelRpo = new Wc32Api.Widgets.Buttons.WcButton();
+            this.btnAddRpo = new Wc32Api.Widgets.Buttons.WcButton();
+            this.tbFilter = new LK.Core.Libs.Widget.BorderTextBox();
+            this.lblFilter = new System.Windows.Forms.Label();
+            this.btnExportToFile = new Wc32Api.Widgets.Buttons.WcButton();
+            this.checkBoxPrintPreview = new System.Windows.Forms.CheckBox();
             this.imageListCheckBox = new System.Windows.Forms.ImageList(this.components);
             this.labelLicense = new System.Windows.Forms.Label();
             this.labelInfoLicense = new System.Windows.Forms.Label();
@@ -201,6 +207,7 @@ namespace LK.Forms
             this.infoMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.licenseMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.updateMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.panelFilter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.firmBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.operatorBindingSource)).BeginInit();
@@ -216,6 +223,7 @@ namespace LK.Forms
             this.panelType.SuspendLayout();
             this.panel1.SuspendLayout();
             this.menu.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // status
@@ -720,7 +728,7 @@ namespace LK.Forms
             this.dataGridViewList.DefaultCellStyle = dataGridViewCellStyle11;
             this.dataGridViewList.EnableHeadersVisualStyles = false;
             this.dataGridViewList.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
-            this.dataGridViewList.Location = new System.Drawing.Point(0, 239);
+            this.dataGridViewList.Location = new System.Drawing.Point(0, 287);
             this.dataGridViewList.Name = "dataGridViewList";
             dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle12.BackColor = System.Drawing.Color.White;
@@ -735,7 +743,7 @@ namespace LK.Forms
             this.dataGridViewList.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dataGridViewList.RowTemplate.Height = 40;
             this.dataGridViewList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dataGridViewList.Size = new System.Drawing.Size(1273, 184);
+            this.dataGridViewList.Size = new System.Drawing.Size(1273, 136);
             this.dataGridViewList.TabIndex = 0;
             this.dataGridViewList.TabStop = false;
             this.dataGridViewList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewList_CellClick);
@@ -1214,12 +1222,10 @@ namespace LK.Forms
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
-            this.panel1.Controls.Add(this.btnExportToFile);
             this.panel1.Controls.Add(this.btnPrintReport);
             this.panel1.Controls.Add(this.btnReport);
             this.panel1.Controls.Add(this.btnUncheckAll);
             this.panel1.Controls.Add(this.btnCheckAll);
-            this.panel1.Controls.Add(this.checkBoxPrintPreview);
             this.panel1.Controls.Add(this.labelBarcode);
             this.panel1.Controls.Add(this.tbBarcode);
             this.panel1.Controls.Add(this.btnTablePrint);
@@ -1229,35 +1235,6 @@ namespace LK.Forms
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1273, 53);
             this.panel1.TabIndex = 8;
-            // 
-            // btnExportToFile
-            // 
-            this.btnExportToFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExportToFile.BackColor = System.Drawing.Color.DodgerBlue;
-            this.btnExportToFile.BackgroundColor = System.Drawing.Color.DodgerBlue;
-            this.btnExportToFile.BorderColor = System.Drawing.Color.Silver;
-            this.btnExportToFile.BorderRadius = 4F;
-            this.btnExportToFile.BorderSize = 0;
-            this.btnExportToFile.DisableBackgroundColor = System.Drawing.Color.DimGray;
-            this.btnExportToFile.DisableBorderColor = System.Drawing.Color.Silver;
-            this.btnExportToFile.FlatAppearance.BorderSize = 0;
-            this.btnExportToFile.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SteelBlue;
-            this.btnExportToFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExportToFile.ForeColor = System.Drawing.Color.White;
-            this.btnExportToFile.Image = global::LK.Properties.Resources.cloud_download_24;
-            this.btnExportToFile.Location = new System.Drawing.Point(1054, 3);
-            this.btnExportToFile.MouseDownBackColor = System.Drawing.Color.Empty;
-            this.btnExportToFile.MouseOverBackColor = System.Drawing.Color.SteelBlue;
-            this.btnExportToFile.Name = "btnExportToFile";
-            this.btnExportToFile.Padding = new System.Windows.Forms.Padding(3, 3, 3, 0);
-            this.btnExportToFile.Size = new System.Drawing.Size(46, 46);
-            this.btnExportToFile.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            this.btnExportToFile.TabIndex = 19;
-            this.btnExportToFile.TabStop = false;
-            this.btnExportToFile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnExportToFile.TextColor = System.Drawing.Color.White;
-            this.btnExportToFile.UseVisualStyleBackColor = false;
-            this.btnExportToFile.Click += new System.EventHandler(this.btnExportToFile_Click);
             // 
             // btnPrintReport
             // 
@@ -1332,7 +1309,7 @@ namespace LK.Forms
             this.btnUncheckAll.ForeColor = System.Drawing.Color.White;
             this.btnUncheckAll.Image = ((System.Drawing.Image)(resources.GetObject("btnUncheckAll.Image")));
             this.btnUncheckAll.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnUncheckAll.Location = new System.Drawing.Point(769, 2);
+            this.btnUncheckAll.Location = new System.Drawing.Point(692, 2);
             this.btnUncheckAll.MouseDownBackColor = System.Drawing.Color.Empty;
             this.btnUncheckAll.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.btnUncheckAll.Name = "btnUncheckAll";
@@ -1359,7 +1336,7 @@ namespace LK.Forms
             this.btnCheckAll.ForeColor = System.Drawing.Color.White;
             this.btnCheckAll.Image = ((System.Drawing.Image)(resources.GetObject("btnCheckAll.Image")));
             this.btnCheckAll.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCheckAll.Location = new System.Drawing.Point(717, 2);
+            this.btnCheckAll.Location = new System.Drawing.Point(640, 2);
             this.btnCheckAll.MouseDownBackColor = System.Drawing.Color.Empty;
             this.btnCheckAll.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.btnCheckAll.Name = "btnCheckAll";
@@ -1370,33 +1347,6 @@ namespace LK.Forms
             this.btnCheckAll.TextColor = System.Drawing.Color.White;
             this.btnCheckAll.UseVisualStyleBackColor = false;
             this.btnCheckAll.Click += new System.EventHandler(this.btnCheckAll_Click);
-            // 
-            // checkBoxPrintPreview
-            // 
-            this.checkBoxPrintPreview.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkBoxPrintPreview.Appearance = System.Windows.Forms.Appearance.Button;
-            this.checkBoxPrintPreview.Checked = true;
-            this.checkBoxPrintPreview.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxPrintPreview.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
-            this.checkBoxPrintPreview.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
-            this.checkBoxPrintPreview.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
-            this.checkBoxPrintPreview.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
-            this.checkBoxPrintPreview.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.checkBoxPrintPreview.Font = new System.Drawing.Font("Segoe UI", 10.86792F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.checkBoxPrintPreview.ForeColor = System.Drawing.Color.White;
-            this.checkBoxPrintPreview.Image = global::LK.Properties.Resources.white_checked_32;
-            this.checkBoxPrintPreview.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.checkBoxPrintPreview.Location = new System.Drawing.Point(1106, 0);
-            this.checkBoxPrintPreview.Name = "checkBoxPrintPreview";
-            this.checkBoxPrintPreview.Size = new System.Drawing.Size(159, 50);
-            this.checkBoxPrintPreview.TabIndex = 0;
-            this.checkBoxPrintPreview.TabStop = false;
-            this.checkBoxPrintPreview.Text = "Предпросмотр";
-            this.checkBoxPrintPreview.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.checkBoxPrintPreview.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.checkBoxPrintPreview.UseVisualStyleBackColor = false;
-            this.checkBoxPrintPreview.CheckedChanged += new System.EventHandler(this.checkBoxPrintPreview_CheckedChanged);
-            this.checkBoxPrintPreview.CheckStateChanged += new System.EventHandler(this.checkBoxPrintPreview_CheckStateChanged);
             // 
             // labelBarcode
             // 
@@ -1452,6 +1402,188 @@ namespace LK.Forms
             this.btnTablePrint.TextColor = System.Drawing.Color.White;
             this.btnTablePrint.UseVisualStyleBackColor = false;
             this.btnTablePrint.Click += new System.EventHandler(this.btnTablePrint_Click);
+            // 
+            // lblRpoCount
+            // 
+            this.lblRpoCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblRpoCount.BackColor = System.Drawing.Color.SteelBlue;
+            this.lblRpoCount.BorderRadius = 2;
+            this.lblRpoCount.BorderThickness = 1F;
+            this.lblRpoCount.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblRpoCount.ForeColor = System.Drawing.Color.White;
+            this.lblRpoCount.Location = new System.Drawing.Point(453, 5);
+            this.lblRpoCount.Name = "lblRpoCount";
+            this.lblRpoCount.Size = new System.Drawing.Size(63, 36);
+            this.lblRpoCount.TabIndex = 23;
+            this.lblRpoCount.Text = "0";
+            this.lblRpoCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnClearRpo
+            // 
+            this.btnClearRpo.BackColor = System.Drawing.Color.SlateGray;
+            this.btnClearRpo.BackgroundColor = System.Drawing.Color.SlateGray;
+            this.btnClearRpo.BorderColor = System.Drawing.Color.Silver;
+            this.btnClearRpo.BorderRadius = 4F;
+            this.btnClearRpo.BorderSize = 0;
+            this.btnClearRpo.DisableBackgroundColor = System.Drawing.Color.DimGray;
+            this.btnClearRpo.DisableBorderColor = System.Drawing.Color.Silver;
+            this.btnClearRpo.FlatAppearance.BorderSize = 0;
+            this.btnClearRpo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnClearRpo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClearRpo.ForeColor = System.Drawing.Color.White;
+            this.btnClearRpo.Image = global::LK.Properties.Resources.trash_2_24;
+            this.btnClearRpo.Location = new System.Drawing.Point(382, 6);
+            this.btnClearRpo.MouseDownBackColor = System.Drawing.Color.Empty;
+            this.btnClearRpo.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnClearRpo.Name = "btnClearRpo";
+            this.btnClearRpo.Padding = new System.Windows.Forms.Padding(3, 3, 4, 4);
+            this.btnClearRpo.Size = new System.Drawing.Size(34, 34);
+            this.btnClearRpo.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            this.btnClearRpo.TabIndex = 22;
+            this.btnClearRpo.TabStop = false;
+            this.btnClearRpo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnClearRpo.TextColor = System.Drawing.Color.White;
+            this.btnClearRpo.UseVisualStyleBackColor = false;
+            this.btnClearRpo.Click += new System.EventHandler(this.btnClearRpo_Click);
+            // 
+            // btnDelRpo
+            // 
+            this.btnDelRpo.BackColor = System.Drawing.Color.Firebrick;
+            this.btnDelRpo.BackgroundColor = System.Drawing.Color.Firebrick;
+            this.btnDelRpo.BorderColor = System.Drawing.Color.Silver;
+            this.btnDelRpo.BorderRadius = 4F;
+            this.btnDelRpo.BorderSize = 0;
+            this.btnDelRpo.DisableBackgroundColor = System.Drawing.Color.DimGray;
+            this.btnDelRpo.DisableBorderColor = System.Drawing.Color.Silver;
+            this.btnDelRpo.FlatAppearance.BorderSize = 0;
+            this.btnDelRpo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnDelRpo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDelRpo.ForeColor = System.Drawing.Color.White;
+            this.btnDelRpo.Image = global::LK.Properties.Resources.minus_16;
+            this.btnDelRpo.Location = new System.Drawing.Point(342, 6);
+            this.btnDelRpo.MouseDownBackColor = System.Drawing.Color.Empty;
+            this.btnDelRpo.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnDelRpo.Name = "btnDelRpo";
+            this.btnDelRpo.Padding = new System.Windows.Forms.Padding(3, 4, 3, 3);
+            this.btnDelRpo.Size = new System.Drawing.Size(34, 34);
+            this.btnDelRpo.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            this.btnDelRpo.TabIndex = 22;
+            this.btnDelRpo.TabStop = false;
+            this.btnDelRpo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDelRpo.TextColor = System.Drawing.Color.White;
+            this.btnDelRpo.UseVisualStyleBackColor = false;
+            this.btnDelRpo.Click += new System.EventHandler(this.btnDelRpo_Click);
+            // 
+            // btnAddRpo
+            // 
+            this.btnAddRpo.BackColor = System.Drawing.Color.SeaGreen;
+            this.btnAddRpo.BackgroundColor = System.Drawing.Color.SeaGreen;
+            this.btnAddRpo.BorderColor = System.Drawing.Color.Silver;
+            this.btnAddRpo.BorderRadius = 4F;
+            this.btnAddRpo.BorderSize = 0;
+            this.btnAddRpo.DisableBackgroundColor = System.Drawing.Color.DimGray;
+            this.btnAddRpo.DisableBorderColor = System.Drawing.Color.Silver;
+            this.btnAddRpo.FlatAppearance.BorderSize = 0;
+            this.btnAddRpo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnAddRpo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddRpo.ForeColor = System.Drawing.Color.White;
+            this.btnAddRpo.Image = global::LK.Properties.Resources.plus_16;
+            this.btnAddRpo.Location = new System.Drawing.Point(302, 6);
+            this.btnAddRpo.MouseDownBackColor = System.Drawing.Color.Empty;
+            this.btnAddRpo.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnAddRpo.Name = "btnAddRpo";
+            this.btnAddRpo.Padding = new System.Windows.Forms.Padding(3);
+            this.btnAddRpo.Size = new System.Drawing.Size(34, 34);
+            this.btnAddRpo.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            this.btnAddRpo.TabIndex = 22;
+            this.btnAddRpo.TabStop = false;
+            this.btnAddRpo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAddRpo.TextColor = System.Drawing.Color.White;
+            this.btnAddRpo.UseVisualStyleBackColor = false;
+            this.btnAddRpo.Click += new System.EventHandler(this.btnAddRpo_Click);
+            // 
+            // tbFilter
+            // 
+            this.tbFilter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
+            this.tbFilter.BorderHeight = 2;
+            this.tbFilter.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbFilter.EnterColor = System.Drawing.Color.Firebrick;
+            this.tbFilter.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbFilter.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.tbFilter.LeaveColor = System.Drawing.Color.SteelBlue;
+            this.tbFilter.Location = new System.Drawing.Point(76, 10);
+            this.tbFilter.Name = "tbFilter";
+            this.tbFilter.Size = new System.Drawing.Size(220, 26);
+            this.tbFilter.TabIndex = 0;
+            this.tbFilter.TabStop = false;
+            // 
+            // lblFilter
+            // 
+            this.lblFilter.AutoSize = true;
+            this.lblFilter.Font = new System.Drawing.Font("Segoe UI", 10.18868F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblFilter.ForeColor = System.Drawing.Color.White;
+            this.lblFilter.Location = new System.Drawing.Point(12, 14);
+            this.lblFilter.Name = "lblFilter";
+            this.lblFilter.Size = new System.Drawing.Size(58, 19);
+            this.lblFilter.TabIndex = 20;
+            this.lblFilter.Text = "Фильтр:";
+            // 
+            // btnExportToFile
+            // 
+            this.btnExportToFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExportToFile.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btnExportToFile.BackgroundColor = System.Drawing.Color.DodgerBlue;
+            this.btnExportToFile.BorderColor = System.Drawing.Color.Silver;
+            this.btnExportToFile.BorderRadius = 4F;
+            this.btnExportToFile.BorderSize = 0;
+            this.btnExportToFile.DisableBackgroundColor = System.Drawing.Color.DimGray;
+            this.btnExportToFile.DisableBorderColor = System.Drawing.Color.Silver;
+            this.btnExportToFile.FlatAppearance.BorderSize = 0;
+            this.btnExportToFile.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SteelBlue;
+            this.btnExportToFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExportToFile.ForeColor = System.Drawing.Color.White;
+            this.btnExportToFile.Image = global::LK.Properties.Resources.cloud_download_24;
+            this.btnExportToFile.Location = new System.Drawing.Point(522, 4);
+            this.btnExportToFile.MouseDownBackColor = System.Drawing.Color.Empty;
+            this.btnExportToFile.MouseOverBackColor = System.Drawing.Color.SteelBlue;
+            this.btnExportToFile.Name = "btnExportToFile";
+            this.btnExportToFile.Padding = new System.Windows.Forms.Padding(3, 3, 4, 1);
+            this.btnExportToFile.Size = new System.Drawing.Size(38, 38);
+            this.btnExportToFile.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            this.btnExportToFile.TabIndex = 19;
+            this.btnExportToFile.TabStop = false;
+            this.btnExportToFile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnExportToFile.TextColor = System.Drawing.Color.White;
+            this.btnExportToFile.UseVisualStyleBackColor = false;
+            this.btnExportToFile.Click += new System.EventHandler(this.btnExportToFile_Click);
+            // 
+            // checkBoxPrintPreview
+            // 
+            this.checkBoxPrintPreview.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkBoxPrintPreview.Appearance = System.Windows.Forms.Appearance.Button;
+            this.checkBoxPrintPreview.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.checkBoxPrintPreview.Checked = true;
+            this.checkBoxPrintPreview.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxPrintPreview.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
+            this.checkBoxPrintPreview.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
+            this.checkBoxPrintPreview.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
+            this.checkBoxPrintPreview.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
+            this.checkBoxPrintPreview.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.checkBoxPrintPreview.Font = new System.Drawing.Font("Segoe UI", 10.86792F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBoxPrintPreview.ForeColor = System.Drawing.Color.White;
+            this.checkBoxPrintPreview.Image = global::LK.Properties.Resources.white_checked_32;
+            this.checkBoxPrintPreview.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.checkBoxPrintPreview.Location = new System.Drawing.Point(885, 1);
+            this.checkBoxPrintPreview.Name = "checkBoxPrintPreview";
+            this.checkBoxPrintPreview.Size = new System.Drawing.Size(159, 39);
+            this.checkBoxPrintPreview.TabIndex = 0;
+            this.checkBoxPrintPreview.TabStop = false;
+            this.checkBoxPrintPreview.Text = "Предпросмотр";
+            this.checkBoxPrintPreview.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.checkBoxPrintPreview.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.checkBoxPrintPreview.UseVisualStyleBackColor = false;
+            this.checkBoxPrintPreview.CheckedChanged += new System.EventHandler(this.checkBoxPrintPreview_CheckedChanged);
+            this.checkBoxPrintPreview.CheckStateChanged += new System.EventHandler(this.checkBoxPrintPreview_CheckStateChanged);
             // 
             // imageListCheckBox
             // 
@@ -1898,15 +2030,34 @@ namespace LK.Forms
             this.updateMenuItem.Text = "Обновление";
             this.updateMenuItem.Click += new System.EventHandler(this.updateMenuItem_Click);
             // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
+            this.panel2.Controls.Add(this.btnExportToFile);
+            this.panel2.Controls.Add(this.lblRpoCount);
+            this.panel2.Controls.Add(this.lblFilter);
+            this.panel2.Controls.Add(this.btnClearRpo);
+            this.panel2.Controls.Add(this.tbFilter);
+            this.panel2.Controls.Add(this.btnDelRpo);
+            this.panel2.Controls.Add(this.btnAddRpo);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(179)))), ((int)(((byte)(179)))));
+            this.panel2.Location = new System.Drawing.Point(0, 243);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1273, 46);
+            this.panel2.TabIndex = 12;
+            // 
             // GeneralForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1273, 572);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.labelLicense);
             this.Controls.Add(this.labelInfoLicense);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelType);
+            this.Controls.Add(this.checkBoxPrintPreview);
             this.Controls.Add(this.dataGridViewStat);
             this.Controls.Add(this.dataGridViewList);
             this.Controls.Add(this.panelFilter);
@@ -1944,6 +2095,8 @@ namespace LK.Forms
             this.panel1.PerformLayout();
             this.menu.ResumeLayout(false);
             this.menu.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2113,6 +2266,13 @@ namespace LK.Forms
         private System.Windows.Forms.ToolStripMenuItem parseOrgConfigMenuItem;
         private System.Windows.Forms.ToolStripMenuItem parseRpoConfigMenuItem;
         private Wc32Api.Widgets.Buttons.WcButton btnExportToFile;
+        private System.Windows.Forms.Label lblFilter;
+        private Core.Libs.Widget.BorderTextBox tbFilter;
+        private Wc32Api.Widgets.Buttons.WcButton btnAddRpo;
+        private Wc32Api.Widgets.Buttons.WcButton btnClearRpo;
+        private Wc32Api.Widgets.Buttons.WcButton btnDelRpo;
+        private Wc32Api.Widgets.Labels.WcLabel lblRpoCount;
+        private System.Windows.Forms.Panel panel2;
     }
 }
 

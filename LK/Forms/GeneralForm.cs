@@ -44,11 +44,6 @@ namespace LK.Forms
 
         #region Настройки
 
-        private Color _warnBackColor;
-        private Color _warnForeColor;
-        private Color _errBackColor;
-        private Color _errForeColor;
-
         private bool _isAdmin;
 
         private bool _checkAllFlag = true;
@@ -75,6 +70,9 @@ namespace LK.Forms
         private Auth _auth;
         private ServerAuth _serverAuth;
 
+        // Очередь отчетов для печати
+        private readonly ReportQueue<SingleReportData> _reportsQueue = new ReportQueue<SingleReportData>();
+
         #endregion
 
         #region Конфиги
@@ -83,10 +81,6 @@ namespace LK.Forms
         private Config _exportPathConfig;
 
         #endregion
-
-        // Очередь отчетов для печати
-        private readonly ReportQueue<SingleReportData> _reportsQueue = new ReportQueue<SingleReportData>();
-
 
         public GeneralForm()
         {
@@ -293,7 +287,7 @@ namespace LK.Forms
 
             await CreateDirs();
 
-            _key = await Task.Run(() => LicenseKey.GetKey(WcApi.Net.Host.GetIp(), AuthKey.Key, Application.ProductName));
+            _key = await Task.Run(() => LicenseKey.GetKey(Host.GetIp(), AuthKey.Key, Application.ProductName));
 
             // Пробная лицензия на 30 дней
             await Task.Run(GetTrialLicense);
@@ -431,10 +425,6 @@ namespace LK.Forms
 
             //await LoadColors();
             await LoadConfigs();
-        }
-
-        private void LoadColors()
-        {
         }
 
         private void LoadFirmLists()
@@ -628,11 +618,6 @@ namespace LK.Forms
             });
         }
 
-        private void GetPrintPagesCount()
-        {
-
-        }
-
         private SingleReportData GetSingleReportData()
         {
             List<FirmList> checkedFirmLists = GetCheckedFirmLists();
@@ -752,7 +737,7 @@ namespace LK.Forms
             UpdateFirmList();
         }
 
-        public FirmList GetFirmListByRowIndex(int rowIndex)
+        private FirmList GetFirmListByRowIndex(int rowIndex)
         {
             SortableBindingList<FirmList> firmLists = (SortableBindingList<FirmList>)firmListBindingSource.DataSource;
 
@@ -789,6 +774,87 @@ namespace LK.Forms
             });
         }
 
+        private void LoadReportMenu()
+        {
+
+        }
+
+        private void InitDataGridView()
+        {
+            // Столбец с значком
+            checkDataGridViewCheckBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            checkDataGridViewCheckBoxColumn.Width = 40;
+            checkDataGridViewCheckBoxColumn.CellTemplate.Style.BackColor = Color.FromArgb(53, 56, 58);
+            checkDataGridViewCheckBoxColumn.CellTemplate.Style.SelectionBackColor = Color.FromArgb(53, 56, 58);
+            // Столбец с датой
+            dateDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dateDataGridViewTextBoxColumn.Width = 100;
+
+            // Столбец с именем организации
+            firmDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+            // Столбец с номером списка
+            numDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            numDataGridViewTextBoxColumn.Width = 80;
+
+            // Столбец с типом отправления
+            mailTypeDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            mailTypeDataGridViewTextBoxColumn.Width = 180;
+
+            // Столбец с категорией отправления
+            mailCategoryDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            mailCategoryDataGridViewTextBoxColumn.Width = 100;
+
+            mailClassDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            mailClassDataGridViewTextBoxColumn.Width = 60;
+
+            // Столбец с классом отправления
+            //interNameGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            //interNameGridViewTextBoxColumn.Width = 70;
+
+            //manualNameGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            //manualNameGridViewTextBoxColumn.Width = 60;
+
+            // Столбец с количеством отправлений
+            //countDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            //countDataGridViewTextBoxColumn.Width = 80;
+
+            // Столбец с количеством принятых отправлений
+            countFactDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            countFactDataGridViewTextBoxColumn.Width = 80;
+
+            // Столбец с количеством пропущенных отправлений
+            countMissDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            countMissDataGridViewTextBoxColumn.Width = 80;
+
+            // Столбец с количеством отправлений на возврат
+            countReturnDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            countReturnDataGridViewTextBoxColumn.Width = 80;
+
+            // Столбец с отметками
+            postMarkNameDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            postMarkNameDataGridViewTextBoxColumn.Width = 120;
+
+            //// Столбец с замечаниями
+            //warnCountDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            //warnCountDataGridViewTextBoxColumn.Width = 60;
+
+            //// Столбец с выбывшими
+            //errCountDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            //errCountDataGridViewTextBoxColumn.Width = 60;
+
+            // Столбец со сбором
+            rateDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            rateDataGridViewTextBoxColumn.Width = 100;
+
+            // Столбец с датой приемы
+            receptionDateDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            receptionDateDataGridViewTextBoxColumn.Width = 140;
+
+            operatorDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            operatorDataGridViewTextBoxColumn.Width = 140;
+        }
+
         #endregion
 
         #region Меню
@@ -801,6 +867,35 @@ namespace LK.Forms
             createDbForm.ShowDialog(this);
 
             await LoadAllData();
+        }
+
+        private void authMenuItem_Click(object sender, EventArgs e)
+        {
+            AuthForm authForm = new AuthForm();
+            if (authForm.ShowDialog(this) == DialogResult.OK)
+            {
+                _auth = authForm.Auth;
+            }
+        }
+
+        private async void printerMenuItem_Click(object sender, EventArgs e)
+        {
+            PrinterForm printerForm = new PrinterForm();
+            if (printerForm.ShowDialog(this) == DialogResult.OK)
+            {
+                await LoadConfigs();
+            }
+        }
+
+        private async void configMenuItem_Click(object sender, EventArgs e)
+        {
+            SettingsForm settingsForm = new SettingsForm();
+            if (settingsForm.ShowDialog(this) == DialogResult.OK)
+            {
+                await LoadConfigs();
+
+                _loggingMode = Properties.Settings.Default.LoggingMode;
+            }
         }
 
         #endregion
@@ -844,6 +939,18 @@ namespace LK.Forms
             {
                 await LoadOperator();
             }
+        }
+
+        private void parseOrgConfigMenuItem_Click(object sender, EventArgs e)
+        {
+            FirmRowForm firmRowForm = new FirmRowForm();
+            firmRowForm.ShowDialog(this);
+        }
+
+        private void parseRpoConfigMenuItem_Click(object sender, EventArgs e)
+        {
+            RpoRowForm rpoRowForm = new RpoRowForm();
+            rpoRowForm.ShowDialog(this);
         }
 
         #endregion
@@ -919,7 +1026,7 @@ namespace LK.Forms
 
             LicenseForm licenseForm = new LicenseForm(license, _key, Application.ProductName, Application.ProductVersion, Properties.Settings.Default.MailLicense, Icon);
 
-            if (WcApi.Cryptography.License.CheckLicense(license, _key))
+            if (License.CheckLicense(license, _key))
             {
                 licenseForm.LicenseText("Поздравляю, ваша лицензия пока еще работает :)");
                 licenseForm.LicensePicture(Properties.Resources.cat_license);
@@ -932,6 +1039,35 @@ namespace LK.Forms
                 labelLicense.Text = License.GetLicenseExpiresString(licenseForm.LicenseKey, _key);
                 Properties.Settings.Default.Save();
             }
+        }
+
+        private void updateMenuItem_Click(object sender, EventArgs e)
+        {
+            AutoUpdater.ShowRemindLaterButton = false;
+            AutoUpdater.ReportErrors = true;
+            AutoUpdater.Start("https://worldcount.ru/updates/repo/LK/update.json");
+        }
+
+        #endregion
+
+        #region Меню - Отчеты
+
+        private void valueReportMenuItem_Click(object sender, EventArgs e)
+        {
+            ValueReportForm valueReportForm = new ValueReportForm();
+            if (valueReportForm.ShowDialog(this) == DialogResult.OK)
+            {
+
+            }
+        }
+
+        #endregion
+
+        #region Меню - Файл
+
+        private void exitMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
         }
 
         #endregion
@@ -1100,18 +1236,64 @@ namespace LK.Forms
             await LoadAllData();
         }
 
+        private void btnExportToFile_Click(object sender, EventArgs e)
+        {
+            btnExportToFile.Enabled = false;
+
+            List<FirmList> checkedFirmLists = GetCheckedFirmLists();
+            if (checkedFirmLists == null || checkedFirmLists.Count == 0)
+            {
+                btnExportToFile.Enabled = true;
+                return;
+            }
+
+
+            int[] ids = checkedFirmLists.Select(checkedFirmList => checkedFirmList.Id).ToArray();
+            List<Rpo> rpos = Database.GetRposByListsIds(ids);
+
+            ExportPartPostFile exportFile = new ExportPartPostFile();
+            foreach (Rpo rpo in rpos)
+            {
+                ExportFileString exportFileString = rpo.ToExportFileString();
+                MailCategory c = _mailCategories.FirstOrDefault(d => d.Id == rpo.MailCategory);
+                if (c != null)
+                {
+                    exportFileString.MailCtg = c.Code.ToString();
+                    if (c.Code == 0)
+                        continue;
+                }
+
+                MailType t = _mailTypes.FirstOrDefault(d => d.Id == rpo.MailType);
+                if (t != null)
+                    exportFileString.MailType = t.Code.ToString();
+
+                exportFile.Add(exportFileString);
+            }
+
+            exportFile.ExportToFile(_exportPathConfig.Value);
+
+            btnExportToFile.Enabled = true;
+            SuccessMessage("Выгрузка завершена!");
+        }
+
+        private void btnAddRpo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDelRpo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnClearRpo_Click(object sender, EventArgs e)
+        {
+
+        }
+
         #endregion
 
-        private void dateTimePickerIn_ValueChanged(object sender, EventArgs e)
-        {
-            DateTime date = dateTimePickerIn.Value;
-            dateTimePickerOut.Value = date;
-        }
-
-        private void comboBoxOrgs_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
+        #region DataGrid Events
 
         private void dataGridViewList_MouseClick(object sender, MouseEventArgs e)
         {
@@ -1128,190 +1310,21 @@ namespace LK.Forms
             }
         }
 
-        private async void tbBarcode_KeyDown(object sender, KeyEventArgs e)
-        {
-            string barcode = tbBarcode.Text.Trim();
-
-            if (e.KeyCode == Keys.Enter && barcode.Length >= 13)
-            {
-                FirmList firmList = await Database.GetFirmListByBarcodeAsync(barcode);
-                if (firmList != null)
-                {
-                    MessageBox.Show(firmList.Count.ToString());
-                }
-
-                tbBarcode.Clear();
-            }
-        }
-
-        private void tbNumeric_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void comboBoxOrgs_Enter(object sender, EventArgs e)
-        {
-            WcApi.Keyboard.Keyboard.SetRussianLanguage();
-        }
-
-        private void checkBoxPrintPreview_CheckStateChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.PrintPreviewFlag = checkBoxPrintPreview.Checked;
-            Properties.Settings.Default.Save();
-        }
-
-        private void GeneralForm_KeyDown(object sender, KeyEventArgs e)
-        {
-            // Нажатие Ctrl + Shift + C
-            if (e.KeyCode == Keys.C && e.Shift && e.Control)
-                btnClearFilter.PerformClick();
-
-            // Нажатие Ctrl + Q
-            if (e.KeyCode == Keys.Q && e.Control)
-                btnLoad.PerformClick();
-
-            // Нажатие Ctrl + Shift + Esc
-            if (e.KeyCode == Keys.Escape && e.Shift && e.Control)
-                exitMenuItem.PerformClick();
-
-            // Нажатие Ctrl + P
-            if (e.KeyCode == Keys.P && e.Control)
-                btnTablePrint.PerformClick();
-
-            // Нажатие Ctrl + R
-            if (e.KeyCode == Keys.R && e.Control)
-                btnPrintReport.PerformClick();
-
-            // Нажатие Ctrl + O
-            if (e.KeyCode == Keys.O && e.Control)
-                btnReport.PerformClick();
-
-            // Нажатие Ctrl + L
-            if (e.KeyCode == Keys.L && e.Control)
-                btnSync.PerformClick();
-
-            // Нажатие Ctrl + F
-            if (e.KeyCode == Keys.F && e.Control)
-                tbBarcode.Focus();
-
-            // Нажатие Ctrl + S
-            if (e.KeyCode == Keys.S && e.Control)
-                comboBoxOrgs.Focus();
-        }
-
-        private void checkBoxPrintPreview_CheckedChanged(object sender, EventArgs e)
-        {
-            checkBoxPrintPreview.Image = checkBoxPrintPreview.Checked ? Properties.Resources.white_checked_32 : Properties.Resources.white_unchecked_32;
-        }
-
-        private void tbBarcode_Enter(object sender, EventArgs e)
-        {
-            WcApi.Keyboard.Keyboard.SetEnglishLanguage();
-        }
-
-        #endregion
-
-        #region Таблица
-
-        private void InitDataGridView()
-        {
-            // Столбец с значком
-            checkDataGridViewCheckBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            checkDataGridViewCheckBoxColumn.Width = 40;
-            checkDataGridViewCheckBoxColumn.CellTemplate.Style.BackColor = Color.FromArgb(53,56,58);
-            checkDataGridViewCheckBoxColumn.CellTemplate.Style.SelectionBackColor = Color.FromArgb(53, 56, 58);
-            // Столбец с датой
-            dateDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            dateDataGridViewTextBoxColumn.Width = 100;
-
-            // Столбец с именем организации
-            firmDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-
-            // Столбец с номером списка
-            numDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            numDataGridViewTextBoxColumn.Width = 80;
-
-            // Столбец с типом отправления
-            mailTypeDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            mailTypeDataGridViewTextBoxColumn.Width = 180;
-
-            // Столбец с категорией отправления
-            mailCategoryDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            mailCategoryDataGridViewTextBoxColumn.Width = 100;
-
-            mailClassDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            mailClassDataGridViewTextBoxColumn.Width = 60;
-
-            // Столбец с классом отправления
-            //interNameGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            //interNameGridViewTextBoxColumn.Width = 70;
-
-            //manualNameGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            //manualNameGridViewTextBoxColumn.Width = 60;
-
-            // Столбец с количеством отправлений
-            //countDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            //countDataGridViewTextBoxColumn.Width = 80;
-
-            // Столбец с количеством принятых отправлений
-            countFactDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            countFactDataGridViewTextBoxColumn.Width = 80;
-
-            // Столбец с количеством пропущенных отправлений
-            countMissDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            countMissDataGridViewTextBoxColumn.Width = 80;
-
-            // Столбец с количеством отправлений на возврат
-            countReturnDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            countReturnDataGridViewTextBoxColumn.Width = 80;
-
-            // Столбец с отметками
-            postMarkNameDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            postMarkNameDataGridViewTextBoxColumn.Width = 120;
-
-            //// Столбец с замечаниями
-            //warnCountDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            //warnCountDataGridViewTextBoxColumn.Width = 60;
-
-            //// Столбец с выбывшими
-            //errCountDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            //errCountDataGridViewTextBoxColumn.Width = 60;
-
-            // Столбец со сбором
-            rateDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            rateDataGridViewTextBoxColumn.Width = 100;
-
-            // Столбец с датой приемы
-            receptionDateDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            receptionDateDataGridViewTextBoxColumn.Width = 140;
-
-            operatorDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            operatorDataGridViewTextBoxColumn.Width = 140;
-        }
-
-        private void ColoredDataGridView()
-        {
-            
-        }
-
         private void dataGridViewList_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
-            var grid = (DataGridView) sender;
+            var grid = (DataGridView)sender;
             var sortIconColor = Color.Gray;
 
             if (e.ColumnIndex == checkDataGridViewCheckBoxColumn.Index && e.RowIndex != -1)
             {
-               bool value = (bool) e.FormattedValue;
-               e.Paint(e.CellBounds, DataGridViewPaintParts.All & ~DataGridViewPaintParts.ContentForeground);
-               Bitmap img = value ? Properties.Resources.gray_checked_32 : Properties.Resources.gray_unchecked_32;
-               Size size = img.Size;
-               Point loc = new Point((e.CellBounds.Width - size.Width) / 2, (e.CellBounds.Height - size.Height) / 2);
-               loc.Offset(e.CellBounds.Location);
-               e.Graphics.DrawImage(img, loc);
-               e.Handled = true;
+                bool value = (bool)e.FormattedValue;
+                e.Paint(e.CellBounds, DataGridViewPaintParts.All & ~DataGridViewPaintParts.ContentForeground);
+                Bitmap img = value ? Properties.Resources.gray_checked_32 : Properties.Resources.gray_unchecked_32;
+                Size size = img.Size;
+                Point loc = new Point((e.CellBounds.Width - size.Width) / 2, (e.CellBounds.Height - size.Height) / 2);
+                loc.Offset(e.CellBounds.Location);
+                e.Graphics.DrawImage(img, loc);
+                e.Handled = true;
             }
 
             // Отрисовка флага сортировки
@@ -1388,6 +1401,123 @@ namespace LK.Forms
             }
         }
 
+        private void dataGridViewList_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+        }
+
+        #endregion
+
+        #region TextBox Event
+
+        private async void tbBarcode_KeyDown(object sender, KeyEventArgs e)
+        {
+            string barcode = tbBarcode.Text.Trim();
+
+            if (e.KeyCode == Keys.Enter && barcode.Length >= 13)
+            {
+                FirmList firmList = await Database.GetFirmListByBarcodeAsync(barcode);
+                if (firmList != null)
+                {
+                    MessageBox.Show(firmList.Count.ToString());
+                }
+
+                tbBarcode.Clear();
+            }
+        }
+
+        private void tbNumeric_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void tbBarcode_Enter(object sender, EventArgs e)
+        {
+            WcApi.Keyboard.Keyboard.SetEnglishLanguage();
+        }
+
+        #endregion
+
+        #region Combobox Event
+
+        private void comboBoxOrgs_Enter(object sender, EventArgs e)
+        {
+            WcApi.Keyboard.Keyboard.SetRussianLanguage();
+        }
+
+        private void comboBoxOrgs_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        #endregion
+
+        #region Other Events
+
+        private void checkBoxPrintPreview_CheckStateChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.PrintPreviewFlag = checkBoxPrintPreview.Checked;
+            Properties.Settings.Default.Save();
+        }
+
+        private void GeneralForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            // Нажатие Ctrl + Shift + C
+            if (e.KeyCode == Keys.C && e.Shift && e.Control)
+                btnClearFilter.PerformClick();
+
+            // Нажатие Ctrl + Q
+            if (e.KeyCode == Keys.Q && e.Control)
+                btnLoad.PerformClick();
+
+            // Нажатие Ctrl + Shift + Esc
+            if (e.KeyCode == Keys.Escape && e.Shift && e.Control)
+                exitMenuItem.PerformClick();
+
+            // Нажатие Ctrl + P
+            if (e.KeyCode == Keys.P && e.Control)
+                btnTablePrint.PerformClick();
+
+            // Нажатие Ctrl + R
+            if (e.KeyCode == Keys.R && e.Control)
+                btnPrintReport.PerformClick();
+
+            // Нажатие Ctrl + O
+            if (e.KeyCode == Keys.O && e.Control)
+                btnReport.PerformClick();
+
+            // Нажатие Ctrl + L
+            if (e.KeyCode == Keys.L && e.Control)
+                btnSync.PerformClick();
+
+            // Нажатие Ctrl + F
+            if (e.KeyCode == Keys.F && e.Control)
+                tbBarcode.Focus();
+
+            // Нажатие Ctrl + S
+            if (e.KeyCode == Keys.S && e.Control)
+                comboBoxOrgs.Focus();
+        }
+
+        private void checkBoxPrintPreview_CheckedChanged(object sender, EventArgs e)
+        {
+            checkBoxPrintPreview.Image = checkBoxPrintPreview.Checked ? Properties.Resources.white_checked_32 : Properties.Resources.white_unchecked_32;
+        }
+
+        private void GeneralForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (_loggingMode)
+                Logger.Info("Завершение программы.");
+        }
+
+        private void dateTimePickerIn_ValueChanged(object sender, EventArgs e)
+        {
+            DateTime date = dateTimePickerIn.Value;
+            dateTimePickerOut.Value = date;
+        }
+
         #endregion
 
         #region Очередь отчетов на печать
@@ -1403,121 +1533,7 @@ namespace LK.Forms
 
         #endregion
 
-        private void LoadReportMenu()
-        {
-            
-        }
+        #endregion
 
-        private void dataGridViewList_DataError(object sender, DataGridViewDataErrorEventArgs e)
-        {
-        }
-
-        private void GeneralForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            if(_loggingMode)
-                Logger.Info("Завершение программы.");
-        }
-
-        private void authMenuItem_Click(object sender, EventArgs e)
-        {
-            AuthForm authForm = new AuthForm();
-            if (authForm.ShowDialog(this) == DialogResult.OK)
-            {
-                _auth = authForm.Auth;
-            }
-        }
-
-        private async void printerMenuItem_Click(object sender, EventArgs e)
-        {
-            PrinterForm printerForm = new PrinterForm();
-            if (printerForm.ShowDialog(this) == DialogResult.OK)
-            {
-                await LoadConfigs();
-            }
-        }
-
-        private async void configMenuItem_Click(object sender, EventArgs e)
-        {
-            SettingsForm settingsForm = new SettingsForm();
-            if (settingsForm.ShowDialog(this) == DialogResult.OK)
-            {
-                await LoadConfigs();
-
-                _loggingMode = Properties.Settings.Default.LoggingMode;
-            }
-
-            
-        }
-
-        private void updateMenuItem_Click(object sender, EventArgs e)
-        {
-            AutoUpdater.ShowRemindLaterButton = false;
-            AutoUpdater.ReportErrors = true;
-            AutoUpdater.Start("https://worldcount.ru/updates/repo/LK/update.json");
-        }
-
-        private void valueReportMenuItem_Click(object sender, EventArgs e)
-        {
-            ValueReportForm valueReportForm = new ValueReportForm();
-            if (valueReportForm.ShowDialog(this) == DialogResult.OK)
-            {
-
-            }
-
-        }
-
-        private void exitMenuItem_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void parseOrgConfigMenuItem_Click(object sender, EventArgs e)
-        {
-            FirmRowForm firmRowForm = new FirmRowForm();
-            firmRowForm.ShowDialog(this);
-        }
-
-        private void parseRpoConfigMenuItem_Click(object sender, EventArgs e)
-        {
-            RpoRowForm rpoRowForm = new RpoRowForm();
-            rpoRowForm.ShowDialog(this);
-        }
-
-        private void btnExportToFile_Click(object sender, EventArgs e)
-        {
-            btnExportToFile.Enabled = false;
-
-            List<FirmList> checkedFirmLists = GetCheckedFirmLists();
-            if (checkedFirmLists == null || checkedFirmLists.Count == 0)
-                return;
-
-
-            int[] ids = checkedFirmLists.Select(checkedFirmList => checkedFirmList.Id).ToArray();
-            List<Rpo> rpos = Database.GetRposByListsIds(ids);
-
-            ExportPartPostFile exportFile = new ExportPartPostFile();
-            foreach (Rpo rpo in rpos)
-            {
-                ExportFileString exportFileString = rpo.ToExportFileString();
-                MailCategory c = _mailCategories.FirstOrDefault(d => d.Id == rpo.MailCategory);
-                if (c != null)
-                {
-                    exportFileString.MailCtg = c.Code.ToString();
-                    if(c.Code == 0)
-                        continue;
-                }
-
-                MailType t = _mailTypes.FirstOrDefault(d => d.Id == rpo.MailType);
-                if (t != null)
-                    exportFileString.MailType = t.Code.ToString();
-
-                exportFile.Add(exportFileString);
-            }
-
-            exportFile.ExportToFile(_exportPathConfig.Value);
-
-            btnExportToFile.Enabled = true;
-            SuccessMessage("Выгрузка завершена!");
-        }
     }
 }
