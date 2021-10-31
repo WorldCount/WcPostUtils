@@ -9,6 +9,7 @@ namespace LK.Core
         public static readonly string DataDir = Path.Combine(Application.StartupPath, Properties.Settings.Default.Data);
         public static readonly string ReportPath = Path.Combine(DataDir, "LoadReport");
         public static readonly string Tarif = Path.Combine(DataDir, Properties.Settings.Default.TarifsData);
+        public static readonly string FirmReportPath = Path.Combine(DataDir, "reports.xml");
 
 
         // Данные

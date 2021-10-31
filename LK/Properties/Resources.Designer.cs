@@ -83,6 +83,16 @@ namespace LK.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Agenda {
+            get {
+                object obj = ResourceManager.GetObject("Agenda", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Books_2 {
             get {
                 object obj = ResourceManager.GetObject("Books-2", resourceCulture);
@@ -233,9 +243,29 @@ namespace LK.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Coin_1 {
+            get {
+                object obj = ResourceManager.GetObject("Coin-1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Coin_Dollar {
             get {
                 object obj = ResourceManager.GetObject("Coin-Dollar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap edit_2_16 {
+            get {
+                object obj = ResourceManager.GetObject("edit-2-16", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -346,6 +376,16 @@ namespace LK.Properties {
         internal static System.Drawing.Bitmap minus_16 {
             get {
                 object obj = ResourceManager.GetObject("minus-16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Notebook {
+            get {
+                object obj = ResourceManager.GetObject("Notebook", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

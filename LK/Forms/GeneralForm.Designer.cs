@@ -572,7 +572,6 @@ namespace LK.Forms
             this.comboBoxOrgs.Size = new System.Drawing.Size(404, 27);
             this.comboBoxOrgs.TabIndex = 1;
             this.comboBoxOrgs.ValueMember = "Id";
-            this.comboBoxOrgs.SelectedIndexChanged += new System.EventHandler(this.comboBoxOrgs_SelectedIndexChanged);
             this.comboBoxOrgs.Enter += new System.EventHandler(this.comboBoxOrgs_Enter);
             // 
             // firmBindingSource
@@ -1653,57 +1652,59 @@ namespace LK.Forms
             // 
             // editReportMenuItem
             // 
-            this.editReportMenuItem.Enabled = false;
             this.editReportMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(58)))), ((int)(((byte)(66)))));
+            this.editReportMenuItem.Image = global::LK.Properties.Resources.Notebook;
             this.editReportMenuItem.Name = "editReportMenuItem";
-            this.editReportMenuItem.Size = new System.Drawing.Size(259, 28);
+            this.editReportMenuItem.Size = new System.Drawing.Size(263, 28);
             this.editReportMenuItem.Text = "Управление отчетами";
+            this.editReportMenuItem.Click += new System.EventHandler(this.editReportMenuItem_Click);
             // 
             // allReportMenuItem
             // 
-            this.allReportMenuItem.Enabled = false;
             this.allReportMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(58)))), ((int)(((byte)(66)))));
+            this.allReportMenuItem.Image = global::LK.Properties.Resources.Agenda;
             this.allReportMenuItem.Name = "allReportMenuItem";
-            this.allReportMenuItem.Size = new System.Drawing.Size(259, 28);
+            this.allReportMenuItem.Size = new System.Drawing.Size(263, 28);
             this.allReportMenuItem.Text = "Все отчеты";
             // 
             // toolStripSeparator16
             // 
             this.toolStripSeparator16.Name = "toolStripSeparator16";
-            this.toolStripSeparator16.Size = new System.Drawing.Size(256, 6);
+            this.toolStripSeparator16.Size = new System.Drawing.Size(260, 6);
             // 
             // valueReportMenuItem
             // 
             this.valueReportMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(58)))), ((int)(((byte)(66)))));
+            this.valueReportMenuItem.Image = global::LK.Properties.Resources.Coin_1;
             this.valueReportMenuItem.Name = "valueReportMenuItem";
-            this.valueReportMenuItem.Size = new System.Drawing.Size(259, 28);
+            this.valueReportMenuItem.Size = new System.Drawing.Size(263, 28);
             this.valueReportMenuItem.Text = "Отчет по ценным";
             this.valueReportMenuItem.Click += new System.EventHandler(this.valueReportMenuItem_Click);
             // 
             // toolStripSeparator17
             // 
             this.toolStripSeparator17.Name = "toolStripSeparator17";
-            this.toolStripSeparator17.Size = new System.Drawing.Size(256, 6);
+            this.toolStripSeparator17.Size = new System.Drawing.Size(260, 6);
             // 
             // massReportMenuItem
             // 
             this.massReportMenuItem.Enabled = false;
             this.massReportMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(58)))), ((int)(((byte)(66)))));
             this.massReportMenuItem.Name = "massReportMenuItem";
-            this.massReportMenuItem.Size = new System.Drawing.Size(259, 28);
+            this.massReportMenuItem.Size = new System.Drawing.Size(263, 28);
             this.massReportMenuItem.Text = "Отчет по весу";
             // 
             // toolStripSeparator18
             // 
             this.toolStripSeparator18.Name = "toolStripSeparator18";
-            this.toolStripSeparator18.Size = new System.Drawing.Size(256, 6);
+            this.toolStripSeparator18.Size = new System.Drawing.Size(260, 6);
             // 
             // orgReportMenuItem
             // 
             this.orgReportMenuItem.Enabled = false;
             this.orgReportMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(58)))), ((int)(((byte)(66)))));
             this.orgReportMenuItem.Name = "orgReportMenuItem";
-            this.orgReportMenuItem.Size = new System.Drawing.Size(259, 28);
+            this.orgReportMenuItem.Size = new System.Drawing.Size(263, 28);
             this.orgReportMenuItem.Text = "Отчет по организации";
             // 
             // dataMenuItem

@@ -176,6 +176,10 @@ namespace LK.Core.Models.DB
             return Inventory;
         }
 
+        public bool IsInter()
+        {
+            return MailClass == MailClass.Международное;
+        }
         #endregion
     }
 

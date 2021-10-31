@@ -591,12 +591,14 @@ namespace LK.Core.Store
             sb.Append("join Firm f on fl.FirmId = f.Id ");
             sb.Append($"where ReceptionDate >= date('{filter.StartDate:yyyy-MM-dd}') and ReceptionDate < date('{filter.EndDate:yyyy-MM-dd}')");
 
+            if (filter.FirmsIds != null && filter.FirmsIds.Length > 0)
+                sb.Append($" and fl.FirmId in ({string.Join(",", filter.FirmsIds)})");
+
             if (filter.FirmId != 0)
                 sb.Append($" and fl.FirmId = {filter.FirmId}");
 
             if (filter.MailClass != MailClass.ВСЕ)
                 sb.Append($" and fl.MailClass = {(int) filter.MailClass}");
-
 
             if (filter.ErrorType == ErrorType.Возвращено)
                 sb.Append($" and fl.CountReturn > 0");
@@ -685,6 +687,11 @@ namespace LK.Core.Store
             }
 
             return firmLists;
+        }
+
+        public static Task<List<FirmList>> GetFirmsListManualAsync(FirmListFilter filter)
+        {
+            return Task.Run(() => GetFirmsListManual(filter));
         }
 
         public static List<FirmList> GetFirmsListAndChildren(Firm firm, DateTime startDate, DateTime endDate)

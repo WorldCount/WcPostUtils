@@ -181,6 +181,7 @@ namespace LK.Core.Libs.PrintDocuments
         private void PrintRow(PrintPageEventArgs e, DataGridViewRow gridRow, int topMargin)
         {
             bool clear = (string)gridRow.Cells[0].Value == "Clear";
+            bool stat = (string)gridRow.Cells[0].Value == "Stat";
             bool clearRow = _clear && clear;
 
             int cellCount = 0;
@@ -196,8 +197,18 @@ namespace LK.Core.Libs.PrintDocuments
                 {
                     if (!clearRow && !clear)
                     {
-                        e.Graphics.DrawString(cell.Value.ToString(), PrintPens.CellFont, PrintPens.ForeBrush, new Rectangle(colLeft, topMargin, colWidth, CellHeight), _stringFormat);
+                        if (cell.Value.ToString() != "Stat")
+                        {
+                            e.Graphics.DrawString(cell.Value.ToString(), PrintPens.CellFont, PrintPens.ForeBrush,
+                                new Rectangle(colLeft, topMargin, colWidth, CellHeight), _stringFormat);
+                        }
                     }
+                }
+
+                if (stat)
+                {
+                    cellCount++;
+                    continue;
                 }
 
                 if (!clearRow)

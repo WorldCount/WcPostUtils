@@ -16,13 +16,18 @@ using LK.Core.Libs.DataManagers.Models;
 using LK.Core.Libs.PrintDocuments;
 using LK.Core.Libs.ServerRequest;
 using LK.Core.Libs.Stat;
+using LK.Core.Libs.TarifManager;
+using LK.Core.Libs.TarifManager.PostTypes;
+using LK.Core.Libs.TarifManager.Tarif;
 using LK.Core.Libs.Widget;
 using LK.Core.Models.DB;
 using LK.Core.Models.DB.Types;
 using LK.Core.Models.Filters;
+using LK.Core.Models.Reports;
 using LK.Core.Models.Types;
 using LK.Core.Store;
 using LK.Core.Store.ExportFile;
+using LK.Core.Store.Manager;
 using LK.Forms.ConfigForms;
 using LK.Forms.DataForms;
 using LK.Forms.ReportForms;
@@ -86,6 +91,8 @@ namespace LK.Forms
 
         private Config _defaultPrinterConfig;
         private Config _exportPathConfig;
+        private Config _ndsConfig;
+        private Config _valueConfig;
 
         #endregion
 
@@ -116,6 +123,9 @@ namespace LK.Forms
 
             // Подсказки
             InitTooltips();
+
+            // Загрузка меню с отчетами
+            LoadReportMenu();
 
             _reportsQueue.AddedObject += _reportsQueue_AddedObject;
 
@@ -502,6 +512,8 @@ namespace LK.Forms
             {
                 _defaultPrinterConfig = ConfigManager.GetConfigByName(ConfigName.DefaultPrinterName) ?? ConfigManager.CreateDefaultPrinterName();
                 _exportPathConfig = ConfigManager.GetConfigByName(ConfigName.ExportPath) ?? ConfigManager.CreateDefaultExportPath();
+                _ndsConfig = ConfigManager.GetConfigByName(ConfigName.Nds) ?? ConfigManager.CreateDefaultNds();
+                _valueConfig = ConfigManager.GetConfigByName(ConfigName.Value) ?? ConfigManager.CreateDefaultValue();
             });
             
         }
@@ -801,11 +813,6 @@ namespace LK.Forms
             });
         }
 
-        private void LoadReportMenu()
-        {
-
-        }
-
         private void InitDataGridView()
         {
             // Столбец с значком
@@ -1078,6 +1085,41 @@ namespace LK.Forms
         #endregion
 
         #region Меню - Отчеты
+
+        private void editReportMenuItem_Click(object sender, EventArgs e)
+        {
+            ListReportsForm listReportsForm = new ListReportsForm();
+            listReportsForm.ShowDialog(this);
+            LoadReportMenu();
+        }
+
+        private void LoadReportMenu()
+        {
+            List<Report> reports = ReportManager.GetEnabled();
+            allReportMenuItem.DropDownItems.Clear();
+
+            foreach (Report report in reports)
+            {
+                ToolStripMenuItem item = new ToolStripMenuItem(report.Name, Properties.Resources.Notebook_2, runCustomReportMenuItem_Click)
+                {
+                    Tag = report.Id,
+                    ForeColor = Color.FromArgb(255, 53, 58, 66)
+                };
+
+                allReportMenuItem.DropDownItems.Add(item);
+            }
+        }
+
+        private void runCustomReportMenuItem_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem item = (ToolStripMenuItem)sender;
+            int reportId = (int)item.Tag;
+
+            NoticeTarif interNoticeTarif = NoticeTarifManager.GetNoticeTarifByType(NoticeType.Международное);
+            
+            CustomReportForm customReportForm = new CustomReportForm(reportId);
+            customReportForm.ShowDialog(this);
+        }
 
         private void valueReportMenuItem_Click(object sender, EventArgs e)
         {
@@ -1548,11 +1590,6 @@ namespace LK.Forms
             WcApi.Keyboard.Keyboard.SetRussianLanguage();
         }
 
-        private void comboBoxOrgs_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         #endregion
 
         #region Other Events
@@ -1647,6 +1684,23 @@ namespace LK.Forms
                     List<FirmList> filtered = _firmLists.Where(f =>
                         f.FirmName.ToUpper().Contains(q) || f.OperatorName.ToUpper().Contains(q) ||
                         f.Num.ToString().Contains(q)).ToList();
+
+                    List<string> org = new List<string>();
+                    foreach (FirmList firmList in filtered)
+                    {
+                        if(!org.Contains(firmList.FirmName))
+                            org.Add(firmList.FirmName);
+                    }
+
+                    if (org.Count == 1)
+                    {
+                        int index = comboBoxOrgs.FindString(org[0]);
+                        comboBoxOrgs.SelectedIndex = index;
+                    }
+                    else
+                        comboBoxOrgs.SelectedIndex = 0;
+                        
+
                     firmListBindingSource.DataSource = filtered.ToSortableBindingList();
                     _collector = new FirmListStatCollector(filtered);
                     UpdateStat();
@@ -1662,5 +1716,6 @@ namespace LK.Forms
                 }
             }
         }
+
     }
 }

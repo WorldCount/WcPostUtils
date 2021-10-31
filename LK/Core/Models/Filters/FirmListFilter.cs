@@ -9,6 +9,7 @@ namespace LK.Core.Models.Filters
         private DateTime _endDate;
 
         public int FirmId { get; set; }
+        public int[] FirmsIds { get; set; }
 
         public DateTime StartDate
         {

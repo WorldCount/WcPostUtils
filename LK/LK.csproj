@@ -115,12 +115,15 @@
     </Compile>
     <Compile Include="Core\Libs\PrintDocuments\ReportQueue.cs" />
     <Compile Include="Core\Libs\Stat\CityStatCollector.cs" />
+    <Compile Include="Core\Libs\Stat\CustomReportStatCollector.cs" />
+    <Compile Include="Core\Libs\Stat\CustomReportStatData.cs" />
     <Compile Include="Core\Libs\Stat\DateList.cs" />
     <Compile Include="Core\Libs\Stat\FirmListStatCollector.cs" />
     <Compile Include="Core\Libs\Stat\RpoStatCollector.cs" />
     <Compile Include="Core\Libs\Stat\RpoStatData.cs" />
     <Compile Include="Core\Libs\Stat\SingleReportData.cs" />
     <Compile Include="Core\Libs\Stat\StatData.cs" />
+    <Compile Include="Core\Libs\Stat\StatObject\ServiceData.cs" />
     <Compile Include="Core\Libs\Widget\BorderTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -131,6 +134,7 @@
     <Compile Include="Core\Models\Raw\RawListData.cs" />
     <Compile Include="Core\Models\Raw\RawRpoData.cs" />
     <Compile Include="Core\Models\Reports\FirmListData.cs" />
+    <Compile Include="Core\Models\Reports\Report.cs" />
     <Compile Include="Core\Models\Reports\ReportData.cs" />
     <Compile Include="Core\Libs\ServerRequest\ServerAuth.cs" />
     <Compile Include="Core\Models\Types\ErrorType.cs" />
@@ -194,6 +198,7 @@
     <Compile Include="Core\Store\Manager\MailCategoryManager.cs" />
     <Compile Include="Core\Store\Manager\MailTypeManager.cs" />
     <Compile Include="Core\Store\Manager\OperatorManager.cs" />
+    <Compile Include="Core\Store\Manager\ReportManager.cs" />
     <Compile Include="Core\Store\Manager\RpoManager.cs" />
     <Compile Include="Core\Store\Manager\StatusManager.cs" />
     <Compile Include="Core\Utils.cs" />
@@ -250,6 +255,24 @@
     </Compile>
     <Compile Include="Forms\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ReportForms\CreateEditReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ReportForms\CreateEditReportForm.Designer.cs">
+      <DependentUpon>CreateEditReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ReportForms\CustomReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ReportForms\CustomReportForm.Designer.cs">
+      <DependentUpon>CustomReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ReportForms\ListReportsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ReportForms\ListReportsForm.Designer.cs">
+      <DependentUpon>ListReportsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\ReportForms\OrgMassReportForm.cs">
       <SubType>Form</SubType>
@@ -340,6 +363,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="Resources\Agenda.png" />
+    <None Include="Resources\Coin-1.png" />
+    <None Include="Resources\Notebook.png" />
+    <None Include="Properties\DataSources\LK.Core.Models.Reports.Report.datasource" />
+    <None Include="Resources\edit-2-16.png" />
     <None Include="Resources\trash-2-16.png" />
     <None Include="Resources\trash-2-241.png" />
     <None Include="Resources\minus-16.png" />
@@ -433,6 +461,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ReportForms\CreateEditReportForm.resx">
+      <DependentUpon>CreateEditReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ReportForms\CustomReportForm.resx">
+      <DependentUpon>CustomReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ReportForms\ListReportsForm.resx">
+      <DependentUpon>ListReportsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ReportForms\OrgMassReportForm.resx">
       <DependentUpon>OrgMassReportForm.cs</DependentUpon>
