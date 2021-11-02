@@ -37,8 +37,8 @@ namespace LK.Forms
         private readonly DateTime _reportOutDate;
 
         private List<int> _recountFirmListIds;
-
         #endregion
+
         private string _error;
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
         private readonly bool _loggingMode = Properties.Settings.Default.LoggingMode;

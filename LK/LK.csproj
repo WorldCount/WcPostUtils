@@ -102,6 +102,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\Libs\Auth\Model\ReceiveDoc.cs" />
     <Compile Include="Core\Libs\Configs\ConfigRowRpoType.cs" />
     <Compile Include="Core\Libs\Configs\ConfigRpoField.cs" />
     <Compile Include="Core\Libs\DataReports\ValueReport.cs" />
@@ -349,6 +350,12 @@
     <Compile Include="Forms\TarifForms\TarificatorForm.Designer.cs">
       <DependentUpon>TarificatorForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\TestForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TestForm.Designer.cs">
+      <DependentUpon>TestForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\TypeForms\MailCategoryForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -506,6 +513,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\TarifForms\TarificatorForm.resx">
       <DependentUpon>TarificatorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TestForm.resx">
+      <DependentUpon>TestForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\TypeForms\MailCategoryForm.resx">
       <DependentUpon>MailCategoryForm.cs</DependentUpon>

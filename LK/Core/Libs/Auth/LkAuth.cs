@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using LK.Core.Libs.Auth.Model;
 using Newtonsoft.Json;
-using System.Security.Authentication;
+//using System.Security.Authentication;
 
 namespace LK.Core.Libs.Auth
 {
@@ -161,6 +161,21 @@ namespace LK.Core.Libs.Auth
             }
 
             return filePath;
+        }
+
+        public async Task<List<ReceiveDoc>> ReceiveDocResponse(Token token, DateTime startDate, DateTime endDate)
+        {
+            string startD = startDate.ToString("yyyy-MM-dd");
+            string endD = endDate.ToString("yyyy-MM-dd");
+
+            SetReportHeaders(token);
+
+            string q = $"https://priem.pochta.ru/api/stats/125993/overview?startDate={startD}&endDate={endD}";
+
+            var response = await _client.GetAsync(q);
+            var tokenString = await response.Content.ReadAsStringAsync();
+            List<ReceiveDoc> docs = JsonConvert.DeserializeObject<List<ReceiveDoc>>(tokenString);
+            return docs;
         }
 
     }

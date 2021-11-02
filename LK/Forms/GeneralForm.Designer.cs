@@ -208,6 +208,7 @@ namespace LK.Forms
             this.status = new System.Windows.Forms.StatusStrip();
             this.statusText = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusAuthor = new System.Windows.Forms.ToolStripStatusLabel();
+            this.testMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelFilter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.firmBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.operatorBindingSource)).BeginInit();
@@ -1984,7 +1985,8 @@ namespace LK.Forms
             // 
             this.infoMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.licenseMenuItem,
-            this.updateMenuItem});
+            this.updateMenuItem,
+            this.testMenuItem});
             this.infoMenuItem.Image = global::LK.Properties.Resources._4_Leaf_Clover;
             this.infoMenuItem.Name = "infoMenuItem";
             this.infoMenuItem.Size = new System.Drawing.Size(87, 36);
@@ -1995,7 +1997,7 @@ namespace LK.Forms
             this.licenseMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
             this.licenseMenuItem.Image = global::LK.Properties.Resources.Coin_Dollar;
             this.licenseMenuItem.Name = "licenseMenuItem";
-            this.licenseMenuItem.Size = new System.Drawing.Size(183, 28);
+            this.licenseMenuItem.Size = new System.Drawing.Size(184, 28);
             this.licenseMenuItem.Text = "Лицензия";
             this.licenseMenuItem.Click += new System.EventHandler(this.licenseMenuItem_Click);
             // 
@@ -2004,7 +2006,7 @@ namespace LK.Forms
             this.updateMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
             this.updateMenuItem.Image = global::LK.Properties.Resources.Button_Dashboard;
             this.updateMenuItem.Name = "updateMenuItem";
-            this.updateMenuItem.Size = new System.Drawing.Size(183, 28);
+            this.updateMenuItem.Size = new System.Drawing.Size(184, 28);
             this.updateMenuItem.Text = "Обновление";
             this.updateMenuItem.Click += new System.EventHandler(this.updateMenuItem_Click);
             // 
@@ -2051,6 +2053,13 @@ namespace LK.Forms
             this.statusAuthor.Name = "statusAuthor";
             this.statusAuthor.Size = new System.Drawing.Size(114, 17);
             this.statusAuthor.Text = "WorldCount, 2020 ©";
+            // 
+            // testMenuItem
+            // 
+            this.testMenuItem.Name = "testMenuItem";
+            this.testMenuItem.Size = new System.Drawing.Size(184, 28);
+            this.testMenuItem.Text = "Тест";
+            this.testMenuItem.Click += new System.EventHandler(this.testMenuItem_Click);
             // 
             // GeneralForm
             // 
@@ -2278,6 +2287,7 @@ namespace LK.Forms
         private System.Windows.Forms.StatusStrip status;
         private System.Windows.Forms.ToolStripStatusLabel statusText;
         private System.Windows.Forms.ToolStripStatusLabel statusAuthor;
+        private System.Windows.Forms.ToolStripMenuItem testMenuItem;
     }
 }
 

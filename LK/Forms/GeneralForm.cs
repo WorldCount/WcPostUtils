@@ -1717,5 +1717,10 @@ namespace LK.Forms
             }
         }
 
+        private void testMenuItem_Click(object sender, EventArgs e)
+        {
+            TestForm testForm = new TestForm(_auth);
+            testForm.ShowDialog(this);
+        }
     }
 }
