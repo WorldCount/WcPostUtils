@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
 using System.IO;
+using System.IO.Compression;
 using System.Text;
 using System.Windows.Forms;
 using ListEditor.Models.Part;
@@ -163,14 +164,30 @@ namespace ListEditor.Models.RTM
             {
                 Compile();
 
-                _ini.SaveSettings(Path.Combine(dir, GetIniName()));
-                using (StreamWriter sw = new StreamWriter(Path.Combine(dir, GetTxtName()), false, encoding))
+                string zipPath = Path.Combine(dir, $"{GetName()}.zip");
+                if (File.Exists(zipPath))
+                    File.Delete(zipPath);
+
+                using (FileStream zipFile = new FileStream(zipPath, FileMode.Create))
                 {
-                    sw.Write(_header);
-                    // ReSharper disable once ForCanBeConvertedToForeach
-                    for (int i = 0; i < _rtmRows.Count; i++)
+                    using (ZipArchive archive = new ZipArchive(zipFile, ZipArchiveMode.Create))
                     {
-                        sw.Write(_rtmRows[i]);
+                        ZipArchiveEntry ini = archive.CreateEntry(GetIniName());
+                        using (StreamWriter writer = new StreamWriter(ini.Open(), encoding))
+                        {
+                            _ini.Save(writer);
+                        }
+
+                        ZipArchiveEntry txt = archive.CreateEntry(GetTxtName());
+                        using (StreamWriter writer = new StreamWriter(txt.Open(), encoding))
+                        {
+                            writer.Write(_header);
+                            // ReSharper disable once ForCanBeConvertedToForeach
+                            for (int i = 0; i < _rtmRows.Count; i++)
+                            {
+                                writer.Write(_rtmRows[i]);
+                            }
+                        }
                     }
                 }
             }

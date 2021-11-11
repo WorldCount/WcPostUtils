@@ -27,6 +27,7 @@ namespace ListEditor.Models.Part
         private IniParser _ini;
         private readonly bool _debug = Properties.Settings.Default.Debug;
         private SQLiteConnection _db;
+        private string _zipName;
 
         private bool _checkIndex;
         private bool _checkAllIndex;
@@ -50,49 +51,141 @@ namespace ListEditor.Models.Part
         [DisplayName(@"Строк")]
         public int Count => _rows.Count;
 
+        #region Main
+
         [DisplayName(@"ИНН")]
         public string Inn { get; set; }
-        [DisplayName(@"КПП")] 
+
+        [DisplayName(@"КПП")]
         public string Kpp { get; set; } = "000000000";
-        // Имя организации
-        [DisplayName(@"Отправитель")]
-        public string Sender { get; set; }
-        // Вид пересылки: Внутренняя, Международная
-        [DisplayName(@"Пересылка")]
-        public string DirectCtg { get; set; }
-        // Категория отправителя
-        [DisplayName(@"Категория")]
-        public string SendCtg { get; set; }
+
         // ДипКод
         [DisplayName(@"DepCode")]
         public string DepCode { get; set; }
+
+        // Номер телефона
+        public string SndrTel { get; set; }
+
+        // Категория отправителя
+        [DisplayName(@"Категория")]
+        public string SendCtg { get; set; }
+        
+        // Дата списка
+        [DisplayName(@"Дата")]
+        public DateTime SendDate { get; set; }
+
         // Номер списка
         [DisplayName(@"Список")]
         public string ListNum { get; set; }
+
+        // Отделение
+        public string IndexFrom { get; set; }
+
         // Тип отправления
         [DisplayName(@"Тип")]
         public string MailType { get; set; }
+
         // Категория отправления
         [DisplayName(@"Категория")]
         public string MailCtg { get; set; }
-        // Разряд отправления
-        [DisplayName(@"Разряд")]
-        public string MailRank { get; set; }
+
+        // Вид пересылки: Внутренняя, Международная
+        [DisplayName(@"Пересылка")]
+        public string DirectCtg { get; set; }
+
         // Тип оплаты
         [DisplayName(@"Оплата")]
         public string PayType { get; set; }
+
+        // Тип оплаты уведомления
+        public string PayTypeNot { get; set; }
+
+        public string TransType { get; set; }
+
+        // Отметки
+        [DisplayName(@"Отметки")]
+        public string PostMark { get; set; }
+
+        // Разряд отправления
+        [DisplayName(@"Разряд")]
+        public string MailRank { get; set; }
+
+        public string NumContract { get; set; }
+
+        // ReSharper disable once InconsistentNaming
+        public string SMSNoticeS { get; set; }
+
+        public string KindJurPers { get; set; }
+
+        public string SndrFact { get; set; }
+        public string InnFact { get; set; }
+        public string KppFact { get; set; }
+        public string DepCodeFact { get; set; }
+
+        #endregion
+
+        #region Sender
+
+        // Имя организации
+        [DisplayName(@"Отправитель")]
+        public string Sender { get; set; }
+
+        public string AddressTypeSndr { get; set; }
+        public string NumAddresstypeSndr { get; set; }
+        public string IndexSndr { get; set; }
+        public string RegionSndr { get; set; }
+        public string AreaSndr { get; set; }
+        public string PlaceSndr { get; set; }
+        public string LocationSndr { get; set; }
+        public string StreetSndr { get; set; }
+        public string HouseSndr { get; set; }
+        public string LetterSndr { get; set; }
+        public string SlashSndr { get; set; }
+        public string CorpusSndr { get; set; }
+        public string BuildingSndr { get; set; }
+        public string HotelSndr { get; set; }
+        public string RoomSndr { get; set; }
+
+        #endregion
+
+        #region Summary
+
+        public string MailCount { get; set; }
+        public string MailWeight { get; set; }
+        public string ValueSum { get; set; }
+        public string DeliveryRateSum { get; set; }
+        // ReSharper disable once InconsistentNaming
+        public string DeliveryRateVAT { get; set; }
+        public string DeliveryRateTotal { get; set; }
+        public string ValueSumRateTotal { get; set; }
+        // ReSharper disable once InconsistentNaming
+        public string ValueSumRateVAT { get; set; }
+        public string NoticeRateTotal { get; set; }
+        // ReSharper disable once InconsistentNaming
+        public string NoticeRateVAT { get; set; }
+        // ReSharper disable once InconsistentNaming
+        public string SMSNoticeTotal { get; set; }
+        // ReSharper disable once InconsistentNaming
+        public string SMSNoticeVAT { get; set; }
+        public string TotalRate { get; set; }
+        // ReSharper disable once InconsistentNaming
+        public string TotalRateVAT { get; set; }
+
+        #endregion
+
+        #region DocVersion
+
+        public string DocVersion { get; set; }
+
+        #endregion
+
         // Сумма оплаты
         [DisplayName(@"Сумма")]
         public double PaySum { get; set; }
         // НДС от суммы
         [DisplayName(@"НДС")]
         public double Nds { get; set; }
-        // Отметки
-        [DisplayName(@"Отметки")]
-        public string PostMark { get; set; }
-        // Дата списка
-        [DisplayName(@"Дата")]
-        public DateTime SendDate { get; set; }
+
         // Минимальный вес
         [DisplayName(@"Минимальный вес")]
         public int MinWeight { get; set; }
@@ -105,7 +198,7 @@ namespace ListEditor.Models.Part
 
         private string TxtName => $"{Name}.txt";
         private string IniName => $"{Name}h.ini";
-        private string ZipName => $"F{Name}.zip";
+        private string ZipName => _zipName;
 
         public string Dir => Path.GetDirectoryName(_path);
         private string PathIni => Path.Combine(Dir, IniName);
@@ -116,11 +209,11 @@ namespace ListEditor.Models.Part
         {
             _path = path;
 
-            string name = Path.GetFileName(_path);
+            _zipName = Path.GetFileName(_path);
 
-            if (!string.IsNullOrEmpty(name))
+            if (!string.IsNullOrEmpty(_zipName))
             {
-                Name = name.Split('.')[0].Replace("F", "").Replace("h", "");
+                Name = _zipName.Split('.')[0].Replace("F", "").Replace("h", "");
             }
         }
 
@@ -143,25 +236,89 @@ namespace ListEditor.Models.Part
 
             WeightValid = true;
 
-            MailType = _ini.GetSetting("Main", "MailType");
-            Sender = _ini.GetSetting("Sender", "Sndr");
-            ListNum = _ini.GetSetting("Main", "ListNum");
-            SendCtg = _ini.GetSetting("Main", "SendCtg");
-            DepCode = _ini.GetSetting("Main", "DepCode");
+            #region Main
+
             Inn = _ini.GetSetting("Main", "Inn");
             Kpp = _ini.GetSetting("Main", "Kpp");
+            DepCode = _ini.GetSetting("Main", "DepCode");
+            SndrTel = _ini.GetSetting("Main", "SndrTel");
+            SendCtg = _ini.GetSetting("Main", "SendCtg");
+
+            string sendDate = _ini.GetSetting("Main", "SendDate");
+            SendDate = DateTime.ParseExact(sendDate, "yyyyMMdd", CultureInfo.CurrentCulture);
+
+            ListNum = _ini.GetSetting("Main", "ListNum");
+            IndexFrom = _ini.GetSetting("Main", "IndexFrom");
+
+            MailType = _ini.GetSetting("Main", "MailType");
+            MailCtg = _ini.GetSetting("Main", "MailCtg");
             DirectCtg = _ini.GetSetting("Main", "DirectCtg");
+            PayType = _ini.GetSetting("Main", "PayType");
+            PayTypeNot = _ini.GetSetting("Main", "PayTypeNot");
+            TransType = _ini.GetSetting("Main", "TransType");
+            PostMark = _ini.GetSetting("Main", "PostMark");
+            MailRank = _ini.GetSetting("Main", "MailRank");
+            NumContract = _ini.GetSetting("Main", "NumContract");
+            SMSNoticeS = _ini.GetSetting("Main", "SMSNoticeS");
+            KindJurPers = _ini.GetSetting("Main", "KindJurPers");
+            SndrFact = _ini.GetSetting("Main", "SndrFact");
+            InnFact = _ini.GetSetting("Main", "InnFact");
+            KppFact = _ini.GetSetting("Main", "KppFact");
+            InnFact = _ini.GetSetting("Main", "InnFact");
+            DepCodeFact = _ini.GetSetting("Main", "DepCodeFact");
+
+            #endregion
+
+            #region Sender
+
+            Sender = _ini.GetSetting("Sender", "Sndr");
+            AddressTypeSndr = _ini.GetSetting("Sender", "AddressTypeSndr");
+            NumAddresstypeSndr = _ini.GetSetting("Sender", "NumAddresstypeSndr");
+            IndexSndr = _ini.GetSetting("Sender", "IndexSndr");
+            RegionSndr = _ini.GetSetting("Sender", "RegionSndr");
+            AreaSndr = _ini.GetSetting("Sender", "AreaSndr");
+            PlaceSndr = _ini.GetSetting("Sender", "PlaceSndr");
+            LocationSndr = _ini.GetSetting("Sender", "LocationSndr");
+            StreetSndr = _ini.GetSetting("Sender", "StreetSndr");
+            HouseSndr = _ini.GetSetting("Sender", "HouseSndr");
+            LetterSndr = _ini.GetSetting("Sender", "LetterSndr");
+            SlashSndr = _ini.GetSetting("Sender", "SlashSndr");
+            CorpusSndr = _ini.GetSetting("Sender", "CorpusSndr");
+            BuildingSndr = _ini.GetSetting("Sender", "BuildingSndr");
+            HotelSndr = _ini.GetSetting("Sender", "HotelSndr");
+            RoomSndr = _ini.GetSetting("Sender", "RoomSndr");
+
+            #endregion
+
+            #region Summary
+
+            MailCount = _ini.GetSetting("Summary", "MailCount");
+            MailWeight = _ini.GetSetting("Summary", "MailWeight");
+            ValueSum = _ini.GetSetting("Summary", "ValueSum");
+            DeliveryRateSum = _ini.GetSetting("Summary", "DeliveryRateSum");
+            DeliveryRateVAT = _ini.GetSetting("Summary", "DeliveryRateVAT");
+            DeliveryRateTotal = _ini.GetSetting("Summary", "DeliveryRateTotal");
+            ValueSumRateTotal = _ini.GetSetting("Summary", "ValueSumRateTotal");
+            ValueSumRateVAT = _ini.GetSetting("Summary", "ValueSumRateVAT");
+            NoticeRateTotal = _ini.GetSetting("Summary", "NoticeRateTotal");
+            NoticeRateVAT = _ini.GetSetting("Summary", "NoticeRateVAT");
+            SMSNoticeTotal = _ini.GetSetting("Summary", "SMSNoticeTotal");
+            SMSNoticeVAT = _ini.GetSetting("Summary", "SMSNoticeVAT");
+            TotalRate = _ini.GetSetting("Summary", "TotalRate");
+            TotalRateVAT = _ini.GetSetting("Summary", "TotalRateVAT");
+
+            #endregion
+
+            #region DocVersion
+
+            DocVersion = _ini.GetSetting("DocVersion", "DocVersion");
+
+            #endregion
 
             if (Kpp == null || Kpp.Length < 9)
                 Kpp = "000000000";
 
-            string sendDate = _ini.GetSetting("Main", "SendDate");
-            SendDate = DateTime.ParseExact(sendDate, "yyyyMMdd", CultureInfo.CurrentCulture);
-            MailCtg = _ini.GetSetting("Main", "MailCtg");
-            MailRank = _ini.GetSetting("Main", "MailRank");
-            PayType = _ini.GetSetting("Main", "PayType");
-            PostMark = _ini.GetSetting("Main", "PostMark");
-
+            
             #region Проверка уведомлений
 
             if (Properties.Settings.Default.CheckPostMark)
@@ -227,44 +384,71 @@ namespace ListEditor.Models.Part
 
         public void SaveToRtm(string dir)
         {
-            string payTypeNot = _ini.GetSetting("Main", "PayTypeNot");
 
-            if (string.IsNullOrEmpty(payTypeNot))
-                payTypeNot = "2";
+            if (string.IsNullOrEmpty(PayTypeNot))
+                PayTypeNot = "2";
 
             try
             {
                 Rtm1317 rtm = new Rtm1317(Properties.Settings.Default.IndexOps, Properties.Settings.Default.RecountValue, Properties.Settings.Default.NDS)
                 {
+                    // Main
                     Inn = Inn,
                     Kpp = Kpp,
                     DepCode = DepCode,
-                    DirectCtg = DirectCtg,
+                    SndrTel = SndrTel,
                     SendCtg = SendCtg,
                     SendDate = SendDate,
                     ListNum = ListNum,
+                    IndexFrom = IndexFrom,
                     MailType = MailType,
                     MailCtg = MailCtg,
+                    DirectCtg = DirectCtg,
                     PayType = PayType,
-                    PayTypeNot = payTypeNot,
-                    TransType = _ini.GetSetting("Main", "TransType"),
+                    PayTypeNot = PayTypeNot,
+                    TransType = TransType,
                     PostMark = PostMark,
                     MailRank = MailRank,
+                    NumContract = NumContract,
+                    SMSNoticeS = SMSNoticeS,
+                    KindJurPers = KindJurPers,
+                    SndrFact = SndrFact,
+                    InnFact = InnFact,
+                    KppFact = KppFact,
+                    DepcodeFact = DepCodeFact,
+
+                    // Sender
                     Sndr = Sender,
-                    MailCount = _ini.GetSetting("Summary", "MailCount"),
-                    MailWeight = _ini.GetSetting("Summary", "MailWeight"),
-                    ValueSum = _ini.GetSetting("Summary", "ValueSum"),
-                    DeliveryRateSum = _ini.GetSetting("Summary", "DeliveryRateSum"),
-                    DeliveryRateVAT = _ini.GetSetting("Summary", "DeliveryRateVAT"),
-                    DeliveryRateTotal = _ini.GetSetting("Summary", "DeliveryRateTotal"),
-                    ValueSumRateTotal = _ini.GetSetting("Summary", "ValueSumRateTotal"),
-                    ValueSumRateVAT = _ini.GetSetting("Summary", "ValueSumRateVAT"),
-                    NoticeRateTotal = _ini.GetSetting("Summary", "NoticeRateTotal"),
-                    NoticeRateVAT = _ini.GetSetting("Summary", "NoticeRateVAT"),
-                    SMSNoticeTotal = _ini.GetSetting("Summary", "SMSNoticeTotal"),
-                    SMSNoticeVAT = _ini.GetSetting("Summary", "SMSNoticeVAT"),
-                    TotalRate = _ini.GetSetting("Summary", "TotalRate"),
-                    TotalRateVAT = _ini.GetSetting("Summary", "TotalRateVAT")
+                    AddressTypeSndr = AddressTypeSndr,
+                    NumAddressTypeSndr = NumAddresstypeSndr,
+                    IndexSndr = IndexSndr,
+                    RegionSndr = RegionSndr,
+                    AreaSndr = AreaSndr,
+                    PlaceSndr = PlaceSndr,
+                    LocationSndr = LocationSndr,
+                    HouseSndr = HouseSndr,
+                    LetterSndr = LetterSndr,
+                    SlashSndr = SlashSndr,
+                    CorpusSndr = CorpusSndr,
+                    BuildingSndr = BuildingSndr,
+                    HotelSndr = HouseSndr,
+                    RoomSndr = RoomSndr,
+
+                    // Summary
+                    MailCount = MailCount,
+                    MailWeight = MailWeight,
+                    ValueSum = ValueSum,
+                    DeliveryRateSum = DeliveryRateSum,
+                    DeliveryRateVAT = DeliveryRateVAT,
+                    DeliveryRateTotal = DeliveryRateTotal,
+                    ValueSumRateTotal = ValueSumRateTotal,
+                    ValueSumRateVAT = ValueSumRateVAT,
+                    NoticeRateTotal = NoticeRateTotal,
+                    NoticeRateVAT = NoticeRateVAT,
+                    SMSNoticeTotal = SMSNoticeTotal,
+                    SMSNoticeVAT = SMSNoticeVAT,
+                    TotalRate = TotalRate,
+                    TotalRateVAT = TotalRateVAT
                 };
 
                 foreach (RtmRow rtmRow in Rows)
@@ -709,8 +893,12 @@ namespace ListEditor.Models.Part
         {
             _ini = new IniParser {UpperKey = true};
 
+            bool zip = IsZip();
+
             if (IsZip())
             {
+                bool fileExist = File.Exists(PathZip);
+
                 if (File.Exists(PathZip))
                 {
                     try

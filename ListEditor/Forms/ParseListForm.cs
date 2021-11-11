@@ -61,6 +61,7 @@ namespace ListEditor.Forms
                     {
                         PartFile p = new PartFile(s);
                         p.Parse();
+
                         _partFiles.Add(p);
                         _stringCount += p.Count;
 
@@ -78,7 +79,7 @@ namespace ListEditor.Forms
                     }
                     catch (Exception eException)
                     {
-                        MessageBox.Show(eException.Message, "ParseFiles -> ParseFileName: Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(eException.ToString(), "ParseFiles -> ParseFileName: Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
 

@@ -141,7 +141,7 @@ namespace WcApi.Ini
                 _keyPairs.Remove(sectionPair);
         }
 
-        public void SaveSettings(string filePath)
+        private string ConfigToString()
         {
             ArrayList sections = new ArrayList();
             string stringToSave = "";
@@ -160,7 +160,7 @@ namespace WcApi.Ini
                 {
                     if (sectionPair.Section == section)
                     {
-                        var tmpValue = (string) _keyPairs[sectionPair];
+                        var tmpValue = (string)_keyPairs[sectionPair];
 
                         if (!string.IsNullOrEmpty(tmpValue))
                             tmpValue = $"={tmpValue}";
@@ -174,11 +174,22 @@ namespace WcApi.Ini
                 stringToSave += "\r\n";
             }
 
+            return stringToSave;
+        }
+
+        public void Save(StreamWriter writer)
+        {
+            string stringToSave = ConfigToString();
+            writer.Write(stringToSave);
+        }
+
+        public void SaveSettings(string filePath)
+        {
             try
             {
                 using (StreamWriter sw = new StreamWriter(filePath, false, Encoding.GetEncoding("cp866")))
                 {
-                    sw.Write(stringToSave);
+                    Save(sw);
                 }
             }
             catch (Exception e)
