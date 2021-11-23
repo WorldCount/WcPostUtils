@@ -49,6 +49,9 @@
     <Compile Include="Widgets\Buttons\WcButton.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Widgets\Buttons\WcToggleButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Widgets\Labels\WcLabel.cs">
       <SubType>Component</SubType>
     </Compile>

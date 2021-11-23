@@ -270,11 +270,10 @@ namespace LK.Forms.ReportForms
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.BackColor = System.Drawing.Color.Firebrick;
-            this.btnCancel.BackgroundColor = System.Drawing.Color.Firebrick;
             this.btnCancel.BorderColor = System.Drawing.Color.Silver;
             this.btnCancel.BorderRadius = 4F;
             this.btnCancel.BorderSize = 0;
-            this.btnCancel.DisableBackgroundColor = System.Drawing.Color.DimGray;
+            this.btnCancel.DisableBackColor = System.Drawing.Color.DimGray;
             this.btnCancel.DisableBorderColor = System.Drawing.Color.Silver;
             this.btnCancel.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.btnCancel.FlatAppearance.BorderSize = 0;
@@ -290,7 +289,6 @@ namespace LK.Forms.ReportForms
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.btnCancel.Size = new System.Drawing.Size(120, 46);
-            this.btnCancel.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             this.btnCancel.TabIndex = 13;
             this.btnCancel.Text = "Отменить";
             this.btnCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -302,11 +300,10 @@ namespace LK.Forms.ReportForms
             // 
             this.btnPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPrint.BackColor = System.Drawing.Color.SeaGreen;
-            this.btnPrint.BackgroundColor = System.Drawing.Color.SeaGreen;
             this.btnPrint.BorderColor = System.Drawing.Color.Silver;
             this.btnPrint.BorderRadius = 4F;
             this.btnPrint.BorderSize = 0;
-            this.btnPrint.DisableBackgroundColor = System.Drawing.Color.DimGray;
+            this.btnPrint.DisableBackColor = System.Drawing.Color.DimGray;
             this.btnPrint.DisableBorderColor = System.Drawing.Color.Silver;
             this.btnPrint.FlatAppearance.BorderSize = 0;
             this.btnPrint.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
@@ -321,7 +318,6 @@ namespace LK.Forms.ReportForms
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.btnPrint.Size = new System.Drawing.Size(120, 46);
-            this.btnPrint.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             this.btnPrint.TabIndex = 14;
             this.btnPrint.Text = "Печать";
             this.btnPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -333,11 +329,10 @@ namespace LK.Forms.ReportForms
             // 
             this.btnLoad.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnLoad.BackColor = System.Drawing.Color.SteelBlue;
-            this.btnLoad.BackgroundColor = System.Drawing.Color.SteelBlue;
             this.btnLoad.BorderColor = System.Drawing.Color.Silver;
             this.btnLoad.BorderRadius = 4F;
             this.btnLoad.BorderSize = 0;
-            this.btnLoad.DisableBackgroundColor = System.Drawing.Color.DimGray;
+            this.btnLoad.DisableBackColor = System.Drawing.Color.DimGray;
             this.btnLoad.DisableBorderColor = System.Drawing.Color.Silver;
             this.btnLoad.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.btnLoad.FlatAppearance.BorderSize = 0;
@@ -353,7 +348,6 @@ namespace LK.Forms.ReportForms
             this.btnLoad.Name = "btnLoad";
             this.btnLoad.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.btnLoad.Size = new System.Drawing.Size(120, 40);
-            this.btnLoad.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             this.btnLoad.TabIndex = 15;
             this.btnLoad.Text = "Загрузить";
             this.btnLoad.TextAlign = System.Drawing.ContentAlignment.MiddleRight;

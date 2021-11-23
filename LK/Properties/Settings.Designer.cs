@@ -346,5 +346,17 @@ namespace LK.Properties {
                 this["AutoLoadFlag"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool AutoClearFlag {
+            get {
+                return ((bool)(this["AutoClearFlag"]));
+            }
+            set {
+                this["AutoClearFlag"] = value;
+            }
+        }
     }
 }

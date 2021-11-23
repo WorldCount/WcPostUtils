@@ -145,6 +145,7 @@ namespace LK.Forms
         {
             checkBoxPrintPreview.Checked = Properties.Settings.Default.PrintPreviewFlag;
             checkBoxAutoLoad.Checked = Properties.Settings.Default.AutoLoadFlag;
+            wcToggleButtonClear.Checked = Properties.Settings.Default.AutoClearFlag;
         }
 
         // Перенос настроек предыдущей сборки в новую
@@ -279,29 +280,33 @@ namespace LK.Forms
 
         private async Task LoadAllData()
         {
-            if(comboBoxListClass.DataSource == null)
+            bool clear = wcToggleButtonClear.Checked;
+
+            if(clear || comboBoxListClass.DataSource == null)
                 comboBoxListClass.DataSource = Enum.GetNames(typeof(MailClass));
 
-            if(comboBoxErrorList.DataSource == null)
+            if(clear || comboBoxErrorList.DataSource == null)
                 comboBoxErrorList.DataSource = Enum.GetNames(typeof(ErrorType));
 
             _auth = Auth.Load(PathManager.AuthPath);
 
-            await LoadOperator(GetOperator());
+            if (clear)
+            {
+                await LoadOperator();
+                await LoadFirms();
+                await LoadMailTypes();
+                await LoadMailCategories();
+            }
+            else
+            {
+                await LoadOperator(GetOperator());
+                await LoadFirms(GetFirm());
+                await LoadMailTypes(GetMailType());
+                await LoadMailCategories(GetMailCategory());
+            }
 
-            await LoadFirms(GetFirm());
-            //await LoadFirms();
-            
-            await LoadMailTypes(GetMailType()); 
-            //await LoadMailTypes(); 
-            
             await LoadMailTypesDataGrid();
-            
-            await LoadMailCategories(GetMailCategory());
-            //await LoadMailCategories();
-
             await LoadMailCategoriesDataGrid();
-
             await LoadConfigs();
         }
 
@@ -1605,6 +1610,12 @@ namespace LK.Forms
         private void checkBoxAutoLoad_CheckStateChanged(object sender, EventArgs e)
         {
             Properties.Settings.Default.AutoLoadFlag = checkBoxAutoLoad.Checked;
+            Properties.Settings.Default.Save();
+        }
+
+        private void wcToggleButtonClear_CheckStateChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.AutoClearFlag = wcToggleButtonClear.Checked;
             Properties.Settings.Default.Save();
         }
 

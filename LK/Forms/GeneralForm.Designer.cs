@@ -30,15 +30,15 @@ namespace LK.Forms
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GeneralForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             this.reportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportsAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -206,6 +206,7 @@ namespace LK.Forms
             this.status = new System.Windows.Forms.StatusStrip();
             this.statusText = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusAuthor = new System.Windows.Forms.ToolStripStatusLabel();
+            this.wcToggleButtonClear = new Wc32Api.Widgets.Buttons.WcToggleButton();
             this.panelFilter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.firmBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.operatorBindingSource)).BeginInit();
@@ -398,6 +399,7 @@ namespace LK.Forms
             // panelFilter
             // 
             this.panelFilter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.panelFilter.Controls.Add(this.wcToggleButtonClear);
             this.panelFilter.Controls.Add(this.checkBoxAutoLoad);
             this.panelFilter.Controls.Add(this.btnSync);
             this.panelFilter.Controls.Add(this.btnLoad);
@@ -447,11 +449,10 @@ namespace LK.Forms
             // 
             this.btnSync.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSync.BackColor = System.Drawing.Color.OrangeRed;
-            this.btnSync.BackgroundColor = System.Drawing.Color.OrangeRed;
             this.btnSync.BorderColor = System.Drawing.Color.Silver;
             this.btnSync.BorderRadius = 4F;
             this.btnSync.BorderSize = 0;
-            this.btnSync.DisableBackgroundColor = System.Drawing.Color.DimGray;
+            this.btnSync.DisableBackColor = System.Drawing.Color.DimGray;
             this.btnSync.DisableBorderColor = System.Drawing.Color.Silver;
             this.btnSync.FlatAppearance.BorderSize = 0;
             this.btnSync.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkOrange;
@@ -464,7 +465,6 @@ namespace LK.Forms
             this.btnSync.Name = "btnSync";
             this.btnSync.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.btnSync.Size = new System.Drawing.Size(46, 46);
-            this.btnSync.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             this.btnSync.TabIndex = 18;
             this.btnSync.TabStop = false;
             this.btnSync.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -475,11 +475,10 @@ namespace LK.Forms
             // btnLoad
             // 
             this.btnLoad.BackColor = System.Drawing.Color.Brown;
-            this.btnLoad.BackgroundColor = System.Drawing.Color.Brown;
             this.btnLoad.BorderColor = System.Drawing.Color.Silver;
             this.btnLoad.BorderRadius = 4F;
             this.btnLoad.BorderSize = 0;
-            this.btnLoad.DisableBackgroundColor = System.Drawing.Color.DimGray;
+            this.btnLoad.DisableBackColor = System.Drawing.Color.DimGray;
             this.btnLoad.DisableBorderColor = System.Drawing.Color.Silver;
             this.btnLoad.FlatAppearance.BorderSize = 0;
             this.btnLoad.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
@@ -493,7 +492,6 @@ namespace LK.Forms
             this.btnLoad.Name = "btnLoad";
             this.btnLoad.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.btnLoad.Size = new System.Drawing.Size(127, 46);
-            this.btnLoad.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             this.btnLoad.TabIndex = 4;
             this.btnLoad.Text = "Загрузить";
             this.btnLoad.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -526,11 +524,10 @@ namespace LK.Forms
             // btnClearFilter
             // 
             this.btnClearFilter.BackColor = System.Drawing.Color.SlateGray;
-            this.btnClearFilter.BackgroundColor = System.Drawing.Color.SlateGray;
             this.btnClearFilter.BorderColor = System.Drawing.Color.Silver;
             this.btnClearFilter.BorderRadius = 4F;
             this.btnClearFilter.BorderSize = 0;
-            this.btnClearFilter.DisableBackgroundColor = System.Drawing.Color.DimGray;
+            this.btnClearFilter.DisableBackColor = System.Drawing.Color.DimGray;
             this.btnClearFilter.DisableBorderColor = System.Drawing.Color.Silver;
             this.btnClearFilter.FlatAppearance.BorderSize = 0;
             this.btnClearFilter.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
@@ -543,7 +540,6 @@ namespace LK.Forms
             this.btnClearFilter.Name = "btnClearFilter";
             this.btnClearFilter.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.btnClearFilter.Size = new System.Drawing.Size(46, 46);
-            this.btnClearFilter.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             this.btnClearFilter.TabIndex = 0;
             this.btnClearFilter.TabStop = false;
             this.btnClearFilter.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -695,14 +691,14 @@ namespace LK.Forms
             this.dataGridViewList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewList.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dataGridViewList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10.86792F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 10.86792F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dataGridViewList.ColumnHeadersHeight = 40;
             this.dataGridViewList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridViewList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -721,26 +717,26 @@ namespace LK.Forms
             this.receptionDateDataGridViewTextBoxColumn,
             this.operatorDataGridViewTextBoxColumn});
             this.dataGridViewList.DataSource = this.firmListBindingSource;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.86792F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(201)))), ((int)(((byte)(201)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewList.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 10.86792F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(201)))), ((int)(((byte)(201)))));
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewList.DefaultCellStyle = dataGridViewCellStyle11;
             this.dataGridViewList.EnableHeadersVisualStyles = false;
             this.dataGridViewList.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
             this.dataGridViewList.Location = new System.Drawing.Point(0, 287);
             this.dataGridViewList.Name = "dataGridViewList";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 10.86792F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewList.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 10.86792F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewList.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.dataGridViewList.RowHeadersVisible = false;
             this.dataGridViewList.RowHeadersWidth = 40;
             this.dataGridViewList.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -863,9 +859,9 @@ namespace LK.Forms
             // rateDataGridViewTextBoxColumn
             // 
             this.rateDataGridViewTextBoxColumn.DataPropertyName = "MassRate";
-            dataGridViewCellStyle2.Format = "N2";
-            dataGridViewCellStyle2.NullValue = null;
-            this.rateDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle10.Format = "N2";
+            dataGridViewCellStyle10.NullValue = null;
+            this.rateDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle10;
             this.rateDataGridViewTextBoxColumn.HeaderText = "Сбор";
             this.rateDataGridViewTextBoxColumn.Name = "rateDataGridViewTextBoxColumn";
             this.rateDataGridViewTextBoxColumn.ReadOnly = true;
@@ -990,14 +986,14 @@ namespace LK.Forms
             this.dataGridViewStat.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewStat.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dataGridViewStat.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 10.86792F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewStat.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI", 10.86792F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewStat.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.dataGridViewStat.ColumnHeadersHeight = 30;
             this.dataGridViewStat.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridViewStat.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -1008,27 +1004,27 @@ namespace LK.Forms
             this.countDataGridViewTextBoxColumn1,
             this.rateDataGridViewTextBoxColumn1});
             this.dataGridViewStat.DataSource = this.statDataBindingSource;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 10.86792F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewStat.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle15.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Segoe UI", 10.86792F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewStat.DefaultCellStyle = dataGridViewCellStyle15;
             this.dataGridViewStat.EnableHeadersVisualStyles = false;
             this.dataGridViewStat.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
             this.dataGridViewStat.Location = new System.Drawing.Point(0, 427);
             this.dataGridViewStat.MultiSelect = false;
             this.dataGridViewStat.Name = "dataGridViewStat";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 10.86792F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewStat.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle16.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Segoe UI", 10.86792F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewStat.RowHeadersDefaultCellStyle = dataGridViewCellStyle16;
             this.dataGridViewStat.RowHeadersVisible = false;
             this.dataGridViewStat.RowHeadersWidth = 30;
             this.dataGridViewStat.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -1075,9 +1071,9 @@ namespace LK.Forms
             // rateDataGridViewTextBoxColumn1
             // 
             this.rateDataGridViewTextBoxColumn1.DataPropertyName = "Rate";
-            dataGridViewCellStyle6.Format = "N2";
-            dataGridViewCellStyle6.NullValue = null;
-            this.rateDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle14.Format = "N2";
+            dataGridViewCellStyle14.NullValue = null;
+            this.rateDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle14;
             this.rateDataGridViewTextBoxColumn1.HeaderText = "Плата";
             this.rateDataGridViewTextBoxColumn1.Name = "rateDataGridViewTextBoxColumn1";
             this.rateDataGridViewTextBoxColumn1.ReadOnly = true;
@@ -1233,11 +1229,10 @@ namespace LK.Forms
             // btnPrintReport
             // 
             this.btnPrintReport.BackColor = System.Drawing.Color.SlateGray;
-            this.btnPrintReport.BackgroundColor = System.Drawing.Color.SlateGray;
             this.btnPrintReport.BorderColor = System.Drawing.Color.Silver;
             this.btnPrintReport.BorderRadius = 4F;
             this.btnPrintReport.BorderSize = 0;
-            this.btnPrintReport.DisableBackgroundColor = System.Drawing.Color.DimGray;
+            this.btnPrintReport.DisableBackColor = System.Drawing.Color.DimGray;
             this.btnPrintReport.DisableBorderColor = System.Drawing.Color.Silver;
             this.btnPrintReport.FlatAppearance.BorderSize = 0;
             this.btnPrintReport.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
@@ -1251,7 +1246,6 @@ namespace LK.Forms
             this.btnPrintReport.Name = "btnPrintReport";
             this.btnPrintReport.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.btnPrintReport.Size = new System.Drawing.Size(172, 46);
-            this.btnPrintReport.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             this.btnPrintReport.TabIndex = 17;
             this.btnPrintReport.Text = "Печать отчета";
             this.btnPrintReport.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1262,11 +1256,10 @@ namespace LK.Forms
             // btnReport
             // 
             this.btnReport.BackColor = System.Drawing.Color.SlateGray;
-            this.btnReport.BackgroundColor = System.Drawing.Color.SlateGray;
             this.btnReport.BorderColor = System.Drawing.Color.Silver;
             this.btnReport.BorderRadius = 4F;
             this.btnReport.BorderSize = 0;
-            this.btnReport.DisableBackgroundColor = System.Drawing.Color.DimGray;
+            this.btnReport.DisableBackColor = System.Drawing.Color.DimGray;
             this.btnReport.DisableBorderColor = System.Drawing.Color.Silver;
             this.btnReport.FlatAppearance.BorderSize = 0;
             this.btnReport.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
@@ -1280,7 +1273,6 @@ namespace LK.Forms
             this.btnReport.Name = "btnReport";
             this.btnReport.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.btnReport.Size = new System.Drawing.Size(107, 46);
-            this.btnReport.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             this.btnReport.TabIndex = 17;
             this.btnReport.Text = "Отчет";
             this.btnReport.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1291,11 +1283,10 @@ namespace LK.Forms
             // btnUncheckAll
             // 
             this.btnUncheckAll.BackColor = System.Drawing.Color.Gray;
-            this.btnUncheckAll.BackgroundColor = System.Drawing.Color.Gray;
             this.btnUncheckAll.BorderColor = System.Drawing.Color.Silver;
             this.btnUncheckAll.BorderRadius = 4F;
             this.btnUncheckAll.BorderSize = 0;
-            this.btnUncheckAll.DisableBackgroundColor = System.Drawing.Color.DimGray;
+            this.btnUncheckAll.DisableBackColor = System.Drawing.Color.DimGray;
             this.btnUncheckAll.DisableBorderColor = System.Drawing.Color.Silver;
             this.btnUncheckAll.FlatAppearance.BorderSize = 0;
             this.btnUncheckAll.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
@@ -1309,7 +1300,6 @@ namespace LK.Forms
             this.btnUncheckAll.Name = "btnUncheckAll";
             this.btnUncheckAll.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.btnUncheckAll.Size = new System.Drawing.Size(46, 46);
-            this.btnUncheckAll.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             this.btnUncheckAll.TabIndex = 16;
             this.btnUncheckAll.TextColor = System.Drawing.Color.White;
             this.btnUncheckAll.UseVisualStyleBackColor = false;
@@ -1318,11 +1308,10 @@ namespace LK.Forms
             // btnCheckAll
             // 
             this.btnCheckAll.BackColor = System.Drawing.Color.Gray;
-            this.btnCheckAll.BackgroundColor = System.Drawing.Color.Gray;
             this.btnCheckAll.BorderColor = System.Drawing.Color.Silver;
             this.btnCheckAll.BorderRadius = 4F;
             this.btnCheckAll.BorderSize = 0;
-            this.btnCheckAll.DisableBackgroundColor = System.Drawing.Color.DimGray;
+            this.btnCheckAll.DisableBackColor = System.Drawing.Color.DimGray;
             this.btnCheckAll.DisableBorderColor = System.Drawing.Color.Silver;
             this.btnCheckAll.FlatAppearance.BorderSize = 0;
             this.btnCheckAll.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
@@ -1336,7 +1325,6 @@ namespace LK.Forms
             this.btnCheckAll.Name = "btnCheckAll";
             this.btnCheckAll.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.btnCheckAll.Size = new System.Drawing.Size(46, 46);
-            this.btnCheckAll.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             this.btnCheckAll.TabIndex = 15;
             this.btnCheckAll.TextColor = System.Drawing.Color.White;
             this.btnCheckAll.UseVisualStyleBackColor = false;
@@ -1398,11 +1386,10 @@ namespace LK.Forms
             // btnTablePrint
             // 
             this.btnTablePrint.BackColor = System.Drawing.Color.SlateGray;
-            this.btnTablePrint.BackgroundColor = System.Drawing.Color.SlateGray;
             this.btnTablePrint.BorderColor = System.Drawing.Color.Silver;
             this.btnTablePrint.BorderRadius = 4F;
             this.btnTablePrint.BorderSize = 0;
-            this.btnTablePrint.DisableBackgroundColor = System.Drawing.Color.DimGray;
+            this.btnTablePrint.DisableBackColor = System.Drawing.Color.DimGray;
             this.btnTablePrint.DisableBorderColor = System.Drawing.Color.Silver;
             this.btnTablePrint.Enabled = false;
             this.btnTablePrint.FlatAppearance.BorderSize = 0;
@@ -1417,7 +1404,6 @@ namespace LK.Forms
             this.btnTablePrint.Name = "btnTablePrint";
             this.btnTablePrint.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.btnTablePrint.Size = new System.Drawing.Size(113, 46);
-            this.btnTablePrint.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             this.btnTablePrint.TabIndex = 14;
             this.btnTablePrint.Text = "Печать";
             this.btnTablePrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1442,11 +1428,10 @@ namespace LK.Forms
             // btnClearRpo
             // 
             this.btnClearRpo.BackColor = System.Drawing.Color.SlateGray;
-            this.btnClearRpo.BackgroundColor = System.Drawing.Color.SlateGray;
             this.btnClearRpo.BorderColor = System.Drawing.Color.Silver;
             this.btnClearRpo.BorderRadius = 4F;
             this.btnClearRpo.BorderSize = 0;
-            this.btnClearRpo.DisableBackgroundColor = System.Drawing.Color.DimGray;
+            this.btnClearRpo.DisableBackColor = System.Drawing.Color.DimGray;
             this.btnClearRpo.DisableBorderColor = System.Drawing.Color.Silver;
             this.btnClearRpo.FlatAppearance.BorderSize = 0;
             this.btnClearRpo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
@@ -1459,7 +1444,6 @@ namespace LK.Forms
             this.btnClearRpo.Name = "btnClearRpo";
             this.btnClearRpo.Padding = new System.Windows.Forms.Padding(3, 3, 4, 4);
             this.btnClearRpo.Size = new System.Drawing.Size(34, 34);
-            this.btnClearRpo.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             this.btnClearRpo.TabIndex = 22;
             this.btnClearRpo.TabStop = false;
             this.btnClearRpo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1470,11 +1454,10 @@ namespace LK.Forms
             // btnDelRpo
             // 
             this.btnDelRpo.BackColor = System.Drawing.Color.Firebrick;
-            this.btnDelRpo.BackgroundColor = System.Drawing.Color.Firebrick;
             this.btnDelRpo.BorderColor = System.Drawing.Color.Silver;
             this.btnDelRpo.BorderRadius = 4F;
             this.btnDelRpo.BorderSize = 0;
-            this.btnDelRpo.DisableBackgroundColor = System.Drawing.Color.DimGray;
+            this.btnDelRpo.DisableBackColor = System.Drawing.Color.DimGray;
             this.btnDelRpo.DisableBorderColor = System.Drawing.Color.Silver;
             this.btnDelRpo.FlatAppearance.BorderSize = 0;
             this.btnDelRpo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
@@ -1487,7 +1470,6 @@ namespace LK.Forms
             this.btnDelRpo.Name = "btnDelRpo";
             this.btnDelRpo.Padding = new System.Windows.Forms.Padding(3, 4, 3, 3);
             this.btnDelRpo.Size = new System.Drawing.Size(34, 34);
-            this.btnDelRpo.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             this.btnDelRpo.TabIndex = 22;
             this.btnDelRpo.TabStop = false;
             this.btnDelRpo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1498,11 +1480,10 @@ namespace LK.Forms
             // btnAddRpo
             // 
             this.btnAddRpo.BackColor = System.Drawing.Color.SeaGreen;
-            this.btnAddRpo.BackgroundColor = System.Drawing.Color.SeaGreen;
             this.btnAddRpo.BorderColor = System.Drawing.Color.Silver;
             this.btnAddRpo.BorderRadius = 4F;
             this.btnAddRpo.BorderSize = 0;
-            this.btnAddRpo.DisableBackgroundColor = System.Drawing.Color.DimGray;
+            this.btnAddRpo.DisableBackColor = System.Drawing.Color.DimGray;
             this.btnAddRpo.DisableBorderColor = System.Drawing.Color.Silver;
             this.btnAddRpo.FlatAppearance.BorderSize = 0;
             this.btnAddRpo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
@@ -1515,7 +1496,6 @@ namespace LK.Forms
             this.btnAddRpo.Name = "btnAddRpo";
             this.btnAddRpo.Padding = new System.Windows.Forms.Padding(3);
             this.btnAddRpo.Size = new System.Drawing.Size(34, 34);
-            this.btnAddRpo.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             this.btnAddRpo.TabIndex = 22;
             this.btnAddRpo.TabStop = false;
             this.btnAddRpo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1553,11 +1533,10 @@ namespace LK.Forms
             // btnExportToFile
             // 
             this.btnExportToFile.BackColor = System.Drawing.Color.DodgerBlue;
-            this.btnExportToFile.BackgroundColor = System.Drawing.Color.DodgerBlue;
             this.btnExportToFile.BorderColor = System.Drawing.Color.Silver;
             this.btnExportToFile.BorderRadius = 4F;
             this.btnExportToFile.BorderSize = 0;
-            this.btnExportToFile.DisableBackgroundColor = System.Drawing.Color.DimGray;
+            this.btnExportToFile.DisableBackColor = System.Drawing.Color.DimGray;
             this.btnExportToFile.DisableBorderColor = System.Drawing.Color.Silver;
             this.btnExportToFile.FlatAppearance.BorderSize = 0;
             this.btnExportToFile.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SteelBlue;
@@ -1570,7 +1549,6 @@ namespace LK.Forms
             this.btnExportToFile.Name = "btnExportToFile";
             this.btnExportToFile.Padding = new System.Windows.Forms.Padding(3, 3, 4, 1);
             this.btnExportToFile.Size = new System.Drawing.Size(38, 38);
-            this.btnExportToFile.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             this.btnExportToFile.TabIndex = 19;
             this.btnExportToFile.TabStop = false;
             this.btnExportToFile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -2045,6 +2023,23 @@ namespace LK.Forms
             this.statusAuthor.Size = new System.Drawing.Size(114, 17);
             this.statusAuthor.Text = "WorldCount, 2020 ©";
             // 
+            // wcToggleButtonClear
+            // 
+            this.wcToggleButtonClear.AutoSize = true;
+            this.wcToggleButtonClear.DisableBackColor = System.Drawing.Color.DimGray;
+            this.wcToggleButtonClear.DisableToggleColor = System.Drawing.Color.Gray;
+            this.wcToggleButtonClear.Location = new System.Drawing.Point(1023, 35);
+            this.wcToggleButtonClear.MinimumSize = new System.Drawing.Size(45, 22);
+            this.wcToggleButtonClear.Name = "wcToggleButtonClear";
+            this.wcToggleButtonClear.OffBackColor = System.Drawing.Color.Firebrick;
+            this.wcToggleButtonClear.OffToggleColor = System.Drawing.Color.Gainsboro;
+            this.wcToggleButtonClear.OnBackColor = System.Drawing.Color.SeaGreen;
+            this.wcToggleButtonClear.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            this.wcToggleButtonClear.Size = new System.Drawing.Size(45, 22);
+            this.wcToggleButtonClear.TabIndex = 20;
+            this.wcToggleButtonClear.UseVisualStyleBackColor = true;
+            this.wcToggleButtonClear.CheckStateChanged += new System.EventHandler(this.wcToggleButtonClear_CheckStateChanged);
+            // 
             // GeneralForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -2267,6 +2262,7 @@ namespace LK.Forms
         private System.Windows.Forms.ToolStripStatusLabel statusAuthor;
         private System.Windows.Forms.ToolStripMenuItem testMenuItem;
         private System.Windows.Forms.CheckBox checkBoxAutoLoad;
+        private Wc32Api.Widgets.Buttons.WcToggleButton wcToggleButtonClear;
     }
 }
 

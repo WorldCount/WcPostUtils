@@ -82,11 +82,10 @@ namespace LK.Forms.ReportForms
             // 
             this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDelete.BackColor = System.Drawing.Color.IndianRed;
-            this.btnDelete.BackgroundColor = System.Drawing.Color.IndianRed;
             this.btnDelete.BorderColor = System.Drawing.Color.Silver;
             this.btnDelete.BorderRadius = 4F;
             this.btnDelete.BorderSize = 0;
-            this.btnDelete.DisableBackgroundColor = System.Drawing.Color.DimGray;
+            this.btnDelete.DisableBackColor = System.Drawing.Color.DimGray;
             this.btnDelete.DisableBorderColor = System.Drawing.Color.Silver;
             this.btnDelete.FlatAppearance.BorderSize = 0;
             this.btnDelete.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
@@ -101,7 +100,6 @@ namespace LK.Forms.ReportForms
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.btnDelete.Size = new System.Drawing.Size(154, 39);
-            this.btnDelete.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             this.btnDelete.TabIndex = 0;
             this.btnDelete.TabStop = false;
             this.btnDelete.Text = "Удалить";
@@ -114,11 +112,10 @@ namespace LK.Forms.ReportForms
             // 
             this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEdit.BackColor = System.Drawing.Color.SteelBlue;
-            this.btnEdit.BackgroundColor = System.Drawing.Color.SteelBlue;
             this.btnEdit.BorderColor = System.Drawing.Color.Silver;
             this.btnEdit.BorderRadius = 4F;
             this.btnEdit.BorderSize = 0;
-            this.btnEdit.DisableBackgroundColor = System.Drawing.Color.DimGray;
+            this.btnEdit.DisableBackColor = System.Drawing.Color.DimGray;
             this.btnEdit.DisableBorderColor = System.Drawing.Color.Silver;
             this.btnEdit.FlatAppearance.BorderSize = 0;
             this.btnEdit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
@@ -133,7 +130,6 @@ namespace LK.Forms.ReportForms
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.btnEdit.Size = new System.Drawing.Size(154, 39);
-            this.btnEdit.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             this.btnEdit.TabIndex = 0;
             this.btnEdit.TabStop = false;
             this.btnEdit.Text = "Редактировать";
@@ -146,11 +142,10 @@ namespace LK.Forms.ReportForms
             // 
             this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAdd.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.btnAdd.BackgroundColor = System.Drawing.Color.MediumSeaGreen;
             this.btnAdd.BorderColor = System.Drawing.Color.Silver;
             this.btnAdd.BorderRadius = 4F;
             this.btnAdd.BorderSize = 0;
-            this.btnAdd.DisableBackgroundColor = System.Drawing.Color.DimGray;
+            this.btnAdd.DisableBackColor = System.Drawing.Color.DimGray;
             this.btnAdd.DisableBorderColor = System.Drawing.Color.Silver;
             this.btnAdd.FlatAppearance.BorderSize = 0;
             this.btnAdd.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
@@ -165,7 +160,6 @@ namespace LK.Forms.ReportForms
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.btnAdd.Size = new System.Drawing.Size(154, 39);
-            this.btnAdd.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             this.btnAdd.TabIndex = 0;
             this.btnAdd.TabStop = false;
             this.btnAdd.Text = "Добавить";
@@ -178,11 +172,10 @@ namespace LK.Forms.ReportForms
             // 
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSave.BackColor = System.Drawing.Color.SeaGreen;
-            this.btnSave.BackgroundColor = System.Drawing.Color.SeaGreen;
             this.btnSave.BorderColor = System.Drawing.Color.Silver;
             this.btnSave.BorderRadius = 4F;
             this.btnSave.BorderSize = 0;
-            this.btnSave.DisableBackgroundColor = System.Drawing.Color.DimGray;
+            this.btnSave.DisableBackColor = System.Drawing.Color.DimGray;
             this.btnSave.DisableBorderColor = System.Drawing.Color.Silver;
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
@@ -197,7 +190,6 @@ namespace LK.Forms.ReportForms
             this.btnSave.Name = "btnSave";
             this.btnSave.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.btnSave.Size = new System.Drawing.Size(120, 46);
-            this.btnSave.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             this.btnSave.TabIndex = 1;
             this.btnSave.Text = "Сохранить";
             this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -209,11 +201,10 @@ namespace LK.Forms.ReportForms
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnCancel.BackColor = System.Drawing.Color.Firebrick;
-            this.btnCancel.BackgroundColor = System.Drawing.Color.Firebrick;
             this.btnCancel.BorderColor = System.Drawing.Color.Silver;
             this.btnCancel.BorderRadius = 4F;
             this.btnCancel.BorderSize = 0;
-            this.btnCancel.DisableBackgroundColor = System.Drawing.Color.DimGray;
+            this.btnCancel.DisableBackColor = System.Drawing.Color.DimGray;
             this.btnCancel.DisableBorderColor = System.Drawing.Color.Silver;
             this.btnCancel.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.btnCancel.FlatAppearance.BorderSize = 0;
@@ -229,7 +220,6 @@ namespace LK.Forms.ReportForms
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.btnCancel.Size = new System.Drawing.Size(120, 46);
-            this.btnCancel.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             this.btnCancel.TabIndex = 2;
             this.btnCancel.Text = "Отменить";
             this.btnCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;

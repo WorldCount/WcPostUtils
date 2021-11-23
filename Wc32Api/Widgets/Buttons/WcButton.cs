@@ -10,7 +10,7 @@ namespace Wc32Api.Widgets.Buttons
     {
         #region Fields
 
-        private int _borderSize = 0;
+        private int _borderSize;
         private float _borderRadius = 6;
 
         private Color _borderColor = Color.Silver;
@@ -22,7 +22,6 @@ namespace Wc32Api.Widgets.Buttons
         private SmoothingMode _smoothingMode = SmoothingMode.AntiAlias;
 
         #endregion
-
 
         public WcButton()
         {
@@ -36,24 +35,11 @@ namespace Wc32Api.Widgets.Buttons
             MouseOverBackColor = Color.FromArgb(53, 56, 58);
 
             Padding = new Padding(3, 0, 3, 0);
-
-            Resize += WcButton_Resize;
         }
 
         #region Public Properties
 
-        [Category("WcButton")]
-        public SmoothingMode SmoothingMode
-        {
-            get => _smoothingMode;
-            set
-            {
-                _smoothingMode = value;
-                Invalidate();
-            }
-        }
-
-        [Category("WcButton")]
+        [Category("WcButton - Appearance")]
         public int BorderSize
         {
             get => _borderSize;
@@ -64,7 +50,7 @@ namespace Wc32Api.Widgets.Buttons
             }
         }
 
-        [Category("WcButton")]
+        [Category("WcButton - Appearance")]
         public float BorderRadius
         {
             get => _borderRadius;
@@ -78,7 +64,7 @@ namespace Wc32Api.Widgets.Buttons
             }
         }
 
-        [Category("WcButton")]
+        [Category("WcButton - Appearance")]
         public Color BorderColor
         {
             get => _borderColor;
@@ -89,7 +75,7 @@ namespace Wc32Api.Widgets.Buttons
             }
         }
 
-        [Category("WcButton")]
+        [Category("WcButton - Appearance Disable")]
         public Color DisableBorderColor
         {
             get => _disableBorderColor;
@@ -100,19 +86,19 @@ namespace Wc32Api.Widgets.Buttons
             }
         }
 
-        [Category("WcButton")]
-        public Color BackgroundColor
+        [Category("WcButton - Appearance")]
+        public override Color BackColor
         {
-            get => BackColor;
+            get => base.BackColor;
             set
             {
-                BackColor = value;
+                base.BackColor = value;
                 Invalidate();
             }
         }
 
-        [Category("WcButton")]
-        public Color DisableBackgroundColor
+        [Category("WcButton - Appearance Disable")]
+        public Color DisableBackColor
         {
             get => _disableBackColor;
             set
@@ -122,7 +108,7 @@ namespace Wc32Api.Widgets.Buttons
             }
         }
 
-        [Category("WcButton")]
+        [Category("WcButton - Appearance")]
         public Color TextColor
         {
             get => ForeColor;
@@ -133,7 +119,7 @@ namespace Wc32Api.Widgets.Buttons
             }
         }
 
-        [Category("WcButton")]
+        [Category("WcButton - Appearance")]
         public Color MouseOverBackColor
         {
             get => FlatAppearance.MouseOverBackColor;
@@ -144,7 +130,7 @@ namespace Wc32Api.Widgets.Buttons
             }
         }
 
-        [Category("WcButton")]
+        [Category("WcButton - Appearance")]
         public Color MouseDownBackColor
         {
             get => FlatAppearance.MouseDownBackColor;
@@ -174,6 +160,7 @@ namespace Wc32Api.Widgets.Buttons
 
         protected override void OnPaint(PaintEventArgs pevent)
         {
+
             base.OnPaint(pevent);
 
             pevent.Graphics.SmoothingMode = _smoothingMode;
@@ -216,7 +203,7 @@ namespace Wc32Api.Widgets.Buttons
 
         #endregion
 
-        #region Events
+        #region Overriddes Events
 
         protected override void OnHandleCreated(EventArgs e)
         {
@@ -224,14 +211,10 @@ namespace Wc32Api.Widgets.Buttons
             Parent.BackColorChanged += Container_BackColorChanged;
         }
 
-        private void Container_BackColorChanged(object sender, EventArgs e)
+        protected override void OnResize(EventArgs e)
         {
-            if (DesignMode)
-                Invalidate();
-        }
+            base.OnResize(e);
 
-        private void WcButton_Resize(object sender, EventArgs e)
-        {
             if (_borderRadius > Height)
                 BorderRadius = Height;
         }
@@ -248,14 +231,24 @@ namespace Wc32Api.Widgets.Buttons
 
             if (Enabled)
             {
-                BackgroundColor = _enableBackColor;
+                BackColor = _enableBackColor;
                 BorderColor = _borderColor;
             }
             else
             {
-                BackgroundColor = _disableBackColor;
+                BackColor = _disableBackColor;
                 BorderColor = _disableBorderColor;
             }
+        }
+
+        #endregion
+
+        #region Events
+
+        private void Container_BackColorChanged(object sender, EventArgs e)
+        {
+            if (DesignMode)
+                Invalidate();
         }
 
         #endregion

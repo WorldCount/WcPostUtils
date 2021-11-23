@@ -176,11 +176,10 @@ namespace LK.Forms.ReportForms
             // 
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSave.BackColor = System.Drawing.Color.SeaGreen;
-            this.btnSave.BackgroundColor = System.Drawing.Color.SeaGreen;
             this.btnSave.BorderColor = System.Drawing.Color.Silver;
             this.btnSave.BorderRadius = 4F;
             this.btnSave.BorderSize = 0;
-            this.btnSave.DisableBackgroundColor = System.Drawing.Color.DimGray;
+            this.btnSave.DisableBackColor = System.Drawing.Color.DimGray;
             this.btnSave.DisableBorderColor = System.Drawing.Color.Silver;
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
@@ -195,7 +194,6 @@ namespace LK.Forms.ReportForms
             this.btnSave.Name = "btnSave";
             this.btnSave.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.btnSave.Size = new System.Drawing.Size(120, 46);
-            this.btnSave.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             this.btnSave.TabIndex = 2;
             this.btnSave.Text = "Сохранить";
             this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -207,11 +205,10 @@ namespace LK.Forms.ReportForms
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnCancel.BackColor = System.Drawing.Color.Firebrick;
-            this.btnCancel.BackgroundColor = System.Drawing.Color.Firebrick;
             this.btnCancel.BorderColor = System.Drawing.Color.Silver;
             this.btnCancel.BorderRadius = 4F;
             this.btnCancel.BorderSize = 0;
-            this.btnCancel.DisableBackgroundColor = System.Drawing.Color.DimGray;
+            this.btnCancel.DisableBackColor = System.Drawing.Color.DimGray;
             this.btnCancel.DisableBorderColor = System.Drawing.Color.Silver;
             this.btnCancel.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.btnCancel.FlatAppearance.BorderSize = 0;
@@ -227,7 +224,6 @@ namespace LK.Forms.ReportForms
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.btnCancel.Size = new System.Drawing.Size(120, 46);
-            this.btnCancel.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             this.btnCancel.TabIndex = 3;
             this.btnCancel.Text = "Отменить";
             this.btnCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -239,11 +235,10 @@ namespace LK.Forms.ReportForms
             // 
             this.btnClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnClear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
-            this.btnClear.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
             this.btnClear.BorderColor = System.Drawing.Color.Silver;
             this.btnClear.BorderRadius = 4F;
             this.btnClear.BorderSize = 0;
-            this.btnClear.DisableBackgroundColor = System.Drawing.Color.DimGray;
+            this.btnClear.DisableBackColor = System.Drawing.Color.DimGray;
             this.btnClear.DisableBorderColor = System.Drawing.Color.Silver;
             this.btnClear.FlatAppearance.BorderSize = 0;
             this.btnClear.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
@@ -258,7 +253,6 @@ namespace LK.Forms.ReportForms
             this.btnClear.Name = "btnClear";
             this.btnClear.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.btnClear.Size = new System.Drawing.Size(40, 40);
-            this.btnClear.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             this.btnClear.TabIndex = 0;
             this.btnClear.TabStop = false;
             this.btnClear.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
