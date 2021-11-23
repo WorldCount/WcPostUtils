@@ -279,20 +279,26 @@ namespace LK.Forms
 
         private async Task LoadAllData()
         {
-            comboBoxListClass.DataSource = Enum.GetNames(typeof(MailClass));
-            comboBoxErrorList.DataSource = Enum.GetNames(typeof(ErrorType));
+            if(comboBoxListClass.DataSource == null)
+                comboBoxListClass.DataSource = Enum.GetNames(typeof(MailClass));
+
+            if(comboBoxErrorList.DataSource == null)
+                comboBoxErrorList.DataSource = Enum.GetNames(typeof(ErrorType));
 
             _auth = Auth.Load(PathManager.AuthPath);
 
-            await LoadOperator();
+            await LoadOperator(GetOperator());
 
-            await LoadFirms();
+            await LoadFirms(GetFirm());
+            //await LoadFirms();
             
-            await LoadMailTypes(); 
+            await LoadMailTypes(GetMailType()); 
+            //await LoadMailTypes(); 
             
             await LoadMailTypesDataGrid();
             
-            await LoadMailCategories();
+            await LoadMailCategories(GetMailCategory());
+            //await LoadMailCategories();
 
             await LoadMailCategoriesDataGrid();
 
@@ -301,26 +307,12 @@ namespace LK.Forms
 
         private void LoadFirmLists()
         {
-            Firm firm = (Firm) comboBoxOrgs.SelectedItem;
-            MailType mailType = (MailType) comboBoxMailType.SelectedItem;
-            MailCategory mailCategory = (MailCategory) comboBoxMailCategory.SelectedItem;
-
-            string mailClass = (string) comboBoxListClass.SelectedItem;
-            string errorType = (string) comboBoxErrorList.SelectedItem;
-
-            Operator oper = (Operator) comboBoxOperator.SelectedItem;
-
-            string sNum = textBoxListIn.Text.Trim();
-            string eNum = textBoxListOut.Text.Trim();
-
-            int startNum = 0;
-            int endNum = 0;
-
-            if(!string.IsNullOrEmpty(sNum))
-                startNum = int.Parse(sNum);
-
-            if (!string.IsNullOrEmpty(eNum))
-                endNum = int.Parse(eNum);
+            Firm firm = GetFirm();
+            MailType mailType = GetMailType();
+            MailCategory mailCategory = GetMailCategory();
+            Operator oper = GetOperator();
+            int startNum = GetStartNumList();
+            int endNum = GetEndNumList();
 
             if(firm == null)
                 return;
@@ -338,12 +330,11 @@ namespace LK.Forms
                 MailTypeId = mailType.Id,
                 OperatorId = oper.Id,
 
-                MailClass = (MailClass) Enum.Parse(typeof(MailClass), mailClass),
-                ErrorType = (ErrorType) Enum.Parse(typeof(ErrorType), errorType),
+                MailClass = GetMailClass(),
+                ErrorType = GetErrorType()
             };
 
             _firmLists = Database.GetFirmsListManual(firmListFilter);
-
             UpdateFirmList();
 
             _collector = new FirmListStatCollector(_firmLists);
@@ -369,7 +360,7 @@ namespace LK.Forms
             
         }
 
-        private async Task LoadOperator()
+        private async Task LoadOperator(Operator oper = null)
         {
             await Task.Run(() =>
             {
@@ -378,9 +369,16 @@ namespace LK.Forms
             });
 
             UpdateOperators();
+
+            if (oper != null)
+            {
+                int ind = comboBoxOperator.FindString(oper.ShortName);
+                if (ind != -1)
+                    comboBoxOperator.SelectedIndex = ind;
+            }
         }
 
-        private async Task LoadFirms()
+        private async Task LoadFirms(Firm firm = null)
         {
             await Task.Run(() =>
             {
@@ -389,9 +387,16 @@ namespace LK.Forms
             });
             
             UpdateFirms();
+
+            if (firm != null)
+            {
+                int ind = comboBoxOrgs.FindString(firm.ShortName);
+                if (ind != -1)
+                    comboBoxOrgs.SelectedIndex = ind;
+            }
         }
 
-        private async Task LoadMailTypes()
+        private async Task LoadMailTypes(MailType mailType = null)
         {
             await Task.Run(() =>
             {
@@ -400,6 +405,13 @@ namespace LK.Forms
             });
 
             UpdateMailTypes();
+
+            if (mailType != null)
+            {
+                int ind = comboBoxMailType.FindString(mailType.ShortName);
+                if (ind != -1)
+                    comboBoxMailType.SelectedIndex = ind;
+            }
         }
 
         private async Task LoadMailTypesDataGrid()
@@ -413,7 +425,7 @@ namespace LK.Forms
             dataGridMailTypeBindingSource.DataSource = _mailTypesDataGrid;
         }
 
-        private async Task LoadMailCategories()
+        private async Task LoadMailCategories(MailCategory mailCategory = null)
         {
             await Task.Run(() =>
             {
@@ -423,6 +435,13 @@ namespace LK.Forms
             });
 
             UpdateMailCategories();
+
+            if (mailCategory != null)
+            {
+                int ind = comboBoxMailCategory.FindString(mailCategory.ShortName);
+                if (ind != -1)
+                    comboBoxMailCategory.SelectedIndex = ind;
+            }
         }
 
         private async Task LoadMailCategoriesDataGrid()
@@ -476,6 +495,118 @@ namespace LK.Forms
 
         #region Методы
 
+        #region Получение данных
+
+        /// <summary>Оператор</summary>
+        private Operator GetOperator()
+        {
+            try
+            {
+                return (Operator)comboBoxOperator.SelectedItem;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        /// <summary>Организация</summary>
+        private Firm GetFirm()
+        {
+            try
+            {
+                return (Firm)comboBoxOrgs.SelectedItem;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        /// <summary>Тип отправления</summary>
+        private MailType GetMailType()
+        {
+            try
+            {
+                return (MailType)comboBoxMailType.SelectedItem;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        /// <summary>Категория отправления</summary>
+        private MailCategory GetMailCategory()
+        {
+            try
+            {
+                return (MailCategory)comboBoxMailCategory.SelectedItem;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        /// <summary>Класс отправления</summary>
+        private MailClass GetMailClass()
+        {
+            try
+            {
+                string mailClass = (string)comboBoxListClass.SelectedItem;
+                return (MailClass) Enum.Parse(typeof(MailClass), mailClass);
+            }
+            catch
+            {
+                return MailClass.ВСЕ;
+            }
+        }
+
+        /// <summary>Ошибки с отправлениями</summary>
+        private ErrorType GetErrorType()
+        {
+            try
+            {
+                string errorType = (string)comboBoxErrorList.SelectedItem;
+                return (ErrorType) Enum.Parse(typeof(ErrorType), errorType);
+            }
+            catch
+            {
+                return ErrorType.ВСЕ;
+            }
+        }
+
+        /// <summary>Начальный номер списка</summary>
+        private int GetStartNumList()
+        {
+            try
+            {
+                string num = textBoxListIn.Text.Trim();
+                return int.Parse(num);
+            }
+            catch
+            {
+                return 0;
+            }
+        }
+
+        /// <summary>Конечный номер списка</summary>
+        private int GetEndNumList()
+        {
+            try
+            {
+                string num = textBoxListOut.Text.Trim();
+                return int.Parse(num);
+            }
+            catch
+            {
+                return 0;
+            }
+        }
+
+        #endregion
+
         private Task CreateDirs()
         {
             return Task.Run(() =>
@@ -500,16 +631,22 @@ namespace LK.Forms
 
             List<string> operators = new List<string>();
             List<int> firmIds = new List<int>();
+            List<string> firmsNames = new List<string>();
 
             foreach (FirmList firmList in checkedFirmLists)
             {
                 if(!operators.Contains(firmList.OperatorName))
                     operators.Add(firmList.OperatorName);
 
+                if(!firmsNames.Contains(firmList.FirmName))
+                    firmsNames.Add(firmList.FirmName);
+
                 firmIds.Add(firmList.Id);
             }
 
-            // int[] ids = checkedFirmLists.Select(checkedFirmList => checkedFirmList.Id).ToArray();
+            if (firmsNames.Count == 1)
+                firm = _firms.FirstOrDefault(f => f.ShortName == firmsNames[0]);
+
             List<Rpo> rpos = Database.GetRposByListsIds(firmIds.ToArray());
 
             if (rpos.Count == 0)
