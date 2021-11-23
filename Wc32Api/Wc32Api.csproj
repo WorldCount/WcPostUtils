@@ -44,6 +44,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Messages\MessageColorTable.cs" />
+    <Compile Include="Messages\StatusMessage.cs" />
     <Compile Include="Widgets\Buttons\WcButton.cs">
       <SubType>Component</SubType>
     </Compile>
