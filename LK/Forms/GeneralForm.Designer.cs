@@ -157,8 +157,6 @@ namespace LK.Forms
             this.lblFilter = new System.Windows.Forms.Label();
             this.btnExportToFile = new Wc32Api.Widgets.Buttons.WcButton();
             this.imageListCheckBox = new System.Windows.Forms.ImageList(this.components);
-            this.labelLicense = new System.Windows.Forms.Label();
-            this.labelInfoLicense = new System.Windows.Forms.Label();
             this.menu = new System.Windows.Forms.MenuStrip();
             this.fileMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -202,13 +200,12 @@ namespace LK.Forms
             this.toolStripSeparator25 = new System.Windows.Forms.ToolStripSeparator();
             this.printerMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.infoMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.licenseMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.updateMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.testMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
             this.status = new System.Windows.Forms.StatusStrip();
             this.statusText = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusAuthor = new System.Windows.Forms.ToolStripStatusLabel();
-            this.testMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelFilter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.firmBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.operatorBindingSource)).BeginInit();
@@ -1569,28 +1566,6 @@ namespace LK.Forms
             this.imageListCheckBox.Images.SetKeyName(0, "white_checked-32.png");
             this.imageListCheckBox.Images.SetKeyName(1, "white-unchecked-32.png");
             // 
-            // labelLicense
-            // 
-            this.labelLicense.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelLicense.Font = new System.Drawing.Font("Segoe UI Semibold", 10.86792F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelLicense.ForeColor = System.Drawing.Color.Firebrick;
-            this.labelLicense.Location = new System.Drawing.Point(1169, 0);
-            this.labelLicense.Name = "labelLicense";
-            this.labelLicense.Size = new System.Drawing.Size(96, 40);
-            this.labelLicense.TabIndex = 10;
-            this.labelLicense.Text = "01.01.0001";
-            this.labelLicense.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // labelInfoLicense
-            // 
-            this.labelInfoLicense.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelInfoLicense.Location = new System.Drawing.Point(1050, 0);
-            this.labelInfoLicense.Name = "labelInfoLicense";
-            this.labelInfoLicense.Size = new System.Drawing.Size(113, 40);
-            this.labelInfoLicense.TabIndex = 9;
-            this.labelInfoLicense.Text = "Лицензия до:";
-            this.labelInfoLicense.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // menu
             // 
             this.menu.AutoSize = false;
@@ -1984,22 +1959,12 @@ namespace LK.Forms
             // infoMenuItem
             // 
             this.infoMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.licenseMenuItem,
             this.updateMenuItem,
             this.testMenuItem});
             this.infoMenuItem.Image = global::LK.Properties.Resources._4_Leaf_Clover;
             this.infoMenuItem.Name = "infoMenuItem";
             this.infoMenuItem.Size = new System.Drawing.Size(87, 36);
             this.infoMenuItem.Text = "Инфо";
-            // 
-            // licenseMenuItem
-            // 
-            this.licenseMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
-            this.licenseMenuItem.Image = global::LK.Properties.Resources.Coin_Dollar;
-            this.licenseMenuItem.Name = "licenseMenuItem";
-            this.licenseMenuItem.Size = new System.Drawing.Size(184, 28);
-            this.licenseMenuItem.Text = "Лицензия";
-            this.licenseMenuItem.Click += new System.EventHandler(this.licenseMenuItem_Click);
             // 
             // updateMenuItem
             // 
@@ -2009,6 +1974,13 @@ namespace LK.Forms
             this.updateMenuItem.Size = new System.Drawing.Size(184, 28);
             this.updateMenuItem.Text = "Обновление";
             this.updateMenuItem.Click += new System.EventHandler(this.updateMenuItem_Click);
+            // 
+            // testMenuItem
+            // 
+            this.testMenuItem.Name = "testMenuItem";
+            this.testMenuItem.Size = new System.Drawing.Size(184, 28);
+            this.testMenuItem.Text = "Тест";
+            this.testMenuItem.Click += new System.EventHandler(this.testMenuItem_Click);
             // 
             // panel2
             // 
@@ -2054,13 +2026,6 @@ namespace LK.Forms
             this.statusAuthor.Size = new System.Drawing.Size(114, 17);
             this.statusAuthor.Text = "WorldCount, 2020 ©";
             // 
-            // testMenuItem
-            // 
-            this.testMenuItem.Name = "testMenuItem";
-            this.testMenuItem.Size = new System.Drawing.Size(184, 28);
-            this.testMenuItem.Text = "Тест";
-            this.testMenuItem.Click += new System.EventHandler(this.testMenuItem_Click);
-            // 
             // GeneralForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -2068,8 +2033,6 @@ namespace LK.Forms
             this.ClientSize = new System.Drawing.Size(1273, 572);
             this.Controls.Add(this.status);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.labelLicense);
-            this.Controls.Add(this.labelInfoLicense);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelType);
             this.Controls.Add(this.dataGridViewStat);
@@ -2171,8 +2134,6 @@ namespace LK.Forms
         private Wc32Api.Widgets.Buttons.WcButton btnClearFilter;
         private System.Windows.Forms.Label labelOperator;
         private System.Windows.Forms.ComboBox comboBoxOperator;
-        private System.Windows.Forms.Label labelLicense;
-        private System.Windows.Forms.Label labelInfoLicense;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem checkAllToolStripMenuItem;
@@ -2248,7 +2209,6 @@ namespace LK.Forms
         private System.Windows.Forms.ToolStripMenuItem editOrgsMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editOperMenuItem;
         private System.Windows.Forms.BindingSource operatorBindingSource;
-        private System.Windows.Forms.ToolStripMenuItem licenseMenuItem;
         private System.Windows.Forms.BindingSource statDataBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn listCountDataGridViewTextBoxColumn;
