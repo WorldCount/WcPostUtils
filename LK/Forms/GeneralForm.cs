@@ -160,6 +160,7 @@ namespace LK.Forms
         private void LoadSettings()
         {
             checkBoxPrintPreview.Checked = Properties.Settings.Default.PrintPreviewFlag;
+            checkBoxAutoLoad.Checked = Properties.Settings.Default.AutoLoadFlag;
         }
 
         // Перенос настроек предыдущей сборки в новую
@@ -225,6 +226,7 @@ namespace LK.Forms
 
         private async void GeneralForm_Load(object sender, EventArgs e)
         {
+            LoadSettings();
 
             await CreateDirs();
 
@@ -235,8 +237,6 @@ namespace LK.Forms
 
             // Загрузка данных для фильтров
             await LoadAllData();
-
-            await Task.Run(LoadSettings);
 
             // Проверка лицензии
             CheckLicense();
@@ -302,7 +302,6 @@ namespace LK.Forms
             comboBoxErrorList.DataSource = Enum.GetNames(typeof(ErrorType));
 
             _auth = Auth.Load(PathManager.AuthPath);
-            //_serverAuth = await ServerManager.GetServerAuth();
 
             await LoadOperator();
 
@@ -316,7 +315,6 @@ namespace LK.Forms
 
             await LoadMailCategoriesDataGrid();
 
-            //await LoadColors();
             await LoadConfigs();
         }
 
@@ -712,17 +710,6 @@ namespace LK.Forms
             mailClassDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             mailClassDataGridViewTextBoxColumn.Width = 60;
 
-            // Столбец с классом отправления
-            //interNameGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            //interNameGridViewTextBoxColumn.Width = 70;
-
-            //manualNameGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            //manualNameGridViewTextBoxColumn.Width = 60;
-
-            // Столбец с количеством отправлений
-            //countDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            //countDataGridViewTextBoxColumn.Width = 80;
-
             // Столбец с количеством принятых отправлений
             countFactDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             countFactDataGridViewTextBoxColumn.Width = 80;
@@ -738,14 +725,6 @@ namespace LK.Forms
             // Столбец с отметками
             postMarkNameDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             postMarkNameDataGridViewTextBoxColumn.Width = 120;
-
-            //// Столбец с замечаниями
-            //warnCountDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            //warnCountDataGridViewTextBoxColumn.Width = 60;
-
-            //// Столбец с выбывшими
-            //errCountDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            //errCountDataGridViewTextBoxColumn.Width = 60;
 
             // Столбец со сбором
             rateDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
@@ -993,11 +972,6 @@ namespace LK.Forms
 
         #region Контекстное меню
 
-        private void contextMenuStrip_Opening(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            
-        }
-
         private void uncheckAllToolStripMenuItem_Click(object sender, EventArgs e)
         {
             UncheckAll();
@@ -1006,11 +980,6 @@ namespace LK.Forms
         private void checkAllToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CheckAll();
-        }
-
-        private void setHandToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            
         }
 
         private void checkFirmListStripMenuItem_Click(object sender, EventArgs e)
@@ -1115,7 +1084,7 @@ namespace LK.Forms
 
         private void btnTablePrint_Click(object sender, EventArgs e)
         {
-
+            //TODO: Доделать печать таблицы
         }
 
         private void btnClearFilter_Click(object sender, EventArgs e)
@@ -1147,10 +1116,16 @@ namespace LK.Forms
 
         private async void btnSync_Click(object sender, EventArgs e)
         {
+            _firmLists = new List<FirmList>();
+            UpdateFirmList();
+
             SyncForm syncForm = new SyncForm(dateTimePickerIn.Value, dateTimePickerOut.Value, _auth);
             syncForm.ShowDialog(this);
 
             await LoadAllData();
+
+            if(checkBoxAutoLoad.Checked)
+                btnLoad.PerformClick();
         }
 
         private void btnExportToFile_Click(object sender, EventArgs e)
@@ -1442,12 +1417,6 @@ namespace LK.Forms
 
         #region Other Events
 
-        private void checkBoxPrintPreview_CheckStateChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.PrintPreviewFlag = checkBoxPrintPreview.Checked;
-            Properties.Settings.Default.Save();
-        }
-
         private void GeneralForm_KeyDown(object sender, KeyEventArgs e)
         {
             // Нажатие Ctrl + Shift + C
@@ -1487,9 +1456,26 @@ namespace LK.Forms
                 comboBoxOrgs.Focus();
         }
 
+        private void checkBoxPrintPreview_CheckStateChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.PrintPreviewFlag = checkBoxPrintPreview.Checked;
+            Properties.Settings.Default.Save();
+        }
+
         private void checkBoxPrintPreview_CheckedChanged(object sender, EventArgs e)
         {
             checkBoxPrintPreview.Image = checkBoxPrintPreview.Checked ? Properties.Resources.white_checked_32 : Properties.Resources.white_unchecked_32;
+        }
+
+        private void checkBoxAutoLoad_CheckedChanged(object sender, EventArgs e)
+        {
+            checkBoxAutoLoad.Image = checkBoxAutoLoad.Checked ? Properties.Resources.white_checked_32 : Properties.Resources.white_unchecked_32;
+        }
+
+        private void checkBoxAutoLoad_CheckStateChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.AutoLoadFlag = checkBoxAutoLoad.Checked;
+            Properties.Settings.Default.Save();
         }
 
         private void GeneralForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -1507,7 +1493,6 @@ namespace LK.Forms
         #endregion
 
         #region Очередь отчетов на печать
-
         private void _reportsQueue_AddedObject(object sender, EventArgs e)
         {
             if (_reportsQueue.Count > 0)

@@ -74,6 +74,7 @@ namespace LK.Forms
             this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
             this.printerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelFilter = new System.Windows.Forms.Panel();
+            this.checkBoxAutoLoad = new System.Windows.Forms.CheckBox();
             this.btnSync = new Wc32Api.Widgets.Buttons.WcButton();
             this.btnLoad = new Wc32Api.Widgets.Buttons.WcButton();
             this.labelDateOut = new System.Windows.Forms.Label();
@@ -120,7 +121,6 @@ namespace LK.Forms
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.inverseCheckToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
-            this.setHandToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
             this.dataGridViewStat = new System.Windows.Forms.DataGridView();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -398,6 +398,7 @@ namespace LK.Forms
             // panelFilter
             // 
             this.panelFilter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.panelFilter.Controls.Add(this.checkBoxAutoLoad);
             this.panelFilter.Controls.Add(this.btnSync);
             this.panelFilter.Controls.Add(this.btnLoad);
             this.panelFilter.Controls.Add(this.labelDateOut);
@@ -413,6 +414,34 @@ namespace LK.Forms
             this.panelFilter.Name = "panelFilter";
             this.panelFilter.Size = new System.Drawing.Size(1273, 75);
             this.panelFilter.TabIndex = 4;
+            // 
+            // checkBoxAutoLoad
+            // 
+            this.checkBoxAutoLoad.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkBoxAutoLoad.Appearance = System.Windows.Forms.Appearance.Button;
+            this.checkBoxAutoLoad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.checkBoxAutoLoad.Checked = true;
+            this.checkBoxAutoLoad.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxAutoLoad.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.checkBoxAutoLoad.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.checkBoxAutoLoad.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.checkBoxAutoLoad.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.checkBoxAutoLoad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.checkBoxAutoLoad.Font = new System.Drawing.Font("Segoe UI", 10.86792F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBoxAutoLoad.ForeColor = System.Drawing.Color.White;
+            this.checkBoxAutoLoad.Image = global::LK.Properties.Resources.white_checked_32;
+            this.checkBoxAutoLoad.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.checkBoxAutoLoad.Location = new System.Drawing.Point(1083, 26);
+            this.checkBoxAutoLoad.Name = "checkBoxAutoLoad";
+            this.checkBoxAutoLoad.Size = new System.Drawing.Size(130, 39);
+            this.checkBoxAutoLoad.TabIndex = 19;
+            this.checkBoxAutoLoad.TabStop = false;
+            this.checkBoxAutoLoad.Text = "Загружать";
+            this.checkBoxAutoLoad.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.checkBoxAutoLoad.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.checkBoxAutoLoad.UseVisualStyleBackColor = false;
+            this.checkBoxAutoLoad.CheckedChanged += new System.EventHandler(this.checkBoxAutoLoad_CheckedChanged);
+            this.checkBoxAutoLoad.CheckStateChanged += new System.EventHandler(this.checkBoxAutoLoad_CheckStateChanged);
             // 
             // btnSync
             // 
@@ -882,11 +911,9 @@ namespace LK.Forms
             this.toolStripSeparator9,
             this.inverseCheckToolStripMenuItem,
             this.toolStripSeparator10,
-            this.setHandToolStripMenuItem,
             this.toolStripSeparator11});
             this.contextMenuStrip.Name = "contextMenuStrip";
-            this.contextMenuStrip.Size = new System.Drawing.Size(346, 256);
-            this.contextMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip_Opening);
+            this.contextMenuStrip.Size = new System.Drawing.Size(346, 218);
             // 
             // checkAllToolStripMenuItem
             // 
@@ -946,14 +973,6 @@ namespace LK.Forms
             // 
             this.toolStripSeparator10.Name = "toolStripSeparator10";
             this.toolStripSeparator10.Size = new System.Drawing.Size(342, 6);
-            // 
-            // setHandToolStripMenuItem
-            // 
-            this.setHandToolStripMenuItem.Enabled = false;
-            this.setHandToolStripMenuItem.Name = "setHandToolStripMenuItem";
-            this.setHandToolStripMenuItem.Size = new System.Drawing.Size(345, 38);
-            this.setHandToolStripMenuItem.Text = "Сделать ручным списком";
-            this.setHandToolStripMenuItem.Click += new System.EventHandler(this.setHandToolStripMenuItem_Click);
             // 
             // toolStripSeparator11
             // 
@@ -1352,7 +1371,7 @@ namespace LK.Forms
             // 
             this.checkBoxPrintPreview.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBoxPrintPreview.Appearance = System.Windows.Forms.Appearance.Button;
-            this.checkBoxPrintPreview.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.checkBoxPrintPreview.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
             this.checkBoxPrintPreview.Checked = true;
             this.checkBoxPrintPreview.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxPrintPreview.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
@@ -1971,14 +1990,14 @@ namespace LK.Forms
             this.updateMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
             this.updateMenuItem.Image = global::LK.Properties.Resources.Button_Dashboard;
             this.updateMenuItem.Name = "updateMenuItem";
-            this.updateMenuItem.Size = new System.Drawing.Size(184, 28);
+            this.updateMenuItem.Size = new System.Drawing.Size(183, 28);
             this.updateMenuItem.Text = "Обновление";
             this.updateMenuItem.Click += new System.EventHandler(this.updateMenuItem_Click);
             // 
             // testMenuItem
             // 
             this.testMenuItem.Name = "testMenuItem";
-            this.testMenuItem.Size = new System.Drawing.Size(184, 28);
+            this.testMenuItem.Size = new System.Drawing.Size(183, 28);
             this.testMenuItem.Text = "Тест";
             this.testMenuItem.Click += new System.EventHandler(this.testMenuItem_Click);
             // 
@@ -2151,7 +2170,6 @@ namespace LK.Forms
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
         private Wc32Api.Widgets.Buttons.WcButton btnPrintReport;
         private Wc32Api.Widgets.Buttons.WcButton btnSync;
-        private System.Windows.Forms.ToolStripMenuItem setHandToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator11;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator12;
         private System.Windows.Forms.ToolStripMenuItem printerToolStripMenuItem;
@@ -2248,6 +2266,7 @@ namespace LK.Forms
         private System.Windows.Forms.ToolStripStatusLabel statusText;
         private System.Windows.Forms.ToolStripStatusLabel statusAuthor;
         private System.Windows.Forms.ToolStripMenuItem testMenuItem;
+        private System.Windows.Forms.CheckBox checkBoxAutoLoad;
     }
 }
 
