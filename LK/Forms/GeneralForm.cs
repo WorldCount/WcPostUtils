@@ -82,8 +82,6 @@ namespace LK.Forms
 
         private Config _defaultPrinterConfig;
         private Config _exportPathConfig;
-        private Config _ndsConfig;
-        private Config _valueConfig;
 
         #endregion
 
@@ -388,8 +386,6 @@ namespace LK.Forms
             {
                 _defaultPrinterConfig = ConfigManager.GetConfigByName(ConfigName.DefaultPrinterName) ?? ConfigManager.CreateDefaultPrinterName();
                 _exportPathConfig = ConfigManager.GetConfigByName(ConfigName.ExportPath) ?? ConfigManager.CreateDefaultExportPath();
-                _ndsConfig = ConfigManager.GetConfigByName(ConfigName.Nds) ?? ConfigManager.CreateDefaultNds();
-                _valueConfig = ConfigManager.GetConfigByName(ConfigName.Value) ?? ConfigManager.CreateDefaultValue();
             });
             
         }
