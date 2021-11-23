@@ -32,6 +32,7 @@ using LK.Forms.TarifForms;
 using LK.Forms.TypeForms;
 using Newtonsoft.Json;
 using NLog;
+using Wc32Api.Messages;
 using WcApi.Cryptography;
 using WcApi.Net;
 
@@ -41,6 +42,7 @@ namespace LK.Forms
     {
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
         private bool _loggingMode = Properties.Settings.Default.LoggingMode;
+        private readonly StatusMessage _message;
 
         #region Настройки
 
@@ -93,6 +95,8 @@ namespace LK.Forms
 
             if(_loggingMode)
                 Logger.Info("Запуск программы.");
+
+            _message = new StatusMessage(statusText);
 
             // Если было обновление приложения
             if (Properties.Settings.Default.NeedUpgrade)
@@ -267,49 +271,6 @@ namespace LK.Forms
         #endregion
 
         #region Сообщения
-
-        /// <summary>
-        /// Отправляет сообщение в статус
-        /// </summary>
-        /// <param name="message"></param>
-        /// <param name="color"></param>
-        private void SendStatusMessage(string message, Color color)
-        {
-            statusText.ForeColor = color;
-            statusText.Text = message;
-            timerStatus.Start();
-        }
-
-        // Сообщение: обычное
-        // ReSharper disable once UnusedMember.Global
-        private void NormalMessage(string message)
-        {
-            SendStatusMessage(message, Color.DimGray);
-        }
-
-        // Сообщение: успех
-        private void SuccessMessage(string message)
-        {
-            SendStatusMessage(message, Color.Green);
-        }
-
-        // Сообщение: ошибка
-        private void ErrorMessage(string message)
-        {
-            SendStatusMessage(message, Color.Firebrick);
-        }
-
-        // Сообщение: предупреждение
-        private void WarningMessage(string message)
-        {
-            SendStatusMessage(message, Color.DarkOrange);
-        }
-
-        // Сообщение: информация
-        private void InfoMessage(string message)
-        {
-            SendStatusMessage(message, Color.DodgerBlue);
-        }
 
         private async Task SendMessage(string msg)
         {
@@ -1242,7 +1203,7 @@ namespace LK.Forms
             _exportIdFirms = new List<int>();
             lblRpoCount.Text = _exportRpos.Count.ToString();
 
-            SuccessMessage("Выгрузка завершена!");
+            _message.SuccessMessage("Выгрузка завершена!");
         }
 
         private void btnAddRpo_Click(object sender, EventArgs e)
@@ -1272,7 +1233,7 @@ namespace LK.Forms
             lblRpoCount.Text = _exportRpos.Count.ToString();
 
             btnAddRpo.Enabled = true;
-            SuccessMessage($"Добавлено {rpos.Count} РПО");
+            _message.SuccessMessage($"Добавлено {rpos.Count} РПО");
         }
 
         private void btnDelRpo_Click(object sender, EventArgs e)
@@ -1314,7 +1275,7 @@ namespace LK.Forms
             lblRpoCount.Text = _exportRpos.Count.ToString();
 
             btnDelRpo.Enabled = true;
-            SuccessMessage($"Удалено {count} РПО");
+            _message.SuccessMessage($"Удалено {count} РПО");
         }
 
         private void btnClearRpo_Click(object sender, EventArgs e)
@@ -1322,7 +1283,7 @@ namespace LK.Forms
             _exportRpos = new List<Rpo>();
             _exportIdFirms = new List<int>();
             lblRpoCount.Text = _exportRpos.Count.ToString();
-            SuccessMessage("Очищено.");
+            _message.SuccessMessage("Очищено.");
         }
 
         #endregion
