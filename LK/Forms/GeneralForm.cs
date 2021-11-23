@@ -14,7 +14,6 @@ using LK.Core;
 using LK.Core.Libs.DataManagers;
 using LK.Core.Libs.DataManagers.Models;
 using LK.Core.Libs.PrintDocuments;
-using LK.Core.Libs.ServerRequest;
 using LK.Core.Libs.Stat;
 using LK.Core.Libs.Widget;
 using LK.Core.Models.DB;
@@ -64,7 +63,6 @@ namespace LK.Forms
         private FirmListStatCollector _collector;
 
         private Auth _auth;
-        private ServerAuth _serverAuth;
 
         // Очередь отчетов для печати
         private readonly ReportQueue<SingleReportData> _reportsQueue = new ReportQueue<SingleReportData>();
@@ -140,20 +138,6 @@ namespace LK.Forms
             toolTipPrintReport.SetToolTip(btnPrintReport, "Печать отчета по весу [Ctrl + R]");
             toolTipSync.SetToolTip(btnSync, "Синхронизация ЛК [Ctrl + L]");
         }
-
-        #region Лицензия
-
-        private async void CheckLicense()
-        {
-            _serverAuth = await ServerManager.GetServerAuth();
-            if (!_serverAuth.Work)
-            {
-                MessageBox.Show(_serverAuth.Message, "Ошибка");
-                Close();
-            }
-        }
-
-        #endregion
 
         #region Настройка формы
 
@@ -237,9 +221,6 @@ namespace LK.Forms
 
             // Загрузка данных для фильтров
             await LoadAllData();
-
-            // Проверка лицензии
-            CheckLicense();
 
             // Инициализация начальных данных
             InitialData();

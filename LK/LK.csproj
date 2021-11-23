@@ -137,7 +137,6 @@
     <Compile Include="Core\Models\Reports\FirmListData.cs" />
     <Compile Include="Core\Models\Reports\Report.cs" />
     <Compile Include="Core\Models\Reports\ReportData.cs" />
-    <Compile Include="Core\Libs\ServerRequest\ServerAuth.cs" />
     <Compile Include="Core\Models\Types\ErrorType.cs" />
     <Compile Include="Core\Models\Types\MailClass.cs" />
     <Compile Include="Core\Store\Connect\DatabaseDataLocked.cs" />
