@@ -517,8 +517,19 @@ namespace LK.Forms
             if (firm == null)
                 return null;
 
-            int[] ids = checkedFirmLists.Select(checkedFirmList => checkedFirmList.Id).ToArray();
-            List<Rpo> rpos = Database.GetRposByListsIds(ids);
+            List<string> operators = new List<string>();
+            List<int> firmIds = new List<int>();
+
+            foreach (FirmList firmList in checkedFirmLists)
+            {
+                if(!operators.Contains(firmList.OperatorName))
+                    operators.Add(firmList.OperatorName);
+
+                firmIds.Add(firmList.Id);
+            }
+
+            // int[] ids = checkedFirmLists.Select(checkedFirmList => checkedFirmList.Id).ToArray();
+            List<Rpo> rpos = Database.GetRposByListsIds(firmIds.ToArray());
 
             if (rpos.Count == 0)
                 return null;
@@ -528,7 +539,8 @@ namespace LK.Forms
             SingleReportData singleReport = new SingleReportData(firm, rpos)
             {
                 DateList = dates.GroupBy(x => x.Date).Select(y => y.FirstOrDefault()).ToList(),
-                NumsList = new List<DateList>()
+                NumsList = new List<DateList>(),
+                Operators = operators
             };
 
             foreach (DateTime dateTime in singleReport.DateList)

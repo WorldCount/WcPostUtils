@@ -12,6 +12,8 @@ namespace LK.Core.Libs.Stat
         public string FirmInn { get; set; }
         public string FirmContract { get; set; }
 
+        public List<string> Operators { get; set; }
+
         public List<DateList> NumsList { get; set; }
         public List<DateTime> DateList { get; set; } = new List<DateTime>();
 

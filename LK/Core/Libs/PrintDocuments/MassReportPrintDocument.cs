@@ -199,7 +199,7 @@ namespace LK.Core.Libs.PrintDocuments
 
                             int newTopMargin = CalculateListInfo(e, _singleReport.NumsList[i]);
 
-                            if (topMargin + newTopMargin >= e.MarginBounds.Height + e.MarginBounds.Top)
+                            if (topMargin + newTopMargin + 20 >= e.MarginBounds.Height + e.MarginBounds.Top)
                             {
                                 _newPage = true;
                                 _firstPage = false;
@@ -210,6 +210,8 @@ namespace LK.Core.Libs.PrintDocuments
 
                             topMargin = PrintListInfo(e, topMargin, newTopMargin, _singleReport.NumsList[i]);
                         }
+
+                        PrintOperNameInfo(e, topMargin, _singleReport.Operators);
 
                     }
                 }
@@ -394,6 +396,29 @@ namespace LK.Core.Libs.PrintDocuments
             e.Graphics.DrawString(info, PrintPens.CellFont, PrintPens.ForeBrush, new Rectangle(colLeft, topMargin, colWidth, rowHeight), stringFormat);
 
             return topMargin + newTopMargin - 20;
+        }
+
+        private int PrintOperNameInfo(PrintPageEventArgs e, int margin, List<string> operators)
+        {
+            int topMargin = margin;
+            int colLeft = (int)_columnLefts[0];
+            int colWidth = _columnWidths.Sum();
+
+            StringFormat stringFormat = new StringFormat
+            {
+                Alignment = StringAlignment.Near,
+                LineAlignment = StringAlignment.Near,
+                Trimming = StringTrimming.None
+            };
+
+            string info = string.Join(", ", operators);
+            int rowHeight = _cellHeight + 20;
+            e.Graphics.DrawString("Принял:", PrintPens.BoldFont, PrintPens.ForeBrush, new Rectangle(colLeft, topMargin, colWidth, _cellHeight), stringFormat);
+            topMargin += 20;
+
+            e.Graphics.DrawString(info, PrintPens.CellFont, PrintPens.ForeBrush, new Rectangle(colLeft, topMargin, colWidth, rowHeight), stringFormat);
+
+            return topMargin;
         }
 
         private void PrintDate(PrintPageEventArgs e)
