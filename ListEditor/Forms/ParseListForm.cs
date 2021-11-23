@@ -55,7 +55,7 @@ namespace ListEditor.Forms
                 backgroundWorker.ReportProgress(i);
                 Thread.Sleep(10);
                 string ext = Path.GetExtension(s);
-                if (ext == ".ini" || ext == ".zip")
+                if (ext == ".ini" || ext == ".zip" || ext == ".ZIP")
                 {
                     try
                     {

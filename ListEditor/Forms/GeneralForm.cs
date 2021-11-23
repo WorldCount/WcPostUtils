@@ -99,7 +99,7 @@ namespace ListEditor.Forms
             foreach (string s in list)
             {
                 FileInfo file = new FileInfo(s);
-                if(file.Extension == ".ini" || file.Extension == ".zip")
+                if(file.Extension == ".ini" || file.Extension == ".zip" || file.Extension == ".ZIP")
                     data.Add(s);
             }
 
