@@ -1261,6 +1261,8 @@ namespace LK.Forms
 
             if(checkBoxAutoLoad.Checked)
                 btnLoad.PerformClick();
+
+            tbFilter.Clear();
         }
 
         private void btnExportToFile_Click(object sender, EventArgs e)
@@ -1584,11 +1586,19 @@ namespace LK.Forms
 
             // Нажатие Ctrl + F
             if (e.KeyCode == Keys.F && e.Control)
-                tbBarcode.Focus();
+                tbFilter.Focus();
 
             // Нажатие Ctrl + S
             if (e.KeyCode == Keys.S && e.Control)
-                comboBoxOrgs.Focus();
+                btnExportToFile.PerformClick();
+
+            // Нажатие Ctrl + Shift + A
+            if (e.KeyCode == Keys.A && e.Shift && e.Control)
+                btnAddRpo.PerformClick();
+
+            // Нажатие Ctrl + Shift + D
+            if (e.KeyCode == Keys.D && e.Shift && e.Control)
+                btnDelRpo.PerformClick();
         }
 
         private void checkBoxPrintPreview_CheckStateChanged(object sender, EventArgs e)
@@ -1659,20 +1669,20 @@ namespace LK.Forms
                         f.FirmName.ToUpper().Contains(q) || f.OperatorName.ToUpper().Contains(q) ||
                         f.Num.ToString().Contains(q)).ToList();
 
-                    List<string> org = new List<string>();
-                    foreach (FirmList firmList in filtered)
-                    {
-                        if(!org.Contains(firmList.FirmName))
-                            org.Add(firmList.FirmName);
-                    }
+                    //List<string> org = new List<string>();
+                    //foreach (FirmList firmList in filtered)
+                    //{
+                    //    if(!org.Contains(firmList.FirmName))
+                    //        org.Add(firmList.FirmName);
+                    //}
 
-                    if (org.Count == 1)
-                    {
-                        int index = comboBoxOrgs.FindString(org[0]);
-                        comboBoxOrgs.SelectedIndex = index;
-                    }
-                    else
-                        comboBoxOrgs.SelectedIndex = 0;
+                    //if (org.Count == 1)
+                    //{
+                    //    int index = comboBoxOrgs.FindString(org[0]);
+                    //    comboBoxOrgs.SelectedIndex = index;
+                    //}
+                    //else
+                    //    comboBoxOrgs.SelectedIndex = 0;
                         
 
                     firmListBindingSource.DataSource = filtered.ToSortableBindingList();
