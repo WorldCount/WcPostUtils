@@ -729,7 +729,6 @@ namespace LK.Forms
 
         #endregion
 
-
         #region Отметки
 
         private void CheckReverse()
@@ -1532,7 +1531,7 @@ namespace LK.Forms
 
         #endregion
 
-        #region TextBox Event
+        #region TextBox Events
 
         private async void tbBarcode_KeyDown(object sender, KeyEventArgs e)
         {
@@ -1565,11 +1564,43 @@ namespace LK.Forms
 
         #endregion
 
-        #region Combobox Event
+        #region Combobox Events
 
         private void comboBoxOrgs_Enter(object sender, EventArgs e)
         {
             WcApi.Keyboard.Keyboard.SetRussianLanguage();
+        }
+
+        #endregion
+
+        #region Checkbox Events
+
+        private void checkBoxPrintPreview_CheckStateChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.PrintPreviewFlag = checkBoxPrintPreview.Checked;
+            Properties.Settings.Default.Save();
+        }
+
+        private void checkBoxPrintPreview_CheckedChanged(object sender, EventArgs e)
+        {
+            checkBoxPrintPreview.Image = checkBoxPrintPreview.Checked ? Properties.Resources.white_checked_32 : Properties.Resources.white_unchecked_32;
+        }
+
+        private void checkBoxAutoLoad_CheckedChanged(object sender, EventArgs e)
+        {
+            checkBoxAutoLoad.Image = checkBoxAutoLoad.Checked ? Properties.Resources.white_checked_32 : Properties.Resources.white_unchecked_32;
+        }
+
+        private void checkBoxAutoLoad_CheckStateChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.AutoLoadFlag = checkBoxAutoLoad.Checked;
+            Properties.Settings.Default.Save();
+        }
+
+        private void wcToggleButtonClear_CheckStateChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.AutoClearFlag = wcToggleButtonClear.Checked;
+            Properties.Settings.Default.Save();
         }
 
         #endregion
@@ -1623,34 +1654,6 @@ namespace LK.Forms
                 btnDelRpo.PerformClick();
         }
 
-        private void checkBoxPrintPreview_CheckStateChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.PrintPreviewFlag = checkBoxPrintPreview.Checked;
-            Properties.Settings.Default.Save();
-        }
-
-        private void checkBoxPrintPreview_CheckedChanged(object sender, EventArgs e)
-        {
-            checkBoxPrintPreview.Image = checkBoxPrintPreview.Checked ? Properties.Resources.white_checked_32 : Properties.Resources.white_unchecked_32;
-        }
-
-        private void checkBoxAutoLoad_CheckedChanged(object sender, EventArgs e)
-        {
-            checkBoxAutoLoad.Image = checkBoxAutoLoad.Checked ? Properties.Resources.white_checked_32 : Properties.Resources.white_unchecked_32;
-        }
-
-        private void checkBoxAutoLoad_CheckStateChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.AutoLoadFlag = checkBoxAutoLoad.Checked;
-            Properties.Settings.Default.Save();
-        }
-
-        private void wcToggleButtonClear_CheckStateChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.AutoClearFlag = wcToggleButtonClear.Checked;
-            Properties.Settings.Default.Save();
-        }
-
         private void GeneralForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             if (_loggingMode)
@@ -1666,6 +1669,7 @@ namespace LK.Forms
         #endregion
 
         #region Очередь отчетов на печать
+
         private void _reportsQueue_AddedObject(object sender, EventArgs e)
         {
             if (_reportsQueue.Count > 0)
@@ -1690,22 +1694,6 @@ namespace LK.Forms
                     List<FirmList> filtered = _firmLists.Where(f =>
                         f.FirmName.ToUpper().Contains(q) || f.OperatorName.ToUpper().Contains(q) ||
                         f.Num.ToString().Contains(q)).ToList();
-
-                    //List<string> org = new List<string>();
-                    //foreach (FirmList firmList in filtered)
-                    //{
-                    //    if(!org.Contains(firmList.FirmName))
-                    //        org.Add(firmList.FirmName);
-                    //}
-
-                    //if (org.Count == 1)
-                    //{
-                    //    int index = comboBoxOrgs.FindString(org[0]);
-                    //    comboBoxOrgs.SelectedIndex = index;
-                    //}
-                    //else
-                    //    comboBoxOrgs.SelectedIndex = 0;
-                        
 
                     firmListBindingSource.DataSource = filtered.ToSortableBindingList();
                     _collector = new FirmListStatCollector(filtered);
