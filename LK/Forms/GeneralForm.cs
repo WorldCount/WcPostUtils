@@ -32,6 +32,7 @@ using LK.Forms.TypeForms;
 using Newtonsoft.Json;
 using NLog;
 using Wc32Api.Messages;
+using Wc32Api.Widgets.Buttons;
 using WcApi.Cryptography;
 using WcApi.Net;
 
@@ -120,23 +121,6 @@ namespace LK.Forms
 
             AutoUpdater.Proxy = null;
             AutoUpdater.ParseUpdateInfoEvent += AutoUpdater_ParseUpdateInfoEvent;
-        }
-
-        private void InitTooltips()
-        {
-            ToolTip toolTipLoad = new ToolTip();
-            ToolTip toolTipPrint = new ToolTip();
-            ToolTip toolTipClear = new ToolTip();
-            ToolTip toolTipReport = new ToolTip();
-            ToolTip toolTipPrintReport = new ToolTip();
-            ToolTip toolTipSync = new ToolTip();
-
-            toolTipLoad.SetToolTip(btnLoad, "Загрузить [Ctrl + Q]");
-            toolTipPrint.SetToolTip(btnTablePrint, "Печать таблицы [Ctrl + P]");
-            toolTipClear.SetToolTip(btnClearFilter, "Очистить фильтры [Ctrl + Shift + C]");
-            toolTipReport.SetToolTip(btnReport, "Отчет по весу [Ctrl + O]");
-            toolTipPrintReport.SetToolTip(btnPrintReport, "Печать отчета по весу [Ctrl + R]");
-            toolTipSync.SetToolTip(btnSync, "Синхронизация ЛК [Ctrl + L]");
         }
 
         #region Настройка формы
@@ -610,7 +594,69 @@ namespace LK.Forms
             }
         }
 
+        private FirmList GetFirmListByRowIndex(int rowIndex)
+        {
+            SortableBindingList<FirmList> firmLists = (SortableBindingList<FirmList>)firmListBindingSource.DataSource;
+
+            try
+            {
+                if (firmLists != null && firmLists.Count > 0)
+                {
+                    FirmList firmList = firmLists[rowIndex];
+                    return firmList;
+                }
+            }
+            catch
+            {
+                return null;
+            }
+
+            return null;
+        }
+
+        private List<FirmList> GetCheckedFirmLists()
+        {
+            return GetFirmListsBySource()?.Where(f => f.Check).ToList();
+        }
+
+        private List<FirmList> GetFirmListsBySource()
+        {
+            SortableBindingList<FirmList> firmLists = (SortableBindingList<FirmList>)firmListBindingSource.DataSource;
+            return firmLists?.ToList();
+        }
+
+        private Firm GetSelectFirm()
+        {
+            return (Firm)comboBoxOrgs.SelectedItem;
+        }
+
         #endregion
+
+        #region Init
+
+        private void CreateButtonToolTip(WcButton button, string message)
+        {
+            ToolTip toolTip = new ToolTip();
+            toolTip.SetToolTip(button, message);
+        }
+
+        private void InitTooltips()
+        {
+            CreateButtonToolTip(btnLoad, "Загрузить [Ctrl + Q]");
+            CreateButtonToolTip(btnTablePrint, "Печать таблицы [Ctrl + P]");
+            CreateButtonToolTip(btnClearFilter, "Очистить фильтры [Ctrl + Shift + C]");
+            CreateButtonToolTip(btnReport, "Отчет по весу [Ctrl + O]");
+            CreateButtonToolTip(btnPrintReport, "Печать отчета по весу [Ctrl + R]");
+            CreateButtonToolTip(btnSync, "Синхронизация ЛК [Ctrl + L]");
+
+            CreateButtonToolTip(btnCheckAll, "Отметить все списки");
+            CreateButtonToolTip(btnUncheckAll, "Снять отметки со всех списков");
+
+            CreateButtonToolTip(btnAddRpo, "Добавить РПО [Ctrl + NumPlus]");
+            CreateButtonToolTip(btnDelRpo, "Удалить РПО [Ctrl + NumMinus]");
+            CreateButtonToolTip(btnClearRpo, "Очистить все РПО");
+            CreateButtonToolTip(btnExportToFile, "Выгрузить в файл [Ctrl + S]");
+        }
 
         private Task CreateDirs()
         {
@@ -624,78 +670,73 @@ namespace LK.Forms
             });
         }
 
-        private SingleReportData GetSingleReportData()
+        private void InitDataGridView()
         {
-            List<FirmList> checkedFirmLists = GetCheckedFirmLists();
-            if (checkedFirmLists == null || checkedFirmLists.Count == 0)
-                return null;
+            // Столбец с значком
+            checkDataGridViewCheckBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            checkDataGridViewCheckBoxColumn.Width = 40;
+            checkDataGridViewCheckBoxColumn.CellTemplate.Style.BackColor = Color.FromArgb(53, 56, 58);
+            checkDataGridViewCheckBoxColumn.CellTemplate.Style.SelectionBackColor = Color.FromArgb(53, 56, 58);
+            // Столбец с датой
+            dateDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dateDataGridViewTextBoxColumn.Width = 100;
 
-            Firm firm = GetSelectFirm();
-            if (firm == null)
-                return null;
+            // Столбец с именем организации
+            firmDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
-            List<string> operators = new List<string>();
-            List<int> firmIds = new List<int>();
-            List<string> firmsNames = new List<string>();
+            // Столбец с номером списка
+            numDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            numDataGridViewTextBoxColumn.Width = 80;
 
-            foreach (FirmList firmList in checkedFirmLists)
-            {
-                if(!operators.Contains(firmList.OperatorName))
-                    operators.Add(firmList.OperatorName);
+            // Столбец с типом отправления
+            mailTypeDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            mailTypeDataGridViewTextBoxColumn.Width = 180;
 
-                if(!firmsNames.Contains(firmList.FirmName))
-                    firmsNames.Add(firmList.FirmName);
+            // Столбец с категорией отправления
+            mailCategoryDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            mailCategoryDataGridViewTextBoxColumn.Width = 100;
 
-                firmIds.Add(firmList.Id);
-            }
+            mailClassDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            mailClassDataGridViewTextBoxColumn.Width = 60;
 
-            if (firmsNames.Count == 1)
-                firm = _firms.FirstOrDefault(f => f.ShortName == firmsNames[0]);
+            // Столбец с количеством принятых отправлений
+            countFactDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            countFactDataGridViewTextBoxColumn.Width = 80;
 
-            List<Rpo> rpos = Database.GetRposByListsIds(firmIds.ToArray());
+            // Столбец с количеством пропущенных отправлений
+            countMissDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            countMissDataGridViewTextBoxColumn.Width = 80;
 
-            if (rpos.Count == 0)
-                return null;
+            // Столбец с количеством отправлений на возврат
+            countReturnDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            countReturnDataGridViewTextBoxColumn.Width = 80;
 
-            List<DateTime> dates = checkedFirmLists.Select(d => d.Date).ToList();
+            // Столбец с отметками
+            postMarkNameDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            postMarkNameDataGridViewTextBoxColumn.Width = 120;
 
-            SingleReportData singleReport = new SingleReportData(firm, rpos)
-            {
-                DateList = dates.GroupBy(x => x.Date).Select(y => y.FirstOrDefault()).ToList(),
-                NumsList = new List<DateList>(),
-                Operators = operators
-            };
+            // Столбец со сбором
+            rateDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            rateDataGridViewTextBoxColumn.Width = 100;
 
-            foreach (DateTime dateTime in singleReport.DateList)
-            {
-                List<FirmList> firmListToDate = checkedFirmLists.Where(f => f.Date == dateTime).ToList();
-                singleReport.NumsList.Add(new DateList(firmListToDate));
-            }
+            // Столбец с датой приемы
+            receptionDateDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            receptionDateDataGridViewTextBoxColumn.Width = 140;
 
-            return singleReport;
+            operatorDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            operatorDataGridViewTextBoxColumn.Width = 140;
         }
 
-        private List<FirmList> GetCheckedFirmLists()
-        {
-            return GetFirmListsBySource()?.Where(f => f.Check).ToList();
-        }
+        #endregion
 
-        private List<FirmList> GetFirmListsBySource()
-        {
-            SortableBindingList<FirmList> firmLists = (SortableBindingList<FirmList>) firmListBindingSource.DataSource;
-            return firmLists?.ToList();
-        }
 
-        private Firm GetSelectFirm()
-        {
-            return (Firm)comboBoxOrgs.SelectedItem;
-        }
+        #region Отметки
 
         private void CheckReverse()
         {
             List<FirmList> firmLists = GetFirmListsBySource();
 
-            if(firmLists == null)
+            if (firmLists == null)
                 return;
 
             foreach (FirmList firmList in firmLists)
@@ -779,24 +820,59 @@ namespace LK.Forms
             UpdateFirmList(firmLists);
         }
 
-        private FirmList GetFirmListByRowIndex(int rowIndex)
+        #endregion
+
+        #region Reports
+
+        private SingleReportData GetSingleReportData()
         {
-            SortableBindingList<FirmList> firmLists = (SortableBindingList<FirmList>)firmListBindingSource.DataSource;
-
-            try
-            {
-                if (firmLists != null && firmLists.Count > 0)
-                {
-                    FirmList firmList = firmLists[rowIndex];
-                    return firmList;
-                }
-            }
-            catch
-            {
+            List<FirmList> checkedFirmLists = GetCheckedFirmLists();
+            if (checkedFirmLists == null || checkedFirmLists.Count == 0)
                 return null;
+
+            Firm firm = GetSelectFirm();
+            if (firm == null)
+                return null;
+
+            List<string> operators = new List<string>();
+            List<int> firmIds = new List<int>();
+            List<string> firmsNames = new List<string>();
+
+            foreach (FirmList firmList in checkedFirmLists)
+            {
+                if (!operators.Contains(firmList.OperatorName))
+                    operators.Add(firmList.OperatorName);
+
+                if (!firmsNames.Contains(firmList.FirmName))
+                    firmsNames.Add(firmList.FirmName);
+
+                firmIds.Add(firmList.Id);
             }
 
-            return null;
+            if (firmsNames.Count == 1)
+                firm = _firms.FirstOrDefault(f => f.ShortName == firmsNames[0]);
+
+            List<Rpo> rpos = Database.GetRposByListsIds(firmIds.ToArray());
+
+            if (rpos.Count == 0)
+                return null;
+
+            List<DateTime> dates = checkedFirmLists.Select(d => d.Date).ToList();
+
+            SingleReportData singleReport = new SingleReportData(firm, rpos)
+            {
+                DateList = dates.GroupBy(x => x.Date).Select(y => y.FirstOrDefault()).ToList(),
+                NumsList = new List<DateList>(),
+                Operators = operators
+            };
+
+            foreach (DateTime dateTime in singleReport.DateList)
+            {
+                List<FirmList> firmListToDate = checkedFirmLists.Where(f => f.Date == dateTime).ToList();
+                singleReport.NumsList.Add(new DateList(firmListToDate));
+            }
+
+            return singleReport;
         }
 
         private async void ShowReportMassAsync(SingleReportData singleReport)
@@ -816,62 +892,7 @@ namespace LK.Forms
             });
         }
 
-        private void InitDataGridView()
-        {
-            // Столбец с значком
-            checkDataGridViewCheckBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            checkDataGridViewCheckBoxColumn.Width = 40;
-            checkDataGridViewCheckBoxColumn.CellTemplate.Style.BackColor = Color.FromArgb(53, 56, 58);
-            checkDataGridViewCheckBoxColumn.CellTemplate.Style.SelectionBackColor = Color.FromArgb(53, 56, 58);
-            // Столбец с датой
-            dateDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            dateDataGridViewTextBoxColumn.Width = 100;
-
-            // Столбец с именем организации
-            firmDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-
-            // Столбец с номером списка
-            numDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            numDataGridViewTextBoxColumn.Width = 80;
-
-            // Столбец с типом отправления
-            mailTypeDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            mailTypeDataGridViewTextBoxColumn.Width = 180;
-
-            // Столбец с категорией отправления
-            mailCategoryDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            mailCategoryDataGridViewTextBoxColumn.Width = 100;
-
-            mailClassDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            mailClassDataGridViewTextBoxColumn.Width = 60;
-
-            // Столбец с количеством принятых отправлений
-            countFactDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            countFactDataGridViewTextBoxColumn.Width = 80;
-
-            // Столбец с количеством пропущенных отправлений
-            countMissDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            countMissDataGridViewTextBoxColumn.Width = 80;
-
-            // Столбец с количеством отправлений на возврат
-            countReturnDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            countReturnDataGridViewTextBoxColumn.Width = 80;
-
-            // Столбец с отметками
-            postMarkNameDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            postMarkNameDataGridViewTextBoxColumn.Width = 120;
-
-            // Столбец со сбором
-            rateDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            rateDataGridViewTextBoxColumn.Width = 100;
-
-            // Столбец с датой приемы
-            receptionDateDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            receptionDateDataGridViewTextBoxColumn.Width = 140;
-
-            operatorDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            operatorDataGridViewTextBoxColumn.Width = 140;
-        }
+        #endregion
 
         #endregion
 
@@ -941,6 +962,7 @@ namespace LK.Forms
         #endregion
 
         #region Меню - Данные
+
         private async void editOrgsMenuItem_Click(object sender, EventArgs e)
         {
             FirmsForm firmsForm = new FirmsForm();
@@ -1592,12 +1614,12 @@ namespace LK.Forms
             if (e.KeyCode == Keys.S && e.Control)
                 btnExportToFile.PerformClick();
 
-            // Нажатие Ctrl + Shift + A
-            if (e.KeyCode == Keys.A && e.Shift && e.Control)
+            // Нажатие Ctrl + NumPlus
+            if (e.KeyCode == Keys.Add && e.Control)
                 btnAddRpo.PerformClick();
 
-            // Нажатие Ctrl + Shift + D
-            if (e.KeyCode == Keys.D && e.Shift && e.Control)
+            // Нажатие Ctrl + NumMinus
+            if (e.KeyCode == Keys.Subtract && e.Control)
                 btnDelRpo.PerformClick();
         }
 
