@@ -1562,6 +1562,34 @@ namespace LK.Forms
             WcApi.Keyboard.Keyboard.SetEnglishLanguage();
         }
 
+        private void tbFilter_TextChanged(object sender, EventArgs e)
+        {
+            string q = tbFilter.Text.ToUpper();
+
+            if (!string.IsNullOrEmpty(q))
+            {
+                if (_firmLists != null && _firmLists.Count > 0)
+                {
+                    List<FirmList> filtered = _firmLists.Where(f =>
+                        f.FirmName.ToUpper().Contains(q) || f.OperatorName.ToUpper().Contains(q) ||
+                        f.Num.ToString().Contains(q)).ToList();
+
+                    firmListBindingSource.DataSource = filtered.ToSortableBindingList();
+                    _collector = new FirmListStatCollector(filtered);
+                    UpdateStat();
+                }
+            }
+            else
+            {
+                if (_firmLists != null && _firmLists.Count > 0)
+                {
+                    firmListBindingSource.DataSource = _firmLists.ToSortableBindingList();
+                    _collector = new FirmListStatCollector(_firmLists);
+                    UpdateStat();
+                }
+            }
+        }
+
         #endregion
 
         #region Combobox Events
@@ -1682,34 +1710,6 @@ namespace LK.Forms
         #endregion
 
         #endregion
-
-        private void tbFilter_TextChanged(object sender, EventArgs e)
-        {
-            string q = tbFilter.Text.ToUpper();
-
-            if (!string.IsNullOrEmpty(q))
-            {
-                if (_firmLists != null && _firmLists.Count > 0)
-                {
-                    List<FirmList> filtered = _firmLists.Where(f =>
-                        f.FirmName.ToUpper().Contains(q) || f.OperatorName.ToUpper().Contains(q) ||
-                        f.Num.ToString().Contains(q)).ToList();
-
-                    firmListBindingSource.DataSource = filtered.ToSortableBindingList();
-                    _collector = new FirmListStatCollector(filtered);
-                    UpdateStat();
-                }
-            }
-            else
-            {
-                if (_firmLists != null && _firmLists.Count > 0)
-                {
-                    firmListBindingSource.DataSource = _firmLists.ToSortableBindingList();
-                    _collector = new FirmListStatCollector(_firmLists);
-                    UpdateStat();
-                }
-            }
-        }
 
         private void testMenuItem_Click(object sender, EventArgs e)
         {

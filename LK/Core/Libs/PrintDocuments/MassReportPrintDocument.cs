@@ -5,8 +5,6 @@ using System.Drawing;
 using System.Drawing.Printing;
 using System.Drawing.Text;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using LK.Core.Libs.Stat;
 using NLog;
@@ -199,7 +197,7 @@ namespace LK.Core.Libs.PrintDocuments
 
                             int newTopMargin = CalculateListInfo(e, _singleReport.NumsList[i]);
 
-                            if (topMargin + newTopMargin + 20 >= e.MarginBounds.Height + e.MarginBounds.Top)
+                            if (topMargin + newTopMargin + 30 >= e.MarginBounds.Height + e.MarginBounds.Top)
                             {
                                 _newPage = true;
                                 _firstPage = false;
@@ -305,8 +303,8 @@ namespace LK.Core.Libs.PrintDocuments
 
             Rectangle titleRect = new Rectangle(e.MarginBounds.Right - 78, marginTop, 40, offset + 20);
             e.Graphics.DrawString(ReportTitle, PrintPens.HeaderBoldFont, PrintPens.ForeBrush, titleRect, stringFormat);
-            
             e.Graphics.DrawRectangle(Pens.Black, titleRect);
+
             marginTop += offset;
 
             string info = $"ИНН: {_singleReport.FirmInn}";

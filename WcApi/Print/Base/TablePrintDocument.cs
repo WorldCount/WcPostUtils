@@ -58,10 +58,5 @@ namespace WcApi.Print.Base
                 MessageBox.Show(exception.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        protected override void OnPrintPage(PrintPageEventArgs e)
-        {
-            base.OnPrintPage(e);
-        }
     }
 }

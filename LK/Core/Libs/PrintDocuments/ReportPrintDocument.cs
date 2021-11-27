@@ -37,6 +37,8 @@ namespace LK.Core.Libs.PrintDocuments
         public int PagesCount { get; set; } = 0;
 
         public string Title { get; set; }
+        public string SubTitle { get; set; }
+        public string ReportTitle { get; set; } = "";
         public int CellHeight { get; set; } = 40;
         public int HeaderHeight { get; set; } = 40;
 
@@ -142,6 +144,10 @@ namespace LK.Core.Libs.PrintDocuments
 
                             _newPage = false;
                             topMargin += HeaderHeight;
+
+                            bool clear = (string)gridRow.Cells[0].Value == "Clear";
+                            if (clear)
+                                topMargin -= CellHeight;
                         }
 
                         // Отрисовка строки
@@ -181,7 +187,6 @@ namespace LK.Core.Libs.PrintDocuments
         private void PrintRow(PrintPageEventArgs e, DataGridViewRow gridRow, int topMargin)
         {
             bool clear = (string)gridRow.Cells[0].Value == "Clear";
-            bool stat = (string)gridRow.Cells[0].Value == "Stat";
             bool clearRow = _clear && clear;
 
             int cellCount = 0;
@@ -197,18 +202,8 @@ namespace LK.Core.Libs.PrintDocuments
                 {
                     if (!clearRow && !clear)
                     {
-                        if (cell.Value.ToString() != "Stat")
-                        {
-                            e.Graphics.DrawString(cell.Value.ToString(), PrintPens.CellFont, PrintPens.ForeBrush,
-                                new Rectangle(colLeft, topMargin, colWidth, CellHeight), _stringFormat);
-                        }
+                        e.Graphics.DrawString(cell.Value.ToString(), PrintPens.CellFont, PrintPens.ForeBrush, new Rectangle(colLeft, topMargin, colWidth, CellHeight), _stringFormat);
                     }
-                }
-
-                if (stat)
-                {
-                    cellCount++;
-                    continue;
                 }
 
                 if (!clearRow)
@@ -237,7 +232,7 @@ namespace LK.Core.Libs.PrintDocuments
 
         private int PrintReportInfo(PrintPageEventArgs e, int margin, int pageWidth)
         {
-            int offset = 40;
+            int offset = 20;
             int marginTop = margin - 20;
 
             StringFormat stringFormat = new StringFormat
@@ -248,8 +243,16 @@ namespace LK.Core.Libs.PrintDocuments
             };
 
             Rectangle rect = new Rectangle(e.MarginBounds.Left, marginTop, pageWidth, offset);
-
             e.Graphics.DrawString(Title, PrintPens.HeaderBoldFont, PrintPens.ForeBrush, rect, stringFormat);
+
+            Rectangle titleRect = new Rectangle(e.MarginBounds.Right - 68, marginTop, 40, offset + 20);
+            e.Graphics.DrawString(ReportTitle, PrintPens.HeaderBoldFont, PrintPens.ForeBrush, titleRect, stringFormat);
+            e.Graphics.DrawRectangle(Pens.Black, titleRect);
+
+            marginTop += offset;
+            rect.Y += offset;
+
+            e.Graphics.DrawString(SubTitle, PrintPens.HeaderFont, PrintPens.ForeBrush, rect, stringFormat);
             marginTop += offset;
 
             return marginTop + 10;

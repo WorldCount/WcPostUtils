@@ -45,7 +45,6 @@ namespace LK.Forms.ReportForms
 
             // ReSharper disable once VirtualMemberCallInConstructor
             Text = _report.Name;
-
             lblReportName.Text = _report.Name;
         }
 
@@ -60,12 +59,14 @@ namespace LK.Forms.ReportForms
                 PrintController = printController,
                 PrintNumPageInfo = true,
                 Title = _report.Name,
+                SubTitle = "ДАТА: ",
+                ReportTitle = "ЛК",
                 CellHeight = 50
             };
 
             DateTime inDate = dateTimePickerIn.Value;
             DateTime outDate = dateTimePickerOut.Value;
-            document.Title += inDate != outDate ? $" ({inDate.ToShortDateString()} - {outDate.ToShortDateString()})" : $" ({inDate.ToShortDateString()})";
+            document.SubTitle += inDate != outDate ? $" {inDate.ToShortDateString()} - {outDate.ToShortDateString()}" : $" {inDate.ToShortDateString()}";
 
             return document;
         }
@@ -86,7 +87,7 @@ namespace LK.Forms.ReportForms
 
         private void AddStatRow(string name, int count, double pay)
         {
-            int index = dataGridView.Rows.Add("Stat", name, count.ToString(), pay.ToString("F"), "", "");
+            int index = dataGridView.Rows.Add("", name, count.ToString(), pay.ToString("F"), "", "");
 
             DataGridViewCell cell = dataGridView.Rows[index].Cells[0];
             cell.Style.ForeColor = Color.WhiteSmoke;
@@ -233,11 +234,13 @@ namespace LK.Forms.ReportForms
                         }
                     }
 
+                    AddClearRow();
                     AddStatRow("ВСЕГО", count, pay);
                     AddClearRow(true);
                 }
 
-                AddStatRow("ОБЩЕЕ", allCount, allPay);
+                if(allCount > 0)
+                    AddStatRow("ОБЩЕЕ", allCount, allPay);
             }
 
 
