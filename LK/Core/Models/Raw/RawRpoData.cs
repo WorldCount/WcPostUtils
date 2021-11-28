@@ -39,7 +39,7 @@ namespace LK.Core.Models.Raw
         public double MassRate { get; private set; }
         public double AviaRate { get; private set; }
         public double ValueRate { get; private set; }
-        public double NoticeRate { get; private set; }
+        public double ServiceRate { get; private set; }
         public double Value { get; private set; }
 
         #endregion
@@ -64,6 +64,8 @@ namespace LK.Core.Models.Raw
                 FirmName = _row.GetCell(_cm.FirmName.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).ToString().Trim();
                 Contract = _row.GetCell(_cm.Contract.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).ToString().Trim();
                 ReceptDate = _row.GetCell(_cm.ReceptDate.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).DateCellValue;
+
+                Value = _row.GetCell(_cm.Value.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).NumericCellValue / 100;
             }
             catch (Exception e)
             {
@@ -83,7 +85,7 @@ namespace LK.Core.Models.Raw
                 Category = _row.GetCell(_cm.Category.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).ToString().Trim();
 
                 MassRate = _row.GetCell(_cm.MassRate.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).NumericCellValue / 100;
-                NoticeRate = _row.GetCell(_cm.NoticeRate.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).NumericCellValue / 100;
+                ServiceRate = _row.GetCell(_cm.NoticeRate.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).NumericCellValue / 100;
                 AviaRate = _row.GetCell(_cm.AviaRate.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).NumericCellValue / 100;
                 Value = _row.GetCell(_cm.Value.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).NumericCellValue / 100;
                 ValueRate = _row.GetCell(_cm.ValueRate.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).NumericCellValue / 100;

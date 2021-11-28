@@ -11,6 +11,7 @@ using LK.Core.Libs.Auth.Model;
 using LK.Core.Libs.DataManagers;
 using LK.Core.Libs.DataManagers.Models;
 using LK.Core.Libs.TarifManager;
+using LK.Core.Libs.TarifManager.PostTypes;
 using LK.Core.Libs.TarifManager.Tarif;
 using LK.Core.Models.DB;
 using LK.Core.Models.DB.Types;
@@ -303,7 +304,7 @@ namespace LK.Forms
                     if (firm is null)
                     {
                         if(_loggingMode)
-                            Logger.Error($"Не удалось получить данные по организации: Inn = '{raw.Inn}', Kpp = '{raw.Kpp}', Contract = '{raw.Contract}'");
+                            Logger.Error($"Не удалось получить данные по организации: Inn = '{raw.Inn}', Kpp = '{raw.Kpp}', Contract = '{raw.Contract}', Name = '{raw.FirmName}'");
                         continue;
                     }
 
@@ -338,15 +339,37 @@ namespace LK.Forms
                     if (!_recountFirmListIds.Contains(firmList.Id))
                         _recountFirmListIds.Add(firmList.Id);
 
-                    ServiceTarif noticeTarif = ServiceTarifManager.GetServiceTarifByRateNds(raw.NoticeRate);
-                    if (noticeTarif != null)
+                    ServiceTarif serviceTarif = ServiceTarifManager.GetServiceTarifByRateNds(raw.ServiceRate);
+                    if (serviceTarif != null)
                     {
-                        rpo.Notice = noticeTarif.Code;
+                        rpo.Notice = serviceTarif.Code;
 
-                        if (firmList.Notice != noticeTarif.Code)
+                        if (firmList.Notice != serviceTarif.Code)
                         {
-                            firmList.Notice = noticeTarif.Code;
+                            firmList.Notice = serviceTarif.Code;
                             Database.SaveFirmList(firmList);
+                        }
+                    }
+                    else
+                    {
+                        if (raw.Value > 0)
+                        {
+                            ServiceTarif invertoryTarif = ServiceTarifManager.GetServiceTarifByType(ServiceType.Опись);
+                            double pay = raw.ServiceRate - invertoryTarif.RateNds;
+                            if (pay > 0)
+                            {
+                                ServiceTarif noticeTarif = ServiceTarifManager.GetServiceTarifByRateNds(pay);
+                                if (noticeTarif != null)
+                                {
+                                    rpo.Notice = noticeTarif.Code;
+
+                                    if (firmList.Notice != noticeTarif.Code)
+                                    {
+                                        firmList.Notice = noticeTarif.Code;
+                                        Database.SaveFirmList(firmList);
+                                    }
+                                }
+                            }
                         }
                     }
 
