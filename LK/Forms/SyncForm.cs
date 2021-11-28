@@ -308,7 +308,7 @@ namespace LK.Forms
                     }
 
                     firmListManager.Update(raw.Date);
-                    FirmList firmList = firmListManager.GetFirmList(firm.Id, raw.Num);
+                    FirmList firmList = firmListManager.GetFirmList(firm.Id, raw.Num, raw.ReceptDate);
 
                     if (firmList == null)
                         continue;
@@ -430,7 +430,7 @@ namespace LK.Forms
                     Firm firm = _firmManager.GetOrCreateFirm(raw.Inn, raw.Kpp, raw.Name, raw.Contract);
 
                     firmListManager.Update(raw.Date);
-                    FirmList firmList = firmListManager.GetFirmList(firm.Id, raw.Num);
+                    FirmList firmList = firmListManager.GetFirmList(firm.Id, raw.Num, raw.ReceptDate);
 
                     if (firmList != null)
                         continue;

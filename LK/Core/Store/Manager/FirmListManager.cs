@@ -19,11 +19,11 @@ namespace LK.Core.Store.Manager
             _recount = recount;
         }
 
-        public FirmList GetFirmList(int firmId, int num)
+        public FirmList GetFirmList(int firmId, int num, DateTime receptDate)
         {
             try
             {
-                return _firmLists.FirstOrDefault(f => f.FirmId == firmId && f.Num == num);
+                return _firmLists.FirstOrDefault(f => f.FirmId == firmId && f.Num == num && f.ReceptionDate == receptDate);
             }
             catch
             {

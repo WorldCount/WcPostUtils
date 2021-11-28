@@ -61,6 +61,7 @@ namespace LK.Core.Models.Raw
                 Inn = _row.GetCell(_cm.Inn.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).ToString().Trim();
                 Kpp = _row.GetCell(_cm.Kpp.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).ToString().Trim();
                 Contract = _row.GetCell(_cm.Contract.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).ToString().Trim();
+                ReceptDate = _row.GetCell(_cm.ReceptDate.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).DateCellValue;
             }
             catch (Exception e)
             {
@@ -87,7 +88,6 @@ namespace LK.Core.Models.Raw
 
                 Status = _row.GetCell(_cm.Status.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).ToString().Trim();
                 Reason = _row.GetCell(_cm.StatusMessage.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).ToString().Trim();
-                ReceptDate = _row.GetCell(_cm.ReceptDate.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).DateCellValue;
 
                 string o = _row.GetCell(_cm.Oper.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).ToString().Trim();
                 Operator = o.Contains("  ") ? Regex.Replace(o, "[ ]+", " ") : o;
