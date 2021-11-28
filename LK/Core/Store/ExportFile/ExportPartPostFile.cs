@@ -7,7 +7,7 @@ namespace LK.Core.Store.ExportFile
     public class ExportPartPostFile
     {
         private string _header = "OperType|OperDate|Barcode|IndexTo|MailDirect|TransType|MailType|MailCtg|MailRank|SendCtg|PostMark|Mass|Payment|Value|PayType|MassRate|InsrRate|AirRate|AdValTax|SaleTax|Rate|OperAttr|IndexOper|IndexNext|Comment|SNDRAddressData|RCPNAddressData|NotifyAddressData|NotificationRCPN|EmployeeData|ByProxy|MPODeclaration";
-        private List<ExportFileString> _data;
+        private readonly List<ExportFileString> _data;
         private string _name = "12599302.09F";
 
         public ExportPartPostFile()

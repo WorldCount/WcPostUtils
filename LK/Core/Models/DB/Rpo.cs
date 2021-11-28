@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using LK.Core.Libs.TarifManager.PostTypes;
 using LK.Core.Models.Types;
 using LK.Core.Store.ExportFile;
@@ -108,8 +109,8 @@ namespace LK.Core.Models.DB
         {
             ExportFileString e = new ExportFileString
             {
-                OperDate = ReceptionDate.ToString("yyyyMMdd"), Barcode = Barcode, IndexTo = Index, Mass = "20",
-                MassRate = ((int)MassRate).ToString()
+                OperDate = ReceptionDate.ToString("yyyyMMdd"), Barcode = Barcode, IndexTo = Index, Mass = "0",
+                MassRate = (MassRate * 100).ToString(CultureInfo.InvariantCulture)
             };
 
             if (MailClass == MailClass.Международное)
@@ -126,7 +127,7 @@ namespace LK.Core.Models.DB
 
             // ReSharper disable once CompareOfFloatsByEqualityOperator
             if (Value != 0)
-                e.Value = ((int) Value).ToString();
+                e.Value = ((int) Value * 100).ToString();
 
             return e;
         }
