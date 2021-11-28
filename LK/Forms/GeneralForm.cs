@@ -734,6 +734,8 @@ namespace LK.Forms
         private void CheckReverse()
         {
             List<FirmList> firmLists = GetFirmListsBySource();
+            DataGridViewColumn col = dataGridViewList.SortedColumn;
+            ListSortDirection sort = SortOrderToListSortDirection(dataGridViewList.SortOrder);
 
             if (firmLists == null)
                 return;
@@ -746,12 +748,14 @@ namespace LK.Forms
             _collector = new FirmListStatCollector(firmLists);
             UpdateStat();
 
-            UpdateFirmList(firmLists);
+            UpdateFirmList(firmLists, col, sort);
         }
 
         private void CheckAll(string firmName = null)
         {
             List<FirmList> firmLists = GetFirmListsBySource();
+            DataGridViewColumn col = dataGridViewList.SortedColumn;
+            ListSortDirection sort = SortOrderToListSortDirection(dataGridViewList.SortOrder);
 
             if (firmLists == null)
                 return;
@@ -772,12 +776,14 @@ namespace LK.Forms
             _collector = new FirmListStatCollector(firmLists);
             UpdateStat();
 
-            UpdateFirmList(firmLists);
+            UpdateFirmList(firmLists, col, sort);
         }
 
         private void UncheckAll(string firmName = null)
         {
             List<FirmList> firmLists = GetFirmListsBySource();
+            DataGridViewColumn col = dataGridViewList.SortedColumn;
+            ListSortDirection sort = SortOrderToListSortDirection(dataGridViewList.SortOrder);
 
             if (firmLists == null)
                 return;
@@ -798,12 +804,14 @@ namespace LK.Forms
             _collector = new FirmListStatCollector(firmLists);
             UpdateStat();
 
-            UpdateFirmList(firmLists);
+            UpdateFirmList(firmLists, col, sort);
         }
 
         private void InverseCheck()
         {
             List<FirmList> firmLists = GetFirmListsBySource();
+            DataGridViewColumn col = dataGridViewList.SortedColumn;
+            ListSortDirection sort = SortOrderToListSortDirection(dataGridViewList.SortOrder);
 
             if (firmLists == null)
                 return;
@@ -816,7 +824,7 @@ namespace LK.Forms
             _collector = new FirmListStatCollector(firmLists);
             UpdateStat();
 
-            UpdateFirmList(firmLists);
+            UpdateFirmList(firmLists, col, sort);
         }
 
         #endregion
