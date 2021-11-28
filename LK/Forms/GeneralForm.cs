@@ -470,12 +470,12 @@ namespace LK.Forms
             mailCategoryBindingSource.DataSource = _mailCategories;
         }
 
-        private void UpdateFirmList(List<FirmList> firmLists = null)
+        private void UpdateFirmList(List<FirmList> firmLists = null, DataGridViewColumn column = null, ListSortDirection sort = ListSortDirection.Ascending)
         {
             firmListBindingSource.DataSource = null;
             firmListBindingSource.DataSource = firmLists != null ? firmLists.ToSortableBindingList() : _firmLists.ToSortableBindingList();
 
-            dataGridViewList.Sort(receptionDateDataGridViewTextBoxColumn, ListSortDirection.Ascending);
+            dataGridViewList.Sort(column ?? receptionDateDataGridViewTextBoxColumn, sort);
         }
 
         #endregion
@@ -817,6 +817,17 @@ namespace LK.Forms
             UpdateStat();
 
             UpdateFirmList(firmLists);
+        }
+
+        #endregion
+
+        #region Sort
+
+        private ListSortDirection SortOrderToListSortDirection(SortOrder order)
+        {
+            if (order == SortOrder.Descending)
+                return ListSortDirection.Descending;
+            return ListSortDirection.Ascending;
         }
 
         #endregion
@@ -1566,6 +1577,9 @@ namespace LK.Forms
         {
             string q = tbFilter.Text.ToUpper();
 
+            DataGridViewColumn col = dataGridViewList.SortedColumn;
+            ListSortDirection sort = SortOrderToListSortDirection(dataGridViewList.SortOrder);
+
             if (!string.IsNullOrEmpty(q))
             {
                 if (_firmLists != null && _firmLists.Count > 0)
@@ -1574,7 +1588,8 @@ namespace LK.Forms
                         f.FirmName.ToUpper().Contains(q) || f.OperatorName.ToUpper().Contains(q) ||
                         f.Num.ToString().Contains(q)).ToList();
 
-                    firmListBindingSource.DataSource = filtered.ToSortableBindingList();
+                    //firmListBindingSource.DataSource = filtered.ToSortableBindingList();
+                    UpdateFirmList(filtered, col, sort);
                     _collector = new FirmListStatCollector(filtered);
                     UpdateStat();
                 }
@@ -1583,7 +1598,8 @@ namespace LK.Forms
             {
                 if (_firmLists != null && _firmLists.Count > 0)
                 {
-                    firmListBindingSource.DataSource = _firmLists.ToSortableBindingList();
+                    UpdateFirmList(_firmLists, col, sort);
+                    //firmListBindingSource.DataSource = _firmLists.ToSortableBindingList();
                     _collector = new FirmListStatCollector(_firmLists);
                     UpdateStat();
                 }
