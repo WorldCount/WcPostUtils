@@ -19,6 +19,7 @@ namespace LK.Core.Models.Raw
         public string Inn { get; private set; }
         public string Kpp { get; private set; }
         public string Contract { get; private set; }
+        public string FirmName { get; private set; }
 
         public DateTime Date { get; private set; }
         public DateTime ReceptDate { get; private set; }
@@ -60,6 +61,7 @@ namespace LK.Core.Models.Raw
                 // Организация
                 Inn = _row.GetCell(_cm.Inn.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).ToString().Trim();
                 Kpp = _row.GetCell(_cm.Kpp.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).ToString().Trim();
+                FirmName = _row.GetCell(_cm.FirmName.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).ToString().Trim();
                 Contract = _row.GetCell(_cm.Contract.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).ToString().Trim();
                 ReceptDate = _row.GetCell(_cm.ReceptDate.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).DateCellValue;
             }

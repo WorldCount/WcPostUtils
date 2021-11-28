@@ -298,7 +298,7 @@ namespace LK.Forms
                         continue;
                     }
 
-                    Firm firm = _firmManager.GetFirm(raw.Inn, raw.Kpp, raw.Contract);
+                    Firm firm = _firmManager.GetFirm(raw.Inn, raw.Kpp, raw.Contract, raw.FirmName);
 
                     if (firm is null)
                     {
