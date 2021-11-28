@@ -2,7 +2,7 @@
 
 namespace LK.Core.Libs.TarifManager.ServerTarif.Object
 {
-    public class NoticeObject
+    public class AddServiceObject
     {
         [JsonProperty("service")]
         public ServiceObject Service { get; set; }

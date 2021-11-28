@@ -13,9 +13,9 @@ namespace LK.Core.Libs.Stat
 
         private readonly List<FirmList> _firmLists = new List<FirmList>();
 
-        private readonly NoticeTarif _simpleNoticeTarif;
-        private readonly NoticeTarif _customNoticeTarif;
-        private readonly NoticeTarif _electronicNoticeTarif;
+        private readonly ServiceTarif _simpleNoticeTarif;
+        private readonly ServiceTarif _customNoticeTarif;
+        private readonly ServiceTarif _electronicNoticeTarif;
 
         #endregion
 
@@ -61,16 +61,16 @@ namespace LK.Core.Libs.Stat
 
         public FirmListStatCollector()
         {
-            _simpleNoticeTarif = NoticeTarifManager.GetNoticeTarifByType(NoticeType.Простое);
-            _customNoticeTarif = NoticeTarifManager.GetNoticeTarifByType(NoticeType.Заказное);
-            _electronicNoticeTarif = NoticeTarifManager.GetNoticeTarifByType(NoticeType.Электронное);
+            _simpleNoticeTarif = ServiceTarifManager.GetServiceTarifByType(ServiceType.ПростоеУв);
+            _customNoticeTarif = ServiceTarifManager.GetServiceTarifByType(ServiceType.ЗаказноеУв);
+            _electronicNoticeTarif = ServiceTarifManager.GetServiceTarifByType(ServiceType.ЭлектронноеУв);
         }
 
         public FirmListStatCollector(List<FirmList> firmLists)
         {
-            _simpleNoticeTarif = NoticeTarifManager.GetNoticeTarifByType(NoticeType.Простое);
-            _customNoticeTarif = NoticeTarifManager.GetNoticeTarifByType(NoticeType.Заказное);
-            _electronicNoticeTarif = NoticeTarifManager.GetNoticeTarifByType(NoticeType.Электронное);
+            _simpleNoticeTarif = ServiceTarifManager.GetServiceTarifByType(ServiceType.ПростоеУв);
+            _customNoticeTarif = ServiceTarifManager.GetServiceTarifByType(ServiceType.ЗаказноеУв);
+            _electronicNoticeTarif = ServiceTarifManager.GetServiceTarifByType(ServiceType.ЭлектронноеУв);
 
             if (firmLists == null)
                 return;

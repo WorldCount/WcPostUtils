@@ -26,7 +26,7 @@ namespace LK.Core.Libs.Stat
         private readonly List<MailType> _mailTypes;
         private readonly List<MailCategory> _mailCategories;
 
-        private readonly NoticeTarif _interNoticeTarif;
+        private readonly ServiceTarif _interNoticeTarif;
 
         #endregion
 
@@ -57,7 +57,7 @@ namespace LK.Core.Libs.Stat
             _firstParcelTarifs = FirstParcelTarifManager.Load();
             _interMailTarifs = InterMailTarifManager.Load();
             _interParcelTarifs = InterParcelTarifManager.Load();
-            _interNoticeTarif = NoticeTarifManager.GetNoticeTarifByType(NoticeType.Международное);
+            _interNoticeTarif = ServiceTarifManager.GetServiceTarifByType(ServiceType.МеждународноеУв);
 
             _mailTypes = Database.GetMailTypes();
             _mailCategories = Database.GetMailCategories();

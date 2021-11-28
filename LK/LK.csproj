@@ -150,19 +150,17 @@
     <Compile Include="Core\Libs\DataManagers\ConfigManager.cs" />
     <Compile Include="Core\Libs\DataManagers\DataColorManager.cs" />
     <Compile Include="Core\Libs\DataManagers\Models\DataColor.cs" />
-    <Compile Include="Core\Libs\Parse\ParseData.cs" />
-    <Compile Include="Core\Libs\Parse\XmlParser.cs" />
     <Compile Include="Core\Libs\TarifManager\FirstMailTarifManager.cs" />
     <Compile Include="Core\Libs\TarifManager\FirstParcelTarifManager.cs" />
     <Compile Include="Core\Libs\TarifManager\InterMailTarifManager.cs" />
     <Compile Include="Core\Libs\TarifManager\InterParcelTarifManager.cs" />
     <Compile Include="Core\Libs\TarifManager\MailTarifManager.cs" />
-    <Compile Include="Core\Libs\TarifManager\NoticeTarifManager.cs" />
+    <Compile Include="Core\Libs\TarifManager\ServiceTarifManager.cs" />
     <Compile Include="Core\Libs\TarifManager\ParcelTarifManager.cs" />
-    <Compile Include="Core\Libs\TarifManager\PostTypes\NoticeType.cs" />
+    <Compile Include="Core\Libs\TarifManager\PostTypes\ServiceType.cs" />
     <Compile Include="Core\Libs\TarifManager\PostTypes\PostMark.cs" />
     <Compile Include="Core\Libs\TarifManager\PostTypes\TransType.cs" />
-    <Compile Include="Core\Libs\TarifManager\ServerTarif\Object\NoticeObject.cs" />
+    <Compile Include="Core\Libs\TarifManager\ServerTarif\Object\AddServiceObject.cs" />
     <Compile Include="Core\Libs\TarifManager\ServerTarif\Object\TarifObject.cs" />
     <Compile Include="Core\Libs\TarifManager\ServerTarif\ServerTarificator.cs" />
     <Compile Include="Core\Libs\TarifManager\Tarificator.cs" />
@@ -187,7 +185,7 @@
     <Compile Include="Core\Models\DB\Types\MailType.cs" />
     <Compile Include="Core\Models\DB\Types\Notice.cs" />
     <Compile Include="Core\Libs\TarifManager\Tarif\Base\INoticeTarif.cs" />
-    <Compile Include="Core\Libs\TarifManager\Tarif\NoticeTarif.cs" />
+    <Compile Include="Core\Libs\TarifManager\Tarif\ServiceTarif.cs" />
     <Compile Include="Core\PathManager.cs" />
     <Compile Include="Core\Store\ExportFile\ExportFileString.cs" />
     <Compile Include="Core\Store\ExportFile\ExportPartPostFile.cs" />
@@ -331,11 +329,11 @@
     <Compile Include="Forms\TarifForms\MailTarifForm.Designer.cs">
       <DependentUpon>MailTarifForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\TarifForms\NoticeTarifForm.cs">
+    <Compile Include="Forms\TarifForms\ServiceTarifForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\TarifForms\NoticeTarifForm.Designer.cs">
-      <DependentUpon>NoticeTarifForm.cs</DependentUpon>
+    <Compile Include="Forms\TarifForms\ServiceTarifForm.Designer.cs">
+      <DependentUpon>ServiceTarifForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\TarifForms\ParcelTarifForm.cs">
       <SubType>Form</SubType>
@@ -504,8 +502,8 @@
     <EmbeddedResource Include="Forms\TarifForms\MailTarifForm.resx">
       <DependentUpon>MailTarifForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\TarifForms\NoticeTarifForm.resx">
-      <DependentUpon>NoticeTarifForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\TarifForms\ServiceTarifForm.resx">
+      <DependentUpon>ServiceTarifForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\TarifForms\ParcelTarifForm.resx">
       <DependentUpon>ParcelTarifForm.cs</DependentUpon>

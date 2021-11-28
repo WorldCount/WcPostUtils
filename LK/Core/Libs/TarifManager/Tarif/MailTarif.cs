@@ -13,7 +13,7 @@ namespace LK.Core.Libs.TarifManager.Tarif
         [JsonProperty("weight")]
         public string Mass { get; set; }
 
-        public string Name { get; set; } = "Письмо Заказное";
+        public string Name { get; set; } = "Письмо ЗаказноеУв";
 
         public int Type { get; set; } = 2;
         public int Category { get; set; } = 1;

@@ -101,7 +101,7 @@ namespace LK.Core.Store
 
         private void FillMailCategoryTable()
         {
-            //MailCategory m1 = new MailCategory { Code = 1, Name = "Заказное", ShortName = "Заказное", Enable = true};
+            //MailCategory m1 = new MailCategory { Code = 1, Name = "ЗаказноеУв", ShortName = "ЗаказноеУв", Enable = true};
             //MailCategory m2 = new MailCategory { Code = 2, Name = "С объявленной ценностью", ShortName = "С ОЦ", Enable = true};
             //MailCategory m3 = new MailCategory { Code = 5, Name = "Не определено", ShortName = "Не определено", Enable = true};
             //
@@ -111,10 +111,10 @@ namespace LK.Core.Store
         private void FillPostMarkTable()
         {
             //PostMark p1 = new PostMark { Code= 0, Name = "Без отметки", ShortName = "" };
-            //PostMark p2 = new PostMark { Code= 1, Name = "Простое уведомление", ShortName = "Пр.Ув" };
-            //PostMark p3 = new PostMark { Code= 2, Name = "Заказное уведомление", ShortName = "Зау.Ув" };
+            //PostMark p2 = new PostMark { Code= 1, Name = "ПростоеУв уведомление", ShortName = "Пр.Ув" };
+            //PostMark p3 = new PostMark { Code= 2, Name = "ЗаказноеУв уведомление", ShortName = "Зау.Ув" };
             //PostMark p4 = new PostMark { Code = 4, Name = "С описью", ShortName = "Опись" };
-            //PostMark p5 = new PostMark { Code = 16384, Name = "Электронное уведомление", ShortName = "Эл.Ув" };
+            //PostMark p5 = new PostMark { Code = 16384, Name = "ЭлектронноеУв уведомление", ShortName = "Эл.Ув" };
             //
             //_asyncDatabase.InsertAllAsync(new object[] { p1, p2, p3, p4, p5 });
         }

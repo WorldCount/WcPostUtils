@@ -338,7 +338,7 @@ namespace LK.Forms
                     if (!_recountFirmListIds.Contains(firmList.Id))
                         _recountFirmListIds.Add(firmList.Id);
 
-                    NoticeTarif noticeTarif = NoticeTarifManager.GetNoticeTarifByRateNds(raw.NoticeRate);
+                    ServiceTarif noticeTarif = ServiceTarifManager.GetServiceTarifByRateNds(raw.NoticeRate);
                     if (noticeTarif != null)
                     {
                         rpo.Notice = noticeTarif.Code;

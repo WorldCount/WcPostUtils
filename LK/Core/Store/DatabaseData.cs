@@ -59,9 +59,9 @@ namespace LK.Core.Store
         public static void FillNoticeTable()
         {
             Notice p1 = new Notice { Code = 0, Name = "Без отметки", ShortName = "" };
-            Notice p2 = new Notice { Code = 1, Name = "Простое уведомление", ShortName = "Пр.Ув" };
-            Notice p3 = new Notice { Code = 2, Name = "Заказное уведомление", ShortName = "Зау.Ув" };
-            Notice p5 = new Notice { Code = 16384, Name = "Электронное уведомление", ShortName = "Эл.Ув" };
+            Notice p2 = new Notice { Code = 1, Name = "ПростоеУв уведомление", ShortName = "Пр.Ув" };
+            Notice p3 = new Notice { Code = 2, Name = "ЗаказноеУв уведомление", ShortName = "Зау.Ув" };
+            Notice p5 = new Notice { Code = 16384, Name = "ЭлектронноеУв уведомление", ShortName = "Эл.Ув" };
 
             using (var db = DbConnect.GetConnection())
                 db.InsertAll(new object[] { p1, p2, p3, p5 });

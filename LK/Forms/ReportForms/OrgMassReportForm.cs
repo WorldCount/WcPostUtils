@@ -21,10 +21,10 @@ namespace LK.Forms.ReportForms
         private int _allCount;
         private double _allSumRate;
 
-        private NoticeTarif _simpleNoticeTarif;
-        private NoticeTarif _customNoticeTarif;
-        private NoticeTarif _electronicNoticeTarif;
-        private NoticeTarif _interNoticeTarif;
+        private ServiceTarif _simpleNoticeTarif;
+        private ServiceTarif _customNoticeTarif;
+        private ServiceTarif _electronicNoticeTarif;
+        private ServiceTarif _interNoticeTarif;
 
         private readonly Config _defaultPrinterConfig;
 
@@ -54,10 +54,10 @@ namespace LK.Forms.ReportForms
 
         private void LoadTarif()
         {
-            _simpleNoticeTarif = NoticeTarifManager.GetNoticeTarifByType(NoticeType.Простое);
-            _customNoticeTarif = NoticeTarifManager.GetNoticeTarifByType(NoticeType.Заказное);
-            _electronicNoticeTarif = NoticeTarifManager.GetNoticeTarifByType(NoticeType.Электронное);
-            _interNoticeTarif = NoticeTarifManager.GetNoticeTarifByType(NoticeType.Международное);
+            _simpleNoticeTarif = ServiceTarifManager.GetServiceTarifByType(ServiceType.ПростоеУв);
+            _customNoticeTarif = ServiceTarifManager.GetServiceTarifByType(ServiceType.ЗаказноеУв);
+            _electronicNoticeTarif = ServiceTarifManager.GetServiceTarifByType(ServiceType.ЭлектронноеУв);
+            _interNoticeTarif = ServiceTarifManager.GetServiceTarifByType(ServiceType.МеждународноеУв);
         }
 
         private void LoadIndexStat()

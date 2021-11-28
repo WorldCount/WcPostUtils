@@ -35,8 +35,8 @@
     <Setting Name="TarifsData" Type="System.String" Scope="User">
       <Value Profile="(Default)">Tarifs</Value>
     </Setting>
-    <Setting Name="NoticeTarifFile" Type="System.String" Scope="User">
-      <Value Profile="(Default)">notice.xml</Value>
+    <Setting Name="ServiceTarifFile" Type="System.String" Scope="User">
+      <Value Profile="(Default)">service.xml</Value>
     </Setting>
     <Setting Name="FirstMailTarifFile" Type="System.String" Scope="User">
       <Value Profile="(Default)">first_mail.xml</Value>

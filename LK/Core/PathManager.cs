@@ -23,7 +23,7 @@ namespace LK.Core
 
 
         // Тарифы
-        public static readonly string NoticeTarifPath = Path.Combine(Tarif, Properties.Settings.Default.NoticeTarifFile);
+        public static readonly string ServiceTarifPath = Path.Combine(Tarif, Properties.Settings.Default.ServiceTarifFile);
         public static readonly string MailTarifPath = Path.Combine(Tarif, Properties.Settings.Default.MailTarifFile);
         public static readonly string ParcelTarifPath = Path.Combine(Tarif, Properties.Settings.Default.ParcelTarifFile);
         public static readonly string FirstMailTarifPath = Path.Combine(Tarif, Properties.Settings.Default.FirstMailTarifFile);

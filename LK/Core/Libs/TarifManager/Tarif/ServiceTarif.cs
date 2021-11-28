@@ -3,9 +3,9 @@ using LK.Core.Libs.TarifManager.Tarif.Base;
 
 namespace LK.Core.Libs.TarifManager.Tarif
 {
-    public class NoticeTarif : INoticeTarif
+    public class ServiceTarif : INoticeTarif
     {
-        public NoticeType Type { get; set; }
+        public ServiceType Type { get; set; }
         public string Name { get; set; }
         public double Rate { get; set; }
         public double RateNds { get; set; }

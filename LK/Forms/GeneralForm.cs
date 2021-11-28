@@ -1007,10 +1007,10 @@ namespace LK.Forms
 
         #region Меню - Тарифы
 
-        private void tarifNoticeMenuItem_Click(object sender, EventArgs e)
+        private void serviceMenuItem_Click(object sender, EventArgs e)
         {
-            NoticeTarifForm noticeTarifForm = new NoticeTarifForm();
-            noticeTarifForm.ShowDialog(this);
+            ServiceTarifForm serviceTarifForm = new ServiceTarifForm();
+            serviceTarifForm.ShowDialog(this);
         }
 
         private void mailMenuItem_Click(object sender, EventArgs e)

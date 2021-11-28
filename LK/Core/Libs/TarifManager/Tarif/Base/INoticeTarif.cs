@@ -4,7 +4,7 @@ namespace LK.Core.Libs.TarifManager.Tarif.Base
 {
     public interface INoticeTarif
     {
-        NoticeType Type { get; set; }
+        ServiceType Type { get; set; }
         string Name { get; set; }
         double Rate { get; set; }
     }

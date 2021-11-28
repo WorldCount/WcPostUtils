@@ -157,13 +157,13 @@ namespace LK.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("notice.xml")]
-        public string NoticeTarifFile {
+        [global::System.Configuration.DefaultSettingValueAttribute("service.xml")]
+        public string ServiceTarifFile {
             get {
-                return ((string)(this["NoticeTarifFile"]));
+                return ((string)(this["ServiceTarifFile"]));
             }
             set {
-                this["NoticeTarifFile"] = value;
+                this["ServiceTarifFile"] = value;
             }
         }
         

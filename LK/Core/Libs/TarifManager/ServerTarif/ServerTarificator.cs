@@ -60,7 +60,7 @@ namespace LK.Core.Libs.TarifManager.ServerTarif
             {
                 foreach (int n in mass)
                 {
-                    string url = $"https://tariff.pochta.ru/tariff/v1/calculate?json&object=2010&weight={n}&from=125993";
+                    string url = $"https://tariff.pochta.ru/tariff/v2/calculate?json&object=2010&weight={n}&from=125993";
 
                     string data = await Request(url);
 
@@ -122,7 +122,7 @@ namespace LK.Core.Libs.TarifManager.ServerTarif
             {
                 foreach (int n in mass)
                 {
-                    string url = $"https://tariff.pochta.ru/tariff/v1/calculate?json&object=3010&weight={n}&from=125993";
+                    string url = $"https://tariff.pochta.ru/tariff/v2/calculate?json&object=3010&weight={n}&from=125993";
 
                     string data = await Request(url);
 
@@ -151,32 +151,37 @@ namespace LK.Core.Libs.TarifManager.ServerTarif
         }
 
         // Тарифы на уведомления
-        public static async Task<List<NoticeTarif>> GetNoticeTarifs()
+        public static async Task<List<ServiceTarif>> GetServiceTarifs()
         {
-            List<NoticeTarif> noticeTarifs = new List<NoticeTarif>();
+            List<ServiceTarif> serviceTarifs = new List<ServiceTarif>();
 
             // Простое уведомление
-            NoticeTarif simpleNoticeTarif = await GetSimpleNoticeTarif();
+            ServiceTarif simpleNoticeTarif = await GetSimpleNoticeTarif();
             // Заказное уведомление
-            NoticeTarif customNoticeTarif = await GetCustomNoticeTarif();
+            ServiceTarif customNoticeTarif = await GetCustomNoticeTarif();
             // Электронное уведомление
-            NoticeTarif electronicNoticeTarif = await GetElectronicNoticeTarif();
+            ServiceTarif electronicNoticeTarif = await GetElectronicNoticeTarif();
             // Международное уведомление
-            NoticeTarif interNoticeTarif = await GetInterNoticeTarif();
+            ServiceTarif interNoticeTarif = await GetInterNoticeTarif();
+            // Опись
+            ServiceTarif inventoryTarif = await GetInventoryTarif();
 
             if (simpleNoticeTarif != null)
-                noticeTarifs.Add(simpleNoticeTarif);
+                serviceTarifs.Add(simpleNoticeTarif);
 
             if(customNoticeTarif != null)
-                noticeTarifs.Add(customNoticeTarif);
+                serviceTarifs.Add(customNoticeTarif);
 
             if(electronicNoticeTarif != null)
-                noticeTarifs.Add(electronicNoticeTarif);
+                serviceTarifs.Add(electronicNoticeTarif);
 
             if(interNoticeTarif != null)
-                noticeTarifs.Add(interNoticeTarif);
+                serviceTarifs.Add(interNoticeTarif);
 
-            return noticeTarifs;
+            if (inventoryTarif != null)
+                serviceTarifs.Add(inventoryTarif);
+
+            return serviceTarifs;
         }
 
         // Тарифы на письма 1-го класса
@@ -312,7 +317,7 @@ namespace LK.Core.Libs.TarifManager.ServerTarif
             if (transType == TransType.Авиа)
                 isAvia = 2;
 
-            string url = $"https://tariff.pochta.ru/tariff/v1/calculate?json&object=2011&from=125993&country=895&weight={mass}&isavia={isAvia}";
+            string url = $"https://tariff.pochta.ru/tariff/v2/calculate?json&object=2011&from=125993&country=895&weight={mass}&isavia={isAvia}";
 
             string data = await Request(url);
 
@@ -338,7 +343,7 @@ namespace LK.Core.Libs.TarifManager.ServerTarif
             if (transType == TransType.Авиа)
                 isAvia = 2;
 
-            string url = $"https://tariff.pochta.ru/tariff/v1/calculate?json&object=3011&from=125993&country=895&weight={mass}&isavia={isAvia}";
+            string url = $"https://tariff.pochta.ru/tariff/v2/calculate?json&object=3011&from=125993&country=895&weight={mass}&isavia={isAvia}";
 
             string data = await Request(url);
 
@@ -364,7 +369,7 @@ namespace LK.Core.Libs.TarifManager.ServerTarif
             if (transType == TransType.Свыше2000Км)
                 index = 672000;
 
-            string url = $"https://tariff.pochta.ru/tariff/v1/calculate?json&object=16010&from=125993&to={index}&weight={mass}";
+            string url = $"https://tariff.pochta.ru/tariff/v2/calculate?json&object=16010&from=125993&to={index}&weight={mass}";
 
             string data = await Request(url);
 
@@ -385,7 +390,7 @@ namespace LK.Core.Libs.TarifManager.ServerTarif
 
         private static async Task<double> GetFirstMailTarifRate(int mass)
         {
-            string url = $"https://tariff.pochta.ru/tariff/v1/calculate?json&object=15010&from=125993&weight={mass}";
+            string url = $"https://tariff.pochta.ru/tariff/v2/calculate?json&object=15010&from=125993&weight={mass}";
             string data = await Request(url);
 
             if (string.IsNullOrEmpty(data))
@@ -403,7 +408,7 @@ namespace LK.Core.Libs.TarifManager.ServerTarif
             }
         }
 
-        private static async Task<NoticeTarif> GetNoticeTarifByServiceId(string url)
+        private static async Task<ServiceTarif> GetServiceTarifByServiceId(string url)
         {
             string data = await Request(url);
 
@@ -412,8 +417,8 @@ namespace LK.Core.Libs.TarifManager.ServerTarif
 
             try
             {
-                NoticeObject noticeObject = JsonConvert.DeserializeObject<NoticeObject>(data);
-                NoticeTarif tarif = new NoticeTarif
+                AddServiceObject noticeObject = JsonConvert.DeserializeObject<AddServiceObject>(data);
+                ServiceTarif tarif = new ServiceTarif
                 {
                     Rate = noticeObject.Service.Pay / 100,
                     RateNds = noticeObject.Service.PayNds / 100
@@ -428,68 +433,83 @@ namespace LK.Core.Libs.TarifManager.ServerTarif
             }
         }
 
-        private static async Task<NoticeTarif> GetSimpleNoticeTarif()
+        private static async Task<ServiceTarif> GetInventoryTarif()
         {
-            string url = $"https://tariff.pochta.ru/tariff/v1/calculate?json&object=2010&weight=20&from=125993&to=125993&service=1";
+            string url = $"https://tariff.pochta.ru/v2/calculate/tariff?json&object=2020&weight=20&sumoc=100&from=125993&to=125993&service=22";
+            ServiceTarif serviceTarif = await GetServiceTarifByServiceId(url);
 
-            NoticeTarif noticeTarif = await GetNoticeTarifByServiceId(url);
-
-            if (noticeTarif != null)
+            if (serviceTarif != null)
             {
-                noticeTarif.Name = "Простое уведомление";
-                noticeTarif.Type = NoticeType.Простое;
-                noticeTarif.Code = 1;
+                serviceTarif.Name = "Опись";
+                serviceTarif.Type = ServiceType.Опись;
+                serviceTarif.Code = 0;
             }
 
-            return noticeTarif;
+            return serviceTarif;
         }
 
-        private static async Task<NoticeTarif> GetCustomNoticeTarif()
+        private static async Task<ServiceTarif> GetSimpleNoticeTarif()
         {
-            string url = $"https://tariff.pochta.ru/tariff/v1/calculate?json&object=2010&weight=20&from=125993&to=125993&service=2";
+            string url = $"https://tariff.pochta.ru/tariff/v2/calculate?json&object=2010&weight=20&from=125993&to=125993&service=1";
 
-            NoticeTarif noticeTarif = await GetNoticeTarifByServiceId(url);
+            ServiceTarif serviceTarif = await GetServiceTarifByServiceId(url);
 
-            if (noticeTarif != null)
+            if (serviceTarif != null)
             {
-                noticeTarif.Name = "Заказное уведомление";
-                noticeTarif.Type = NoticeType.Заказное;
-                noticeTarif.Code = 2;
+                serviceTarif.Name = "Простое уведомление";
+                serviceTarif.Type = ServiceType.ПростоеУв;
+                serviceTarif.Code = 1;
             }
 
-            return noticeTarif;
+            return serviceTarif;
         }
 
-        private static async Task<NoticeTarif> GetElectronicNoticeTarif()
+        private static async Task<ServiceTarif> GetCustomNoticeTarif()
         {
-            string url = $"https://tariff.pochta.ru/tariff/v1/calculate?json&object=2010&weight=20&from=125993&to=125993&service=62";
+            string url = $"https://tariff.pochta.ru/tariff/v2/calculate?json&object=2010&weight=20&from=125993&to=125993&service=2";
 
-            NoticeTarif noticeTarif = await GetNoticeTarifByServiceId(url);
+            ServiceTarif serviceTarif = await GetServiceTarifByServiceId(url);
 
-            if (noticeTarif != null)
+            if (serviceTarif != null)
             {
-                noticeTarif.Name = "Электронное уведомление";
-                noticeTarif.Type = NoticeType.Электронное;
-                noticeTarif.Code = 16384;
+                serviceTarif.Name = "Заказное уведомление";
+                serviceTarif.Type = ServiceType.ЗаказноеУв;
+                serviceTarif.Code = 2;
             }
 
-            return noticeTarif;
+            return serviceTarif;
         }
 
-        private static async Task<NoticeTarif> GetInterNoticeTarif()
+        private static async Task<ServiceTarif> GetElectronicNoticeTarif()
         {
-            string url = $"https://tariff.pochta.ru/tariff/v1/calculate?json&object=2011&from=125993&country=895&weight=20&service=1";
+            string url = $"https://tariff.pochta.ru/tariff/v2/calculate?json&object=2010&weight=20&from=125993&to=125993&service=62";
 
-            NoticeTarif noticeTarif = await GetNoticeTarifByServiceId(url);
+            ServiceTarif serviceTarif = await GetServiceTarifByServiceId(url);
 
-            if (noticeTarif != null)
+            if (serviceTarif != null)
             {
-                noticeTarif.Name = "Международное уведомление";
-                noticeTarif.Type = NoticeType.Международное;
-                noticeTarif.Code = 1;
+                serviceTarif.Name = "Электронное уведомление";
+                serviceTarif.Type = ServiceType.ЭлектронноеУв;
+                serviceTarif.Code = 16384;
             }
 
-            return noticeTarif;
+            return serviceTarif;
+        }
+
+        private static async Task<ServiceTarif> GetInterNoticeTarif()
+        {
+            string url = $"https://tariff.pochta.ru/tariff/v2/calculate?json&object=2011&from=125993&country=895&weight=20&service=1";
+
+            ServiceTarif serviceTarif = await GetServiceTarifByServiceId(url);
+
+            if (serviceTarif != null)
+            {
+                serviceTarif.Name = "Международное уведомление";
+                serviceTarif.Type = ServiceType.МеждународноеУв;
+                serviceTarif.Code = 1;
+            }
+
+            return serviceTarif;
         }
 
         #endregion

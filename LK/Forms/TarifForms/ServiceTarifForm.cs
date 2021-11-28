@@ -9,17 +9,17 @@ using WcApi.Finance;
 
 namespace LK.Forms.TarifForms
 {
-    public partial class NoticeTarifForm : Form
+    public partial class ServiceTarifForm : Form
     {
-        private List<NoticeTarif> _noticeTarifs;
+        private List<ServiceTarif> _serviceTarifs;
         private readonly Nds _nds;
 
-        public NoticeTarifForm()
+        public ServiceTarifForm()
         {
             InitializeComponent();
 
             // ReSharper disable once VirtualMemberCallInConstructor
-            Text = $"{Properties.Settings.Default.AppName}: Тарифы на уведомления";
+            Text = $"{Properties.Settings.Default.AppName}: Тарифы на доп.услуги";
 
             labelMessage.Text = "";
 
@@ -30,16 +30,16 @@ namespace LK.Forms.TarifForms
         private void UpdateData()
         {
             tarifBindingSource.DataSource = null;
-            tarifBindingSource.DataSource = _noticeTarifs;
-            lblCount.Text = $"{_noticeTarifs.Count} шт";
+            tarifBindingSource.DataSource = _serviceTarifs;
+            lblCount.Text = $"{_serviceTarifs.Count} шт";
         }
 
         private async void LoadData()
         {
-            _noticeTarifs = await NoticeTarifManager.LoadAsync();
+            _serviceTarifs = await ServiceTarifManager.LoadAsync();
             tarifBindingSource.DataSource = null;
-            tarifBindingSource.DataSource = _noticeTarifs;
-            lblCount.Text = $"{_noticeTarifs.Count} шт";
+            tarifBindingSource.DataSource = _serviceTarifs;
+            lblCount.Text = $"{_serviceTarifs.Count} шт";
         }
 
         private void SendMessage(string msg)
@@ -74,7 +74,7 @@ namespace LK.Forms.TarifForms
         {
             if (e.ColumnIndex == rateDataGridViewTextBoxColumn.Index && e.RowIndex >= 0)
             {
-                NoticeTarif tarif = GetModelByRowIndex<NoticeTarif>(e.RowIndex);
+                ServiceTarif tarif = GetModelByRowIndex<ServiceTarif>(e.RowIndex);
 
                 if (tarif != null)
                 {
@@ -91,7 +91,7 @@ namespace LK.Forms.TarifForms
 
         private async void btnLoad_Click(object sender, EventArgs e)
         {
-            _noticeTarifs = await NoticeTarifManager.GetFromServer();
+            _serviceTarifs = await ServiceTarifManager.GetFromServer();
             UpdateData();
             SendMessage("Данные загружены с сервера!");
         }
@@ -104,7 +104,7 @@ namespace LK.Forms.TarifForms
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            NoticeTarifManager.Save(_noticeTarifs);
+            ServiceTarifManager.Save(_serviceTarifs);
             DialogResult = DialogResult.OK;
             Close();
         }

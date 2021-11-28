@@ -1,7 +1,7 @@
 ﻿
 namespace LK.Forms.TarifForms
 {
-    partial class NoticeTarifForm
+    partial class ServiceTarifForm
     {
         /// <summary>
         /// Required designer variable.
@@ -35,7 +35,7 @@ namespace LK.Forms.TarifForms
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NoticeTarifForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ServiceTarifForm));
             this.labelInfo = new System.Windows.Forms.Label();
             this.dataGridViewList = new System.Windows.Forms.DataGridView();
             this.nameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,9 +60,9 @@ namespace LK.Forms.TarifForms
             this.labelInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
             this.labelInfo.Location = new System.Drawing.Point(12, 9);
             this.labelInfo.Name = "labelInfo";
-            this.labelInfo.Size = new System.Drawing.Size(239, 28);
+            this.labelInfo.Size = new System.Drawing.Size(215, 28);
             this.labelInfo.TabIndex = 0;
-            this.labelInfo.Text = "Тарифы на уведомления";
+            this.labelInfo.Text = "Тарифы на доп.услуги";
             // 
             // dataGridViewList
             // 
@@ -148,7 +148,7 @@ namespace LK.Forms.TarifForms
             // 
             // tarifBindingSource
             // 
-            this.tarifBindingSource.DataSource = typeof(LK.Core.Libs.TarifManager.Tarif.NoticeTarif);
+            this.tarifBindingSource.DataSource = typeof(LK.Core.Libs.TarifManager.Tarif.ServiceTarif);
             // 
             // labelMessage
             // 
@@ -173,7 +173,10 @@ namespace LK.Forms.TarifForms
             this.btnUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnUpdate.BackColor = System.Drawing.Color.SteelBlue;
             this.btnUpdate.BorderColor = System.Drawing.Color.Silver;
-            this.btnUpdate.BorderRadius = 4;
+            this.btnUpdate.BorderRadius = 4F;
+            this.btnUpdate.BorderSize = 0;
+            this.btnUpdate.DisableBackColor = System.Drawing.Color.DimGray;
+            this.btnUpdate.DisableBorderColor = System.Drawing.Color.Silver;
             this.btnUpdate.FlatAppearance.BorderSize = 0;
             this.btnUpdate.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
             this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -182,6 +185,8 @@ namespace LK.Forms.TarifForms
             this.btnUpdate.Image = global::LK.Properties.Resources.white_restart_24;
             this.btnUpdate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnUpdate.Location = new System.Drawing.Point(12, 393);
+            this.btnUpdate.MouseDownBackColor = System.Drawing.Color.Empty;
+            this.btnUpdate.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.btnUpdate.Size = new System.Drawing.Size(120, 46);
@@ -189,6 +194,7 @@ namespace LK.Forms.TarifForms
             this.btnUpdate.TabStop = false;
             this.btnUpdate.Text = "Обновить";
             this.btnUpdate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnUpdate.TextColor = System.Drawing.Color.White;
             this.btnUpdate.UseVisualStyleBackColor = false;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
@@ -197,7 +203,10 @@ namespace LK.Forms.TarifForms
             this.btnLoad.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnLoad.BackColor = System.Drawing.Color.SlateGray;
             this.btnLoad.BorderColor = System.Drawing.Color.Silver;
-            this.btnLoad.BorderRadius = 4;
+            this.btnLoad.BorderRadius = 4F;
+            this.btnLoad.BorderSize = 0;
+            this.btnLoad.DisableBackColor = System.Drawing.Color.DimGray;
+            this.btnLoad.DisableBorderColor = System.Drawing.Color.Silver;
             this.btnLoad.FlatAppearance.BorderSize = 0;
             this.btnLoad.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
             this.btnLoad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -206,6 +215,8 @@ namespace LK.Forms.TarifForms
             this.btnLoad.Image = global::LK.Properties.Resources.white_synchronize_24;
             this.btnLoad.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnLoad.Location = new System.Drawing.Point(138, 393);
+            this.btnLoad.MouseDownBackColor = System.Drawing.Color.Empty;
+            this.btnLoad.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
             this.btnLoad.Name = "btnLoad";
             this.btnLoad.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.btnLoad.Size = new System.Drawing.Size(180, 46);
@@ -213,6 +224,7 @@ namespace LK.Forms.TarifForms
             this.btnLoad.TabStop = false;
             this.btnLoad.Text = "Загрузить с сервера";
             this.btnLoad.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnLoad.TextColor = System.Drawing.Color.White;
             this.btnLoad.UseVisualStyleBackColor = false;
             this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
             // 
@@ -221,7 +233,10 @@ namespace LK.Forms.TarifForms
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSave.BackColor = System.Drawing.Color.SeaGreen;
             this.btnSave.BorderColor = System.Drawing.Color.Silver;
-            this.btnSave.BorderRadius = 4;
+            this.btnSave.BorderRadius = 4F;
+            this.btnSave.BorderSize = 0;
+            this.btnSave.DisableBackColor = System.Drawing.Color.DimGray;
+            this.btnSave.DisableBorderColor = System.Drawing.Color.Silver;
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -230,6 +245,8 @@ namespace LK.Forms.TarifForms
             this.btnSave.Image = global::LK.Properties.Resources.save_24;
             this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSave.Location = new System.Drawing.Point(672, 393);
+            this.btnSave.MouseDownBackColor = System.Drawing.Color.Empty;
+            this.btnSave.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
             this.btnSave.Name = "btnSave";
             this.btnSave.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.btnSave.Size = new System.Drawing.Size(120, 46);
@@ -237,6 +254,7 @@ namespace LK.Forms.TarifForms
             this.btnSave.TabStop = false;
             this.btnSave.Text = "Сохранить";
             this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSave.TextColor = System.Drawing.Color.White;
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
@@ -245,7 +263,10 @@ namespace LK.Forms.TarifForms
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.BackColor = System.Drawing.Color.Firebrick;
             this.btnCancel.BorderColor = System.Drawing.Color.Silver;
-            this.btnCancel.BorderRadius = 4;
+            this.btnCancel.BorderRadius = 4F;
+            this.btnCancel.BorderSize = 0;
+            this.btnCancel.DisableBackColor = System.Drawing.Color.DimGray;
+            this.btnCancel.DisableBorderColor = System.Drawing.Color.Silver;
             this.btnCancel.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.btnCancel.FlatAppearance.BorderSize = 0;
             this.btnCancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
@@ -255,6 +276,8 @@ namespace LK.Forms.TarifForms
             this.btnCancel.Image = global::LK.Properties.Resources.close_window_24;
             this.btnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCancel.Location = new System.Drawing.Point(546, 393);
+            this.btnCancel.MouseDownBackColor = System.Drawing.Color.Empty;
+            this.btnCancel.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.btnCancel.Size = new System.Drawing.Size(120, 46);
@@ -262,6 +285,7 @@ namespace LK.Forms.TarifForms
             this.btnCancel.TabStop = false;
             this.btnCancel.Text = "Отменить";
             this.btnCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCancel.TextColor = System.Drawing.Color.White;
             this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
@@ -277,7 +301,7 @@ namespace LK.Forms.TarifForms
             this.lblCount.Text = "0 шт";
             this.lblCount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // NoticeTarifForm
+            // ServiceTarifForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -295,7 +319,7 @@ namespace LK.Forms.TarifForms
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MinimumSize = new System.Drawing.Size(820, 420);
-            this.Name = "NoticeTarifForm";
+            this.Name = "ServiceTarifForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "NoticeForm";
             this.Load += new System.EventHandler(this.NoticeForm_Load);
