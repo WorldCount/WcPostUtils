@@ -1573,6 +1573,11 @@ namespace LK.Forms
             WcApi.Keyboard.Keyboard.SetEnglishLanguage();
         }
 
+        private void tbFilter_Enter(object sender, EventArgs e)
+        {
+            WcApi.Keyboard.Keyboard.SetRussianLanguage();
+        }
+
         private void tbFilter_TextChanged(object sender, EventArgs e)
         {
             string q = tbFilter.Text.ToUpper();
