@@ -46,5 +46,50 @@ namespace LK.Core
         {
             return new DateTime(date.Year, date.Month, date.Day, hour, minute, second);
         }
+
+        public static string TrimName(string name)
+        {
+            name = name.ToUpper();
+
+            if (name.Contains("\""))
+                name = name.Replace("\"", "");
+
+            if (name.Contains("ООО"))
+                name = name.Replace("ООО", "");
+
+            if (name.Contains("“"))
+                name = name.Replace("“", "");
+
+            if (name.Contains("”"))
+                name = name.Replace("”", "");
+
+            if (name.Contains("«"))
+                name = name.Replace("«", "");
+
+            if (name.Contains("»"))
+                name = name.Replace("»", "");
+
+            if (name.Contains("АКЦИОНЕРНОЕ ОБЩЕСТВО"))
+                name = name.Replace("АКЦИОНЕРНОЕ ОБЩЕСТВО", "");
+
+            if (name.Contains("ФГБУ"))
+                name = name.Replace("ФГБУ", "");
+
+            if (name.Contains("ФКУ"))
+                name = name.Replace("ФКУ", "");
+
+            if (name.Contains("ФГБОУ"))
+                name = name.Replace("ФГБОУ", "");
+
+            if (name.Contains("ГБОУ"))
+                name = name.Replace("ГБОУ", "");
+
+            name = name.TrimStart(new[] {','});
+            name = name.TrimEnd(new []{','});
+
+            name = name.Trim();
+
+            return name;
+        }
     }
 }

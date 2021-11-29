@@ -18,7 +18,7 @@ namespace LK.Core.Store.Manager
         public Firm GetFirm(string inn, string kpp, string contract, string name)
         {
             return _firms.FirstOrDefault(f => f.Inn == inn && f.Kpp == kpp && f.Contract == contract 
-                                              && string.Equals(f.Name, name, StringComparison.CurrentCultureIgnoreCase));
+                                              && f.Name.ToUpper() == name.ToUpper());
         }
 
         public Firm GetOrCreateFirm(string inn, string kpp, string name, string contract)

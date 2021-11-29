@@ -450,7 +450,14 @@ namespace LK.Forms
                         continue;
                     }
 
+
+
                     Firm firm = _firmManager.GetOrCreateFirm(raw.Inn, raw.Kpp, raw.Name, raw.Contract);
+
+                    if (firm == null)
+                    {
+                        //
+                    }
 
                     firmListManager.Update(raw.Date);
                     FirmList firmList = firmListManager.GetFirmList(firm.Id, raw.Num, raw.ReceptDate);

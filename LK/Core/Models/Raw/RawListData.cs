@@ -16,6 +16,7 @@ namespace LK.Core.Models.Raw
         #region Public
 
         public string Name { get; private set; }
+
         public string Inn { get; private set; }
         public string Kpp { get; private set; }
         public string Contract { get; private set; }
@@ -53,17 +54,18 @@ namespace LK.Core.Models.Raw
         public bool Parse()
         {
 
-            // MessageBox.Show(_cm.FirmName.NumColumn.ToString());
             try
             {
                 Name = _row.GetCell(_cm.FirmName.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).ToString().Trim().ToUpper();
-                TrimName();
+                Name = Utils.TrimName(Name);
 
                 Inn = _row.GetCell(_cm.Inn.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).ToString().Trim();
                 Kpp = _row.GetCell(_cm.Kpp.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).ToString().Trim();
                 Contract = _row.GetCell(_cm.Contract.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).ToString().Trim();
                 Date = _row.GetCell(_cm.ListDate.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).DateCellValue;
                 Num = (int) _row.GetCell(_cm.ListNum.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).NumericCellValue;
+
+                ReceptDate = _row.GetCell(_cm.ReceptDate.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).DateCellValue;
             }
             catch (Exception e)
             {
@@ -90,8 +92,6 @@ namespace LK.Core.Models.Raw
                 AviaRate = _row.GetCell(_cm.AviaRate.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).NumericCellValue / 100;
                 Value = _row.GetCell(_cm.ValueRate.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).NumericCellValue / 100;
                 ValueRate = _row.GetCell(_cm.ValueRate.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).NumericCellValue / 100;
-
-                ReceptDate = _row.GetCell(_cm.ReceptDate.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).DateCellValue;
 
                 string o = _row.GetCell(_cm.Oper.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).StringCellValue.Trim();
                 Operator = o.Contains("  ") ? Regex.Replace(o, "[ ]+", " ") : o;
@@ -128,44 +128,6 @@ namespace LK.Core.Models.Raw
 
 
             return f;
-        }
-
-        private void TrimName()
-        {
-            if(Name.Contains("\""))
-                Name = Name.Replace("\"", "");
-
-            if (Name.Contains("ООО"))
-                Name = Name.Replace("ООО", "");
-
-            if (Name.Contains("“"))
-                Name = Name.Replace("“", "");
-
-            if (Name.Contains("”"))
-                Name = Name.Replace("”", "");
-
-            if (Name.Contains("«"))
-                Name = Name.Replace("«", "");
-
-            if (Name.Contains("»"))
-                Name = Name.Replace("»", "");
-
-            if (Name.Contains("АКЦИОНЕРНОЕ ОБЩЕСТВО"))
-                Name = Name.Replace("АКЦИОНЕРНОЕ ОБЩЕСТВО", "");
-
-            if (Name.Contains("ФГБУ"))
-                Name = Name.Replace("ФГБУ", "");
-
-            if (Name.Contains("ФКУ"))
-                Name = Name.Replace("ФКУ", "");
-
-            if (Name.Contains("ФГБОУ"))
-                Name = Name.Replace("ФГБОУ", "");
-
-            if (Name.Contains("ГБОУ"))
-                Name = Name.Replace("ГБОУ", "");
-
-            Name = Name.Trim();
         }
 
         public void Dispose()

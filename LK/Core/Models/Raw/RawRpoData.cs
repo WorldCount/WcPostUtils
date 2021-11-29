@@ -62,6 +62,8 @@ namespace LK.Core.Models.Raw
                 Inn = _row.GetCell(_cm.Inn.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).ToString().Trim();
                 Kpp = _row.GetCell(_cm.Kpp.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).ToString().Trim();
                 FirmName = _row.GetCell(_cm.FirmName.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).ToString().Trim();
+                FirmName = Utils.TrimName(FirmName);
+
                 Contract = _row.GetCell(_cm.Contract.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).ToString().Trim();
                 ReceptDate = _row.GetCell(_cm.ReceptDate.NumColumn, MissingCellPolicy.RETURN_BLANK_AS_NULL).DateCellValue;
 
