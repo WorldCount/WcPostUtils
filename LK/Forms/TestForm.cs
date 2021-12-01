@@ -61,6 +61,13 @@ namespace LK.Forms
 
                 foreach (string pay in pays)
                 {
+                    richTextBox.AppendText($"{pay}\r\n");
+                }
+
+                richTextBox.AppendText($"\r\n");
+
+                foreach (string pay in pays)
+                {
                     richTextBox.AppendText($"{pay}:\r\n");
                     List<string> firmNames = new List<string>();
 
