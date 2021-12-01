@@ -1132,6 +1132,15 @@ namespace LK.Forms
             }
         }
 
+        private void operReportMenuItem_Click(object sender, EventArgs e)
+        {
+            OperatorReportForm operatorReportForm = new OperatorReportForm();
+            if (operatorReportForm.ShowDialog(this) == DialogResult.OK)
+            {
+
+            }
+        }
+
         #endregion
 
         #region Меню - Файл

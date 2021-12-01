@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using LK.Core.Models.DB;
 using LK.Core.Models.DB.Types;
 using LK.Core.Models.Filters;
+using LK.Core.Models.Reports;
 using LK.Core.Models.Types;
 using LK.Core.Store.Connect;
 using NLog;
@@ -946,13 +947,60 @@ namespace LK.Core.Store
             {
                 var q = db.Table<Rpo>().Where(r => r.ReceptionDate >= startDate && r.ReceptionDate <= endDate && r.StatusId == 2 && r.Value > 0);
 
-                //if (firm.Id != 0)
-                //    q = q.Where(r => r.FirmId == firm.Id);
-
                 List<Rpo> rpos = q.ToList();
 
                 return rpos;
             }
+        }
+
+        public static List<OperStatInfo> GetOperStat(DateTime startDate, DateTime endDate, Firm firm = null)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("select LastName, FirstName, MiddleName, FullName, count(List), sum(List), sum(Rpo) from");
+            sb.Append(" (select o.FullName, o.FirstName, o.LastName, o.MiddleName, f.Name, count(fl.FirmId) as \"List\", sum(fl.CountFact)  as \"RPO\" from Operator o");
+            sb.Append(" left join FirmList fl on o.Id == fl.OperatorId");
+            sb.Append(" left join Firm f on fl.FirmId == f.Id");
+            sb.Append($" where fl.ReceptionDate >= date('{startDate:yyyy-MM-dd}') and fl.ReceptionDate < date('{endDate:yyyy-MM-dd}')");
+
+            if (firm != null && firm.Id != 0)
+                sb.Append($" and fl.FirmId = {firm.Id}");
+
+            sb.Append(" group by 1, f.id)");
+            sb.Append(" group by 1");
+
+            string q = sb.ToString();
+
+            List<OperStatInfo> operStatInfos = new List<OperStatInfo>();
+
+            using (var db = DbConnect.GetManualConnection())
+            {
+                Microsoft.Data.Sqlite.SqliteCommand cmd = new Microsoft.Data.Sqlite.SqliteCommand(q, db);
+
+                db.Open();
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        OperStatInfo s = new OperStatInfo
+                        {
+                            OperLastName = reader.GetString(0),
+                            OperFirstName = reader.GetString(1),
+                            OperMiddleName = reader.GetString(2),
+                            OperFullName = reader.GetString(3),
+                            FirmCount = reader.GetInt32(4),
+                            ListCount = reader.GetInt32(5),
+                            RpoCount = reader.GetInt32(6),
+                        };
+
+                        operStatInfos.Add(s);
+                    }
+                }
+
+                db.Close();
+            }
+
+            return operStatInfos;
         }
 
         #endregion

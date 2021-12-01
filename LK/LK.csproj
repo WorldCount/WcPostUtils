@@ -137,6 +137,7 @@
     <Compile Include="Core\Models\Raw\RawListData.cs" />
     <Compile Include="Core\Models\Raw\RawRpoData.cs" />
     <Compile Include="Core\Models\Reports\FirmListData.cs" />
+    <Compile Include="Core\Models\Reports\OperStatInfo.cs" />
     <Compile Include="Core\Models\Reports\Report.cs" />
     <Compile Include="Core\Models\Reports\ReportData.cs" />
     <Compile Include="Core\Models\Types\ErrorType.cs" />
@@ -279,6 +280,12 @@
     </Compile>
     <Compile Include="Forms\ReportForms\OrgMassReportForm.Designer.cs">
       <DependentUpon>OrgMassReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ReportForms\OperatorReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ReportForms\OperatorReportForm.Designer.cs">
+      <DependentUpon>OperatorReportForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\ReportForms\ValueReportForm.cs">
       <SubType>Form</SubType>
@@ -479,6 +486,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ReportForms\OrgMassReportForm.resx">
       <DependentUpon>OrgMassReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ReportForms\OperatorReportForm.resx">
+      <DependentUpon>OperatorReportForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ReportForms\ValueReportForm.resx">
       <DependentUpon>ValueReportForm.cs</DependentUpon>
