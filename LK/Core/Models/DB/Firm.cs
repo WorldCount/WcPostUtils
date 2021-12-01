@@ -26,6 +26,9 @@ namespace LK.Core.Models.DB
         [OneToMany(CascadeOperations = CascadeOperation.All)]
         public List<FirmList> FirmLists { get; set; } = new List<FirmList>();
 
+        [ManyToOne(CascadeOperations = CascadeOperation.All)]
+        public Group Group { get; set; }
+
         public override string ToString()
         {
             return ShortName;

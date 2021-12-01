@@ -71,6 +71,11 @@ namespace LK.Core.Store
                         db.CreateTable<Rpo>();
                     }
 
+                    if (!TableExist<Group>())
+                    {
+                        db.CreateTable<Group>();
+                    }
+
                     return true;
                 }
             }

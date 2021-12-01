@@ -133,6 +133,7 @@
     <Compile Include="Core\Libs\Widget\SortableBindingList.cs" />
     <Compile Include="Core\Libs\Configs\ConfigFirmField.cs" />
     <Compile Include="Core\Libs\Configs\ConfigRowFirmType.cs" />
+    <Compile Include="Core\Models\DB\Group.cs" />
     <Compile Include="Core\Models\Filters\FirmListFilter.cs" />
     <Compile Include="Core\Models\Raw\RawListData.cs" />
     <Compile Include="Core\Models\Raw\RawRpoData.cs" />
