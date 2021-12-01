@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using LK.Core.Libs.Auth;
 using LK.Core.Libs.Auth.Model;
+using LK.Core.Libs.Auth.Types;
 using WcApi.Cryptography;
 
 namespace LK.Forms
@@ -47,26 +48,38 @@ namespace LK.Forms
 
             if (_token.IsExist())
             {
-                List<string> pays = new List<string>();
+                List<DocPayType> pays = new List<DocPayType>();
+                List<DocStatus> statuses = new List<DocStatus>();
 
                 DateTime start = dateTimePickerStart.Value;
                 DateTime end = dateTimePickerEnd.Value;
 
                 List<ReceiveDoc> docs = await _lkAuth.ReceiveDocResponse(_token, start, end);
+
                 foreach (ReceiveDoc receiveDoc in docs)
                 {
                     if(!pays.Contains(receiveDoc.PaymentMethods))
                         pays.Add(receiveDoc.PaymentMethods);
+
+                    if(!statuses.Contains(receiveDoc.BatchStatus))
+                        statuses.Add(receiveDoc.BatchStatus);
                 }
 
-                foreach (string pay in pays)
+                foreach (DocPayType pay in pays)
                 {
                     richTextBox.AppendText($"{pay}\r\n");
                 }
 
                 richTextBox.AppendText($"\r\n");
 
-                foreach (string pay in pays)
+                foreach (DocStatus status in statuses)
+                {
+                    richTextBox.AppendText($"{status}\r\n");
+                }
+
+                richTextBox.AppendText($"\r\n");
+
+                foreach (DocPayType pay in pays)
                 {
                     richTextBox.AppendText($"{pay}:\r\n");
                     List<string> firmNames = new List<string>();

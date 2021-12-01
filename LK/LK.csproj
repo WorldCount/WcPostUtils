@@ -103,6 +103,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\Libs\Auth\Model\ReceiveDoc.cs" />
+    <Compile Include="Core\Libs\Auth\Types\DocPayType.cs" />
+    <Compile Include="Core\Libs\Auth\Types\DocStatus.cs" />
     <Compile Include="Core\Libs\Configs\ConfigRowRpoType.cs" />
     <Compile Include="Core\Libs\Configs\ConfigRpoField.cs" />
     <Compile Include="Core\Libs\DataReports\ValueReport.cs" />

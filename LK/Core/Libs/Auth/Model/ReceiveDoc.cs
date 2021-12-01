@@ -1,4 +1,6 @@
 ﻿using System;
+using System.ComponentModel;
+using LK.Core.Libs.Auth.Types;
 using Newtonsoft.Json;
 
 namespace LK.Core.Libs.Auth.Model
@@ -53,11 +55,13 @@ namespace LK.Core.Libs.Auth.Model
         [JsonProperty("mail-type")]
         public string MailType { get; set; }
 
-        [JsonProperty("batch-status")]
-        public string BatchStatus { get; set; }
+        [DefaultValue(DocStatus.UNKNOW)]
+        [JsonProperty("batch-status", DefaultValueHandling = DefaultValueHandling.Populate)]
+        public DocStatus BatchStatus { get; set; }
 
-        [JsonProperty("payment-method")]
-        public string PaymentMethods { get; set; }
+        [DefaultValue(DocPayType.UNKNOW)]
+        [JsonProperty("payment-method", DefaultValueHandling = DefaultValueHandling.Populate)]
+        public DocPayType PaymentMethods { get; set; }
 
         [JsonProperty("batch-source")]
         public string BatchSource { get; set; }
