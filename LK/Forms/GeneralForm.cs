@@ -1361,6 +1361,9 @@ namespace LK.Forms
             lblRpoCount.Text = _exportRpos.Count.ToString();
 
             _message.SuccessMessage("Выгрузка завершена!");
+
+            tbFilter.Focus();
+            tbFilter.SelectAll();
         }
 
         private void btnAddRpo_Click(object sender, EventArgs e)
@@ -1391,6 +1394,9 @@ namespace LK.Forms
 
             btnAddRpo.Enabled = true;
             _message.SuccessMessage($"Добавлено {rpos.Count} РПО");
+
+            tbFilter.Focus();
+            tbFilter.SelectAll();
         }
 
         private void btnDelRpo_Click(object sender, EventArgs e)
@@ -1433,6 +1439,9 @@ namespace LK.Forms
 
             btnDelRpo.Enabled = true;
             _message.SuccessMessage($"Удалено {count} РПО");
+
+            tbFilter.Focus();
+            tbFilter.SelectAll();
         }
 
         private void btnClearRpo_Click(object sender, EventArgs e)
