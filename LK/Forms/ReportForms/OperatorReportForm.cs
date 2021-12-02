@@ -50,8 +50,16 @@ namespace LK.Forms.ReportForms
             if (firm != null)
                 document.Title += $": {firm.Name}";
 
-            DateTime date = dateTimePicker.Value;
-            document.Title += $" ({CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(date.Month)} {date.Year})".ToUpper();
+            DateTime s = dateTimePickerIn.Value;
+            DateTime e = dateTimePickerOut.Value;
+
+            string date = "";
+            if(s == e)
+                date = $" ({s:dd-MM-yyyy})";
+            else
+                date = $" (с {s:dd-MM-yyyy} по {e:dd-MM-yyyy})";
+
+            document.Title += date.ToUpper();
 
             return document;
         }
@@ -93,10 +101,6 @@ namespace LK.Forms.ReportForms
             if (e.KeyCode == Keys.P && e.Control)
                 btnPrint.PerformClick();
 
-            // Нажатие Ctrl + F
-            if (e.KeyCode == Keys.F && e.Control)
-                dateTimePicker.Focus();
-
             // Esc
             if (e.KeyCode == Keys.Escape)
                 btnCancel.PerformClick();
@@ -110,10 +114,9 @@ namespace LK.Forms.ReportForms
         {
             dataGridView.Rows.Clear();
 
-            DateTime date = dateTimePicker.Value;
-            int days = DateTime.DaysInMonth(date.Year, date.Month);
-            DateTime first = new DateTime(date.Year, date.Month, 1, 0, 0, 0);
-            DateTime last = new DateTime(date.Year, date.Month, days).AddDays(1);
+            DateTime date = dateTimePickerIn.Value;
+            DateTime first = dateTimePickerIn.Value;
+            DateTime last = dateTimePickerOut.Value.AddDays(1);
 
             Firm firm = (Firm)comboBoxOrgs.SelectedItem ?? new Firm { Inn = "", Name = "ВСЕ", ShortName = "ВСЕ" };
 
@@ -165,6 +168,11 @@ namespace LK.Forms.ReportForms
         private async void ValueReportForm_Load(object sender, EventArgs e)
         {
             await LoadFirms();
+        }
+
+        private void dateTimePickerIn_ValueChanged(object sender, EventArgs e)
+        {
+            dateTimePickerOut.Value = dateTimePickerIn.Value;
         }
     }
 }
