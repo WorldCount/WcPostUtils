@@ -961,8 +961,18 @@ namespace LK.Core.Store
         public static List<OperStatInfo> GetOperStat(DateTime startDate, DateTime endDate, Firm firm = null)
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("select LastName, FirstName, MiddleName, FullName, count(List), sum(List), sum(Rpo) from");
-            sb.Append(" (select o.FullName, o.FirstName, o.LastName, o.MiddleName, f.Name, count(fl.FirmId) as \"List\", sum(fl.CountFact)  as \"RPO\" from Operator o");
+            sb.Append("select FullName, LastName, FirstName, MiddleName, count(FirmId), sum(List), sum(Rpo), sum(ScanCount) from");
+            sb.Append(" (select o.FullName, o.FirstName, o.LastName, o.MiddleName, fl.FirmId, count(fl.Id) as \"List\", sum(fl.CountFact) as \"RPO\",");
+            sb.Append(" sum(case when fl.CountFact < 100 then fl.CountFact");
+            sb.Append(" when fl.CountFact >= 100 and fl.CountFact <= 150 then 20");
+            sb.Append(" when fl.CountFact >= 151 and fl.CountFact <= 280 then 32");
+            sb.Append(" when fl.CountFact >= 281 and fl.CountFact <= 500 then 50");
+            sb.Append(" when fl.CountFact >= 501 and fl.CountFact <= 1200 then 80");
+            sb.Append(" when fl.CountFact >= 1201 and fl.CountFact <= 3200 then 125");
+            sb.Append(" when fl.CountFact >= 3201 and fl.CountFact <= 10000 then 200");
+            sb.Append(" when fl.CountFact >= 10001 and fl.CountFact <= 35000 then 312");
+            sb.Append(" when fl.CountFact >= 35000 then 500 end) as \"ScanCount\"");
+            sb.Append(" from Operator o");
             sb.Append(" left join FirmList fl on o.Id == fl.OperatorId");
             sb.Append(" left join Firm f on fl.FirmId == f.Id");
             sb.Append($" where fl.ReceptionDate >= date('{startDate:yyyy-MM-dd}') and fl.ReceptionDate < date('{endDate:yyyy-MM-dd}')");
@@ -970,7 +980,7 @@ namespace LK.Core.Store
             if (firm != null && firm.Id != 0)
                 sb.Append($" and fl.FirmId = {firm.Id}");
 
-            sb.Append(" group by 1, f.id)");
+            sb.Append(" group by fl.FirmId, o.FullName)");
             sb.Append(" group by 1");
 
             string q = sb.ToString();
@@ -989,13 +999,14 @@ namespace LK.Core.Store
                     {
                         OperStatInfo s = new OperStatInfo
                         {
-                            OperLastName = reader.GetString(0),
-                            OperFirstName = reader.GetString(1),
-                            OperMiddleName = reader.GetString(2),
-                            OperFullName = reader.GetString(3),
+                            OperFullName = reader.GetString(0),
+                            OperLastName = reader.GetString(1),
+                            OperFirstName = reader.GetString(2),
+                            OperMiddleName = reader.GetString(3),
                             FirmCount = reader.GetInt32(4),
                             ListCount = reader.GetInt32(5),
                             RpoCount = reader.GetInt32(6),
+                            ScanCount = reader.GetInt32(7),
                         };
 
                         operStatInfos.Add(s);

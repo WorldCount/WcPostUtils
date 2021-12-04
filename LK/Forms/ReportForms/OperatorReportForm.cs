@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Printing;
-using System.Globalization;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using LK.Core.Libs.DataManagers;
@@ -35,7 +34,7 @@ namespace LK.Forms.ReportForms
 
         public ReportPrintDocument GetPrintDocument()
         {
-            int[] columnWidth = new[] { 320, 140, 140, 140 };
+            int[] columnWidth = new[] { 210, 110, 110, 110, 120, 80 };
             PrintController printController = new StandardPrintController();
             ReportPrintDocument document = new ReportPrintDocument(dataGridView, columnWidth, true)
             {
@@ -55,9 +54,9 @@ namespace LK.Forms.ReportForms
 
             string date = "";
             if(s == e)
-                date = $" ({s:dd-MM-yyyy})";
+                date = $" ({s:dd.MM.yyyy})";
             else
-                date = $" (с {s:dd-MM-yyyy} по {e:dd-MM-yyyy})";
+                date = $" (с {s:dd.MM.yyyy} по {e:dd.MM.yyyy})";
 
             document.Title += date.ToUpper();
 
@@ -125,20 +124,25 @@ namespace LK.Forms.ReportForms
             int firmCount = 0;
             int listCount = 0;
             int rpoCount = 0;
+            int scanCount = 0;
 
             foreach (OperStatInfo stat in _stat)
             {
-                dataGridView.Rows.Add(stat.ShortName, stat.FirmCount, stat.ListCount, stat.RpoCount);
+                dataGridView.Rows.Add(stat.ShortName, stat.FirmCount, stat.ListCount, stat.RpoCount, stat.ScanCount, $"{stat.ScanPercent}%");
 
                 firmCount += stat.FirmCount;
                 listCount += stat.ListCount;
                 rpoCount += stat.RpoCount;
+                scanCount += stat.ScanCount;
             }
 
             if (_stat != null && _stat.Count > 0)
             {
                 AddClearRow(true);
-                dataGridView.Rows.Add("Всего", firmCount, listCount, rpoCount);
+
+                double percent = Math.Round(((double)scanCount / rpoCount) * 100, 0);
+
+                dataGridView.Rows.Add("Всего", firmCount, listCount, rpoCount, scanCount, $"{percent}%");
             }
         }
 
