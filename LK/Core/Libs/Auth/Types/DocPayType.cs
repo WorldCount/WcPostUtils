@@ -4,7 +4,7 @@ namespace LK.Core.Libs.Auth.Types
     public enum DocPayType
     {
         // ReSharper disable once InconsistentNaming
-        UNKNOW = 0,
+        UNKNOW = 1,
         // ReSharper disable once InconsistentNaming
         CASHLESS = 2,
         // ReSharper disable once InconsistentNaming

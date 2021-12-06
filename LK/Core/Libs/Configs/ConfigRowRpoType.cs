@@ -5,6 +5,7 @@ namespace LK.Core.Libs.Configs
     {
         ListDate,
         ListNum,
+        TransType,
         FirmName,
         Inn,
         Kpp,

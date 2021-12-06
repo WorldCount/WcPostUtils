@@ -121,12 +121,6 @@ namespace LK.Core.Libs.Auth
 
             Token token = JsonConvert.DeserializeObject<Token>(tokenString);
 
-            //using (StreamWriter file = File.CreateText(@"C:\1\token.json"))
-            //{
-            //    JsonSerializer serializer = new JsonSerializer();
-            //    serializer.Serialize(file, token);
-            //}
-
             if (token.IsExist())
                 token.TokenEndDate = currentDateTime.AddSeconds(token.ExpiresIn);
 

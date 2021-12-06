@@ -20,6 +20,18 @@ namespace LK.Core.Store
                 db.InsertAll(new object[] { s1, s2, s3, s4 });
         }
 
+        public static void FillPayTypeTable()
+        {
+            PayType p1 = new PayType {Name = "Неизвестно", Type = Libs.Auth.Types.DocPayType.UNKNOW};
+            PayType p2 = new PayType {Name = "Безнал", Type = Libs.Auth.Types.DocPayType.CASHLESS};
+            PayType p3 = new PayType {Name = "Франк", Type = Libs.Auth.Types.DocPayType.POSTAGE_STAMPS_FRANKING};
+            PayType p4 = new PayType {Name = "Марки", Type = Libs.Auth.Types.DocPayType.POSTAGE_STAMPS_SIGNS};
+            PayType p5 = new PayType {Name = "Онлайн", Type = Libs.Auth.Types.DocPayType.POSTAGE_ONLINE_PAYMENT_MARK};
+
+            using (var db = DbConnect.GetConnection())
+                db.InsertAll(new object[] { p1, p2, p3, p4, p5 });
+        }
+
         public static List<MailType> GetMailTypes()
         {
             List<MailType> mailTypes = new List<MailType>();

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using SQLiteNetExtensions.Attributes;
 
 namespace LK.Core.Models.DB
@@ -10,6 +11,7 @@ namespace LK.Core.Models.DB
 
         [SQLite.Ignore] public virtual bool Check { get; set; } = false;
 
+        [SQLite.Indexed]
         public string Name { get; set; }
 
         public string ShortName { get; set; }
@@ -26,8 +28,13 @@ namespace LK.Core.Models.DB
         [OneToMany(CascadeOperations = CascadeOperation.All)]
         public List<FirmList> FirmLists { get; set; } = new List<FirmList>();
 
+        [ForeignKey(typeof(Group)), SQLite.Indexed]
+        public int GroupId { get; set; } = 0;
+
         [ManyToOne(CascadeOperations = CascadeOperation.All)]
         public Group Group { get; set; }
+
+        public DateTime LastListDate { get; set; }
 
         public override string ToString()
         {

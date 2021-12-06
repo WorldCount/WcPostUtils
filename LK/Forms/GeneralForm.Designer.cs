@@ -170,6 +170,7 @@ namespace LK.Forms
             this.massReportMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator18 = new System.Windows.Forms.ToolStripSeparator();
             this.orgReportMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.operReportMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editOrgsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editOperMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -207,7 +208,8 @@ namespace LK.Forms
             this.status = new System.Windows.Forms.StatusStrip();
             this.statusText = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusAuthor = new System.Windows.Forms.ToolStripStatusLabel();
-            this.operReportMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.loadFileMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator27 = new System.Windows.Forms.ToolStripSeparator();
             this.panelFilter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.firmBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.operatorBindingSource)).BeginInit();
@@ -1605,6 +1607,8 @@ namespace LK.Forms
             // fileMenuItem
             // 
             this.fileMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.loadFileMenuItem,
+            this.toolStripSeparator27,
             this.exitMenuItem});
             this.fileMenuItem.Font = new System.Drawing.Font("Segoe UI", 12.22642F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.fileMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(58)))), ((int)(((byte)(66)))));
@@ -1621,7 +1625,7 @@ namespace LK.Forms
             this.exitMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(58)))), ((int)(((byte)(66)))));
             this.exitMenuItem.Image = global::LK.Properties.Resources.Button_Close;
             this.exitMenuItem.Name = "exitMenuItem";
-            this.exitMenuItem.Size = new System.Drawing.Size(129, 28);
+            this.exitMenuItem.Size = new System.Drawing.Size(229, 28);
             this.exitMenuItem.Text = "Выход";
             this.exitMenuItem.Click += new System.EventHandler(this.exitMenuItem_Click);
             // 
@@ -1699,6 +1703,14 @@ namespace LK.Forms
             this.orgReportMenuItem.Name = "orgReportMenuItem";
             this.orgReportMenuItem.Size = new System.Drawing.Size(263, 28);
             this.orgReportMenuItem.Text = "Отчет по организации";
+            // 
+            // operReportMenuItem
+            // 
+            this.operReportMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(58)))), ((int)(((byte)(66)))));
+            this.operReportMenuItem.Name = "operReportMenuItem";
+            this.operReportMenuItem.Size = new System.Drawing.Size(263, 28);
+            this.operReportMenuItem.Text = "Отчет по операторам";
+            this.operReportMenuItem.Click += new System.EventHandler(this.operReportMenuItem_Click);
             // 
             // dataMenuItem
             // 
@@ -2043,13 +2055,19 @@ namespace LK.Forms
             this.statusAuthor.Size = new System.Drawing.Size(114, 17);
             this.statusAuthor.Text = "WorldCount, 2020 ©";
             // 
-            // operReportMenuItem
+            // loadFileMenuItem
             // 
-            this.operReportMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(58)))), ((int)(((byte)(66)))));
-            this.operReportMenuItem.Name = "operReportMenuItem";
-            this.operReportMenuItem.Size = new System.Drawing.Size(263, 28);
-            this.operReportMenuItem.Text = "Отчет по операторам";
-            this.operReportMenuItem.Click += new System.EventHandler(this.operReportMenuItem_Click);
+            this.loadFileMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(58)))), ((int)(((byte)(66)))));
+            this.loadFileMenuItem.Image = global::LK.Properties.Resources.File_Excel;
+            this.loadFileMenuItem.Name = "loadFileMenuItem";
+            this.loadFileMenuItem.Size = new System.Drawing.Size(229, 28);
+            this.loadFileMenuItem.Text = "Загрузка из файла";
+            this.loadFileMenuItem.Click += new System.EventHandler(this.loadFileMenuItem_Click);
+            // 
+            // toolStripSeparator27
+            // 
+            this.toolStripSeparator27.Name = "toolStripSeparator27";
+            this.toolStripSeparator27.Size = new System.Drawing.Size(226, 6);
             // 
             // GeneralForm
             // 
@@ -2275,6 +2293,8 @@ namespace LK.Forms
         private System.Windows.Forms.CheckBox checkBoxAutoLoad;
         private Wc32Api.Widgets.Buttons.WcToggleButton wcToggleButtonClear;
         private System.Windows.Forms.ToolStripMenuItem operReportMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem loadFileMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator27;
     }
 }
 

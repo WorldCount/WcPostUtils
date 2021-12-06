@@ -21,6 +21,7 @@ namespace LK.Core.Store.Manager
 
         public ConfigRpoField ListDate { get; private set; }
         public ConfigRpoField ListNum { get; private set; }
+        public ConfigRpoField TransType { get; private set; }
 
         public ConfigRpoField FirmName { get; private set; }
         public ConfigRpoField Inn { get; private set; }
@@ -82,6 +83,7 @@ namespace LK.Core.Store.Manager
         {
             ListDate.NumColumn -= 1;
             ListNum.NumColumn -= 1;
+            TransType.NumColumn -= 1;
 
             FirmName.NumColumn -= 1;
             Inn.NumColumn -= 1;
@@ -114,6 +116,7 @@ namespace LK.Core.Store.Manager
         {
             ListDate.NumColumn += 1;
             ListNum.NumColumn += 1;
+            TransType.NumColumn += 1;
 
             FirmName.NumColumn += 1;
             Inn.NumColumn += 1;
@@ -146,6 +149,7 @@ namespace LK.Core.Store.Manager
         {
             ListDate = GetConfigRpoFieldByType(ConfigRowRpoType.ListDate);
             ListNum = GetConfigRpoFieldByType(ConfigRowRpoType.ListNum);
+            TransType = GetConfigRpoFieldByType(ConfigRowRpoType.TransType);
 
             FirmName = GetConfigRpoFieldByType(ConfigRowRpoType.FirmName);
             Inn = GetConfigRpoFieldByType(ConfigRowRpoType.Inn);
@@ -197,6 +201,7 @@ namespace LK.Core.Store.Manager
 
             Type = new ConfigRpoField { Desc = "Вид ПО", NumColumn = 8, Type = ConfigRowRpoType.Type };
             Category = new ConfigRpoField { Desc = "Категория ПО", NumColumn = 9, Type = ConfigRowRpoType.Category };
+            TransType = new ConfigRpoField { Desc = "Направление", NumColumn = 10, Type = ConfigRowRpoType.TransType };
 
             MassRate = new ConfigRpoField { Desc = "Сумма весового сбора", NumColumn = 11, Type = ConfigRowRpoType.MassRate };
             NoticeRate = new ConfigRpoField { Desc = "Плата за доп. услуги", NumColumn = 12, Type = ConfigRowRpoType.NoticeRate };
@@ -218,7 +223,7 @@ namespace LK.Core.Store.Manager
             {
                 ListDate, ListNum,
                 FirmName, Inn, Kpp, Contract, Barcode,
-                Type, Category, 
+                Type, Category, TransType,
                 MassRate, NoticeRate, AviaRate, Value, ValueRate,
                 Status, StatusMessage,
                 ReceptDate,
@@ -241,6 +246,7 @@ namespace LK.Core.Store.Manager
 
             Type = null;
             Category = null;
+            TransType = null;
 
             MassRate = null;
             NoticeRate = null;

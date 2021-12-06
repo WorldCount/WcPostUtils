@@ -80,7 +80,7 @@ namespace LK.Forms
         private async void Work()
         {
 
-            int maxInit = 13;
+            int maxInit = 16;
 
             SetInfo("Инициализация БД...", 0, maxInit);
             try
@@ -134,6 +134,7 @@ namespace LK.Forms
                         await Task.Run(DatabaseData.FillNoticeTable);
                     }
 
+
                     if (!Database.TableExist<Firm>())
                     {
                         SetInfo("Создаю таблицу организаций...", 10, maxInit);
@@ -143,16 +144,35 @@ namespace LK.Forms
                         await Task.Run(() => DatabaseData.FillFirmsTable(_firms));
                     }
 
+
                     if (!Database.TableExist<FirmList>())
                     {
                         SetInfo("Создаю таблицу списков организаций...", 12, maxInit);
                         await Task.Run(() => db.CreateTable<FirmList>());
                     }
 
+
                     if (!Database.TableExist<Rpo>())
                     {
                         SetInfo("Создаю таблицу рпо...", 13, maxInit);
                         await Task.Run(() => db.CreateTable<Rpo>());
+                    }
+
+
+                    if (!Database.TableExist<Group>())
+                    {
+                        SetInfo("Создаю таблицу групп...", 14, maxInit);
+                        await Task.Run(() => db.CreateTable<Group>());
+                    }
+
+
+                    if (!Database.TableExist<PayType>())
+                    {
+                        SetInfo("Создаю таблицу групп...", 15, maxInit);
+                        await Task.Run(() => db.CreateTable<PayType>());
+
+                        SetInfo("Заполняю таблицу групп...", 16, maxInit);
+                        await Task.Run(DatabaseData.FillPayTypeTable);
                     }
                 }
             }

@@ -18,7 +18,7 @@ namespace LK.Core.Store
     public static class Database
     {
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
-        private static readonly bool _loggingMode = Properties.Settings.Default.LoggingMode;
+        private static readonly bool LoggingMode = Properties.Settings.Default.LoggingMode;
 
         public static bool CreateDb()
         {
@@ -42,7 +42,6 @@ namespace LK.Core.Store
                         db.CreateTable<MailCategory>();
                         DatabaseData.FillMailCategoryTable();
                     }
-
 
                     if (!TableExist<MailType>())
                     {
@@ -76,12 +75,18 @@ namespace LK.Core.Store
                         db.CreateTable<Group>();
                     }
 
+                    if (!TableExist<PayType>())
+                    {
+                        db.CreateTable<PayType>();
+                        DatabaseData.FillPayTypeTable();
+                    }
+
                     return true;
                 }
             }
             catch (Exception e)
             {
-                if(_loggingMode)
+                if(LoggingMode)
                     Logger.Error(e.Message);
                 return false;
             }
@@ -180,7 +185,7 @@ namespace LK.Core.Store
             }
             catch (Exception e)
             {
-                if (_loggingMode)
+                if (LoggingMode)
                     Logger.Error(e.Message);
                 return new List<Firm>();
             }
@@ -202,7 +207,7 @@ namespace LK.Core.Store
             }
             catch (Exception e)
             {
-                if (_loggingMode)
+                if (LoggingMode)
                     Logger.Error(e.Message);
             }
         }
@@ -255,7 +260,7 @@ namespace LK.Core.Store
             }
             catch (Exception e)
             {
-                if (_loggingMode)
+                if (LoggingMode)
                     Logger.Error(e.Message);
                 return new List<MailType>();
             }
@@ -279,7 +284,7 @@ namespace LK.Core.Store
             }
             catch (Exception e)
             {
-                if (_loggingMode)
+                if (LoggingMode)
                     Logger.Error(e.Message);
                 return new List<MailType>();
             }
@@ -334,7 +339,7 @@ namespace LK.Core.Store
             }
             catch (Exception e)
             {
-                if (_loggingMode)
+                if (LoggingMode)
                     Logger.Error(e.Message);
                 return new List<MailCategory>();
             }
@@ -356,7 +361,7 @@ namespace LK.Core.Store
             }
             catch (Exception e)
             {
-                if (_loggingMode)
+                if (LoggingMode)
                     Logger.Error(e.Message);
                 return new List<MailCategory>();
             }

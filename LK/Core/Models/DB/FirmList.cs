@@ -39,6 +39,7 @@ namespace LK.Core.Models.DB
         public double Value { get; set; }
         public double ValueRate { get; set; }
 
+        [SQLite.Indexed]
         public DateTime ReceptionDate { get; set; }
 
         public string Ops { get; set; }
@@ -47,6 +48,12 @@ namespace LK.Core.Models.DB
 
         [OneToMany(CascadeOperations = CascadeOperation.All)]
         public List<Rpo> Rpos { get; set; } = new List<Rpo>();
+
+        [ForeignKey(typeof(PayType)), SQLite.Indexed]
+        public int PayTypeId { get; set; }
+
+        [ManyToOne(CascadeOperations = CascadeOperation.All)]
+        public PayType PayType { get; set; }
 
         [ForeignKey(typeof(Firm)), SQLite.Indexed]
         public int FirmId { get; set; }

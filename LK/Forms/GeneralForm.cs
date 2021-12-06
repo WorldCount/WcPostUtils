@@ -26,6 +26,7 @@ using LK.Core.Store.ExportFile;
 using LK.Core.Store.Manager;
 using LK.Forms.ConfigForms;
 using LK.Forms.DataForms;
+using LK.Forms.Params;
 using LK.Forms.ReportForms;
 using LK.Forms.TarifForms;
 using LK.Forms.TypeForms;
@@ -1145,6 +1146,25 @@ namespace LK.Forms
 
         #region Меню - Файл
 
+        private void loadFileMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog
+            {
+                Multiselect = false,
+                Filter = @"Отчеты (*.xlsx)|*.xlsx|Все файлы (*.*)|*.*",
+                RestoreDirectory = false
+            };
+
+            if (openFileDialog.ShowDialog(this) == DialogResult.OK)
+            {
+                LoadFileFormParams loadParams = new LoadFileFormParams { FilePath = openFileDialog.FileName, Auth = _auth };
+
+                LoadFileForm loadFileForm = new LoadFileForm(loadParams);
+                loadFileForm.ShowDialog(this);
+                GC.Collect();
+            }
+        }
+
         private void exitMenuItem_Click(object sender, EventArgs e)
         {
             Close();
@@ -1303,8 +1323,15 @@ namespace LK.Forms
             _firmLists = new List<FirmList>();
             UpdateFirmList();
 
-            SyncForm syncForm = new SyncForm(dateTimePickerIn.Value, dateTimePickerOut.Value, _auth);
-            syncForm.ShowDialog(this);
+            LoadFileFormParams loadParams = new LoadFileFormParams
+            {
+                Auth = _auth,
+                StartDate = dateTimePickerIn.Value,
+                EndDate = dateTimePickerOut.Value
+            };
+
+            LoadFileForm loadFileForm = new LoadFileForm(loadParams);
+            loadFileForm.ShowDialog(this);
 
             await LoadAllData();
 
