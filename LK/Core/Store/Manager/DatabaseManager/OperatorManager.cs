@@ -4,7 +4,7 @@ using System.Linq;
 using LK.Core.Models.DB;
 using LK.Core.Store.Connect;
 
-namespace LK.Core.Store.Manager
+namespace LK.Core.Store.Manager.DatabaseManager
 {
     public class OperatorManager : IDisposable
     {

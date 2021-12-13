@@ -5,7 +5,7 @@ using System.Linq;
 using LK.Core.Libs.Configs;
 using WcApi.Xml;
 
-namespace LK.Core.Store.Manager
+namespace LK.Core.Store.Manager.FileManager
 {
     public class ConfigFirmFieldManager : IDisposable
     {

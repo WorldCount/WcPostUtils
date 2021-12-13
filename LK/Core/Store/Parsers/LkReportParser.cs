@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using LK.Core.Models.Raw;
 using LK.Core.Store.Manager;
+using LK.Core.Store.Manager.FileManager;
 using NLog;
 using NPOI.HSSF.UserModel;
 using NPOI.SS.UserModel;
@@ -21,7 +22,7 @@ namespace LK.Core.Store.Parsers
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
         private readonly bool _loggingMode = Properties.Settings.Default.LoggingMode;
 
-        private readonly ConfigRpoFieldManager _configRpoFieldManager;
+        private readonly ConfigDataFieldManager _configDataFieldManager;
 
         #endregion
 
@@ -37,9 +38,9 @@ namespace LK.Core.Store.Parsers
             _ext = fileInfo.Extension;
             _filePath = filePath;
 
-            _configRpoFieldManager = new ConfigRpoFieldManager();
-            _configRpoFieldManager.Load();
-            _configRpoFieldManager.DecrementRowNum();
+            _configDataFieldManager = new ConfigDataFieldManager();
+            _configDataFieldManager.Load();
+            _configDataFieldManager.DecrementRowNum();
         }
 
         public List<RawData> Parse()
@@ -66,7 +67,7 @@ namespace LK.Core.Store.Parsers
 
                 try
                 {
-                    RawData data = new RawData(row, _configRpoFieldManager);
+                    RawData data = new RawData(row, _configDataFieldManager);
                     if (data.Parse() == false)
                     {
                         if(_loggingMode)

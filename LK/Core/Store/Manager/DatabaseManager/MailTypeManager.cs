@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using LK.Core.Models.DB.Types;
 
-namespace LK.Core.Store.Manager
+namespace LK.Core.Store.Manager.DatabaseManager
 {
     public class MailTypeManager : IDisposable
     {

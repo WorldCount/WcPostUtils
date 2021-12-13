@@ -4,7 +4,7 @@ using System.Linq;
 using LK.Core.Models.Reports;
 using WcApi.Xml;
 
-namespace LK.Core.Store.Manager
+namespace LK.Core.Store.Manager.FileManager
 {
     public static class ReportManager
     {

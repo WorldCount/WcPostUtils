@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Windows.Forms;
 using LK.Core.Libs.DataManagers;
 using LK.Core.Libs.DataManagers.Models;
 using LK.Core.Models.DB;
 
-namespace LK.Core.Store.Manager
+namespace LK.Core.Store.Manager.DatabaseManager
 {
     public class FirmListManager : IDisposable
     {
