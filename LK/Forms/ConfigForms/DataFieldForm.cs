@@ -4,28 +4,28 @@ using System.Linq;
 using System.Windows.Forms;
 using LK.Core.Libs.Configs;
 using LK.Core.Libs.Extension;
-using LK.Core.Store.Manager;
+using LK.Core.Store.Manager.FileManager;
 
 namespace LK.Forms.ConfigForms
 {
-    public partial class RpoRowForm : Form
+    public partial class DataFieldForm : Form
     {
-        private readonly ConfigRpoFieldManager _configRpoFieldManager;
+        private readonly ConfigDataFieldManager _configDataFieldManager;
 
-        public RpoRowForm()
+        public DataFieldForm()
         {
             InitializeComponent();
 
             // ReSharper disable once VirtualMemberCallInConstructor
-            Text = $"{Properties.Settings.Default.AppName}: Парсинг РПО";
+            Text = $"{Properties.Settings.Default.AppName}: Парсинг данных";
 
             // Хук двойной буфферизации для таблицы
             WcApi.Win32.DrawingControl.SetDoubleBuffered(dataGridView);
 
             InitTable();
 
-            _configRpoFieldManager = new ConfigRpoFieldManager();
-            _configRpoFieldManager.Load();
+            _configDataFieldManager = new ConfigDataFieldManager();
+            _configDataFieldManager.Load();
 
             UpdateData();
         }
@@ -40,19 +40,19 @@ namespace LK.Forms.ConfigForms
 
         public void SaveData()
         {
-            _configRpoFieldManager.Save();
+            _configDataFieldManager.Save();
         }
 
         public void UpdateData()
         {
-            configRpoFieldBindingSource.DataSource = null;
-            configRpoFieldBindingSource.DataSource = _configRpoFieldManager.ConfigRpoFields;
-            lblCount.Text = $"{_configRpoFieldManager.ConfigRpoFields.Count} шт";
+            dataFieldBindingSource.DataSource = null;
+            dataFieldBindingSource.DataSource = _configDataFieldManager.ConfigDataFields;
+            lblCount.Text = $"{_configDataFieldManager.ConfigDataFields.Count} шт";
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            _configRpoFieldManager.Load();
+            _configDataFieldManager.Load();
             UpdateData();
         }
 
@@ -86,14 +86,14 @@ namespace LK.Forms.ConfigForms
 
             if (!string.IsNullOrEmpty(q))
             {
-                List<ConfigRpoField> filtered = _configRpoFieldManager.ConfigRpoFields.Where(c => c.Desc.Contains(q, StringComparison.OrdinalIgnoreCase) || c.NumColumn.ToString().Contains(q, StringComparison.OrdinalIgnoreCase)).ToList();
-                configRpoFieldBindingSource.DataSource = filtered;
+                List<ConfigDataField> filtered = _configDataFieldManager.ConfigDataFields.Where(c => c.Desc.Contains(q, StringComparison.OrdinalIgnoreCase) || c.NumColumn.ToString().Contains(q, StringComparison.OrdinalIgnoreCase)).ToList();
+                dataFieldBindingSource.DataSource = filtered;
                 lblCount.Text = $"{filtered.Count} шт";
             }
             else
             {
-                configRpoFieldBindingSource.DataSource = _configRpoFieldManager.ConfigRpoFields;
-                lblCount.Text = $"{_configRpoFieldManager.ConfigRpoFields.Count} шт";
+                dataFieldBindingSource.DataSource = _configDataFieldManager.ConfigDataFields;
+                lblCount.Text = $"{_configDataFieldManager.ConfigDataFields.Count} шт";
             }
         }
 

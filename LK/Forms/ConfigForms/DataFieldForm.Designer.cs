@@ -1,6 +1,6 @@
 ﻿namespace LK.Forms.ConfigForms
 {
-    partial class FirmRowForm
+    partial class DataFieldForm
     {
         /// <summary>
         /// Required designer variable.
@@ -32,12 +32,12 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FirmRowForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DataFieldForm));
             this.labelInfo = new System.Windows.Forms.Label();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.descDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.numColumnDataGridViewTextBoxColumn = new WcApi.Win32.Widgets.NumericColumn();
-            this.configFirmFieldBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataFieldBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lblCount = new System.Windows.Forms.Label();
             this.lblFilter = new System.Windows.Forms.Label();
             this.btnSave = new Wc32Api.Widgets.Buttons.WcButton();
@@ -45,7 +45,7 @@
             this.btnUpdate = new Wc32Api.Widgets.Buttons.WcButton();
             this.tbFilter = new LK.Core.Libs.Widget.BorderTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.configFirmFieldBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataFieldBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // labelInfo
@@ -55,9 +55,9 @@
             this.labelInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
             this.labelInfo.Location = new System.Drawing.Point(12, 9);
             this.labelInfo.Name = "labelInfo";
-            this.labelInfo.Size = new System.Drawing.Size(215, 28);
+            this.labelInfo.Size = new System.Drawing.Size(134, 28);
             this.labelInfo.TabIndex = 18;
-            this.labelInfo.Text = "Парсинг организаций";
+            this.labelInfo.Text = "Парсинг РПО";
             // 
             // dataGridView
             // 
@@ -83,7 +83,7 @@
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.descDataGridViewTextBoxColumn,
             this.numColumnDataGridViewTextBoxColumn});
-            this.dataGridView.DataSource = this.configFirmFieldBindingSource;
+            this.dataGridView.DataSource = this.dataFieldBindingSource;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -129,9 +129,9 @@
             this.numColumnDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.numColumnDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
-            // configFirmFieldBindingSource
+            // dataFieldBindingSource
             // 
-            this.configFirmFieldBindingSource.DataSource = typeof(LK.Core.Libs.Configs.ConfigFirmField);
+            this.dataFieldBindingSource.DataSource = typeof(LK.Core.Libs.Configs.ConfigDataField);
             // 
             // lblCount
             // 
@@ -259,7 +259,7 @@
             this.tbFilter.TabIndex = 30;
             this.tbFilter.TextChanged += new System.EventHandler(this.tbFilter_TextChanged);
             // 
-            // FirmRowForm
+            // RpoRowForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -276,7 +276,7 @@
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
-            this.Name = "FirmRowForm";
+            this.Name = "RpoRowForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FirmRowForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -284,7 +284,7 @@
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.FirmsForm_Paint);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FirmsForm_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.configFirmFieldBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataFieldBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -300,7 +300,7 @@
         private System.Windows.Forms.Label lblCount;
         private System.Windows.Forms.Label lblFilter;
         private Core.Libs.Widget.BorderTextBox tbFilter;
-        private System.Windows.Forms.BindingSource configFirmFieldBindingSource;
+        private System.Windows.Forms.BindingSource dataFieldBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn descDataGridViewTextBoxColumn;
         private WcApi.Win32.Widgets.NumericColumn numColumnDataGridViewTextBoxColumn;
     }

@@ -1000,15 +1000,9 @@ namespace LK.Forms
             }
         }
 
-        private void parseOrgConfigMenuItem_Click(object sender, EventArgs e)
+        private void parseDataConfigMenuItem_Click(object sender, EventArgs e)
         {
-            FirmRowForm firmRowForm = new FirmRowForm();
-            firmRowForm.ShowDialog(this);
-        }
-
-        private void parseRpoConfigMenuItem_Click(object sender, EventArgs e)
-        {
-            RpoRowForm rpoRowForm = new RpoRowForm();
+            DataFieldForm rpoRowForm = new DataFieldForm();
             rpoRowForm.ShowDialog(this);
         }
 

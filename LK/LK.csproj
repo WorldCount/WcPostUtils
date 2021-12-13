@@ -112,8 +112,6 @@
     <Compile Include="Core\Libs\Auth\Types\DocPayType.cs" />
     <Compile Include="Core\Libs\Auth\Types\DocStatus.cs" />
     <Compile Include="Core\Libs\Configs\ConfigDataField.cs" />
-    <Compile Include="Core\Libs\Configs\ConfigRowRpoType.cs" />
-    <Compile Include="Core\Libs\Configs\ConfigRpoField.cs" />
     <Compile Include="Core\Libs\Configs\ConfigDataFieldType.cs" />
     <Compile Include="Core\Libs\DataReports\ValueReport.cs" />
     <Compile Include="Core\Libs\Extension\StringExtensions.cs" />
@@ -139,14 +137,10 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Core\Libs\Widget\SortableBindingList.cs" />
-    <Compile Include="Core\Libs\Configs\ConfigFirmField.cs" />
-    <Compile Include="Core\Libs\Configs\ConfigRowFirmType.cs" />
     <Compile Include="Core\Models\DB\Group.cs" />
     <Compile Include="Core\Models\DB\PayType.cs" />
     <Compile Include="Core\Models\Filters\FirmListFilter.cs" />
     <Compile Include="Core\Models\Raw\RawData.cs" />
-    <Compile Include="Core\Models\Raw\RawListData.cs" />
-    <Compile Include="Core\Models\Raw\RawRpoData.cs" />
     <Compile Include="Core\Models\Reports\FirmListData.cs" />
     <Compile Include="Core\Models\Reports\OperStatInfo.cs" />
     <Compile Include="Core\Models\Reports\Report.cs" />
@@ -203,8 +197,6 @@
     <Compile Include="Core\PathManager.cs" />
     <Compile Include="Core\Store\ExportFile\ExportFileString.cs" />
     <Compile Include="Core\Store\ExportFile\ExportPartPostFile.cs" />
-    <Compile Include="Core\Store\Manager\FileManager\ConfigFirmFieldManager.cs" />
-    <Compile Include="Core\Store\Manager\FileManager\ConfigRpoFieldManager.cs" />
     <Compile Include="Core\Store\Manager\FileManager\ConfigDataFieldManager.cs" />
     <Compile Include="Core\Store\Manager\DatabaseManager\FirmListManager.cs" />
     <Compile Include="Core\Store\Manager\DatabaseManager\FirmManager.cs" />
@@ -222,17 +214,11 @@
     <Compile Include="Forms\ConfigForms\AuthForm.Designer.cs">
       <DependentUpon>AuthForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ConfigForms\RpoRowForm.cs">
+    <Compile Include="Forms\ConfigForms\DataFieldForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\ConfigForms\RpoRowForm.Designer.cs">
-      <DependentUpon>RpoRowForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\ConfigForms\FirmRowForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\ConfigForms\FirmRowForm.Designer.cs">
-      <DependentUpon>FirmRowForm.cs</DependentUpon>
+    <Compile Include="Forms\ConfigForms\DataFieldForm.Designer.cs">
+      <DependentUpon>DataFieldForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\ConfigForms\PrinterForm.cs">
       <SubType>Form</SubType>
@@ -312,18 +298,6 @@
     </Compile>
     <Compile Include="Forms\ReportForms\ValueReportForm.Designer.cs">
       <DependentUpon>ValueReportForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\LoadFormOld.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\LoadFormOld.Designer.cs">
-      <DependentUpon>LoadFormOld.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\SyncForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\SyncForm.Designer.cs">
-      <DependentUpon>SyncForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\GeneralForm.cs">
       <SubType>Form</SubType>
@@ -477,11 +451,8 @@
     <EmbeddedResource Include="Forms\ConfigForms\AuthForm.resx">
       <DependentUpon>AuthForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ConfigForms\RpoRowForm.resx">
-      <DependentUpon>RpoRowForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ConfigForms\FirmRowForm.resx">
-      <DependentUpon>FirmRowForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\ConfigForms\DataFieldForm.resx">
+      <DependentUpon>DataFieldForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ConfigForms\PrinterForm.resx">
       <DependentUpon>PrinterForm.cs</DependentUpon>
@@ -521,12 +492,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ReportForms\ValueReportForm.resx">
       <DependentUpon>ValueReportForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\LoadFormOld.resx">
-      <DependentUpon>LoadFormOld.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\SyncForm.resx">
-      <DependentUpon>SyncForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\GeneralForm.resx">
       <DependentUpon>GeneralForm.cs</DependentUpon>
