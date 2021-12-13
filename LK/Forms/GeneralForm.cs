@@ -217,8 +217,11 @@ namespace LK.Forms
 
         private void CreateDb()
         {
-            NewDbForm newDbForm = new NewDbForm();
-            newDbForm.ShowDialog();
+            if (!File.Exists(PathManager.DbPath))
+            {
+                NewDbForm newDbForm = new NewDbForm();
+                newDbForm.ShowDialog();
+            }
         }
 
         private void GeneralForm_FormClosing(object sender, FormClosingEventArgs e)

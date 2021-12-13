@@ -284,7 +284,7 @@ namespace LK.Forms
 
                 if (firm == null)
                 {
-                    firm = _firmManager.GetOrCreateFirm(d.Inn, d.Kpp, d.FirmName, d.Contract);
+                    firm = _firmManager.GetOrCreateFirm(d.Inn, d.Kpp, d.FirmName, d.Contract, d.ReceptDate);
                 }
 
                 if(firmList != null)

@@ -18,8 +18,6 @@ namespace LK.Core
         public static readonly string DataColorPath = Path.Combine(DataDir, Properties.Settings.Default.DataColorFile);
         public static readonly string ConfigPath = Path.Combine(DataDir, Properties.Settings.Default.ConfigFile);
 
-        public static readonly string FirmsFieldsPath = Path.Combine(DataDir, Properties.Settings.Default.FirmFieldsFile);
-        public static readonly string RposFieldsPath = Path.Combine(DataDir, Properties.Settings.Default.RpoFieldsFile);
         public static readonly string DataFieldsPath = Path.Combine(DataDir, Properties.Settings.Default.DataFieldsFile);
 
 

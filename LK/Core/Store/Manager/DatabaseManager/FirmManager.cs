@@ -21,13 +21,17 @@ namespace LK.Core.Store.Manager.DatabaseManager
                                               && f.Name.ToUpper() == name.ToUpper());
         }
 
-        public Firm GetOrCreateFirm(string inn, string kpp, string name, string contract)
+        public Firm GetOrCreateFirm(string inn, string kpp, string name, string contract, DateTime lastDateReceiveFile)
         {
             Firm firm = GetFirm(inn, kpp, contract, name);
 
-            if (firm != null && firm.GroupId == 0)
+            if (firm != null)
             {
-                firm.GroupId = GetGroup(firm.Inn, firm.Kpp, firm.ShortName);
+                if(firm.GroupId == 0)
+                    firm.GroupId = GetGroup(firm.Inn, firm.Kpp, firm.ShortName);
+
+                if (firm.LastListDate < lastDateReceiveFile)
+                    firm.LastListDate = lastDateReceiveFile;
 
                 Database.UpdateFirm(firm);
                 _firms = Database.GetFirms();
@@ -35,8 +39,17 @@ namespace LK.Core.Store.Manager.DatabaseManager
 
             if (firm == null)
             {
-                firm = new Firm {Inn = inn, Kpp = kpp, Name = name, ShortName = name, Contract = contract};
-                firm.GroupId = GetGroup(inn, kpp, name);
+                firm = new Firm
+                {
+                    Inn = inn,
+                    Kpp = kpp,
+                    Name = name,
+                    ShortName = name,
+                    Contract = contract,
+                    GroupId = GetGroup(inn, kpp, name),
+                    LastListDate = lastDateReceiveFile
+                };
+
                 using (var db = DbConnect.GetConnection())
                 {
                     db.Insert(firm);
