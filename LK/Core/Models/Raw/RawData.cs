@@ -3,6 +3,7 @@ using System.Text.RegularExpressions;
 using LK.Core.Models.DB;
 using LK.Core.Models.Types;
 using LK.Core.Store.Manager;
+using LK.Core.Store.Manager.FileManager;
 using NPOI.SS.UserModel;
 
 namespace LK.Core.Models.Raw
@@ -12,8 +13,8 @@ namespace LK.Core.Models.Raw
         #region Private Fields
 
         private IRow _row;
-        private ConfigRpoFieldManager _cm;
-        public Exception Exception { get; set; }
+        private readonly ConfigDataFieldManager _cm;
+        public Exception Exception { get; private set; }
 
         #endregion
 
@@ -55,7 +56,7 @@ namespace LK.Core.Models.Raw
 
         #endregion
 
-        public RawData(IRow row, ConfigRpoFieldManager cm)
+        public RawData(IRow row, ConfigDataFieldManager cm)
         {
             _row = row;
             _cm = cm;

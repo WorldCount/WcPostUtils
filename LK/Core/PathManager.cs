@@ -20,6 +20,7 @@ namespace LK.Core
 
         public static readonly string FirmsFieldsPath = Path.Combine(DataDir, Properties.Settings.Default.FirmFieldsFile);
         public static readonly string RposFieldsPath = Path.Combine(DataDir, Properties.Settings.Default.RpoFieldsFile);
+        public static readonly string DataFieldsPath = Path.Combine(DataDir, Properties.Settings.Default.DataFieldsFile);
 
 
         // Тарифы
