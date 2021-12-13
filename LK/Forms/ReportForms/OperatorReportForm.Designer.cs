@@ -37,6 +37,12 @@
             this.comboBoxOrgs = new System.Windows.Forms.ComboBox();
             this.firmBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.OperColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FirmCountColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ListCountColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RpoCountColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ScanCountColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ScanPercentColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnLoad = new Wc32Api.Widgets.Buttons.WcButton();
             this.labelCopy = new System.Windows.Forms.Label();
             this.numericUpDownCopy = new System.Windows.Forms.NumericUpDown();
@@ -46,12 +52,6 @@
             this.lblDateIn = new System.Windows.Forms.Label();
             this.dateTimePickerOut = new System.Windows.Forms.DateTimePicker();
             this.dateTimePickerIn = new System.Windows.Forms.DateTimePicker();
-            this.OperColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FirmCountColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ListCountColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RpoCountColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ScanCountColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ScanPercentColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.firmBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCopy)).BeginInit();
@@ -150,6 +150,48 @@
             this.dataGridView.Size = new System.Drawing.Size(933, 303);
             this.dataGridView.TabIndex = 17;
             this.dataGridView.TabStop = false;
+            // 
+            // OperColumn
+            // 
+            this.OperColumn.HeaderText = "Оператор";
+            this.OperColumn.MinimumWidth = 6;
+            this.OperColumn.Name = "OperColumn";
+            this.OperColumn.ReadOnly = true;
+            this.OperColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // FirmCountColumn
+            // 
+            this.FirmCountColumn.HeaderText = "Организаций";
+            this.FirmCountColumn.Name = "FirmCountColumn";
+            this.FirmCountColumn.ReadOnly = true;
+            this.FirmCountColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // ListCountColumn
+            // 
+            this.ListCountColumn.HeaderText = "Списков";
+            this.ListCountColumn.Name = "ListCountColumn";
+            this.ListCountColumn.ReadOnly = true;
+            this.ListCountColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // RpoCountColumn
+            // 
+            this.RpoCountColumn.HeaderText = "Отправлений";
+            this.RpoCountColumn.MinimumWidth = 6;
+            this.RpoCountColumn.Name = "RpoCountColumn";
+            this.RpoCountColumn.ReadOnly = true;
+            this.RpoCountColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // ScanCountColumn
+            // 
+            this.ScanCountColumn.HeaderText = "Отсканировано";
+            this.ScanCountColumn.Name = "ScanCountColumn";
+            this.ScanCountColumn.ReadOnly = true;
+            // 
+            // ScanPercentColumn
+            // 
+            this.ScanPercentColumn.HeaderText = "Процент";
+            this.ScanPercentColumn.Name = "ScanPercentColumn";
+            this.ScanPercentColumn.ReadOnly = true;
             // 
             // btnLoad
             // 
@@ -314,48 +356,6 @@
             this.dateTimePickerIn.Size = new System.Drawing.Size(200, 29);
             this.dateTimePickerIn.TabIndex = 23;
             this.dateTimePickerIn.ValueChanged += new System.EventHandler(this.dateTimePickerIn_ValueChanged);
-            // 
-            // OperColumn
-            // 
-            this.OperColumn.HeaderText = "Оператор";
-            this.OperColumn.MinimumWidth = 6;
-            this.OperColumn.Name = "OperColumn";
-            this.OperColumn.ReadOnly = true;
-            this.OperColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // FirmCountColumn
-            // 
-            this.FirmCountColumn.HeaderText = "Организаций";
-            this.FirmCountColumn.Name = "FirmCountColumn";
-            this.FirmCountColumn.ReadOnly = true;
-            this.FirmCountColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // ListCountColumn
-            // 
-            this.ListCountColumn.HeaderText = "Списков";
-            this.ListCountColumn.Name = "ListCountColumn";
-            this.ListCountColumn.ReadOnly = true;
-            this.ListCountColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // RpoCountColumn
-            // 
-            this.RpoCountColumn.HeaderText = "Отправлений";
-            this.RpoCountColumn.MinimumWidth = 6;
-            this.RpoCountColumn.Name = "RpoCountColumn";
-            this.RpoCountColumn.ReadOnly = true;
-            this.RpoCountColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // ScanCountColumn
-            // 
-            this.ScanCountColumn.HeaderText = "Отсканировано";
-            this.ScanCountColumn.Name = "ScanCountColumn";
-            this.ScanCountColumn.ReadOnly = true;
-            // 
-            // ScanPercentColumn
-            // 
-            this.ScanPercentColumn.HeaderText = "Процент";
-            this.ScanPercentColumn.Name = "ScanPercentColumn";
-            this.ScanPercentColumn.ReadOnly = true;
             // 
             // OperatorReportForm
             // 

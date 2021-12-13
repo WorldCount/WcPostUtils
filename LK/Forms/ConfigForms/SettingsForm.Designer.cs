@@ -56,12 +56,12 @@
             this.labelDebug = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBoxExport = new System.Windows.Forms.GroupBox();
+            this.tbExportPathNew = new System.Windows.Forms.TextBox();
             this.btnExportDir = new System.Windows.Forms.Button();
             this.labelExportPath = new System.Windows.Forms.Label();
             this.panelButton = new System.Windows.Forms.Panel();
             this.btnSave = new Wc32Api.Widgets.Buttons.WcButton();
             this.btnCancel = new Wc32Api.Widgets.Buttons.WcButton();
-            this.tbExportPathNew = new System.Windows.Forms.TextBox();
             this.tabControl.SuspendLayout();
             this.tabPagePay.SuspendLayout();
             this.groupBoxPay.SuspendLayout();
@@ -110,7 +110,7 @@
             this.tbStep.BackColor = System.Drawing.Color.White;
             this.tbStep.Font = new System.Drawing.Font("Consolas", 12.22642F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbStep.ForeColor = System.Drawing.Color.DimGray;
-            this.tbStep.Location = new System.Drawing.Point(18, 222);
+            this.tbStep.Location = new System.Drawing.Point(18, 215);
             this.tbStep.MaxLength = 5;
             this.tbStep.Name = "tbStep";
             this.tbStep.Size = new System.Drawing.Size(76, 27);
@@ -123,7 +123,7 @@
             this.labelStep.AutoSize = true;
             this.labelStep.Font = new System.Drawing.Font("Segoe UI", 10.86792F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelStep.ForeColor = System.Drawing.Color.DimGray;
-            this.labelStep.Location = new System.Drawing.Point(14, 199);
+            this.labelStep.Location = new System.Drawing.Point(14, 192);
             this.labelStep.Name = "labelStep";
             this.labelStep.Size = new System.Drawing.Size(263, 20);
             this.labelStep.TabIndex = 3;
@@ -142,7 +142,7 @@
             this.groupBoxPay.ForeColor = System.Drawing.Color.DimGray;
             this.groupBoxPay.Location = new System.Drawing.Point(8, 6);
             this.groupBoxPay.Name = "groupBoxPay";
-            this.groupBoxPay.Size = new System.Drawing.Size(470, 174);
+            this.groupBoxPay.Size = new System.Drawing.Size(470, 167);
             this.groupBoxPay.TabIndex = 0;
             this.groupBoxPay.TabStop = false;
             this.groupBoxPay.Text = "Плата";
@@ -273,10 +273,10 @@
             // 
             this.tabPageParcel.Controls.Add(this.groupBoxParcel);
             this.tabPageParcel.ImageIndex = 2;
-            this.tabPageParcel.Location = new System.Drawing.Point(4, 29);
+            this.tabPageParcel.Location = new System.Drawing.Point(4, 22);
             this.tabPageParcel.Name = "tabPageParcel";
             this.tabPageParcel.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageParcel.Size = new System.Drawing.Size(486, 370);
+            this.tabPageParcel.Size = new System.Drawing.Size(486, 377);
             this.tabPageParcel.TabIndex = 2;
             this.tabPageParcel.Text = "Бандероли";
             this.tabPageParcel.UseVisualStyleBackColor = true;
@@ -348,10 +348,10 @@
             // tabPageDebug
             // 
             this.tabPageDebug.Controls.Add(this.groupBoxDebug);
-            this.tabPageDebug.Location = new System.Drawing.Point(4, 29);
+            this.tabPageDebug.Location = new System.Drawing.Point(4, 22);
             this.tabPageDebug.Name = "tabPageDebug";
             this.tabPageDebug.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageDebug.Size = new System.Drawing.Size(486, 370);
+            this.tabPageDebug.Size = new System.Drawing.Size(486, 377);
             this.tabPageDebug.TabIndex = 3;
             this.tabPageDebug.Text = "Отладка";
             this.tabPageDebug.UseVisualStyleBackColor = true;
@@ -397,9 +397,9 @@
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.groupBoxExport);
-            this.tabPage1.Location = new System.Drawing.Point(4, 29);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(486, 370);
+            this.tabPage1.Size = new System.Drawing.Size(486, 377);
             this.tabPage1.TabIndex = 4;
             this.tabPage1.Text = "Экспорт";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -420,6 +420,15 @@
             this.groupBoxExport.TabIndex = 2;
             this.groupBoxExport.TabStop = false;
             this.groupBoxExport.Text = "Выгрузка файла";
+            // 
+            // tbExportPathNew
+            // 
+            this.tbExportPathNew.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbExportPathNew.ForeColor = System.Drawing.Color.DimGray;
+            this.tbExportPathNew.Location = new System.Drawing.Point(10, 61);
+            this.tbExportPathNew.Name = "tbExportPathNew";
+            this.tbExportPathNew.Size = new System.Drawing.Size(408, 26);
+            this.tbExportPathNew.TabIndex = 10;
             // 
             // btnExportDir
             // 
@@ -519,15 +528,6 @@
             this.btnCancel.TextColor = System.Drawing.Color.White;
             this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            // 
-            // tbExportPathNew
-            // 
-            this.tbExportPathNew.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbExportPathNew.ForeColor = System.Drawing.Color.DimGray;
-            this.tbExportPathNew.Location = new System.Drawing.Point(10, 61);
-            this.tbExportPathNew.Name = "tbExportPathNew";
-            this.tbExportPathNew.Size = new System.Drawing.Size(408, 26);
-            this.tbExportPathNew.TabIndex = 10;
             // 
             // SettingsForm
             // 

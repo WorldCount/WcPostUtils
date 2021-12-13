@@ -260,7 +260,10 @@
             this.btnPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPrint.BackColor = System.Drawing.Color.SeaGreen;
             this.btnPrint.BorderColor = System.Drawing.Color.Silver;
-            this.btnPrint.BorderRadius = 4;
+            this.btnPrint.BorderRadius = 4F;
+            this.btnPrint.BorderSize = 0;
+            this.btnPrint.DisableBackColor = System.Drawing.Color.DimGray;
+            this.btnPrint.DisableBorderColor = System.Drawing.Color.Silver;
             this.btnPrint.FlatAppearance.BorderSize = 0;
             this.btnPrint.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
             this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -269,12 +272,15 @@
             this.btnPrint.Image = global::LK.Properties.Resources.Printer;
             this.btnPrint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnPrint.Location = new System.Drawing.Point(546, 403);
+            this.btnPrint.MouseDownBackColor = System.Drawing.Color.Empty;
+            this.btnPrint.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.btnPrint.Size = new System.Drawing.Size(120, 46);
             this.btnPrint.TabIndex = 28;
             this.btnPrint.Text = "Печать";
             this.btnPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnPrint.TextColor = System.Drawing.Color.White;
             this.btnPrint.UseVisualStyleBackColor = false;
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
@@ -283,7 +289,10 @@
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnClose.BackColor = System.Drawing.Color.Firebrick;
             this.btnClose.BorderColor = System.Drawing.Color.Silver;
-            this.btnClose.BorderRadius = 4;
+            this.btnClose.BorderRadius = 4F;
+            this.btnClose.BorderSize = 0;
+            this.btnClose.DisableBackColor = System.Drawing.Color.DimGray;
+            this.btnClose.DisableBorderColor = System.Drawing.Color.Silver;
             this.btnClose.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
@@ -293,12 +302,15 @@
             this.btnClose.Image = global::LK.Properties.Resources.close_window_24;
             this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnClose.Location = new System.Drawing.Point(672, 403);
+            this.btnClose.MouseDownBackColor = System.Drawing.Color.Empty;
+            this.btnClose.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(58)))));
             this.btnClose.Name = "btnClose";
             this.btnClose.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.btnClose.Size = new System.Drawing.Size(120, 46);
             this.btnClose.TabIndex = 27;
             this.btnClose.Text = "Закрыть";
             this.btnClose.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnClose.TextColor = System.Drawing.Color.White;
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
