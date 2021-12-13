@@ -131,6 +131,8 @@ namespace LK.Core.Models.DB
             {
                 Count = 0;
                 CountFact = 0;
+                CountReturn = 0;
+                CountMiss = 0;
 
                 Value = 0;
 
@@ -155,6 +157,12 @@ namespace LK.Core.Models.DB
                         ValueRate += rpo.ValueRate;
                         MassRate += rpo.MassRate;
                     }
+
+                    if (rpo.StatusId == 3)
+                        CountReturn += 1;
+
+                    if (rpo.StatusId == 4)
+                        CountMiss += 1;
                 }
 
                 MassRateNds = ndsCalc.Plus(MassRate);
