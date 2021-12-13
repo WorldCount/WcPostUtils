@@ -203,7 +203,7 @@ namespace LK.Forms
             // Параметры запуска приложения
             await Task.Run(CheckArgs);
 
-            await CreateDb();
+            CreateDb();
 
             // Загрузка данных для фильтров
             await LoadAllData();
@@ -215,16 +215,10 @@ namespace LK.Forms
             LoadReportMenu();
         }
 
-        private static async Task CreateDb()
+        private void CreateDb()
         {
-            await Task.Run(() =>
-            {
-                if (!File.Exists(PathManager.DbPath))
-                {
-                    CreateDbForm createDbForm = new CreateDbForm();
-                    createDbForm.ShowDialog();
-                }
-            });
+            NewDbForm newDbForm = new NewDbForm();
+            newDbForm.ShowDialog();
         }
 
         private void GeneralForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -921,8 +915,11 @@ namespace LK.Forms
 
         private async void createDbMenuItem_Click(object sender, EventArgs e)
         {
-            CreateDbForm createDbForm = new CreateDbForm();
-            createDbForm.ShowDialog(this);
+            //CreateDbForm createDbForm = new CreateDbForm();
+            //createDbForm.ShowDialog(this);
+
+            NewDbForm newDbForm = new NewDbForm();
+            newDbForm.ShowDialog(this);
 
             await LoadAllData();
         }

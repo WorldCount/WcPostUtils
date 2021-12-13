@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using LK.Core;
@@ -13,31 +14,43 @@ using SQLite;
 
 namespace LK.Forms
 {
-    public partial class CreateDbForm : Form
+    public partial class NewDbForm : Form
     {
+        #region System
+
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn(int nLeftRect, int nTopRect, int nRightRect,
+            int nBottomRect, int nWidthEllipse, int nHeigthEllipse);
+
+        #endregion
+
+        #region Private Fields
+
+        #region Логирование
+
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
         private readonly bool _loggingMode = Properties.Settings.Default.LoggingMode;
 
-        private readonly Color _windowBorderColor = Color.Teal;
+        #endregion
+
+        #region Данные
 
         private readonly List<Firm> _firms;
+        private readonly List<Group> _groups;
 
-        public int WindowBorderWidth { get; set; } = 2;
-        public ButtonBorderStyle WindowsBorderStyle { get; set; } = ButtonBorderStyle.Dashed;
+        #endregion
 
-        public CreateDbForm()
+        #endregion
+
+
+        public NewDbForm()
         {
             InitializeComponent();
 
-            labelDate.Text = $"Делаю копию организаций";
-            labelInfo.Text = "";
-            coloredProgressBar.Value = 0;
+            Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 5, 5));
 
             _firms = Database.GetFirms();
-
-            labelDate.Text = $"Создание БД";
-            labelInfo.Text = "";
-            coloredProgressBar.Value = 0;
+            _groups = Database.GetGroups();
 
             try
             {
@@ -46,46 +59,22 @@ namespace LK.Forms
             }
             catch (Exception e)
             {
-                if(_loggingMode)
+                if (_loggingMode)
                     Logger.Error($"Ошибка при удалении БД: {e.Message}");
             }
-            
+
         }
 
-        private void SyncForm_Load(object sender, EventArgs e)
-        {
-            Work();
-        }
-
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            base.OnPaint(e);
-            ControlPaint.DrawBorder(e.Graphics, ClientRectangle,
-                _windowBorderColor, WindowBorderWidth, WindowsBorderStyle,
-                _windowBorderColor, WindowBorderWidth, WindowsBorderStyle,
-                _windowBorderColor, WindowBorderWidth, WindowsBorderStyle,
-                _windowBorderColor, WindowBorderWidth, WindowsBorderStyle);
-        }
-
-        private void SetInfo(string text, int value, int max = 100)
-        {
-            labelInfo.Text = text;
-            labelInfo.Refresh();
-
-            coloredProgressBar.Maximum = max;
-            coloredProgressBar.Value = value;
-            coloredProgressBar.Refresh();
-        }
+        #region Private Methods
 
         private async void Work()
         {
 
-            int maxInit = 16;
-
+            int maxInit = 17;
             SetInfo("Инициализация БД...", 0, maxInit);
+
             try
             {
-
                 using (var db = new SQLiteConnection(PathManager.DbPath))
                 {
                     if (!Database.TableExist<Operator>())
@@ -163,26 +152,76 @@ namespace LK.Forms
                     {
                         SetInfo("Создаю таблицу групп...", 14, maxInit);
                         await Task.Run(() => db.CreateTable<Group>());
+
+                        SetInfo("Заполняю таблицу групп...", 15, maxInit);
+                        await Task.Run(() => DatabaseData.FillGroupTable(_groups));
                     }
 
 
                     if (!Database.TableExist<PayType>())
                     {
-                        SetInfo("Создаю таблицу групп...", 15, maxInit);
+                        SetInfo("Создаю таблицу видов оплаты...", 16, maxInit);
                         await Task.Run(() => db.CreateTable<PayType>());
 
-                        SetInfo("Заполняю таблицу групп...", 16, maxInit);
+                        SetInfo("Заполняю таблицу видов оплаты...", 17, maxInit);
                         await Task.Run(DatabaseData.FillPayTypeTable);
                     }
                 }
             }
             catch (Exception e)
             {
-                if(_loggingMode)
+                if (_loggingMode)
                     Logger.Error(e.Message);
             }
 
             Close();
         }
+
+        private void SetInfo(string text, int value = 25, int max = 100, 
+            string progressText = "", ProgressBarStyle style = ProgressBarStyle.Continuous)
+        {
+            labelInfo.Text = text;
+            labelInfo.Refresh();
+
+            circularProgressBar.Text = progressText;
+
+            circularProgressBar.Style = style;
+            circularProgressBar.Maximum = max;
+            circularProgressBar.Value = value;
+
+            circularProgressBar.Refresh();
+        }
+
+        private void ContinuousProgress()
+        {
+            circularProgressBar.Style = ProgressBarStyle.Continuous;
+            circularProgressBar.Refresh();
+        }
+
+        private void MarqueeProgress()
+        {
+            circularProgressBar.Value = 50;
+            circularProgressBar.Maximum = 100;
+            circularProgressBar.Style = ProgressBarStyle.Marquee;
+            circularProgressBar.Refresh();
+        }
+
+        #endregion
+
+        #region Form Event
+
+        private void LoadFileForm_Load(object sender, EventArgs e)
+        {
+            Work();
+        }
+
+        private void LoadFileForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            GC.Collect();
+        }
+
+        #endregion
+
+
     }
 }

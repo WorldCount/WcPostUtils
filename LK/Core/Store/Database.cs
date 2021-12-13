@@ -1055,6 +1055,21 @@ namespace LK.Core.Store
             return id;
         }
 
+        public static List<Group> GetGroups()
+        {
+            try
+            {
+                using (var db = DbConnect.GetConnection())
+                    return db.Table<Group>().ToList();
+            }
+            catch (Exception e)
+            {
+                if (LoggingMode)
+                    Logger.Error(e.Message);
+                return new List<Group>();
+            }
+        }
+
         #endregion
     }
 }

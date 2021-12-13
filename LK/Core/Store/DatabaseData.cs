@@ -85,6 +85,12 @@ namespace LK.Core.Store
                 db.InsertAll(firms);
         }
 
+        public static void FillGroupTable(List<Group> groups)
+        {
+            using (var db = DbConnect.GetConnection())
+                db.InsertAll(groups);
+        }
+
         #endregion
     }
 }
