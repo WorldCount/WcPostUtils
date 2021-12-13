@@ -4,7 +4,7 @@ using System.Linq;
 using System.Windows.Forms;
 using LK.Core.Libs.Configs;
 using LK.Core.Libs.Extension;
-using LK.Core.Store.Manager;
+using LK.Core.Store.Manager.FileManager;
 
 namespace LK.Forms.ConfigForms
 {

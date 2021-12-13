@@ -358,5 +358,17 @@ namespace LK.Properties {
                 this["AutoClearFlag"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("data_fields.xml")]
+        public string DataFieldsFile {
+            get {
+                return ((string)(this["DataFieldsFile"]));
+            }
+            set {
+                this["DataFieldsFile"] = value;
+            }
+        }
     }
 }

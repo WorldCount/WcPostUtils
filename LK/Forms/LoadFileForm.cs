@@ -8,15 +8,21 @@ using System.Windows.Forms;
 using LK.Core;
 using LK.Core.Libs.Auth;
 using LK.Core.Libs.Auth.Model;
+using LK.Core.Libs.DataManagers;
+using LK.Core.Libs.DataManagers.Models;
 using LK.Core.Libs.TarifManager;
 using LK.Core.Libs.TarifManager.PostTypes;
 using LK.Core.Libs.TarifManager.Tarif;
+using LK.Core.Models.DB;
 using LK.Core.Models.Raw;
 using LK.Core.Store.Manager;
+using LK.Core.Store.Manager.DatabaseManager;
+using LK.Core.Store.Manager.FileManager;
 using LK.Core.Store.Parsers;
 using LK.Forms.Params;
 using NLog;
 using WcApi.Cryptography;
+using WcApi.Finance;
 
 namespace LK.Forms
 {
@@ -62,8 +68,7 @@ namespace LK.Forms
         private readonly MailTypeManager _mailTypeManager = new MailTypeManager();
         private readonly FirmManager _firmManager = new FirmManager();
         private readonly OperatorManager _operatorManager = new OperatorManager();
-        private readonly ConfigFirmFieldManager _configFirmFieldManager;
-        private readonly ConfigRpoFieldManager _configRpoFieldManager;
+        private readonly ConfigDataFieldManager _configDataFieldManager;
 
         #endregion
 
@@ -92,8 +97,7 @@ namespace LK.Forms
                 
             //SetInfo("Начинаю работу :)", 0);
 
-            _configFirmFieldManager = new ConfigFirmFieldManager();
-            _configRpoFieldManager = new ConfigRpoFieldManager();
+            _configDataFieldManager = new ConfigDataFieldManager();
 
         }
 
@@ -132,6 +136,16 @@ namespace LK.Forms
             SetInfo("Загрузка данных из файла...   Ok!", 100);
 
             #endregion
+
+            #region Парсинг РПО
+
+            SetInfo("Загрузка данных из файла...", style: ProgressBarStyle.Marquee);
+            await Parse(data);
+            SetInfo("Загрузка данных из файла...   Ok!", 100);
+
+            #endregion
+
+            Close();
         }
 
         private async Task GetToken()
@@ -234,6 +248,55 @@ namespace LK.Forms
             return data;
         }
 
+        private async Task Parse(List<RawData> data)
+        {
+            Config configNds = ConfigManager.GetConfigByName(ConfigName.Nds);
+            Config configValue = ConfigManager.GetConfigByName(ConfigName.Value);
+
+            Nds ndsCalc = new Nds(configNds.GetIntValue());
+            double fullValue = (double)configValue.GetIntValue() / 100;
+
+            int max = data.Count - 1;
+
+            _recountFirmListIds = new List<int>();
+
+            FirmListManager firmListManager = new FirmListManager(new DateTime(1986, 9, 2));
+            RpoManager rpoManager = new RpoManager();
+
+            Firm firm = null;
+            FirmList firmList = null;
+            List<Rpo> rpos = new List<Rpo>();
+
+            for (int i = 0; i <= max; i++)
+            {
+                SetInfo($"Парсинг РПО... {i + 1} из {max}", i, max);
+
+                RawData d = data[i];
+
+                if (firm != null)
+                    if (firm.Name != d.FirmName || firm.Inn != d.Inn || firm.Kpp != d.Kpp ||
+                        firm.Contract != d.Contract)
+                        firm = null;
+
+                if (firm == null)
+                {
+                    firm = _firmManager.GetOrCreateFirm(d.Inn, d.Kpp, d.FirmName, d.Contract);
+                }
+
+                if(firmList != null)
+                    if (firmList.Num != d.ListNum || firmList.Date != d.Date || firmList.ReceptionDate != d.ReceptDate)
+                        firmList = null;
+
+                if (firmList == null)
+                {
+                    firmListManager.Update(d.Date);
+                    firmList = firmListManager.GetFirmList(firm.Id, d.ListNum, d.ReceptDate);
+
+
+                }
+            }
+        }
+
         private int GetNotice(double rate, double value)
         {
             ServiceTarif serviceTarif = ServiceTarifManager.GetServiceTarifByRateNds(rate);
@@ -293,8 +356,8 @@ namespace LK.Forms
 
         private void LoadFileForm_Load(object sender, EventArgs e)
         {
-            _configRpoFieldManager.Load();
-            _configRpoFieldManager.DecrementRowNum();
+            _configDataFieldManager.Load();
+            _configDataFieldManager.DecrementRowNum();
 
             Work();
         }
