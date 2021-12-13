@@ -597,9 +597,10 @@ namespace LK.Core.Store
             sb.Append("select fl.Id, fl.Date, f.ShortName, fl.Num, fl.MailCategory, fl.MailType, fl.MailClass, fl.Count, fl.CountFact, ");
             sb.Append("fl.CountReturn, fl.CountMiss, fl.Notice, fl.MassRate, fl.MassRateNds, fl.AviaRate, fl.Value, fl.ValueRate, ");
             sb.Append("fl.ReceptionDate, fl.Inventory, fl.Ops, o.LastName, o.FirstName, o.MiddleName, o.FullName, o.Id, ");
-            sb.Append("f.id, f.Name, f.ShortName, f.Inn, f.Kpp, f.Contract from FirmList fl ");
+            sb.Append("f.id, f.Name, f.Inn, f.Kpp, f.Contract, f.GroupId, g.Name from FirmList fl ");
             sb.Append("join Operator o on fl.OperatorId = o.Id ");
             sb.Append("join Firm f on fl.FirmId = f.Id ");
+            sb.Append("left join [Group] g on f.GroupId = g.Id ");
             sb.Append($"where ReceptionDate >= date('{filter.StartDate:yyyy-MM-dd}') and ReceptionDate < date('{filter.EndDate:yyyy-MM-dd}')");
 
             if (filter.FirmsIds != null && filter.FirmsIds.Length > 0)
@@ -634,7 +635,7 @@ namespace LK.Core.Store
 
             string q = sb.ToString();
 
-            //Logger.Debug(q);
+            Logger.Debug(q);
 
             List<FirmList> firmLists = new List<FirmList>();
 
@@ -683,10 +684,12 @@ namespace LK.Core.Store
                             {
                                 Id = reader.GetInt32(25),
                                 Name = reader.GetString(26),
-                                ShortName = reader.GetString(27),
-                                Inn = reader.GetString(28),
-                                Kpp = reader.GetString(29),
-                                Contract = reader.GetString(30)
+                                ShortName = reader.GetString(2),
+                                Inn = reader.GetString(27),
+                                Kpp = reader.GetString(28),
+                                Contract = reader.GetString(29),
+                                GroupId = reader.GetInt32(30),
+                                Group = new Group { Id = reader.GetInt32(30), Name = reader.GetString(31)}
                             }
                         };
 
@@ -1022,6 +1025,34 @@ namespace LK.Core.Store
             }
 
             return operStatInfos;
+        }
+
+        #endregion
+
+        #region Запросы по группам
+
+        public static int GetGroupId(string inn, string kpp)
+        {
+            using (var db = DbConnect.GetConnection())
+            {
+                Firm firm = db.Table<Firm>().FirstOrDefault(f => f.Inn == inn && f.Kpp == kpp && f.GroupId != 0);
+                if (firm != null)
+                    return firm.GroupId;
+                return 0;
+            }
+        }
+
+        public static int CreateGroup(string name)
+        {
+            int id = 0;
+
+            using (var db = DbConnect.GetConnection())
+            {
+                db.Insert(new Group {Name = name});
+                id = db.Table<Group>().Last().Id;
+            }
+
+            return id;
         }
 
         #endregion

@@ -719,7 +719,7 @@ namespace LK.Forms
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridViewList.ColumnHeadersHeight = 40;
+            this.dataGridViewList.ColumnHeadersHeight = 36;
             this.dataGridViewList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridViewList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.checkDataGridViewCheckBoxColumn,

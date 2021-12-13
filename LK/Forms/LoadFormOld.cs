@@ -264,71 +264,76 @@ namespace LK.Forms
 
                 RawData d = data[i];
 
-                //if (firm != null)
-                //    if (firm.Name != d.FirmName || firm.Inn != d.Inn || firm.Kpp != d.Kpp || firm.Contract != d.Contract)
-                //        firm = null;
+                if (firm != null)
+                    if (firm.Name != d.FirmName || firm.Inn != d.Inn || firm.Kpp != d.Kpp || firm.Contract != d.Contract)
+                        firm = null;
 
-                //if (firm == null)
-                //{
-                //    firm = _firmManager.GetOrCreateFirm(d.Inn, d.Kpp, d.FirmName, d.Contract);
-                //}
+                if (firm == null)
+                {
+                    firm = _firmManager.GetOrCreateFirm(d.Inn, d.Kpp, d.FirmName, d.Contract);
+                }
 
-                //if(firmList != null)
-                //    if (firmList.Num != d.ListNum || firmList.Date != d.Date || firmList.ReceptionDate != d.ReceptDate)
-                //        firmList = null;
+                if (firmList != null)
+                    if (firmList.Num != d.ListNum || firmList.Date != d.Date || firmList.ReceptionDate != d.ReceptDate)
+                        firmList = null;
 
-                //if (firmList == null)
-                //{
-                //    firmListManager.Update(d.Date);
-                //    firmList = firmListManager.GetFirmList(firm.Id, d.ListNum, d.ReceptDate);
+                if (firmList == null)
+                {
+                    firmListManager.Update(d.Date);
+                    firmList = firmListManager.GetFirmList(firm.Id, d.ListNum, d.ReceptDate);
 
-                //    if (firmList == null)
-                //    {
-                //        Operator oper = _operatorManager.GetOrCreateOperator(d.Operator);
+                    if (firmList == null)
+                    {
+                        Operator oper = _operatorManager.GetOrCreateOperator(d.Operator);
 
-                //        firmList = new FirmList
-                //        {
-                //            FirmId = firm.Id, Num = d.ListNum, Date = d.Date,
-                //            ReceptionDate = d.ReceptDate, OperatorId = oper.Id, MailClass = d.GetMailClass(),
-                //            Inventory = d.IsInventory(), Notice = GetNotice(d.ServiceRate, d.Value)
-                //        };
+                        firmList = new FirmList
+                        {
+                            FirmId = firm.Id,
+                            Num = d.ListNum,
+                            Date = d.Date,
+                            ReceptionDate = d.ReceptDate,
+                            OperatorId = oper.Id,
+                            MailClass = d.GetMailClass(),
+                            Inventory = d.IsInventory(),
+                            Notice = GetNotice(d.ServiceRate, d.Value)
+                        };
 
-                //        MailType mailType = _mailTypeManager.GetMailType(d.Type);
-                //        if (mailType != null)
-                //            firmList.MailType = mailType.Id;
+                        MailType mailType = _mailTypeManager.GetMailType(d.Type);
+                        if (mailType != null)
+                            firmList.MailType = mailType.Id;
 
-                //        MailCategory mailCategory = _mailCategoryManager.GetMailCategory(d.Category);
-                //        if (mailCategory != null)
-                //            firmList.MailCategory = mailCategory.Id;
-                        
-                //        firmList.Id = await Database.SaveFirmListAsync(firmList);
+                        MailCategory mailCategory = _mailCategoryManager.GetMailCategory(d.Category);
+                        if (mailCategory != null)
+                            firmList.MailCategory = mailCategory.Id;
 
-                //        if (!_recountFirmListIds.Contains(firmList.Id))
-                //            _recountFirmListIds.Add(firmList.Id);
-                //    }
-                //}
+                        firmList.Id = await Database.SaveFirmListAsync(firmList);
 
-                //Rpo rpo = d.ToRpo();
-                //rpo.FirmListId = firmList.Id;
-                //rpo.OperatorId = firmList.OperatorId;
+                        if (!_recountFirmListIds.Contains(firmList.Id))
+                            _recountFirmListIds.Add(firmList.Id);
+                    }
+                }
 
-                //rpo.ValueRate = rpo.Value * fullValue;
-                //rpo.MassRate = ndsCalc.Minus(rpo.MassRate) + rpo.ValueRate;
+                Rpo rpo = d.ToRpo();
+                rpo.FirmListId = firmList.Id;
+                rpo.OperatorId = firmList.OperatorId;
 
-                //rpo.Notice = firmList.Notice;
-                //rpo.MailType = firmList.MailType;
-                //rpo.MailCategory = firmList.MailCategory;
+                rpo.ValueRate = rpo.Value * fullValue;
+                rpo.MassRate = ndsCalc.Minus(rpo.MassRate) + rpo.ValueRate;
 
-                //Status status = _statusManager.GetStatus(d.Status);
-                //if (status != null)
-                //{
-                //    rpo.StatusId = status.Id;
+                rpo.Notice = firmList.Notice;
+                rpo.MailType = firmList.MailType;
+                rpo.MailCategory = firmList.MailCategory;
 
-                //    if (string.IsNullOrEmpty(rpo.Reason))
-                //        rpo.Reason = status.Name;
-                //}
+                Status status = _statusManager.GetStatus(d.Status);
+                if (status != null)
+                {
+                    rpo.StatusId = status.Id;
 
-                //rpos.Add(rpo);
+                    if (string.IsNullOrEmpty(rpo.Reason))
+                        rpo.Reason = status.Name;
+                }
+
+                rpos.Add(rpo);
             }
         }
 

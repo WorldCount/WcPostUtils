@@ -37,6 +37,11 @@ namespace LK.Core.Store.Manager.DatabaseManager
             _firmLists = Database.GetFirmsListByDate(_date);
         }
 
+        public void AddFirmList(FirmList firmList)
+        {
+            _firmLists.Add(firmList);
+        }
+
         public void Update(DateTime date)
         {
             if (date != _date)
@@ -49,7 +54,7 @@ namespace LK.Core.Store.Manager.DatabaseManager
         public void Recount(List<int> ids)
         {
 
-            if (_recount && _firmLists.Count > 0)
+            if (_recount)
             {
 
                 Config ndsConfig = ConfigManager.GetConfigByName(ConfigName.Nds);

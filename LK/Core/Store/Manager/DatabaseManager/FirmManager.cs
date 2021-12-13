@@ -25,9 +25,18 @@ namespace LK.Core.Store.Manager.DatabaseManager
         {
             Firm firm = GetFirm(inn, kpp, contract, name);
 
+            if (firm != null && firm.GroupId == 0)
+            {
+                firm.GroupId = GetGroup(firm.Inn, firm.Kpp, firm.ShortName);
+
+                Database.UpdateFirm(firm);
+                _firms = Database.GetFirms();
+            }
+
             if (firm == null)
             {
                 firm = new Firm {Inn = inn, Kpp = kpp, Name = name, ShortName = name, Contract = contract};
+                firm.GroupId = GetGroup(inn, kpp, name);
                 using (var db = DbConnect.GetConnection())
                 {
                     db.Insert(firm);
@@ -41,6 +50,16 @@ namespace LK.Core.Store.Manager.DatabaseManager
         public void Dispose()
         {
             _firms = null;
+        }
+
+        private int GetGroup(string inn, string kpp, string shortName)
+        {
+            int groupId = Database.GetGroupId(inn, kpp);
+
+            if (groupId == 0)
+                groupId = Database.CreateGroup(shortName);
+
+            return groupId;
         }
     }
 }

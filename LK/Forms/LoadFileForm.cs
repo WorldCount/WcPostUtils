@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -14,7 +15,9 @@ using LK.Core.Libs.TarifManager;
 using LK.Core.Libs.TarifManager.PostTypes;
 using LK.Core.Libs.TarifManager.Tarif;
 using LK.Core.Models.DB;
+using LK.Core.Models.DB.Types;
 using LK.Core.Models.Raw;
+using LK.Core.Store;
 using LK.Core.Store.Manager;
 using LK.Core.Store.Manager.DatabaseManager;
 using LK.Core.Store.Manager.FileManager;
@@ -22,6 +25,7 @@ using LK.Core.Store.Parsers;
 using LK.Forms.Params;
 using NLog;
 using WcApi.Cryptography;
+using WcApi.Ext;
 using WcApi.Finance;
 
 namespace LK.Forms
@@ -292,9 +296,65 @@ namespace LK.Forms
                     firmListManager.Update(d.Date);
                     firmList = firmListManager.GetFirmList(firm.Id, d.ListNum, d.ReceptDate);
 
+                    if (firmList == null)
+                    {
+                        Operator oper = _operatorManager.GetOrCreateOperator(d.Operator);
 
+                        firmList = new FirmList
+                        {
+                            FirmId = firm.Id,
+                            Num = d.ListNum,
+                            Date = d.Date,
+                            ReceptionDate = d.ReceptDate,
+                            OperatorId = oper.Id,
+                            MailClass = d.GetMailClass(),
+                            Inventory = d.IsInventory(),
+                            Notice = GetNotice(d.ServiceRate, d.Value),
+                            Ops = d.OpsIndex
+                        };
+
+                        MailType mailType = _mailTypeManager.GetMailType(d.Type);
+                        if (mailType != null)
+                            firmList.MailType = mailType.Id;
+
+                        MailCategory mailCategory = _mailCategoryManager.GetMailCategory(d.Category);
+                        if (mailCategory != null)
+                            firmList.MailCategory = mailCategory.Id;
+
+                        firmList.Id = await Database.SaveFirmListAsync(firmList);
+
+                        if (!_recountFirmListIds.Contains(firmList.Id))
+                            _recountFirmListIds.Add(firmList.Id);
+                    }
                 }
+
+                Rpo rpo = d.ToRpo();
+                rpo.FirmListId = firmList.Id;
+                rpo.OperatorId = firmList.OperatorId;
+
+                rpo.ValueRate = rpo.Value * fullValue;
+                rpo.MassRate = ndsCalc.Minus(rpo.MassRate) + rpo.ValueRate;
+
+                rpo.Notice = firmList.Notice;
+                rpo.MailType = firmList.MailType;
+                rpo.MailCategory = firmList.MailCategory;
+
+                Status status = _statusManager.GetStatus(d.Status);
+                if (status != null)
+                {
+                    rpo.StatusId = status.Id;
+
+                    if (string.IsNullOrEmpty(rpo.Reason))
+                        rpo.Reason = status.Name;
+                }
+
+                rpos.Add(rpo);
             }
+
+            int count = Database.SaveAllRpo(rpos);
+            var dataChunk = _recountFirmListIds.Chunk(500);
+            foreach (IEnumerable<int> ids in dataChunk)
+                firmListManager.Recount(ids.ToList());
         }
 
         private int GetNotice(double rate, double value)
