@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using LK.Core.Models.Raw;
-using LK.Core.Store.Manager;
 using LK.Core.Store.Manager.FileManager;
 using NLog;
 using NPOI.HSSF.UserModel;
@@ -86,6 +85,7 @@ namespace LK.Core.Store.Parsers
                 }
             }
 
+            workbook.Close();
             return datas;
         }
     }
