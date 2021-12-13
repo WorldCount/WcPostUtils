@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using LK.Core.Models.Reports;
-using LK.Core.Store.Manager;
+using LK.Core.Store.Manager.FileManager;
 
 namespace LK.Forms.ReportForms
 {

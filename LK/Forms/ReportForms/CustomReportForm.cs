@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using LK.Core.Libs.DataManagers;
 using LK.Core.Libs.DataManagers.Models;
@@ -19,6 +15,7 @@ using LK.Core.Models.Filters;
 using LK.Core.Models.Reports;
 using LK.Core.Store;
 using LK.Core.Store.Manager;
+using LK.Core.Store.Manager.FileManager;
 
 namespace LK.Forms.ReportForms
 {

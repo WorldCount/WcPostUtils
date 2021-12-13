@@ -4,7 +4,7 @@ using System.Windows.Forms;
 using LK.Core.Models.DB;
 using LK.Core.Models.Reports;
 using LK.Core.Store;
-using LK.Core.Store.Manager;
+using LK.Core.Store.Manager.FileManager;
 
 namespace LK.Forms.ReportForms
 {
