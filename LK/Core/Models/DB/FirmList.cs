@@ -123,6 +123,17 @@ namespace LK.Core.Models.DB
             }
         }
 
+        [SQLite.Ignore]
+        public string GroupName
+        {
+            get
+            {
+                if (Firm?.Group != null)
+                    return Firm.Group.Name;
+                return "";
+            }
+        }
+
         #region Методы
 
         public void Recount(int nds, int value)

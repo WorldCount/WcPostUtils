@@ -1638,7 +1638,7 @@ namespace LK.Forms
                 {
                     List<FirmList> filtered = _firmLists.Where(f =>
                         f.FirmName.ToUpper().Contains(q) || f.OperatorName.ToUpper().Contains(q) ||
-                        f.Num.ToString().Contains(q)).ToList();
+                        f.Num.ToString().Contains(q) || f.GroupName.ToUpper().Contains(q)).ToList();
 
                     //firmListBindingSource.DataSource = filtered.ToSortableBindingList();
                     UpdateFirmList(filtered, col, sort);
