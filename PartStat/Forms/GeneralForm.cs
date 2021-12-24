@@ -10,14 +10,12 @@ using System.Threading.Tasks;
 using AutoUpdaterDotNET;
 using Newtonsoft.Json;
 using NLog;
-using PartStat.Core;
 using PartStat.Core.Libs;
 using PartStat.Core.Libs.DataBase;
 using PartStat.Core.Libs.DataBase.Queries;
 using PartStat.Core.Libs.DataBase.Queries.RequestObject;
 using PartStat.Core.Libs.DataManagers;
 using PartStat.Core.Libs.Print;
-using PartStat.Core.Libs.ServerRequest;
 using PartStat.Core.Libs.Stats;
 using PartStat.Core.Libs.TarifManager;
 using PartStat.Core.Models;
@@ -28,9 +26,7 @@ using PartStat.Core.Models.Report;
 using PartStat.Core.Models.Tarifs;
 using PartStat.Forms.ReportForms;
 using PartStat.Forms.TarifForms;
-using WcApi.Cryptography;
 using WcApi.Print;
-using WcApi.Win32.Forms;
 
 namespace PartStat.Forms
 {
@@ -64,9 +60,6 @@ namespace PartStat.Forms
 
         private bool _checkAllFlag = true;
 
-        private readonly string _key;
-        private ServerAuth _serverAuth;
-
         private readonly int[] _ignoreCols = { 0, 10 };
         private readonly int[] _columnWidth = { 0, 70, 60, 150, 50, 50, 90, 80, 60, 60, 0, 40, 60 };
 
@@ -85,11 +78,6 @@ namespace PartStat.Forms
 
             // ReSharper disable once VirtualMemberCallInConstructor
             Text = $"{Properties.Settings.Default.AppName} {Application.ProductVersion}";
-
-            _key = LicenseKey.GetKey(WcApi.Net.Host.GetIp(), AuthKey.Key, Application.ProductName);
-
-            // Пробная лицензия на 30 дней
-            GetTrialLicense();
 
             _connect = DataBase.GetConnect(PathManager.ConnectPath);
 
@@ -139,55 +127,6 @@ namespace PartStat.Forms
             toolTipPrintReport.SetToolTip(btnPrintReport, "Печать отчета по весу [Ctrl + R]");
             toolTipLock.SetToolTip(btnLock, "Блокировать приложение [Ctrl + L]");
         }
-
-        #region Лицензия
-
-        private void CheckLicense()
-        {
-            string license = Properties.Settings.Default.License;
-            labelLicense.Text = License.GetLicenseExpiresString(license, _key);
-
-            _serverAuth = ServerManager.GetServerAuth().Result;
-            if (!_serverAuth.Work)
-            {
-                MessageBox.Show(_serverAuth.Message, "Ошибка");
-                Close();
-            }
-
-            if (_isAdmin)
-                return;
-
-            if (!License.CheckLicense(license, _key))
-            {
-                Utils.Telegram.SendMessage($"Лицензия истекла. [{_key}]");
-
-
-                LicenseForm licenseForm = new LicenseForm(license, _key, Application.ProductName, Application.ProductVersion, Properties.Settings.Default.MailLicense, Icon);
-
-                if (licenseForm.ShowDialog(this) == DialogResult.OK)
-                {
-                    Properties.Settings.Default.License = licenseForm.LicenseKey;
-                    labelLicense.Text = License.GetLicenseExpiresString(licenseForm.LicenseKey, _key);
-                    Properties.Settings.Default.Save();
-                }
-                else
-                    Close();
-            }
-        }
-
-        private void GetTrialLicense()
-        {
-            if (Properties.Settings.Default.FirstRun)
-            {
-                DateTime licenseExp = DateTime.Today.AddDays(30);
-                string licenseKey = License.GetLicenseKey(licenseExp, _key);
-                Properties.Settings.Default.License = licenseKey;
-                Properties.Settings.Default.FirstRun = false;
-                Properties.Settings.Default.Save();
-            }
-        }
-
-        #endregion
 
         #region Настройка формы
 
@@ -261,40 +200,12 @@ namespace PartStat.Forms
 
             if (args.Contains("-admin"))
                 _isAdmin = true;
-
-            if (args.Contains("-license"))
-            {
-                if (args.Length > 2)
-                {
-                    DateTime licenseDate;
-
-                    try
-                    {
-                        licenseDate = DateTime.Parse(args[2]);
-                    }
-                    catch
-                    {
-                        licenseDate = DateTime.Today.AddYears(1);
-                    }
-
-                    string license = WcApi.Cryptography.License.GetLicenseKey(licenseDate, _key);
-                    Properties.Settings.Default.License = license;
-                    Properties.Settings.Default.Save();
-                }
-                else
-                {
-                    Properties.Settings.Default.License = "";
-                    Properties.Settings.Default.Save();
-                }
-            }
         }
 
         private void GeneralForm_Load(object sender, EventArgs e)
         {
             LoadPos();
             LoadSettings();
-            // Проверка лицензии
-            CheckLicense();
         }
 
         private void GeneralForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -902,27 +813,6 @@ namespace PartStat.Forms
         {
             NoticeTarifForm noticeTarifForm = new NoticeTarifForm();
             noticeTarifForm.ShowDialog(this);
-        }
-
-        private void licenseToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            string license = Properties.Settings.Default.License;
-
-            LicenseForm licenseForm = new LicenseForm(license, _key, Application.ProductName, Application.ProductVersion, Properties.Settings.Default.MailLicense, Icon);
-
-            if (WcApi.Cryptography.License.CheckLicense(license, _key))
-            {
-                licenseForm.LicenseText("Поздравляю, ваша лицензия пока еще работает :)");
-                licenseForm.LicensePicture(Properties.Resources.cat_license);
-            }
-
-            if (licenseForm.ShowDialog(this) == DialogResult.OK)
-            {
-
-                Properties.Settings.Default.License = licenseForm.LicenseKey;
-                labelLicense.Text = License.GetLicenseExpiresString(licenseForm.LicenseKey, _key);
-                Properties.Settings.Default.Save();
-            }
         }
 
         private void updateToolStripMenuItem_Click(object sender, EventArgs e)

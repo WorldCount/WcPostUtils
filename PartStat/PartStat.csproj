@@ -90,7 +90,6 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Core\Libs\ReportQueue.cs" />
-    <Compile Include="Core\Libs\ServerRequest\ServerAuth.cs" />
     <Compile Include="Core\Libs\ServerTarif\Object\TarifObject.cs" />
     <Compile Include="Core\Libs\ServerTarif\Object\NoticeObject.cs" />
     <Compile Include="Core\Libs\Stats\CityStatCollector.cs" />

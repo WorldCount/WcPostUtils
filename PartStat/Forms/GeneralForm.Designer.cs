@@ -78,11 +78,9 @@ namespace PartStat.Forms
             this.statusToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.colorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
             this.printerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.infoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.licenseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.updateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelFilter = new System.Windows.Forms.Panel();
             this.btnLock = new System.Windows.Forms.Button();
@@ -164,8 +162,6 @@ namespace PartStat.Forms
             this.tbBarcode = new System.Windows.Forms.TextBox();
             this.btnTablePrint = new System.Windows.Forms.Button();
             this.imageListCheckBox = new System.Windows.Forms.ImageList(this.components);
-            this.labelLicense = new System.Windows.Forms.Label();
-            this.labelInfoLicense = new System.Windows.Forms.Label();
             this.status.SuspendLayout();
             this.menu.SuspendLayout();
             this.panelFilter.SuspendLayout();
@@ -483,7 +479,6 @@ namespace PartStat.Forms
             this.statusToolStripMenuItem,
             this.toolStripSeparator2,
             this.colorsToolStripMenuItem,
-            this.toolStripSeparator7,
             this.toolStripSeparator12,
             this.printerToolStripMenuItem});
             this.settingsMenuItem.Font = new System.Drawing.Font("Segoe UI", 12.22642F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -502,14 +497,14 @@ namespace PartStat.Forms
             this.connectToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(58)))), ((int)(((byte)(66)))));
             this.connectToolStripMenuItem.Image = global::PartStat.Properties.Resources.Repeat;
             this.connectToolStripMenuItem.Name = "connectToolStripMenuItem";
-            this.connectToolStripMenuItem.Size = new System.Drawing.Size(230, 28);
+            this.connectToolStripMenuItem.Size = new System.Drawing.Size(234, 28);
             this.connectToolStripMenuItem.Text = "Подключение к БД";
             this.connectToolStripMenuItem.Click += new System.EventHandler(this.connectToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(227, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(231, 6);
             // 
             // configToolStripMenuItem
             // 
@@ -517,14 +512,14 @@ namespace PartStat.Forms
             this.configToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(58)))), ((int)(((byte)(66)))));
             this.configToolStripMenuItem.Image = global::PartStat.Properties.Resources.Settings;
             this.configToolStripMenuItem.Name = "configToolStripMenuItem";
-            this.configToolStripMenuItem.Size = new System.Drawing.Size(230, 28);
+            this.configToolStripMenuItem.Size = new System.Drawing.Size(234, 28);
             this.configToolStripMenuItem.Text = "Настройки";
             this.configToolStripMenuItem.Click += new System.EventHandler(this.configToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(227, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(231, 6);
             // 
             // statusToolStripMenuItem
             // 
@@ -532,14 +527,14 @@ namespace PartStat.Forms
             this.statusToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(58)))), ((int)(((byte)(66)))));
             this.statusToolStripMenuItem.Image = global::PartStat.Properties.Resources.Menu_2;
             this.statusToolStripMenuItem.Name = "statusToolStripMenuItem";
-            this.statusToolStripMenuItem.Size = new System.Drawing.Size(230, 28);
+            this.statusToolStripMenuItem.Size = new System.Drawing.Size(234, 28);
             this.statusToolStripMenuItem.Text = "Статусы списков";
             this.statusToolStripMenuItem.Click += new System.EventHandler(this.statusToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(227, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(231, 6);
             // 
             // colorsToolStripMenuItem
             // 
@@ -547,32 +542,26 @@ namespace PartStat.Forms
             this.colorsToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(58)))), ((int)(((byte)(66)))));
             this.colorsToolStripMenuItem.Image = global::PartStat.Properties.Resources.Font_Color;
             this.colorsToolStripMenuItem.Name = "colorsToolStripMenuItem";
-            this.colorsToolStripMenuItem.Size = new System.Drawing.Size(230, 28);
+            this.colorsToolStripMenuItem.Size = new System.Drawing.Size(234, 28);
             this.colorsToolStripMenuItem.Text = "Цвета";
             this.colorsToolStripMenuItem.Click += new System.EventHandler(this.colorsToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator7
-            // 
-            this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(227, 6);
             // 
             // toolStripSeparator12
             // 
             this.toolStripSeparator12.Name = "toolStripSeparator12";
-            this.toolStripSeparator12.Size = new System.Drawing.Size(227, 6);
+            this.toolStripSeparator12.Size = new System.Drawing.Size(231, 6);
             // 
             // printerToolStripMenuItem
             // 
             this.printerToolStripMenuItem.Image = global::PartStat.Properties.Resources.Printer;
             this.printerToolStripMenuItem.Name = "printerToolStripMenuItem";
-            this.printerToolStripMenuItem.Size = new System.Drawing.Size(230, 28);
+            this.printerToolStripMenuItem.Size = new System.Drawing.Size(234, 28);
             this.printerToolStripMenuItem.Text = "Принтер";
             this.printerToolStripMenuItem.Click += new System.EventHandler(this.printerToolStripMenuItem_Click);
             // 
             // infoToolStripMenuItem
             // 
             this.infoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.licenseToolStripMenuItem,
             this.updateToolStripMenuItem});
             this.infoToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(58)))), ((int)(((byte)(66)))));
             this.infoToolStripMenuItem.Image = global::PartStat.Properties.Resources._4_Leaf_Clover;
@@ -580,21 +569,12 @@ namespace PartStat.Forms
             this.infoToolStripMenuItem.Size = new System.Drawing.Size(87, 36);
             this.infoToolStripMenuItem.Text = "Инфо";
             // 
-            // licenseToolStripMenuItem
-            // 
-            this.licenseToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(58)))), ((int)(((byte)(66)))));
-            this.licenseToolStripMenuItem.Image = global::PartStat.Properties.Resources.Coin_Dollar;
-            this.licenseToolStripMenuItem.Name = "licenseToolStripMenuItem";
-            this.licenseToolStripMenuItem.Size = new System.Drawing.Size(184, 28);
-            this.licenseToolStripMenuItem.Text = "Лицензия";
-            this.licenseToolStripMenuItem.Click += new System.EventHandler(this.licenseToolStripMenuItem_Click);
-            // 
             // updateToolStripMenuItem
             // 
             this.updateToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(58)))), ((int)(((byte)(66)))));
             this.updateToolStripMenuItem.Image = global::PartStat.Properties.Resources.Button_Dashboard;
             this.updateToolStripMenuItem.Name = "updateToolStripMenuItem";
-            this.updateToolStripMenuItem.Size = new System.Drawing.Size(184, 28);
+            this.updateToolStripMenuItem.Size = new System.Drawing.Size(183, 28);
             this.updateToolStripMenuItem.Text = "Обновление";
             this.updateToolStripMenuItem.Click += new System.EventHandler(this.updateToolStripMenuItem_Click);
             // 
@@ -1590,35 +1570,11 @@ namespace PartStat.Forms
             this.imageListCheckBox.Images.SetKeyName(0, "white_checked-32.png");
             this.imageListCheckBox.Images.SetKeyName(1, "white-unchecked-32.png");
             // 
-            // labelLicense
-            // 
-            this.labelLicense.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelLicense.Font = new System.Drawing.Font("Segoe UI Semibold", 10.86792F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelLicense.ForeColor = System.Drawing.Color.Firebrick;
-            this.labelLicense.Location = new System.Drawing.Point(1169, 0);
-            this.labelLicense.Name = "labelLicense";
-            this.labelLicense.Size = new System.Drawing.Size(96, 40);
-            this.labelLicense.TabIndex = 10;
-            this.labelLicense.Text = "01.01.0001";
-            this.labelLicense.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // labelInfoLicense
-            // 
-            this.labelInfoLicense.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelInfoLicense.Location = new System.Drawing.Point(1050, 0);
-            this.labelInfoLicense.Name = "labelInfoLicense";
-            this.labelInfoLicense.Size = new System.Drawing.Size(113, 40);
-            this.labelInfoLicense.TabIndex = 9;
-            this.labelInfoLicense.Text = "Лицензия до:";
-            this.labelInfoLicense.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // GeneralForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1273, 572);
-            this.Controls.Add(this.labelLicense);
-            this.Controls.Add(this.labelInfoLicense);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelType);
             this.Controls.Add(this.dataGridViewStat);
@@ -1744,9 +1700,6 @@ namespace PartStat.Forms
         private System.Windows.Forms.DataGridViewTextBoxColumn errorDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn countDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn rateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.Label labelLicense;
-        private System.Windows.Forms.Label labelInfoLicense;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem checkAllToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem uncheckAllToolStripMenuItem;
@@ -1791,7 +1744,6 @@ namespace PartStat.Forms
         private System.Windows.Forms.ToolStripMenuItem orgReportToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem valueReportToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem infoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem licenseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem updateToolStripMenuItem;
     }
 }
