@@ -390,7 +390,7 @@ namespace LK.Core.Libs.TarifManager.ServerTarif
 
         private static async Task<double> GetFirstMailTarifRate(int mass)
         {
-            string url = $"https://tariff.pochta.ru/tariff/v2/calculate?json&object=15010&from=125993&weight={mass}";
+            string url = $"https://tariff.pochta.ru/tariff/v2/calculate?json&object=15010&from=125993&to=101000&weight={mass}";
             string data = await Request(url);
 
             if (string.IsNullOrEmpty(data))

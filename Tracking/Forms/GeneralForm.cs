@@ -39,6 +39,9 @@ namespace Tracking.Forms
 
             AuthFile = Path.Combine(DataDir, "Auth.xml");
 
+            // Хук двойной буфферизации для таблицы
+            WcApi.Win32.DrawingControl.SetDoubleBuffered(dataGridView);
+
             // ReSharper disable once VirtualMemberCallInConstructor
             Text = $"{Properties.Settings.Default.AppName} v{Application.ProductVersion}";
             tbBarcode.BorderColor = Color.FromArgb(255, 53, 56, 58);
